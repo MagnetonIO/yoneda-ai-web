@@ -872,12 +872,24 @@
       border-radius: 0 var(--radius-sm) 0 0;
     }
 
-    .derivation-table tbody tr {
+    .derivation-table tbody tr.step-row {
       transition: background 0.15s;
+      cursor: pointer;
     }
 
-    .derivation-table tbody tr:hover {
+    .derivation-table tbody tr.step-row:hover {
       background: var(--accent-bg);
+    }
+
+    .derivation-table tbody tr.step-row:hover .step-link {
+      color: var(--accent);
+    }
+
+    .derivation-table .step-link {
+      text-align: center;
+      color: var(--text-muted);
+      width: 40px;
+      transition: color 0.15s;
     }
 
     .derivation-table tbody td {
@@ -1542,74 +1554,86 @@
             <th>Structural Input</th>
             <th></th>
             <th>Physical Output</th>
+            <th>Code</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr class="step-row" onclick="window.open('https://github.com/MagnetonIO/quantum-perspectivism-haskell/blob/main/src/QuantumPerspectivism/Core/Yoneda.hs','_blank')">
             <td class="step-num">01</td>
             <td class="step-input">Yoneda Lemma</td>
             <td class="step-arrow">&rarr;</td>
             <td class="step-output">Physical identity is relational</td>
+            <td class="step-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></td>
           </tr>
-          <tr>
+          <tr class="step-row" onclick="window.open('https://github.com/MagnetonIO/quantum-perspectivism-haskell/blob/main/src/QuantumPerspectivism/Core/Presheaf.hs','_blank')">
             <td class="step-num">02</td>
             <td class="step-input">Presheaf condition</td>
             <td class="step-arrow">&rarr;</td>
             <td class="step-output">States are context-dependent data</td>
+            <td class="step-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></td>
           </tr>
-          <tr>
+          <tr class="step-row" onclick="window.open('https://github.com/MagnetonIO/quantum-perspectivism-haskell/blob/main/src/QuantumPerspectivism/Core/Monoidal.hs','_blank')">
             <td class="step-num">03</td>
             <td class="step-input">Monoidal contexts</td>
             <td class="step-arrow">&rarr;</td>
             <td class="step-output">Linear (vector space) structure</td>
+            <td class="step-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></td>
           </tr>
-          <tr>
+          <tr class="step-row" onclick="window.open('https://github.com/MagnetonIO/quantum-perspectivism-haskell/blob/main/src/QuantumPerspectivism/Core/InnerProduct.hs','_blank')">
             <td class="step-num">04</td>
             <td class="step-input">Perspectival consistency</td>
             <td class="step-arrow">&rarr;</td>
             <td class="step-output">Inner product / Hilbert space</td>
+            <td class="step-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></td>
           </tr>
-          <tr>
+          <tr class="step-row" onclick="window.open('https://github.com/MagnetonIO/quantum-perspectivism-haskell/blob/main/src/QuantumPerspectivism/Core/Observables.hs','_blank')">
             <td class="step-num">05</td>
             <td class="step-input">Naturality of observables</td>
             <td class="step-arrow">&rarr;</td>
             <td class="step-output">Self-adjoint operators</td>
+            <td class="step-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></td>
           </tr>
-          <tr>
+          <tr class="step-row" onclick="window.open('https://github.com/MagnetonIO/quantum-perspectivism-haskell/blob/main/src/QuantumPerspectivism/Core/BornRule.hs','_blank')">
             <td class="step-num">06</td>
             <td class="step-input">Yoneda isomorphism + Gleason</td>
             <td class="step-arrow">&rarr;</td>
             <td class="step-output">Born rule</td>
+            <td class="step-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></td>
           </tr>
-          <tr>
+          <tr class="step-row" onclick="window.open('https://github.com/MagnetonIO/quantum-perspectivism-haskell/blob/main/src/QuantumPerspectivism/Core/Entanglement.hs','_blank')">
             <td class="step-num">07</td>
             <td class="step-input">Product categories</td>
             <td class="step-arrow">&rarr;</td>
             <td class="step-output">Entanglement</td>
+            <td class="step-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></td>
           </tr>
-          <tr>
+          <tr class="step-row" onclick="window.open('https://github.com/MagnetonIO/quantum-perspectivism-haskell/blob/main/src/QuantumPerspectivism/Core/Complementarity.hs','_blank')">
             <td class="step-num">08</td>
             <td class="step-input">Non-commutative contexts</td>
             <td class="step-arrow">&rarr;</td>
             <td class="step-output">Complementarity / uncertainty</td>
+            <td class="step-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></td>
           </tr>
-          <tr>
+          <tr class="step-row" onclick="window.open('https://github.com/MagnetonIO/quantum-perspectivism-haskell/blob/main/src/QuantumPerspectivism/Core/Measurement.hs','_blank')">
             <td class="step-num">09</td>
             <td class="step-input">Presheaf restriction</td>
             <td class="step-arrow">&rarr;</td>
             <td class="step-output">Measurement (no collapse)</td>
+            <td class="step-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></td>
           </tr>
-          <tr>
+          <tr class="step-row" onclick="window.open('https://github.com/MagnetonIO/quantum-perspectivism-haskell/blob/main/src/QuantumPerspectivism/Core/Topos.hs','_blank')">
             <td class="step-num">10</td>
             <td class="step-input">Topos structure</td>
             <td class="step-arrow">&rarr;</td>
             <td class="step-output">Quantum logic</td>
+            <td class="step-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></td>
           </tr>
-          <tr>
+          <tr class="step-row" onclick="window.open('https://github.com/MagnetonIO/quantum-perspectivism-haskell/blob/main/src/QuantumPerspectivism/Core/Dynamics.hs','_blank')">
             <td class="step-num">11</td>
             <td class="step-input">Natural automorphisms</td>
             <td class="step-arrow">&rarr;</td>
             <td class="step-output">Unitary evolution / Schr&ouml;dinger eq.</td>
+            <td class="step-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></td>
           </tr>
         </tbody>
       </table>
