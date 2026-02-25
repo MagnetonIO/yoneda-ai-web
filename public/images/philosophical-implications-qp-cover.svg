@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a0a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a1a2e;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6c5ce7;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#6c5ce7;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00cec9;stop-opacity:0.25" />
+      <stop offset="100%" style="stop-color:#00cec9;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#a29bfe;stop-opacity:0.8" />
+      <stop offset="70%" style="stop-color:#6c5ce7;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#6c5ce7;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <!-- Ambient glows -->
+  <ellipse cx="350" cy="320" rx="250" ry="250" fill="url(#glow1)" />
+  <ellipse cx="850" cy="300" rx="200" ry="200" fill="url(#glow2)" />
+
+  <!-- Relational web: morphisms (lines connecting nodes) -->
+  <!-- Central web structure representing the Yoneda relational web -->
+  <g stroke-width="1.5" opacity="0.6">
+    <!-- Primary connections -->
+    <line x1="300" y1="250" x2="450" y2="180" stroke="#6c5ce7" />
+    <line x1="300" y1="250" x2="200" y2="350" stroke="#6c5ce7" />
+    <line x1="300" y1="250" x2="400" y2="350" stroke="#a29bfe" />
+    <line x1="300" y1="250" x2="150" y2="200" stroke="#6c5ce7" />
+    <line x1="450" y1="180" x2="550" y2="250" stroke="#a29bfe" />
+    <line x1="450" y1="180" x2="400" y2="350" stroke="#6c5ce7" />
+    <line x1="200" y1="350" x2="350" y2="450" stroke="#a29bfe" />
+    <line x1="200" y1="350" x2="400" y2="350" stroke="#6c5ce7" />
+    <line x1="400" y1="350" x2="550" y2="250" stroke="#6c5ce7" />
+    <line x1="400" y1="350" x2="350" y2="450" stroke="#a29bfe" />
+    <line x1="550" y1="250" x2="350" y2="450" stroke="#6c5ce7" />
+    <line x1="150" y1="200" x2="200" y2="350" stroke="#a29bfe" />
+    <line x1="150" y1="200" x2="450" y2="180" stroke="#6c5ce7" />
+
+    <!-- Secondary web -->
+    <line x1="550" y1="250" x2="650" y2="200" stroke="#00cec9" opacity="0.4" />
+    <line x1="550" y1="250" x2="650" y2="350" stroke="#00cec9" opacity="0.4" />
+    <line x1="350" y1="450" x2="250" y2="500" stroke="#00cec9" opacity="0.4" />
+    <line x1="150" y1="200" x2="100" y2="300" stroke="#00cec9" opacity="0.4" />
+    <line x1="100" y1="300" x2="200" y2="350" stroke="#00cec9" opacity="0.4" />
+    <line x1="650" y1="200" x2="650" y2="350" stroke="#00cec9" opacity="0.4" />
+  </g>
+
+  <!-- Morphism arrows (small triangles on some lines) -->
+  <g fill="#a29bfe" opacity="0.7">
+    <polygon points="370,215 380,220 375,225" />
+    <polygon points="470,310 475,300 480,310" />
+    <polygon points="250,300 245,290 255,290" />
+  </g>
+
+  <!-- Nodes (objects in the category) -->
+  <g>
+    <circle cx="300" cy="250" r="12" fill="url(#nodeGlow)" />
+    <circle cx="300" cy="250" r="5" fill="#a29bfe" />
+
+    <circle cx="450" cy="180" r="10" fill="url(#nodeGlow)" />
+    <circle cx="450" cy="180" r="4" fill="#a29bfe" />
+
+    <circle cx="200" cy="350" r="10" fill="url(#nodeGlow)" />
+    <circle cx="200" cy="350" r="4" fill="#a29bfe" />
+
+    <circle cx="400" cy="350" r="11" fill="url(#nodeGlow)" />
+    <circle cx="400" cy="350" r="4.5" fill="#a29bfe" />
+
+    <circle cx="550" cy="250" r="10" fill="url(#nodeGlow)" />
+    <circle cx="550" cy="250" r="4" fill="#a29bfe" />
+
+    <circle cx="350" cy="450" r="9" fill="url(#nodeGlow)" />
+    <circle cx="350" cy="450" r="3.5" fill="#a29bfe" />
+
+    <circle cx="150" cy="200" r="8" fill="url(#nodeGlow)" />
+    <circle cx="150" cy="200" r="3" fill="#a29bfe" />
+
+    <circle cx="100" cy="300" r="7" fill="url(#nodeGlow)" />
+    <circle cx="100" cy="300" r="2.5" fill="#00cec9" />
+
+    <circle cx="650" cy="200" r="7" fill="url(#nodeGlow)" />
+    <circle cx="650" cy="200" r="2.5" fill="#00cec9" />
+
+    <circle cx="650" cy="350" r="7" fill="url(#nodeGlow)" />
+    <circle cx="650" cy="350" r="2.5" fill="#00cec9" />
+
+    <circle cx="250" cy="500" r="6" fill="url(#nodeGlow)" />
+    <circle cx="250" cy="500" r="2" fill="#00cec9" />
+  </g>
+
+  <!-- Yoneda formula -->
+  <text x="780" y="200" font-family="serif" font-size="22" fill="#a29bfe" font-style="italic" opacity="0.8">y(A) = Hom(-, A)</text>
+  <text x="780" y="240" font-family="serif" font-size="18" fill="#6c5ce7" font-style="italic" opacity="0.6">Identity IS relational structure</text>
+
+  <!-- Title text -->
+  <text x="720" y="340" font-family="'Segoe UI', system-ui, sans-serif" font-size="28" fill="#ffffff" font-weight="bold" text-anchor="start">Philosophical Implications</text>
+  <text x="720" y="375" font-family="'Segoe UI', system-ui, sans-serif" font-size="28" fill="#ffffff" font-weight="bold" text-anchor="start">of Quantum Perspectivism</text>
+  <text x="720" y="415" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" fill="#a29bfe" text-anchor="start">Structural Realism and the Primacy of Relation</text>
+
+  <!-- Author and metadata -->
+  <text x="720" y="460" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#888888" text-anchor="start">Matthew Long | YonedaAI Research Collective</text>
+  <text x="720" y="485" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#555555" text-anchor="start">GrokRxiv:2026.02.philosophical-implications-qp [physics.hist-ph]</text>
+
+  <!-- Bottom quote -->
+  <text x="600" y="580" font-family="serif" font-size="18" fill="#6c5ce7" font-style="italic" text-anchor="middle" opacity="0.7">To be is to be related.</text>
+
+  <!-- Subtle grid pattern -->
+  <g stroke="#6c5ce7" stroke-width="0.3" opacity="0.08">
+    <line x1="0" y1="100" x2="1200" y2="100" />
+    <line x1="0" y1="200" x2="1200" y2="200" />
+    <line x1="0" y1="300" x2="1200" y2="300" />
+    <line x1="0" y1="400" x2="1200" y2="400" />
+    <line x1="0" y1="500" x2="1200" y2="500" />
+    <line x1="200" y1="0" x2="200" y2="630" />
+    <line x1="400" y1="0" x2="400" y2="630" />
+    <line x1="600" y1="0" x2="600" y2="630" />
+    <line x1="800" y1="0" x2="800" y2="630" />
+    <line x1="1000" y1="0" x2="1000" y2="630" />
+  </g>
+</svg>

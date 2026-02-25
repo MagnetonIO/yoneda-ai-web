@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YonedaAI Research Collective</title>
+  <meta name="description" content="Category-theoretic foundations for open problems in quantum mechanics, gravity, and observer theory. 16 peer-reviewed papers, 291+ pages, 16 Haskell codebases.">
+  <meta name="author" content="Matthew Long, YonedaAI Research Collective">
+  <meta property="og:title" content="YonedaAI Research Collective">
+  <meta property="og:description" content="Category-theoretic foundations for open problems in quantum mechanics, gravity, and observer theory.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yonedaai.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f8f9fa;
+      --bg-card: #ffffff;
+      --text: #1a1a2e;
+      --text-secondary: #555770;
+      --text-muted: #8b8da3;
+      --accent: #6c5ce7;
+      --accent-light: #a29bfe;
+      --accent-bg: #f0eeff;
+      --border: #e8e8ef;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 30px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.04);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --max-width: 1200px;
+      --nav-height: 64px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      height: var(--nav-height);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-links .gh-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: var(--text);
+    }
+
+    .nav-hamburger svg { display: block; }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        flex-direction: column;
+        padding: 16px 24px;
+        gap: 16px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+      }
+      .nav-links.open { display: flex; }
+      .nav-hamburger { display: block; }
+    }
+
+    /* Sections */
+    section { padding: 80px 24px; }
+    .container { max-width: var(--max-width); margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin-bottom: 40px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 100px 24px 80px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--accent-bg) 0%, var(--bg) 100%);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero .subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .hero-stat {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .hero-stat strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #5a4bd4;
+      box-shadow: 0 4px 12px rgba(108,92,231,0.3);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* Paper Cards */
+    .papers-section { background: var(--bg-alt); }
+
+    .papers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width: 480px) {
+      .papers-grid { grid-template-columns: 1fr; }
+    }
+
+    .paper-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .paper-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .paper-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .paper-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--accent-bg);
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      white-space: nowrap;
+    }
+
+    .paper-pages {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    .paper-number {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      min-width: 20px;
+    }
+
+    .paper-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .paper-card h3 a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .paper-card h3 a:hover { color: var(--accent); }
+
+    .paper-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .paper-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .paper-actions a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .paper-actions a:hover { opacity: 0.7; }
+    .paper-actions a svg { width: 14px; height: 14px; }
+
+    /* Framework Cards */
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .framework-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .framework-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .framework-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--accent-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    .framework-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .framework-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Repos */
+    .repos-section { background: var(--bg-alt); }
+
+    .repos-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 12px;
+    }
+
+    .repo-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      color: var(--text);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .repo-item:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .repo-icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: var(--accent-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .repo-icon svg { width: 16px; height: 16px; color: var(--accent); }
+
+    .repo-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .repo-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .footer-inner { max-width: var(--max-width); margin: 0 auto; }
+    .footer-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .footer-org { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { text-decoration: underline; }
+
+    .footer-copy {
+      margin-top: 24px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .badge-reviewed {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Yoneda<span>AI</span></a>
+    <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#series1">Series 1</a></li>
+      <li><a href="#series2">Series 2</a></li>
+      <li><a href="#framework">Framework</a></li>
+      <li><a href="#repos">Repositories</a></li>
+      <li>
+        <a href="https://github.com/MagnetonIO" class="gh-link" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="container">
+    <h1>Yoneda<span>AI</span> Research Collective</h1>
+    <p class="subtitle">Category-theoretic foundations for open problems in quantum mechanics, gravity, and observer theory</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>16</strong> Papers</div>
+      <div class="hero-stat"><strong>291+</strong> Pages</div>
+      <div class="hero-stat"><strong>16</strong> Haskell Codebases</div>
+      <div class="hero-stat"><strong>16</strong> Peer Reviews</div>
+    </div>
+    <div class="hero-buttons">
+      <a href="#series1" class="btn btn-primary">Browse Papers</a>
+      <a href="https://github.com/MagnetonIO" class="btn btn-secondary" target="_blank" rel="noopener">
+        View on GitHub
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Series 1 -->
+<section class="papers-section" id="series1">
+  <div class="container">
+    <div class="section-label">Series 1</div>
+    <h2 class="section-title">Foundational Problems</h2>
+    <p class="section-subtitle">Six papers applying the Yoneda Constraint to the deepest open questions in quantum foundations, black hole physics, and quantum gravity.</p>
+
+    <div class="papers-grid">
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">01</span>
+          <span class="paper-tag">hep-th</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">26 pp</span>
+        </div>
+        <h3><a href="/papers/black-hole-information-paradox.html">The Black Hole Information Paradox</a></h3>
+        <p class="paper-desc">Representable functors, epistemic horizons, and the Page curve as Kan extension. The information paradox is resolved as a structural consequence of observer embedding.</p>
+        <div class="paper-actions">
+          <a href="/papers/black-hole-information-paradox.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/black-hole-information-paradox.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">02</span>
+          <span class="paper-tag">quant-ph</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">27 pp</span>
+        </div>
+        <h3><a href="/papers/hidden-variable-debates.html">Hidden Variable Debates Reconsidered</a></h3>
+        <p class="paper-desc">Unified no-go theorems as presheaf obstructions. The hidden variable question is reframed as whether quantum indeterminacy reflects genuine ontological structure.</p>
+        <div class="paper-actions">
+          <a href="/papers/hidden-variable-debates.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/hidden-variable-debates.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">03</span>
+          <span class="paper-tag">quant-ph</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">28 pp</span>
+        </div>
+        <h3><a href="/papers/measurement-problem.html">The Measurement Problem</a></h3>
+        <p class="paper-desc">Measurement as Yoneda obstruction with cohomological invariant. The collapse of the wave function is identified as a structural obstruction from the Yoneda lemma.</p>
+        <div class="paper-actions">
+          <a href="/papers/measurement-problem.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/measurement-problem.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">04</span>
+          <span class="paper-tag">quant-ph</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">32 pp</span>
+        </div>
+        <h3><a href="/papers/wigners-friend.html">Wigner's Friend and the Yoneda Constraint</a></h3>
+        <p class="paper-desc">Presheaf Irreconcilability Theorem. A rigorous category-theoretic analysis of Wigner's friend and its modern extensions using the Yoneda Constraint.</p>
+        <div class="paper-actions">
+          <a href="/papers/wigners-friend.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/wigners-friend.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">05</span>
+          <span class="paper-tag">hep-th</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">33 pp</span>
+        </div>
+        <h3><a href="/papers/horizon-problems.html">Horizon Problems and the Yoneda Constraint</a></h3>
+        <p class="paper-desc">All horizon types as accessible subcategory inclusions. A systematic analysis of cosmological, event, and Cauchy horizons through the Yoneda framework.</p>
+        <div class="paper-actions">
+          <a href="/papers/horizon-problems.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/horizon-problems.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">06</span>
+          <span class="paper-tag">gr-qc</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">33 pp</span>
+        </div>
+        <h3><a href="/papers/limits-quantum-gravity-observation.html">Limits of Quantum Gravity Observation</a></h3>
+        <p class="paper-desc">Three independent Yoneda obstructions to Planck-scale observation. Fundamental observational limits derived from categorical embedding of observers in quantum gravity.</p>
+        <div class="paper-actions">
+          <a href="/papers/limits-quantum-gravity-observation.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/limits-quantum-gravity-observation.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Series 2 -->
+<section id="series2">
+  <div class="container">
+    <div class="section-label">Series 2</div>
+    <h2 class="section-title">Quantum Perspectivism</h2>
+    <p class="section-subtitle">Ten papers developing the full Quantum Perspectivism program: from foundational crisis through mathematical construction to open problems.</p>
+
+    <div class="papers-grid">
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">01</span>
+          <span class="paper-tag">quant-ph</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">27 pp</span>
+        </div>
+        <h3><a href="/papers/crisis-of-foundations.html">The Crisis of Quantum Foundations</a></h3>
+        <p class="paper-desc">Why physics needs the Yoneda Constraint. A comprehensive introduction to the foundational crisis and how category theory provides the missing structural principle.</p>
+        <div class="paper-actions">
+          <a href="/papers/crisis-of-foundations.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/crisis-of-foundations.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/crisis-of-foundations" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">02</span>
+          <span class="paper-tag">math.CT</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">29 pp</span>
+        </div>
+        <h3><a href="/papers/yoneda-physical-content.html">The Yoneda Lemma as Physical Law</a></h3>
+        <p class="paper-desc">Identity, relation, and the structure of reality. The Yoneda Lemma carries deep physical content: objects are exhaustively determined by their relational profiles.</p>
+        <div class="paper-actions">
+          <a href="/papers/yoneda-physical-content.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/yoneda-physical-content.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/yoneda-physical-content" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">03</span>
+          <span class="paper-tag">quant-ph</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">36 pp</span>
+        </div>
+        <h3><a href="/papers/yoneda-constraint-quantum-structure.html">Deriving Quantum Mechanics from the Yoneda Lemma</a></h3>
+        <p class="paper-desc">The Yoneda Constraint as the single structural principle from which Hilbert spaces, the Born rule, and the projection postulate follow as mathematical theorems.</p>
+        <div class="paper-actions">
+          <a href="/papers/yoneda-constraint-quantum-structure.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/yoneda-constraint-quantum-structure.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/yoneda-constraint-quantum-structure" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">04</span>
+          <span class="paper-tag">quant-ph</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">27 pp</span>
+        </div>
+        <h3><a href="/papers/entanglement-complementarity-measurement.html">Entanglement, Complementarity, and Measurement</a></h3>
+        <p class="paper-desc">A unified treatment of entanglement and complementarity as natural consequences of the Yoneda Constraint on observer-accessible knowledge.</p>
+        <div class="paper-actions">
+          <a href="/papers/entanglement-complementarity-measurement.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/entanglement-complementarity-measurement.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/entanglement-complementarity-measurement" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">05</span>
+          <span class="paper-tag">math-ph</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">27 pp</span>
+        </div>
+        <h3><a href="/papers/categorical-architecture-qp.html">The Categorical Architecture of Quantum Perspectivism</a></h3>
+        <p class="paper-desc">The complete mathematical architecture: measurement categories, presheaf topoi, Kan extensions, and the cohomological characterization of quantum phenomena.</p>
+        <div class="paper-actions">
+          <a href="/papers/categorical-architecture-qp.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/categorical-architecture-qp.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/categorical-architecture-qp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">06</span>
+          <span class="paper-tag">hep-th</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">29 pp</span>
+        </div>
+        <h3><a href="/papers/quantum-gravity-emergent-spacetime.html">Quantum Gravity and Emergent Spacetime</a></h3>
+        <p class="paper-desc">Spacetime as emergent from the presheaf topos of observer perspectives. A categorical approach to quantum gravity and the problem of background independence.</p>
+        <div class="paper-actions">
+          <a href="/papers/quantum-gravity-emergent-spacetime.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/quantum-gravity-emergent-spacetime.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/quantum-gravity-emergent-spacetime" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">07</span>
+          <span class="paper-tag">quant-ph</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">32 pp</span>
+        </div>
+        <h3><a href="/papers/connections-existing-frameworks.html">Connections to Existing Frameworks</a></h3>
+        <p class="paper-desc">Detailed comparison with QBism, relational QM, consistent histories, topos approaches, and operational reconstruction programs.</p>
+        <div class="paper-actions">
+          <a href="/papers/connections-existing-frameworks.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/connections-existing-frameworks.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/connections-existing-frameworks" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">08</span>
+          <span class="paper-tag">physics.hist-ph</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">26 pp</span>
+        </div>
+        <h3><a href="/papers/philosophical-implications-qp.html">Philosophical Implications of Quantum Perspectivism</a></h3>
+        <p class="paper-desc">What Quantum Perspectivism means for realism, objectivity, the mind-body problem, and the philosophy of science.</p>
+        <div class="paper-actions">
+          <a href="/papers/philosophical-implications-qp.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/philosophical-implications-qp.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/philosophical-implications-qp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">09</span>
+          <span class="paper-tag">math-ph</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">26 pp</span>
+        </div>
+        <h3><a href="/papers/technical-constructions-qp.html">Technical Constructions in Quantum Perspectivism</a></h3>
+        <p class="paper-desc">Detailed proofs, constructions, and worked examples: Kan extensions, sheaf cohomology, enriched categories, and model-theoretic semantics.</p>
+        <div class="paper-actions">
+          <a href="/papers/technical-constructions-qp.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/technical-constructions-qp.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/technical-constructions-qp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-card-header">
+          <span class="paper-number">10</span>
+          <span class="paper-tag">quant-ph</span>
+          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+          <span class="paper-pages">32 pp</span>
+        </div>
+        <h3><a href="/papers/open-problems-qp.html">Open Problems in Quantum Perspectivism</a></h3>
+        <p class="paper-desc">Research frontiers: from higher-categorical extensions to experimental predictions, quantum computing applications, and connections to quantum gravity.</p>
+        <div class="paper-actions">
+          <a href="/papers/open-problems-qp.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
+          <a href="/papers/pdf/open-problems-qp.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
+          <a href="https://github.com/MagnetonIO/open-problems-qp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Framework -->
+<section id="framework" style="background: var(--bg-alt);">
+  <div class="container">
+    <div class="section-label">Core Framework</div>
+    <h2 class="section-title">The Yoneda Constraint</h2>
+    <p class="section-subtitle">Four interconnected concepts form the mathematical backbone of Quantum Perspectivism.</p>
+    <div class="framework-grid">
+      <div class="framework-card">
+        <div class="framework-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Measurement Categories</h3>
+        <p>Observer-system interactions formalized as morphisms in a structured category. The measurement category encodes what an observer can access about a system.</p>
+      </div>
+      <div class="framework-card">
+        <div class="framework-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+        <h3>Yoneda Embedding</h3>
+        <p>Accessible knowledge via representable presheaves. The Yoneda embedding maps each system to its complete relational profile, faithfully and fully.</p>
+      </div>
+      <div class="framework-card">
+        <div class="framework-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Kan Extension Deficits</h3>
+        <p>Information loss at epistemic horizons quantified as the failure of Kan extensions to be exact. The deficit measures inaccessible structure.</p>
+      </div>
+      <div class="framework-card">
+        <div class="framework-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Cohomological Obstructions</h3>
+        <p>No-go theorems as presheaf failures. Bell's theorem, Kochen-Specker, and contextuality arise as non-vanishing cohomology classes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Repositories -->
+<section class="repos-section" id="repos">
+  <div class="container">
+    <div class="section-label">Open Source</div>
+    <h2 class="section-title">Repositories</h2>
+    <p class="section-subtitle">All papers include companion Haskell codebases implementing the categorical constructions.</p>
+    <div class="repos-list">
+      <a class="repo-item" href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener">
+        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        <div><div class="repo-name">MagnetonIO/yoneda-ai</div><div class="repo-desc">Series 1 -- 6 papers + Haskell code</div></div>
+      </a>
+      <a class="repo-item" href="https://github.com/MagnetonIO/yoneda-ai-web" target="_blank" rel="noopener">
+        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        <div><div class="repo-name">MagnetonIO/yoneda-ai-web</div><div class="repo-desc">This website</div></div>
+      </a>
+      <a class="repo-item" href="https://github.com/MagnetonIO/crisis-of-foundations" target="_blank" rel="noopener">
+        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        <div><div class="repo-name">MagnetonIO/crisis-of-foundations</div><div class="repo-desc">Paper 1: The Crisis of Quantum Foundations</div></div>
+      </a>
+      <a class="repo-item" href="https://github.com/MagnetonIO/yoneda-physical-content" target="_blank" rel="noopener">
+        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        <div><div class="repo-name">MagnetonIO/yoneda-physical-content</div><div class="repo-desc">Paper 2: The Yoneda Lemma as Physical Law</div></div>
+      </a>
+      <a class="repo-item" href="https://github.com/MagnetonIO/yoneda-constraint-quantum-structure" target="_blank" rel="noopener">
+        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        <div><div class="repo-name">MagnetonIO/yoneda-constraint-quantum-structure</div><div class="repo-desc">Paper 3: Deriving QM from the Yoneda Lemma</div></div>
+      </a>
+      <a class="repo-item" href="https://github.com/MagnetonIO/entanglement-complementarity-measurement" target="_blank" rel="noopener">
+        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        <div><div class="repo-name">MagnetonIO/entanglement-complementarity-measurement</div><div class="repo-desc">Paper 4: Entanglement &amp; Measurement</div></div>
+      </a>
+      <a class="repo-item" href="https://github.com/MagnetonIO/categorical-architecture-qp" target="_blank" rel="noopener">
+        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        <div><div class="repo-name">MagnetonIO/categorical-architecture-qp</div><div class="repo-desc">Paper 5: Categorical Architecture</div></div>
+      </a>
+      <a class="repo-item" href="https://github.com/MagnetonIO/quantum-gravity-emergent-spacetime" target="_blank" rel="noopener">
+        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        <div><div class="repo-name">MagnetonIO/quantum-gravity-emergent-spacetime</div><div class="repo-desc">Paper 6: Quantum Gravity &amp; Spacetime</div></div>
+      </a>
+      <a class="repo-item" href="https://github.com/MagnetonIO/connections-existing-frameworks" target="_blank" rel="noopener">
+        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        <div><div class="repo-name">MagnetonIO/connections-existing-frameworks</div><div class="repo-desc">Paper 7: Connections to Existing Frameworks</div></div>
+      </a>
+      <a class="repo-item" href="https://github.com/MagnetonIO/philosophical-implications-qp" target="_blank" rel="noopener">
+        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        <div><div class="repo-name">MagnetonIO/philosophical-implications-qp</div><div class="repo-desc">Paper 8: Philosophical Implications</div></div>
+      </a>
+      <a class="repo-item" href="https://github.com/MagnetonIO/technical-constructions-qp" target="_blank" rel="noopener">
+        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        <div><div class="repo-name">MagnetonIO/technical-constructions-qp</div><div class="repo-desc">Paper 9: Technical Constructions</div></div>
+      </a>
+      <a class="repo-item" href="https://github.com/MagnetonIO/open-problems-qp" target="_blank" rel="noopener">
+        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+        <div><div class="repo-name">MagnetonIO/open-problems-qp</div><div class="repo-desc">Paper 10: Open Problems</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">Matthew Long</div>
+    <div class="footer-org">The YonedaAI Collaboration &middot; YonedaAI Research Collective &middot; Chicago, IL</div>
+    <div class="footer-links">
+      <a href="mailto:matthew@yonedaai.com">matthew@yonedaai.com</a>
+      <a href="https://yonedaai.com">yonedaai.com</a>
+      <a href="https://github.com/MagnetonIO" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 YonedaAI Research Collective. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

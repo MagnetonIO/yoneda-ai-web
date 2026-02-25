@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Yoneda Lemma as Physical Law - YonedaAI</title>
+  <meta name="description" content="The Yoneda Lemma as Physical Law by Matthew Long, YonedaAI Research Collective">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff; --bg-alt: #f8f9fa; --bg-card: #ffffff;
+      --text: #1a1a2e; --text-secondary: #555770; --text-muted: #8b8da3;
+      --accent: #6c5ce7; --accent-light: #a29bfe; --accent-bg: #f0eeff;
+      --border: #e8e8ef;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+      --radius: 12px; --radius-sm: 8px;
+      --max-width: 1200px; --nav-height: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); height: var(--nav-height);
+    }
+    .nav-inner {
+      max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 100%;
+    }
+    .nav-logo { font-weight: 700; font-size: 1.15rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .gh-link { display: flex; align-items: center; gap: 6px; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--text); }
+    .nav-hamburger svg { display: block; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: var(--nav-height); left: 0; right: 0; background: var(--bg); flex-direction: column; padding: 16px 24px; gap: 16px; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); }
+      .nav-links.open { display: flex; }
+      .nav-hamburger { display: block; }
+    }
+    footer { border-top: 1px solid var(--border); padding: 48px 24px; text-align: center; }
+    .footer-inner { max-width: var(--max-width); margin: 0 auto; }
+    .footer-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .footer-org { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.85rem; color: var(--accent); text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+    .footer-copy { margin-top: 24px; font-size: 0.8rem; color: var(--text-muted); }
+
+    /* Paper page layout */
+    .paper-layout { display: flex; max-width: var(--max-width); margin: 0 auto; padding: 0 24px; gap: 40px; }
+    .paper-sidebar { width: 240px; flex-shrink: 0; position: sticky; top: calc(var(--nav-height) + 24px); align-self: flex-start; max-height: calc(100vh - var(--nav-height) - 48px); overflow-y: auto; padding: 16px 0; }
+    .paper-sidebar h4 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+    .paper-sidebar ul { list-style: none; }
+    .paper-sidebar li { margin-bottom: 4px; }
+    .paper-sidebar a { font-size: 0.82rem; color: var(--text-secondary); text-decoration: none; display: block; padding: 4px 12px; border-left: 2px solid transparent; transition: all 0.15s; line-height: 1.4; }
+    .paper-sidebar a:hover { color: var(--accent); border-left-color: var(--accent); background: var(--accent-bg); }
+    .paper-sidebar a.depth-2 { padding-left: 24px; font-size: 0.78rem; }
+    .paper-main { flex: 1; min-width: 0; padding: 40px 0 80px; }
+    @media (max-width: 960px) {
+      .paper-sidebar { display: none; }
+      .paper-layout { padding: 0 16px; }
+    }
+
+    /* Breadcrumb */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* Paper header */
+    .paper-header { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+    .paper-header h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
+    .paper-meta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px; }
+    .paper-meta-item { font-size: 0.85rem; color: var(--text-secondary); }
+    .paper-meta-tag { font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+    .badge-pr { display: inline-flex; align-items: center; gap: 4px; font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: #e8f5e9; color: #2e7d32; }
+
+    /* Action bar */
+    .action-bar { display: flex; gap: 12px; flex-wrap: wrap; }
+    .action-bar .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: all 0.2s; border: 1px solid var(--border); color: var(--text); background: var(--bg); }
+    .action-bar .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .action-bar .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .action-bar .btn-primary:hover { background: #5a4bd4; }
+    .action-bar .btn svg { width: 16px; height: 16px; }
+
+    /* Content styling */
+    .paper-content h2 { font-size: 1.5rem; font-weight: 700; margin: 48px 0 16px; padding-top: 16px; letter-spacing: -0.02em; border-top: 1px solid var(--border); }
+    .paper-content h2:first-child { border-top: none; margin-top: 0; }
+    .paper-content h3 { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; }
+    .paper-content h4 { font-size: 1.05rem; font-weight: 600; margin: 24px 0 8px; }
+    .paper-content p { margin-bottom: 16px; color: var(--text); }
+    .paper-content ul, .paper-content ol { margin: 0 0 16px 24px; }
+    .paper-content li { margin-bottom: 6px; }
+    .paper-content blockquote { border-left: 3px solid var(--accent); padding: 12px 20px; margin: 16px 0; background: var(--accent-bg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+    .paper-content blockquote p { margin-bottom: 0; color: var(--text-secondary); font-style: italic; }
+    .paper-content code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: var(--bg-alt); padding: 2px 6px; border-radius: 4px; }
+    .paper-content pre { background: #1e1e2e; color: #cdd6f4; padding: 20px; border-radius: var(--radius-sm); overflow-x: auto; margin: 16px 0; }
+    .paper-content pre code { background: none; padding: 0; color: inherit; }
+    .paper-content a { color: var(--accent); text-decoration: none; }
+    .paper-content a:hover { text-decoration: underline; }
+    .paper-content hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+    .paper-content strong { font-weight: 600; }
+    .paper-content em { font-style: italic; }
+
+    /* Theorem/Definition blocks */
+    .callout { border-left: 4px solid; padding: 16px 20px; margin: 20px 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+    .callout-theorem { border-color: #6c5ce7; background: #f0eeff; }
+    .callout-definition { border-color: #00b894; background: #e8f8f5; }
+    .callout-proposition { border-color: #fdcb6e; background: #fef9e7; }
+    .callout-lemma { border-color: #74b9ff; background: #eef6ff; }
+    .callout-corollary { border-color: #a29bfe; background: #f5f3ff; }
+    .callout-remark { border-color: #636e72; background: #f5f6f7; }
+    .callout-example { border-color: #00cec9; background: #e8fffe; }
+    .callout-axiom { border-color: #e17055; background: #fef0ed; }
+    .callout-title { font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; }
+
+    /* Table */
+    .paper-content table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    .paper-content th, .paper-content td { padding: 10px 14px; border: 1px solid var(--border); text-align: left; font-size: 0.9rem; }
+    .paper-content th { background: var(--bg-alt); font-weight: 600; }
+
+    /* Prev/Next nav */
+    .paper-nav { display: flex; justify-content: space-between; gap: 20px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .paper-nav a { text-decoration: none; color: var(--text); padding: 16px 20px; border: 1px solid var(--border); border-radius: var(--radius-sm); flex: 1; transition: border-color 0.2s, box-shadow 0.2s; }
+    .paper-nav a:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
+    .paper-nav-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+    .paper-nav-title { font-size: 0.95rem; font-weight: 600; margin-top: 4px; }
+    .paper-nav .next { text-align: right; }
+
+    /* KaTeX overrides */
+    .katex-display { overflow-x: auto; overflow-y: hidden; padding: 8px 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Yoneda<span>AI</span></a>
+    <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#series1">Series 1</a></li>
+      <li><a href="/#series2">Series 2</a></li>
+      <li><a href="/#framework">Framework</a></li>
+      <li><a href="/#repos">Repositories</a></li>
+      <li><a href="https://github.com/MagnetonIO" class="gh-link" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="paper-layout">
+  <aside class="paper-sidebar">
+    <h4>Table of Contents</h4>
+    <ul>
+      <li><a href="#abstract" class="">Abstract</a></li>
+<li><a href="#table-of-contents" class="">Table of Contents</a></li>
+<li><a href="#1-introduction" class="">1. Introduction</a></li>
+<li><a href="#2-historical-context" class="">2. Historical Context</a></li>
+<li><a href="#2-1-yoneda-s-original-work" class="depth-2">2.1 Yoneda&#x27;s Original Work</a></li>
+<li><a href="#2-2-grothendieck-s-revolutionary-applications" class="depth-2">2.2 Grothendieck&#x27;s Revolutionary Applications</a></li>
+<li><a href="#2-3-mac-lane-s-systematization" class="depth-2">2.3 Mac Lane&#x27;s Systematization</a></li>
+<li><a href="#2-4-modern-developments" class="depth-2">2.4 Modern Developments</a></li>
+<li><a href="#3-categorical-preliminaries" class="">3. Categorical Preliminaries</a></li>
+<li><a href="#3-1-categories" class="depth-2">3.1 Categories</a></li>
+<li><a href="#3-2-the-opposite-category" class="depth-2">3.2 The Opposite Category</a></li>
+<li><a href="#3-3-functors" class="depth-2">3.3 Functors</a></li>
+<li><a href="#3-4-natural-transformations" class="depth-2">3.4 Natural Transformations</a></li>
+<li><a href="#3-5-presheaves" class="depth-2">3.5 Presheaves</a></li>
+<li><a href="#3-6-representable-presheaves" class="depth-2">3.6 Representable Presheaves</a></li>
+<li><a href="#4-the-yoneda-lemma-complete-proof" class="">4. The Yoneda Lemma: Complete Proof</a></li>
+<li><a href="#4-1-statement" class="depth-2">4.1 Statement</a></li>
+<li><a href="#4-2-proof" class="depth-2">4.2 Proof</a></li>
+<li><a href="#4-3-the-yoneda-embedding" class="depth-2">4.3 The Yoneda Embedding</a></li>
+<li><a href="#5-the-yoneda-lemma-in-practice-detailed-examples" class="">5. The Yoneda Lemma in Practice: Detailed Examples</a></li>
+<li><a href="#5-1-in-set" class="depth-2">5.1 In Set</a></li>
+<li><a href="#5-2-in-grp" class="depth-2">5.2 In Grp</a></li>
+<li><a href="#5-3-in-top" class="depth-2">5.3 In Top</a></li>
+<li><a href="#5-4-in-vect-k" class="depth-2">5.4 In Vect_k</a></li>
+<li><a href="#5-5-in-ring" class="depth-2">5.5 In Ring</a></li>
+<li><a href="#6-representable-vs-non-representable-presheaves" class="">6. Representable vs. Non-Representable Presheaves</a></li>
+<li><a href="#6-1-representable-presheaves-classical-states" class="depth-2">6.1 Representable Presheaves: Classical States</a></li>
+<li><a href="#6-2-non-representable-presheaves-virtual-and-quantum-states" class="depth-2">6.2 Non-Representable Presheaves: Virtual and Quantum States</a></li>
+<li><a href="#6-3-the-free-cocompletion-theorem" class="depth-2">6.3 The Free Cocompletion Theorem</a></li>
+<li><a href="#7-philosophical-implications" class="">7. Philosophical Implications</a></li>
+<li><a href="#7-1-the-yoneda-lemma-and-mathematical-structuralism" class="depth-2">7.1 The Yoneda Lemma and Mathematical Structuralism</a></li>
+<li><a href="#7-2-the-dissolution-of-the-intrinsic-relational-dichotomy" class="depth-2">7.2 The Dissolution of the Intrinsic/Relational Dichotomy</a></li>
+<li><a href="#7-3-against-haecceitism" class="depth-2">7.3 Against Haecceitism</a></li>
+<li><a href="#7-4-perspectivism-and-the-view-from-nowhere" class="depth-2">7.4 Perspectivism and the View from Nowhere</a></li>
+<li><a href="#8-the-yoneda-constraint-as-a-physical-axiom" class="">8. The Yoneda Constraint as a Physical Axiom</a></li>
+<li><a href="#8-1-formulation" class="depth-2">8.1 Formulation</a></li>
+<li><a href="#8-2-justification-from-mathematical-structure" class="depth-2">8.2 Justification from Mathematical Structure</a></li>
+<li><a href="#8-3-justification-from-the-history-of-physics" class="depth-2">8.3 Justification from the History of Physics</a></li>
+<li><a href="#8-4-the-yoneda-constraint-vs-bell-s-theorem" class="depth-2">8.4 The Yoneda Constraint vs. Bell&#x27;s Theorem</a></li>
+<li><a href="#9-the-enriched-yoneda-lemma" class="">9. The Enriched Yoneda Lemma</a></li>
+<li><a href="#9-1-enriched-categories" class="depth-2">9.1 Enriched Categories</a></li>
+<li><a href="#9-2-the-enriched-yoneda-lemma" class="depth-2">9.2 The Enriched Yoneda Lemma</a></li>
+<li><a href="#9-3-physical-implications" class="depth-2">9.3 Physical Implications</a></li>
+<li><a href="#10-the-yoneda-lemma-in-higher-category-theory" class="">10. The Yoneda Lemma in Higher Category Theory</a></li>
+<li><a href="#10-1-the-infinity-categorical-yoneda-lemma" class="depth-2">10.1 The infinity-Categorical Yoneda Lemma</a></li>
+<li><a href="#11-physical-consequences" class="">11. Physical Consequences</a></li>
+<li><a href="#11-1-states-as-presheaves" class="depth-2">11.1 States as Presheaves</a></li>
+<li><a href="#11-2-the-emergence-of-hilbert-space-structure" class="depth-2">11.2 The Emergence of Hilbert Space Structure</a></li>
+<li><a href="#11-3-observables-born-rule-measurement" class="depth-2">11.3 Observables, Born Rule, Measurement</a></li>
+<li><a href="#11-4-spacetime-and-gravity" class="depth-2">11.4 Spacetime and Gravity</a></li>
+<li><a href="#11-5-the-holographic-principle" class="depth-2">11.5 The Holographic Principle</a></li>
+<li><a href="#11-6-no-cloning-theorem" class="depth-2">11.6 No-Cloning Theorem</a></li>
+<li><a href="#12-conclusion" class="">12. Conclusion</a></li>
+<li><a href="#references" class="">References</a></li>
+    </ul>
+  </aside>
+
+  <main class="paper-main">
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/#series2">Series 2</a>
+      <span>/</span>
+      <span>The Yoneda Lemma as Physical Law</span>
+    </div>
+
+    <div class="paper-header">
+      <h1>The Yoneda Lemma as Physical Law</h1>
+      <div class="paper-meta">
+        <span class="paper-meta-tag">math.CT</span>
+        <span class="paper-meta-item">29 pages</span>
+        <span class="paper-meta-item">Matthew Long</span>
+        <span class="paper-meta-item">24 February 2026</span>
+        <span class="badge-pr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+      </div>
+      <div class="action-bar">
+        <a href="/papers/pdf/yoneda-physical-content.pdf" class="btn btn-primary" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+        <a href="https://github.com/MagnetonIO/yoneda-physical-content" class="btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          View on GitHub
+        </a>
+        <a href="https://github.com/MagnetonIO/yoneda-physical-content" class="btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Haskell Code
+        </a>
+      </div>
+    </div>
+
+    <div class="paper-content">
+      <h2 id="abstract">Abstract</h2>
+<p>The Yoneda Lemma is widely regarded as the most fundamental result in category theory, yet its content is almost always presented as a piece of pure abstract mathematics. We argue that the Yoneda Lemma carries deep physical content: it establishes that the identity of any mathematical object is exhaustively determined by its web of relations to all other objects, and that this relational characterization is not merely convenient but <em>complete</em>. We give a detailed, self-contained proof of the Yoneda Lemma, explore its manifestations across the principal categories of mathematical practice -- Set, Grp, Top, Vect, Ring -- and develop its philosophical implications for structuralism and the metaphysics of identity. We then formulate the <strong>Yoneda Constraint</strong>: the physical axiom that no entity possesses properties beyond those accessible through its relational profile. We provide a systematic justification for this axiom, examine the distinction between representable and non-representable presheaves as a distinction between "classical" and "quantum" states, develop the enriched Yoneda lemma and its implications for quantum-mechanical amplitudes, and trace the historical arc from Yoneda's original 1954 note through Grothendieck's revolutionary reformulation of algebraic geometry. The Yoneda Constraint, we argue, provides the single structural principle from which the perspectival character of quantum mechanics follows as a mathematical theorem rather than an empirical postulate.</p>
+<p><strong>Keywords:</strong> Yoneda Lemma, category theory, presheaves, representable functors, structuralism, Yoneda Constraint, quantum foundations, enriched categories, philosophy of physics</p>
+<p><strong>MSC2020:</strong> 18A05, 18A25, 18B25, 18D20, 81P10</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#2-historical-context">Historical Context</a></li>
+<li><a href="#3-categorical-preliminaries">Categorical Preliminaries</a></li>
+<li><a href="#4-the-yoneda-lemma-complete-proof">The Yoneda Lemma: Complete Proof</a></li>
+<li><a href="#5-the-yoneda-lemma-in-practice-detailed-examples">The Yoneda Lemma in Practice: Detailed Examples</a></li>
+<li><a href="#6-representable-vs-non-representable-presheaves">Representable vs. Non-Representable Presheaves</a></li>
+<li><a href="#7-philosophical-implications">Philosophical Implications: Structuralism and the Metaphysics of Identity</a></li>
+<li><a href="#8-the-yoneda-constraint-as-a-physical-axiom">The Yoneda Constraint as a Physical Axiom</a></li>
+<li><a href="#9-the-enriched-yoneda-lemma">The Enriched Yoneda Lemma</a></li>
+<li><a href="#10-the-yoneda-lemma-in-higher-category-theory">The Yoneda Lemma in Higher Category Theory</a></li>
+<li><a href="#11-physical-consequences">Physical Consequences of the Yoneda Constraint</a></li>
+<li><a href="#12-conclusion">Conclusion</a></li>
+</ol>
+<hr>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>The Yoneda Lemma, proved by Nobuo Yoneda in 1954 and disseminated through the work of Saunders Mac Lane and Alexander Grothendieck, occupies a position of singular importance in modern mathematics. It has been called "arguably the most important result in category theory" (Riehl 2016), "the first non-trivial theorem of the subject" (Mac Lane 1998), and "the cornerstone on which all of algebraic geometry rests."</p>
+<p>The purpose of this paper is to argue that the Yoneda Lemma says something profound about the nature of <em>identity</em> and <em>reality</em>, and that this content has direct consequences for the foundations of physics. The lemma's assertion is stark: an object in a category is completely, faithfully, and uniquely determined by the totality of morphisms into it from all other objects. There is no residual "intrinsic nature" that escapes this relational web. The Yoneda embedding y : C --> [C^op, Set] is fully faithful, meaning that the passage from objects to their relational profiles preserves and reflects every structural distinction.</p>
+<p>We call the physical interpretation of this theorem the <strong>Yoneda Constraint</strong>: the axiom that physical systems have no properties beyond those accessible through probing by other physical systems. This is not a philosophical preference for relationalism or structuralism -- it is the physical content of a mathematical theorem.</p>
+<hr>
+<h2 id="2-historical-context">2. Historical Context</h2>
+<h3 id="2-1-yoneda-s-original-work">2.1 Yoneda's Original Work</h3>
+<p>Nobuo Yoneda (1930-1996) formulated the lemma that bears his name in a 1954 paper on the homology theory of modules. The context was homological algebra: Yoneda was studying the relationship between Ext groups and extensions of modules. His key insight was that the natural transformations out of a representable functor are in bijection with the elements of the representing object's image.</p>
+<p>The lemma was not presented as a centerpiece of the paper but as a technical device. It was Mac Lane who, having learned of the result during a conversation with Yoneda at the Gare du Nord in Paris in 1954, recognized its fundamental character and gave it the name "Yoneda Lemma."</p>
+<h3 id="2-2-grothendieck-s-revolutionary-applications">2.2 Grothendieck's Revolutionary Applications</h3>
+<p>Alexander Grothendieck's reformulation of algebraic geometry placed the Yoneda Lemma at the very foundation of the subject. Grothendieck's central innovation was the "functor of points" approach: rather than defining a scheme as a locally ringed space, one characterizes it by the functor h_X = Hom(-, X). The Yoneda embedding guarantees that this characterization is faithful.</p>
+<h3 id="2-3-mac-lane-s-systematization">2.3 Mac Lane's Systematization</h3>
+<p>Mac Lane's <em>Categories for the Working Mathematician</em> (1998) established the Yoneda Lemma as the first major theorem of category theory. Mac Lane's presentation emphasized the lemma's universality: it holds in any category whatsoever.</p>
+<h3 id="2-4-modern-developments">2.4 Modern Developments</h3>
+<p>The Yoneda Lemma has been generalized to enriched categories (Kelly 1982), infinity-categories (Lurie 2009), internal categories, and various flavors of higher category theory. In each generalization, the fundamental content remains the same: objects are determined by their morphisms.</p>
+<hr>
+<h2 id="3-categorical-preliminaries">3. Categorical Preliminaries</h2>
+<h3 id="3-1-categories">3.1 Categories</h3>
+<div class="callout callout-definition"><div class="callout-title">Definition (Category).</div><p>A <em>category</em> C consists of: - A collection Ob(C) of <em>objects</em>. - For each pair of objects A, B, a set Hom_C(A, B) of <em>morphisms</em>. - Composition maps and identity morphisms satisfying associativity and unit laws.</p></div>
+<p>A category is <em>locally small</em> if each Hom_C(A, B) is a set.</p>
+<h3 id="3-2-the-opposite-category">3.2 The Opposite Category</h3>
+<div class="callout callout-definition"><div class="callout-title">Definition (Opposite Category).</div><p>The <em>opposite category</em> C^op has the same objects as C but Hom_{C^op}(A, B) = Hom_C(B, A). Composition reverses order.</p></div>
+<h3 id="3-3-functors">3.3 Functors</h3>
+<div class="callout callout-definition"><div class="callout-title">Definition (Functor).</div><p>A (covariant) <em>functor</em> F : C --> D assigns objects to objects and morphisms to morphisms, preserving identities and composition. A <em>contravariant functor</em> reverses morphism direction; equivalently, it is a covariant functor C^op --> D.</p></div>
+<h3 id="3-4-natural-transformations">3.4 Natural Transformations</h3>
+<div class="callout callout-definition"><div class="callout-title">Definition (Natural Transformation).</div><p>A <em>natural transformation</em> alpha : F ==> G consists of morphisms alpha_A : F(A) --> G(A) for each object A such that G(f) . alpha_A = alpha_B . F(f) for every morphism f : A --> B.</p></div>
+<h3 id="3-5-presheaves">3.5 Presheaves</h3>
+<div class="callout callout-definition"><div class="callout-title">Definition (Presheaf).</div><p>A <em>presheaf</em> on C is a functor F : C^op --> Set. The category of presheaves is C-hat := [C^op, Set].</p></div>
+<h3 id="3-6-representable-presheaves">3.6 Representable Presheaves</h3>
+<div class="callout callout-definition"><div class="callout-title">Definition (Representable Presheaf).</div><p>For each object A in C, the <em>representable presheaf</em> y(A) := Hom_C(-, A) assigns to each object B the set of morphisms from B to A.</p></div>
+<hr>
+<h2 id="4-the-yoneda-lemma-complete-proof">4. The Yoneda Lemma: Complete Proof</h2>
+<h3 id="4-1-statement">4.1 Statement</h3>
+<div class="callout callout-theorem"><div class="callout-title">Theorem (The Yoneda Lemma).</div><p>Let C be a locally small category, A in C an object, and F : C^op --> Set a presheaf. There is a bijection</p></div>
+<blockquote><p>Phi_{A,F} : Nat(y(A), F) --> F(A)</p></blockquote>
+<p>defined by Phi_{A,F}(alpha) = alpha_A(id_A). This bijection is natural in both A and F.</p>
+<h3 id="4-2-proof">4.2 Proof</h3>
+<p><strong>Step 1: The forward map Phi.</strong> Given a natural transformation alpha : y(A) ==> F, define Phi(alpha) := alpha_A(id_A) in F(A).</p>
+<p><strong>Step 2: The inverse map Psi.</strong> Given x in F(A), define (Psi(x))_B(f) := F(f)(x) for each f in Hom(B, A).</p>
+<p><strong>Step 3: Psi(x) is natural.</strong> For any h : B' --> B, naturality follows from the functoriality of F: F(f . h) = F(h) . F(f).</p>
+<p><strong>Step 4: Phi . Psi = id.</strong> Phi(Psi(x)) = Psi(x)_A(id_A) = F(id_A)(x) = x.</p>
+<p><strong>Step 5: Psi . Phi = id.</strong> For alpha : y(A) ==> F and any f : B --> A: Psi(alpha_A(id_A))_B(f) = F(f)(alpha_A(id_A)) = alpha_B(f), where the last equality is by naturality of alpha.</p>
+<h3 id="4-3-the-yoneda-embedding">4.3 The Yoneda Embedding</h3>
+<div class="callout callout-corollary"><div class="callout-title">Corollary (Yoneda Embedding).</div><p>The functor y : C --> C-hat defined by A |-> Hom_C(-, A) is fully faithful:</p></div>
+<blockquote><p>Hom_C(A, B) ≅ Nat(y(A), y(B))</p></blockquote>
+<p>Full faithfulness means C embeds into C-hat without loss or distortion of its morphism structure.</p>
+<hr>
+<h2 id="5-the-yoneda-lemma-in-practice-detailed-examples">5. The Yoneda Lemma in Practice: Detailed Examples</h2>
+<h3 id="5-1-in-set">5.1 In Set</h3>
+<p>The Yoneda Lemma in Set gives: Nat(y(A), F) ≅ F(A) for any presheaf F and set A.</p>
+<div class="callout callout-example"><div class="callout-title">Example (Element Lemma).</div><p>Taking A = 1 (singleton): Nat(y(1), F) ≅ F(1). Elements of F(1) are "global sections" of F.</p></div>
+<div class="callout callout-example"><div class="callout-title">Example (Cayley's Theorem).</div><p>Viewing a group G as a one-object category BG, the Yoneda embedding recovers Cayley's theorem: every group embeds into a symmetric group via the regular representation.</p></div>
+<h3 id="5-2-in-grp">5.2 In Grp</h3>
+<div class="callout callout-example"><div class="callout-title">Example (Characterizing Z).</div><p>The group Z represents the forgetful functor: Hom_Grp(Z, G) ≅ U(G). By the Yoneda embedding, Z is the unique group with this property.</p></div>
+<h3 id="5-3-in-top">5.3 In Top</h3>
+<p>A topological space X is completely determined by the totality of continuous maps into it from all other spaces. Two spaces are homeomorphic iff Hom_Top(Z, X) ≅ Hom_Top(Z, Y) naturally in Z.</p>
+<h3 id="5-4-in-vect-k">5.4 In Vect_k</h3>
+<p>The Yoneda Lemma in Vect_C says that a Hilbert space is completely determined by the linear maps into it from all other Hilbert spaces. In quantum-mechanical terms: a quantum system is completely determined by the amplitudes for transitioning into it from all possible probe states.</p>
+<h3 id="5-5-in-ring">5.5 In Ring</h3>
+<p>The polynomial ring Z[x] represents the forgetful functor: Hom_Ring(Z[x], R) ≅ U(R). This is the foundation of Grothendieck's functor-of-points approach to algebraic geometry.</p>
+<hr>
+<h2 id="6-representable-vs-non-representable-presheaves">6. Representable vs. Non-Representable Presheaves</h2>
+<h3 id="6-1-representable-presheaves-classical-states">6.1 Representable Presheaves: Classical States</h3>
+<p>Representable presheaves correspond to <strong>classical states</strong>: states that arise as the relational profile of an actual physical system. They have a definite identity anchored in a specific object.</p>
+<h3 id="6-2-non-representable-presheaves-virtual-and-quantum-states">6.2 Non-Representable Presheaves: Virtual and Quantum States</h3>
+<p>Non-representable presheaves are coherently defined across all contexts but do not reduce to the perspective of any single context. These are <em>superposition states</em> and <em>entangled states</em>.</p>
+<h3 id="6-3-the-free-cocompletion-theorem">6.3 The Free Cocompletion Theorem</h3>
+<p>The presheaf category C-hat is the free cocompletion of C. Every presheaf is a colimit of representable presheaves -- every quantum state is a "superposition" of classical states.</p>
+<hr>
+<h2 id="7-philosophical-implications">7. Philosophical Implications</h2>
+<h3 id="7-1-the-yoneda-lemma-and-mathematical-structuralism">7.1 The Yoneda Lemma and Mathematical Structuralism</h3>
+<p>The Yoneda Lemma provides the precise mathematical formulation of mathematical structuralism: objects are constituted by the structural roles they play. An object A is completely determined by y(A) -- its relationships to all other objects.</p>
+<h3 id="7-2-the-dissolution-of-the-intrinsic-relational-dichotomy">7.2 The Dissolution of the Intrinsic/Relational Dichotomy</h3>
+<p>The Yoneda embedding leaves no room for intrinsic properties not captured by relational ones. If y(A) ≅ y(B), then A ≅ B. There is no conceivable "intrinsic difference" that the relational data fails to detect.</p>
+<h3 id="7-3-against-haecceitism">7.3 Against Haecceitism</h3>
+<p>The Yoneda Lemma is incompatible with mathematical haecceitism: there is no categorically visible "thisness" beyond the relational profile. This resonates with quantum-mechanical indistinguishability of identical particles.</p>
+<h3 id="7-4-perspectivism-and-the-view-from-nowhere">7.4 Perspectivism and the View from Nowhere</h3>
+<p>The Yoneda Lemma suggests: <em>objectivity is the coherent assembly of perspectives, not the transcendence of perspective</em>.</p>
+<hr>
+<h2 id="8-the-yoneda-constraint-as-a-physical-axiom">8. The Yoneda Constraint as a Physical Axiom</h2>
+<h3 id="8-1-formulation">8.1 Formulation</h3>
+<div class="callout callout-axiom"><div class="callout-title">Axiom (The Yoneda Constraint).</div><p>A physical system S is completely determined by its relational profile: the totality of morphisms from all possible probe systems into S. There are no physical properties of S beyond those accessible via such morphisms.</p></div>
+<h3 id="8-2-justification-from-mathematical-structure">8.2 Justification from Mathematical Structure</h3>
+<p>Physics is described by mathematical structures. Mathematical structures are organized into categories. The Yoneda Lemma holds in any category. Therefore, any physical entity described within a categorical framework is completely determined by its relational profile.</p>
+<h3 id="8-3-justification-from-the-history-of-physics">8.3 Justification from the History of Physics</h3>
+<p>The history of 20th-century physics is a progressive elimination of "intrinsic" properties:</p>
+<ul>
+<li>Special relativity eliminated absolute simultaneity</li>
+<li>General relativity eliminated fixed background geometry</li>
+<li>Gauge theory revealed internal properties are gauge-relative</li>
+<li>Quantum mechanics revealed observables are contextual</li>
+</ul>
+<p>The Yoneda Constraint is the limiting statement: <em>all</em> physical properties are relational.</p>
+<h3 id="8-4-the-yoneda-constraint-vs-bell-s-theorem">8.4 The Yoneda Constraint vs. Bell's Theorem</h3>
+<p>A hidden variable would be a property of S not detected by any morphism from any probe -- but the Yoneda embedding is fully faithful, so no such property exists. Bell's theorem is a consequence of categorical structure.</p>
+<hr>
+<h2 id="9-the-enriched-yoneda-lemma">9. The Enriched Yoneda Lemma</h2>
+<h3 id="9-1-enriched-categories">9.1 Enriched Categories</h3>
+<div class="callout callout-definition"><div class="callout-title">Definition (Enriched Category).</div><p>Let (V, tensor, I, [-,-]) be a closed symmetric monoidal category. A V-enriched category C has hom-objects C(A,B) in V with composition and identity morphisms in V.</p></div>
+<h3 id="9-2-the-enriched-yoneda-lemma">9.2 The Enriched Yoneda Lemma</h3>
+<div class="callout callout-theorem"><div class="callout-title">Theorem (Enriched Yoneda Lemma).</div><p>For a V-enriched category C, object A, and V-presheaf F:</p></div>
+<blockquote><p><a href="y(A">C^op, V</a>, F) ≅ F(A)</p></blockquote>
+<p>as objects in V.</p>
+<h3 id="9-3-physical-implications">9.3 Physical Implications</h3>
+<p>The passage from Set-enrichment to Vect_C-enrichment is the passage from classical to quantum physics. In the quantum (Vect_C-enriched) case, the relational data is a vector space of amplitudes, and the Yoneda bijection respects this structure.</p>
+<p>This explains why quantum mechanics uses complex amplitudes: the enrichment base determines the "type" of relational data.</p>
+<hr>
+<h2 id="10-the-yoneda-lemma-in-higher-category-theory">10. The Yoneda Lemma in Higher Category Theory</h2>
+<h3 id="10-1-the-infinity-categorical-yoneda-lemma">10.1 The infinity-Categorical Yoneda Lemma</h3>
+<p>For an infinity-category C, the Yoneda embedding y : C --> PSh(C) is fully faithful, and:</p>
+<blockquote><p>Map_{PSh(C)}(y(A), F) ≃ F(A)</p></blockquote>
+<p>where ≃ denotes equivalence of infinity-groupoids. The relational profile includes morphisms, homotopies, homotopies between homotopies, to all orders.</p>
+<hr>
+<h2 id="11-physical-consequences">11. Physical Consequences</h2>
+<h3 id="11-1-states-as-presheaves">11.1 States as Presheaves</h3>
+<p>By the Yoneda Constraint, a physical system S is a presheaf on the category of observational contexts.</p>
+<h3 id="11-2-the-emergence-of-hilbert-space-structure">11.2 The Emergence of Hilbert Space Structure</h3>
+<p>Monoidal structure on contexts forces vector space structure on fibers. Perspectival consistency forces a Hermitian inner product, yielding Hilbert spaces.</p>
+<h3 id="11-3-observables-born-rule-measurement">11.3 Observables, Born Rule, Measurement</h3>
+<p>Observables are self-adjoint natural transformations. The Born rule emerges from the Yoneda isomorphism plus Gleason's theorem. Measurement is presheaf restriction, not collapse.</p>
+<h3 id="11-4-spacetime-and-gravity">11.4 Spacetime and Gravity</h3>
+<p>If spacetime is emergent, the Grothendieck topology on the category of contexts encodes geometric structure. Gravity is the curvature of the category of observational contexts.</p>
+<h3 id="11-5-the-holographic-principle">11.5 The Holographic Principle</h3>
+<p>The Yoneda Lemma has inherently holographic character: all information about an object is encoded in the boundary data Hom(-, A).</p>
+<h3 id="11-6-no-cloning-theorem">11.6 No-Cloning Theorem</h3>
+<p>The no-cloning theorem follows from the non-Cartesian monoidal structure of Hilb, preserved by the Yoneda embedding.</p>
+<hr>
+<h2 id="12-conclusion">12. Conclusion</h2>
+<p>The Yoneda Lemma tells us that <em>identity is relational structure</em>: an object is nothing more and nothing less than the totality of its relationships to all other objects. The Yoneda Constraint asserts that this mathematical truth is also a physical truth. If this is correct, then the perspectival, contextual, non-classical character of quantum mechanics is not a puzzle to be solved but a structural inevitability.</p>
+<p>The deepest lesson is ontological: the fundamental constituents of reality are not <em>things</em> with intrinsic properties but <em>relations</em> -- morphisms in a category. Objects emerge as patterns in the web of relations. Quantum mechanics is the natural physics of such a relational ontology.</p>
+<p><em>To be is to be related.</em></p>
+<hr>
+<h2 id="references">References</h2>
+<ol>
+<li>N. Yoneda, "On the homology theory of modules," J. Fac. Sci. Univ. Tokyo Sect. I, vol. 7, pp. 193-227, 1954.</li>
+<li>S. Mac Lane, <em>Categories for the Working Mathematician</em>, 2nd ed., Springer, 1998.</li>
+<li>A. Grothendieck, "Sur quelques points d'algebre homologique," Tohoku Math. J., vol. 9, pp. 119-221, 1957.</li>
+<li>G. M. Kelly, <em>Basic Concepts of Enriched Category Theory</em>, Cambridge University Press, 1982.</li>
+<li>J. Lurie, <em>Higher Topos Theory</em>, Princeton University Press, 2009.</li>
+<li>E. Riehl, <em>Category Theory in Context</em>, Dover Publications, 2016.</li>
+<li>P. T. Johnstone, <em>Sketches of an Elephant: A Topos Theory Compendium</em>, Oxford University Press, 2002.</li>
+<li>P. Benacerraf, "What numbers could not be," Philosophical Review, vol. 74, pp. 47-73, 1965.</li>
+<li>S. Shapiro, <em>Philosophy of Mathematics: Structure and Ontology</em>, Oxford University Press, 1997.</li>
+<li>M. D. Resnik, <em>Mathematics as a Science of Patterns</em>, Oxford University Press, 1997.</li>
+<li>G. Hellman, <em>Mathematics Without Numbers</em>, Oxford University Press, 1989.</li>
+<li>J. S. Bell, "On the Einstein Podolsky Rosen paradox," Physics Physique Fizika, vol. 1, pp. 195-200, 1964.</li>
+<li>S. Kochen and E. P. Specker, "The problem of hidden variables in quantum mechanics," J. Math. Mech., vol. 17, pp. 59-87, 1967.</li>
+<li>A. M. Gleason, "Measures on the closed subspaces of a Hilbert space," J. Math. Mech., vol. 6, pp. 885-893, 1957.</li>
+<li>C. J. Isham, "Topos theory and consistent histories," Int. J. Theor. Phys., vol. 36, pp. 785-814, 1997.</li>
+<li>J. Butterfield and C. J. Isham, "A topos perspective on the Kochen-Specker theorem," Int. J. Theor. Phys., vol. 37, pp. 2669-2733, 1998.</li>
+<li>A. Doring and C. J. Isham, "A topos foundation for theories of physics," J. Math. Phys., vol. 49, 053515, 2008.</li>
+<li>C. Rovelli, "Relational quantum mechanics," Int. J. Theor. Phys., vol. 35, pp. 1637-1678, 1996.</li>
+<li>S. Abramsky and B. Coecke, "A categorical semantics of quantum protocols," Proc. 19th IEEE LICS, pp. 415-425, 2004.</li>
+<li>J. Ladyman and D. Ross, <em>Every Thing Must Go</em>, Oxford University Press, 2007.</li>
+<li>S. Awodey, "An answer to Hellman's question," Philosophia Mathematica, vol. 12, pp. 54-64, 2004.</li>
+<li>J. C. Baez and M. Stay, "Physics, topology, logic and computation: A Rosetta Stone," Lecture Notes in Physics, vol. 813, pp. 95-172, 2010.</li>
+<li>C. Heunen and J. Vicary, <em>Categories for Quantum Theory</em>, Oxford University Press, 2019.</li>
+<li>T. Leinster, <em>Basic Category Theory</em>, Cambridge University Press, 2014.</li>
+<li>F. Borceux, <em>Handbook of Categorical Algebra</em>, Cambridge University Press, 1994.</li>
+<li>M. Long, "Quantum perspectivism as the foundation of physics," GrokRxiv, 2026.</li>
+<li>T. Nagel, <em>The View from Nowhere</em>, Oxford University Press, 1986.</li>
+<li>S. French, <em>The Structure of the World</em>, Oxford University Press, 2014.</li>
+<li>M. Artin, A. Grothendieck, and J.-L. Verdier, <em>SGA 4</em>, Lecture Notes in Mathematics, vols. 269, 270, 305, Springer, 1972-73.</li>
+<li>B. Day, "On closed categories of functors," Lecture Notes in Mathematics, vol. 137, pp. 1-38, 1970.</li>
+</ol>
+<hr>
+<p><strong>GrokRxiv DOI:</strong> 10.48550/GrokRxiv.2026.02.yoneda-physical-content</p>
+    </div>
+
+    <div class="paper-nav">
+      <a href="/papers/crisis-of-foundations.html">
+      <div class="paper-nav-label">Previous</div>
+      <div class="paper-nav-title">The Crisis of Quantum Foundations</div>
+    </a>
+      <a href="/papers/yoneda-constraint-quantum-structure.html" class="next">
+      <div class="paper-nav-label">Next</div>
+      <div class="paper-nav-title">Deriving Quantum Mechanics from the Yoneda Lemma</div>
+    </a>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">Matthew Long</div>
+    <div class="footer-org">The YonedaAI Collaboration &middot; YonedaAI Research Collective &middot; Chicago, IL</div>
+    <div class="footer-links">
+      <a href="mailto:matthew@yonedaai.com">matthew@yonedaai.com</a>
+      <a href="https://yonedaai.com">yonedaai.com</a>
+      <a href="https://github.com/MagnetonIO" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 YonedaAI Research Collective. All rights reserved.</div>
+  </div>
+</footer>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false},
+      {left: '\\(', right: '\\)', display: false},
+      {left: '\\[', right: '\\]', display: true}
+    ],
+    throwOnError: false
+  });"></script>
+</body>
+</html>

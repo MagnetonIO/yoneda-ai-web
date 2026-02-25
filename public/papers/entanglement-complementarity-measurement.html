@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entanglement, Complementarity, and Measurement - YonedaAI</title>
+  <meta name="description" content="Entanglement, Complementarity, and Measurement by Matthew Long, YonedaAI Research Collective">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff; --bg-alt: #f8f9fa; --bg-card: #ffffff;
+      --text: #1a1a2e; --text-secondary: #555770; --text-muted: #8b8da3;
+      --accent: #6c5ce7; --accent-light: #a29bfe; --accent-bg: #f0eeff;
+      --border: #e8e8ef;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+      --radius: 12px; --radius-sm: 8px;
+      --max-width: 1200px; --nav-height: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); height: var(--nav-height);
+    }
+    .nav-inner {
+      max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 100%;
+    }
+    .nav-logo { font-weight: 700; font-size: 1.15rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .gh-link { display: flex; align-items: center; gap: 6px; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--text); }
+    .nav-hamburger svg { display: block; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: var(--nav-height); left: 0; right: 0; background: var(--bg); flex-direction: column; padding: 16px 24px; gap: 16px; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); }
+      .nav-links.open { display: flex; }
+      .nav-hamburger { display: block; }
+    }
+    footer { border-top: 1px solid var(--border); padding: 48px 24px; text-align: center; }
+    .footer-inner { max-width: var(--max-width); margin: 0 auto; }
+    .footer-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .footer-org { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.85rem; color: var(--accent); text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+    .footer-copy { margin-top: 24px; font-size: 0.8rem; color: var(--text-muted); }
+
+    /* Paper page layout */
+    .paper-layout { display: flex; max-width: var(--max-width); margin: 0 auto; padding: 0 24px; gap: 40px; }
+    .paper-sidebar { width: 240px; flex-shrink: 0; position: sticky; top: calc(var(--nav-height) + 24px); align-self: flex-start; max-height: calc(100vh - var(--nav-height) - 48px); overflow-y: auto; padding: 16px 0; }
+    .paper-sidebar h4 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+    .paper-sidebar ul { list-style: none; }
+    .paper-sidebar li { margin-bottom: 4px; }
+    .paper-sidebar a { font-size: 0.82rem; color: var(--text-secondary); text-decoration: none; display: block; padding: 4px 12px; border-left: 2px solid transparent; transition: all 0.15s; line-height: 1.4; }
+    .paper-sidebar a:hover { color: var(--accent); border-left-color: var(--accent); background: var(--accent-bg); }
+    .paper-sidebar a.depth-2 { padding-left: 24px; font-size: 0.78rem; }
+    .paper-main { flex: 1; min-width: 0; padding: 40px 0 80px; }
+    @media (max-width: 960px) {
+      .paper-sidebar { display: none; }
+      .paper-layout { padding: 0 16px; }
+    }
+
+    /* Breadcrumb */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* Paper header */
+    .paper-header { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+    .paper-header h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
+    .paper-meta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px; }
+    .paper-meta-item { font-size: 0.85rem; color: var(--text-secondary); }
+    .paper-meta-tag { font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+    .badge-pr { display: inline-flex; align-items: center; gap: 4px; font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: #e8f5e9; color: #2e7d32; }
+
+    /* Action bar */
+    .action-bar { display: flex; gap: 12px; flex-wrap: wrap; }
+    .action-bar .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: all 0.2s; border: 1px solid var(--border); color: var(--text); background: var(--bg); }
+    .action-bar .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .action-bar .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .action-bar .btn-primary:hover { background: #5a4bd4; }
+    .action-bar .btn svg { width: 16px; height: 16px; }
+
+    /* Content styling */
+    .paper-content h2 { font-size: 1.5rem; font-weight: 700; margin: 48px 0 16px; padding-top: 16px; letter-spacing: -0.02em; border-top: 1px solid var(--border); }
+    .paper-content h2:first-child { border-top: none; margin-top: 0; }
+    .paper-content h3 { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; }
+    .paper-content h4 { font-size: 1.05rem; font-weight: 600; margin: 24px 0 8px; }
+    .paper-content p { margin-bottom: 16px; color: var(--text); }
+    .paper-content ul, .paper-content ol { margin: 0 0 16px 24px; }
+    .paper-content li { margin-bottom: 6px; }
+    .paper-content blockquote { border-left: 3px solid var(--accent); padding: 12px 20px; margin: 16px 0; background: var(--accent-bg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+    .paper-content blockquote p { margin-bottom: 0; color: var(--text-secondary); font-style: italic; }
+    .paper-content code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: var(--bg-alt); padding: 2px 6px; border-radius: 4px; }
+    .paper-content pre { background: #1e1e2e; color: #cdd6f4; padding: 20px; border-radius: var(--radius-sm); overflow-x: auto; margin: 16px 0; }
+    .paper-content pre code { background: none; padding: 0; color: inherit; }
+    .paper-content a { color: var(--accent); text-decoration: none; }
+    .paper-content a:hover { text-decoration: underline; }
+    .paper-content hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+    .paper-content strong { font-weight: 600; }
+    .paper-content em { font-style: italic; }
+
+    /* Theorem/Definition blocks */
+    .callout { border-left: 4px solid; padding: 16px 20px; margin: 20px 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+    .callout-theorem { border-color: #6c5ce7; background: #f0eeff; }
+    .callout-definition { border-color: #00b894; background: #e8f8f5; }
+    .callout-proposition { border-color: #fdcb6e; background: #fef9e7; }
+    .callout-lemma { border-color: #74b9ff; background: #eef6ff; }
+    .callout-corollary { border-color: #a29bfe; background: #f5f3ff; }
+    .callout-remark { border-color: #636e72; background: #f5f6f7; }
+    .callout-example { border-color: #00cec9; background: #e8fffe; }
+    .callout-axiom { border-color: #e17055; background: #fef0ed; }
+    .callout-title { font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; }
+
+    /* Table */
+    .paper-content table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    .paper-content th, .paper-content td { padding: 10px 14px; border: 1px solid var(--border); text-align: left; font-size: 0.9rem; }
+    .paper-content th { background: var(--bg-alt); font-weight: 600; }
+
+    /* Prev/Next nav */
+    .paper-nav { display: flex; justify-content: space-between; gap: 20px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .paper-nav a { text-decoration: none; color: var(--text); padding: 16px 20px; border: 1px solid var(--border); border-radius: var(--radius-sm); flex: 1; transition: border-color 0.2s, box-shadow 0.2s; }
+    .paper-nav a:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
+    .paper-nav-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+    .paper-nav-title { font-size: 0.95rem; font-weight: 600; margin-top: 4px; }
+    .paper-nav .next { text-align: right; }
+
+    /* KaTeX overrides */
+    .katex-display { overflow-x: auto; overflow-y: hidden; padding: 8px 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Yoneda<span>AI</span></a>
+    <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#series1">Series 1</a></li>
+      <li><a href="/#series2">Series 2</a></li>
+      <li><a href="/#framework">Framework</a></li>
+      <li><a href="/#repos">Repositories</a></li>
+      <li><a href="https://github.com/MagnetonIO" class="gh-link" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="paper-layout">
+  <aside class="paper-sidebar">
+    <h4>Table of Contents</h4>
+    <ul>
+      <li><a href="#categories-presheaves-and-the-yoneda-lemma" class="">Categories, Presheaves, and the Yoneda Lemma</a></li>
+<li><a href="#the-category-of-observational-contexts" class="">The Category of Observational Contexts</a></li>
+<li><a href="#quantum-states-and-observables-in-the-categorical-framework" class="">Quantum States and Observables in the Categorical Framework</a></li>
+<li><a href="#composite-systems-and-product-categories" class="">Composite Systems and Product Categories</a></li>
+<li><a href="#separability-and-entanglement" class="">Separability and Entanglement</a></li>
+<li><a href="#the-schmidt-decomposition-as-presheaf-decomposition" class="">The Schmidt Decomposition as Presheaf Decomposition</a></li>
+<li><a href="#bell-states-as-maximally-entangled-presheaves" class="">Bell States as Maximally Entangled Presheaves</a></li>
+<li><a href="#ghz-states-and-multipartite-entanglement" class="">GHZ States and Multipartite Entanglement</a></li>
+<li><a href="#monogamy-of-entanglement" class="">Monogamy of Entanglement</a></li>
+<li><a href="#complementary-contexts-and-non-commutativity" class="">Complementary Contexts and Non-Commutativity</a></li>
+<li><a href="#the-heisenberg-uncertainty-relation-from-category-structure" class="">The Heisenberg Uncertainty Relation from Category Structure</a></li>
+<li><a href="#mutually-unbiased-bases-from-maximal-non-refinability" class="">Mutually Unbiased Bases from Maximal Non-Refinability</a></li>
+<li><a href="#entropic-uncertainty-relations" class="">Entropic Uncertainty Relations</a></li>
+<li><a href="#the-measurement-formalism" class="">The Measurement Formalism</a></li>
+<li><a href="#no-collapse-the-presheaf-remains-unchanged" class="">No Collapse: The Presheaf Remains Unchanged</a></li>
+<li><a href="#decoherence-as-coarse-graining-of-contexts" class="">Decoherence as Coarse-Graining of Contexts</a></li>
+<li><a href="#the-measurement-problem-theorem" class="">The Measurement Problem Theorem</a></li>
+<li><a href="#wigner-s-friend-scenario" class="">Wigner&#x27;s Friend Scenario</a></li>
+<li><a href="#bell-s-theorem-as-a-categorical-structure-theorem" class="">Bell&#x27;s Theorem as a Categorical Structure Theorem</a></li>
+<li><a href="#the-chsh-inequality" class="">The CHSH Inequality</a></li>
+<li><a href="#the-kochen-specker-theorem-as-non-existence-of-global-sections" class="">The Kochen--Specker Theorem as Non-Existence of Global Sections</a></li>
+<li><a href="#quantum-teleportation-as-perspective-transfer" class="">Quantum Teleportation as Perspective Transfer</a></li>
+<li><a href="#entanglement-swapping" class="">Entanglement Swapping</a></li>
+<li><a href="#quantum-dense-coding" class="">Quantum Dense Coding</a></li>
+<li><a href="#summary-of-results" class="">Summary of Results</a></li>
+<li><a href="#relation-to-prior-work" class="">Relation to Prior Work</a></li>
+<li><a href="#open-problems" class="">Open Problems</a></li>
+    </ul>
+  </aside>
+
+  <main class="paper-main">
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/#series2">Series 2</a>
+      <span>/</span>
+      <span>Entanglement, Complementarity, and Measurement</span>
+    </div>
+
+    <div class="paper-header">
+      <h1>Entanglement, Complementarity, and Measurement</h1>
+      <div class="paper-meta">
+        <span class="paper-meta-tag">quant-ph</span>
+        <span class="paper-meta-item">27 pages</span>
+        <span class="paper-meta-item">Matthew Long</span>
+        <span class="paper-meta-item">24 February 2026</span>
+        <span class="badge-pr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+      </div>
+      <div class="action-bar">
+        <a href="/papers/pdf/entanglement-complementarity-measurement.pdf" class="btn btn-primary" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+        <a href="https://github.com/MagnetonIO/entanglement-complementarity-measurement" class="btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          View on GitHub
+        </a>
+        <a href="https://github.com/MagnetonIO/entanglement-complementarity-measurement" class="btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Haskell Code
+        </a>
+      </div>
+    </div>
+
+    <div class="paper-content">
+      <h2 id="categories-presheaves-and-the-yoneda-lemma">Categories, Presheaves, and the Yoneda Lemma</h2>
+<p>We recall the essential definitions; see [@maclane1998; @riehl2016] for comprehensive treatments.</p>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 1</div><p>(Category). A <strong>category</strong> $\mathscr{C}$ consists of:</p></div>
+<ol>
+<li>a collection $\mathrm{Ob}(\mathscr{C})$ of <strong>objects</strong>;</li>
+</ol>
+<ol>
+<li>for each pair $A, B \in \mathrm{Ob}(\mathscr{C})$, a set $\mathrm{Hom}_\mathscr{C}(A, B)$ of <strong>morphisms</strong>;</li>
+</ol>
+<ol>
+<li>for each object $A$, an identity morphism $\mathrm{id}_A \in \mathrm{Hom}_\mathscr{C}(A, A)$;</li>
+</ol>
+<ol>
+<li>an associative composition law $\circ : \mathrm{Hom}_\mathscr{C}(B, C) \times \mathrm{Hom}_\mathscr{C}(A, B) \to \mathrm{Hom}_\mathscr{C}(A, C)$.</li>
+</ol>
+<p>:::</p>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 2</div><p>(Presheaf). A <strong>presheaf</strong> on $\mathscr{C}$ is a functor $F : \mathscr{C}^{\mathrm{op}}\to \mathbf{Set}$. The category of presheaves is denoted $\widehat{\mathscr{C}} = [\mathscr{C}^{\mathrm{op}}, \mathbf{Set}]$, with natural transformations as morphisms. :::</p></div>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 3</div><p>(Representable Presheaf and Yoneda Embedding). For $A \in \mathscr{C}$, the <strong>representable presheaf</strong> is $\mathsf{y}(A) = \mathrm{Hom}_\mathscr{C}(-, A)$. The <strong>Yoneda embedding</strong> $\mathsf{y}: \mathscr{C}\hookrightarrow \widehat{\mathscr{C}}$ is fully faithful. :::</p></div>
+<p>::: {#thm:yoneda .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 4</div><p>(Yoneda Lemma [@yoneda1954]). <em>For any presheaf $F : \mathscr{C}^{\mathrm{op}}\to \mathbf{Set}$ and any $A \in \mathscr{C}$, $$\begin{equation} \mathrm{Nat}(\mathsf{y}(A), F) \cong F(A), \end{equation}$$ naturally in both $A$ and $F$.</em> :::</p></div>
+<p>::: {#def:product-cat .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 5</div><p>(Product Category). Given categories $\mathscr{C}$ and $\mathscr{D}$, their <strong>product category</strong> $\mathscr{C}\times \mathscr{D}$ has pairs $(C, D)$ as objects and pairs $(f, g)$ as morphisms, with componentwise composition. :::</p></div>
+<p>::: {#def:monoidal .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 6</div><p>(Monoidal Category). A <strong>monoidal category</strong> $(\mathscr{C}, \otimes, I, \alpha, \lambda, \rho)$ consists of a category $\mathscr{C}$, a bifunctor $\otimes : \mathscr{C}\times \mathscr{C}\to \mathscr{C}$, a unit object $I$, and natural isomorphisms (associator $\alpha$, left unitor $\lambda$, right unitor $\rho$) satisfying the pentagon and triangle coherence axioms. It is <strong>symmetric</strong> if equipped with a braiding $\sigma_{A,B} : A \otimes B \xrightarrow{\sim} B \otimes A$ satisfying $\sigma_{B,A} \circ \sigma_{A,B} = \mathrm{id}$. :::</p></div>
+<h2 id="the-category-of-observational-contexts">The Category of Observational Contexts</h2>
+<p>::: {#def:context-cat .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 7</div><p>(Context Category). The <strong>category of observational contexts</strong> $\mathscr{C}$ has:</p></div>
+<ul>
+<li><strong>Objects:</strong> complete specifications of experimental setups, including the choice of observable, the configuration of detectors, reference frames, and environmental conditions.</li>
+</ul>
+<ul>
+<li><strong>Morphisms:</strong> $f : C \to C'$ is a <strong>refinement</strong>---a way of embedding the data of $C'$ into $C$, meaning $C$ is at least as informative as $C'$.</li>
+</ul>
+<p>The category $\mathscr{C}$ is equipped with a monoidal structure $\otimes$ representing parallel combination of contexts.</p>
+<p>:::</p>
+<p>::: {#ax:yoneda .axiom}</p>
+<div class="callout callout-axiom"><div class="callout-title">Axiom 1</div><p>(The Yoneda Constraint [@long2026qp]). A physical system $S$ is a presheaf $S : \mathscr{C}^{\mathrm{op}}\to \mathbf{Set}$ (or, with linear structure, $S : \mathscr{C}^{\mathrm{op}}\to \mathbf{Vect}_\mathbb{C}$). The system is completely determined by its relational profile: the totality of morphisms from all probe systems. :::</p></div>
+<p>The Yoneda Constraint is not an independent physical postulate but the physical content of the Yoneda Lemma (Theorem <a href="#thm:yoneda">4</a>{reference-type="ref" reference="thm:yoneda"}): since the Yoneda embedding is fully faithful, an object is completely determined by its representable presheaf---its totality of incoming morphisms. Applied to physics, this means a system has no intrinsic properties beyond those accessible via relational probes. In the companion paper [@long2026qp], it is shown that enforcing this constraint on a category of physical contexts, together with monoidal structure (parallel combination of contexts) and perspectival consistency (coherent overlap of data across contexts), forces the fibers $S(C)$ to carry the structure of complex Hilbert spaces. We therefore work with $S : \mathscr{C}^{\mathrm{op}}\to \mathbf{Hilb}$ throughout.</p>
+<p>::: {#rmk:monoidal-product .remark}</p>
+<p><em>Remark 8</em> (Monoidal Structure vs. Product Category). The monoidal product $C_1 \otimes C_2$ in $\mathscr{C}$ (parallel combination of contexts) and the product category $\mathscr{C}\times \mathscr{C}$ play distinct but related roles. The product category $\mathscr{C}\times \mathscr{C}$ provides the domain for presheaves describing composite systems: a bipartite system assigns data to each pair $(C_1, C_2)$ of contexts independently. The monoidal product $\otimes : \mathscr{C}\times \mathscr{C}\to \mathscr{C}$ is a functor that maps such pairs to a single "joint context" $C_1 \otimes C_2 \in \mathscr{C}$. The connection is provided by the diagonal functor $\Delta : \mathscr{C}\to \mathscr{C}\times \mathscr{C}$, $C \mapsto (C, C)$, and the monoidal product functor $\otimes : \mathscr{C}\times \mathscr{C}\to \mathscr{C}$. A presheaf $S_{12}$ on $\mathscr{C}\times \mathscr{C}$ can be restricted along $\otimes$ to yield a presheaf $\otimes^* S_{12}$ on $\mathscr{C}$, recovering the "single-context" view of the composite system.</p>
+<p>:::</p>
+<h2 id="quantum-states-and-observables-in-the-categorical-framework">Quantum States and Observables in the Categorical Framework</h2>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 9</div><p>(Quantum State as Presheaf Section). A <strong>state</strong> of a system $S$ is a global section of the presheaf---an element $\psi \in \varprojlim_C S(C)$ or, more generally, a compatible family $\{\psi_C \in S(C)\}_{C \in \mathscr{C}}$ satisfying $S(f)(\psi_C) = \psi_{C'}$ for every morphism $f : C' \to C$. :::</p></div>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 10</div><p>(Observable as Natural Endomorphism). An <strong>observable</strong> is a natural transformation $\alpha : S \Rightarrow S$ that is self-adjoint with respect to the Hilbert-space inner products on the fibers. Naturality ensures covariance under context change. :::</p></div>
+<h1 id="entanglement-as-non-separability-of-presheaves-sec-entanglement">Entanglement as Non-Separability of Presheaves {#sec:entanglement}</h1>
+<h2 id="composite-systems-and-product-categories">Composite Systems and Product Categories</h2>
+<p>The composite of two systems $S_1$ and $S_2$, individually described by presheaves on $\mathscr{C}$, is described by a presheaf on the product category.</p>
+<p>::: {#def:composite .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 11</div><p>(Composite System). Given systems $S_1, S_2 : \mathscr{C}^{\mathrm{op}}\to \mathbf{Hilb}$, their <strong>composite system</strong> is a presheaf $$\begin{equation} S_{12} : (\mathscr{C}\times \mathscr{C})^{\mathrm{op}}\to \mathbf{Hilb} \end{equation}$$ such that for each pair of contexts $(C_1, C_2)$, the fiber $S_{12}(C_1, C_2) \subseteq S_1(C_1) \otimes S_2(C_2)$. :::</p></div>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 12</div><p>(External Tensor Product). The <strong>external tensor product</strong> of presheaves $S_1, S_2 : \mathscr{C}^{\mathrm{op}}\to \mathbf{Hilb}$ is the presheaf $S_1 \boxtimes S_2 : (\mathscr{C}\times \mathscr{C})^{\mathrm{op}}\to \mathbf{Hilb}$ defined by $$\begin{equation} (S_1 \boxtimes S_2)(C_1, C_2) = S_1(C_1) \otimes S_2(C_2) \end{equation}$$ with the obvious action on morphisms: $(S_1 \boxtimes S_2)(f_1, f_2) = S_1(f_1) \otimes S_2(f_2)$. :::</p></div>
+<h2 id="separability-and-entanglement">Separability and Entanglement</h2>
+<p>::: {#def:separable .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 13</div><p>(Separable State). A state $\Psi$ of the composite system $S_{12}$ is <strong>separable</strong> if there exist states $\psi_1$ of $S_1$ and $\psi_2$ of $S_2$ such that, for every pair of contexts $(C_1, C_2)$, $$\begin{equation} \Psi_{(C_1, C_2)} = \psi_{1,C_1} \otimes \psi_{2,C_2} \in S_1(C_1) \otimes S_2(C_2). \end{equation}$$ Equivalently, $\Psi$ lies in the image of the natural map $\Gamma(S_1) \times \Gamma(S_2) \to \Gamma(S_1 \boxtimes S_2)$, where $\Gamma$ denotes global sections. :::</p></div>
+<p>::: {#def:entangled .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 14</div><p>(Entangled State). A state $\Psi$ of $S_{12}$ is <strong>entangled</strong> if it is not separable. :::</p></div>
+<p>::: {#prop:nonsep .proposition}</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 15</div><p>(Categorical Non-Separability Criterion). <em>A state $\Psi$ of $S_{12}$ is entangled if and only if there exists no natural transformation of the form $\eta_1 \boxtimes \eta_2 : \mathsf{y}(C_1) \boxtimes \mathsf{y}(C_2) \Rightarrow S_1 \boxtimes S_2$ whose image under the Yoneda isomorphism yields $\Psi$ as a factored element.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> By the Yoneda Lemma applied to the product category $\mathscr{C}\times \mathscr{C}$, the state $\Psi \in S_{12}(C_1, C_2)$ corresponds to a natural transformation $\eta_\Psi : \mathsf{y}(C_1, C_2) \Rightarrow S_{12}$. The representable presheaf on $\mathscr{C}\times \mathscr{C}$ satisfies $\mathsf{y}(C_1, C_2) = \mathsf{y}(C_1) \boxtimes \mathsf{y}(C_2)$ since $$\begin{equation}</p>
+<p>\mathrm{Hom}_{\mathscr{C}\times \mathscr{C}}((D_1, D_2), (C_1, C_2)) = \mathrm{Hom}_\mathscr{C}(D_1, C_1) \times \mathrm{Hom}_\mathscr{C}(D_2, C_2).</p>
+<p>\end{equation}$$ The state $\Psi$ is separable if and only if $\eta_\Psi$ factors as $\eta_1 \boxtimes \eta_2$ for natural transformations $\eta_i : \mathsf{y}(C_i) \Rightarrow S_i$. By the Yoneda isomorphism, $\eta_i$ corresponds to an element $\psi_i \in S_i(C_i)$. The non-existence of such a factorization is precisely entanglement. ◻</p>
+<p>:::</p>
+<h2 id="the-schmidt-decomposition-as-presheaf-decomposition">The Schmidt Decomposition as Presheaf Decomposition</h2>
+<p>The Schmidt decomposition theorem, fundamental to the theory of entanglement, acquires a clean categorical formulation.</p>
+<p>::: {#thm:schmidt .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 16</div><p>(Categorical Schmidt Decomposition). <em>Let $S_1, S_2 : \mathscr{C}^{\mathrm{op}}\to \mathbf{Hilb}$ be presheaves with finite-dimensional fibers, and let $\Psi$ be a state of $S_{12}$ on $\mathscr{C}\times \mathscr{C}$. For any pair of contexts $(C_1, C_2)$ with $\dim S_1(C_1) = m$ and $\dim S_2(C_2) = n$ ($m \leq n$), there exist:</em></p></div>
+<ol>
+<li><em>natural basis transformations (unitary natural automorphisms) $U : S_1 \Rightarrow S_1$ and $V : S_2 \Rightarrow S_2$;</em></li>
+</ol>
+<ol>
+<li><em>non-negative real numbers $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_m \geq 0$ with $\sum_i \lambda_i^2 = 1$ (the <strong>Schmidt coefficients</strong>);</em></li>
+</ol>
+<p>*such that in the transformed bases, $$\begin{equation}</p>
+<p>\Psi_{(C_1, C_2)} = \sum_{i=1}^{r} \lambda_i \, e_i^{(1)} \otimes e_i^{(2)},</p>
+<p>\end{equation}$$ where $r = \mathrm{rank}(\Psi) \leq m$ is the <strong>Schmidt rank</strong>, and $\{e_i^{(1)}\}, \{e_i^{(2)}\}$ are the transformed orthonormal bases.*</p>
+<p>:::</p>
+<p>::: proof</p>
+<p><em>Proof.</em> Fix contexts $(C_1, C_2)$. The state $\Psi_{(C_1, C_2)} \in S_1(C_1) \otimes S_2(C_2)$ is an element of the tensor product of finite-dimensional Hilbert spaces. Apply the singular value decomposition to the coefficient matrix $A_{ij}$ defined by $\Psi = \sum_{i,j} A_{ij} f_i \otimes g_j$ in any bases $\{f_i\}$, $\{g_j\}$. Write $A = U_0 \Sigma V_0^\dagger$ where $U_0$ is $m \times m$ unitary, $V_0$ is $n \times n$ unitary, and $\Sigma$ is $m \times n$ diagonal with entries $\lambda_i$. Define new bases $e_i^{(1)} = \sum_k (U_0)_{ki} f_k$ and $e_j^{(2)} = \sum_l (V_0)_{lj} g_l$. Then $$\begin{equation}</p>
+<p>\Psi = \sum_{i,j} A_{ij} f_i \otimes g_j = \sum_{i=1}^r \lambda_i \, e_i^{(1)} \otimes e_i^{(2)}.</p>
+<p>\end{equation}$$ The naturality of the basis transformations follows from the requirement that $U$ and $V$ be natural automorphisms of the presheaves $S_1$ and $S_2$: for any morphism $h : C' \to C$ in $\mathscr{C}$, the diagrams $$\begin{equation}</p>
+<p>\begin{tikzcd}</p>
+<p>S_k(C) \arrow[r, "U(C)"] \arrow[d, "S_k(h)"'] & S_k(C) \arrow[d, "S_k(h)"] \\</p>
+<p>S_k(C') \arrow[r, "U(C')"'] & S_k(C')</p>
+<p>\end{tikzcd}</p>
+<p>\end{equation}$$ must commute, ensuring the Schmidt decomposition is compatible with context change. The Schmidt coefficients $\lambda_i$ are invariants of the presheaf $S_{12}$ and do not depend on the choice of context pair (up to the constraint that $\dim S_k(C)$ is sufficiently large). ◻</p>
+<p>:::</p>
+<p>::: {#cor:ent-measure .corollary}</p>
+<div class="callout callout-corollary"><div class="callout-title">Corollary 17</div><p>(Entanglement Measure). <em>The <strong>entanglement entropy</strong> of $\Psi$ is $$\begin{equation} E(\Psi) = -\sum_{i=1}^r \lambda_i^2 \log \lambda_i^2, \end{equation}$$ which equals zero if and only if $\Psi$ is separable (Schmidt rank 1) and is maximized when all $\lambda_i = 1/\sqrt{r}$.</em> :::</p></div>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 18</div><p>(Schmidt Rank as Categorical Invariant). The <strong>Schmidt rank</strong> $r = \mathrm{rank}(\Psi)$ is the number of non-zero Schmidt coefficients. Categorically, it is the number of irreducible components in the decomposition of the presheaf state $\Psi$ into simple tensor factors. It is a categorical invariant: preserved by natural automorphisms of $S_1$ and $S_2$. :::</p></div>
+<p>::: {#prop:schmidt-invariance .proposition}</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 19</div><p>(Invariance of Schmidt Coefficients under Context Morphisms). <em>Let $f_1 : C_1' \to C_1$ and $f_2 : C_2' \to C_2$ be morphisms in $\mathscr{C}$ such that the restriction maps $S_k(f_k) : S_k(C_k) \to S_k(C_k')$ are unitary (i.e., isometric embeddings preserving the inner product). Then the Schmidt coefficients of $\Psi$ at the context pair $(C_1', C_2')$ are identical to those at $(C_1, C_2)$.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> The restriction maps $S_1(f_1) \otimes S_2(f_2)$ act on $\Psi_{(C_1, C_2)} = \sum_i \lambda_i e_i^{(1)} \otimes e_i^{(2)}$ as $$\begin{equation}</p>
+<p>(S_1(f_1) \otimes S_2(f_2))(\Psi_{(C_1, C_2)}) = \sum_i \lambda_i \, S_1(f_1)(e_i^{(1)}) \otimes S_2(f_2)(e_i^{(2)}).</p>
+<p>\end{equation}$$ Since $S_k(f_k)$ are unitary, the sets $\{S_1(f_1)(e_i^{(1)})\}$ and $\{S_2(f_2)(e_i^{(2)})\}$ remain orthonormal, and the expression is already in Schmidt form with the same coefficients $\lambda_i$. In the case where $S_k(f_k)$ is not unitary (e.g., a genuine coarse-graining), the Schmidt coefficients may change, reflecting the loss of fine-grained entanglement information upon restriction to a coarser context. ◻</p>
+<p>:::</p>
+<h2 id="bell-states-as-maximally-entangled-presheaves">Bell States as Maximally Entangled Presheaves</h2>
+<p>We now provide the categorical construction of the four Bell states.</p>
+<p>::: {#def:qubit .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 20</div><p>(Qubit Presheaf). A <strong>qubit presheaf</strong> is a presheaf $Q : \mathscr{C}^{\mathrm{op}}\to \mathbf{Hilb}$ such that $Q(C) \cong \mathbb{C}^2$ for every context $C$ in a suitable subcategory of $\mathscr{C}$. :::</p></div>
+<p>::: {#prop:bell-states .proposition}</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 21</div><p>(Bell States as Maximally Non-Separable Presheaves). <em>Let $Q_1, Q_2$ be qubit presheaves. The four Bell states are maximally entangled states of $Q_1 \boxtimes Q_2$ with Schmidt rank $2$ and maximal entanglement entropy $\log 2$: $$\begin{align} \ket{\Phi^+}_{(C_1, C_2)} &= \frac{1}{\sqrt{2}}\left(\ket{0}_{C_1} \otimes \ket{0}_{C_2} + \ket{1}_{C_1} \otimes \ket{1}_{C_2}\right), \label{eq:phiplus} \\ \ket{\Phi^-}_{(C_1, C_2)} &= \frac{1}{\sqrt{2}}\left(\ket{0}_{C_1} \otimes \ket{0}_{C_2} - \ket{1}_{C_1} \otimes \ket{1}_{C_2}\right), \label{eq:phiminus} \\ \ket{\Psi^+}_{(C_1, C_2)} &= \frac{1}{\sqrt{2}}\left(\ket{0}_{C_1} \otimes \ket{1}_{C_2} + \ket{1}_{C_1} \otimes \ket{0}_{C_2}\right), \label{eq:psiplus} \\ \ket{\Psi^-}_{(C_1, C_2)} &= \frac{1}{\sqrt{2}}\left(\ket{0}_{C_1} \otimes \ket{1}_{C_2} - \ket{1}_{C_1} \otimes \ket{0}_{C_2}\right). \label{eq:psiminus} \end{align}$$ The Schmidt coefficients are $\lambda_1 = \lambda_2 = 1/\sqrt{2}$ for all four states.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> Each Bell state is already in Schmidt form with $r = 2$ and equal coefficients $1/\sqrt{2}$. Non-separability follows from $r > 1$. The entanglement entropy is $E = -2 \cdot \frac{1}{2} \log \frac{1}{2} = \log 2$, which is maximal for two-dimensional fibers.</p>
+<p>We verify the presheaf condition. For any morphisms $f_1 : C_1' \to C_1$ and $f_2 : C_2' \to C_2$ in $\mathscr{C}$, the restriction maps $Q_k(f_k) : Q_k(C_k) \to Q_k(C_k')$ are unitary (since they map between copies of $\mathbb{C}^2$). The Bell state transforms as $$\begin{equation}</p>
+<p>(Q_1(f_1) \otimes Q_2(f_2))(\ket{\Phi^+}_{(C_1, C_2)}) = \ket{\Phi^+}_{(C_1', C_2')},</p>
+<p>\end{equation}$$ which is again a Bell state in the restricted context pair, confirming functoriality. ◻</p>
+<p>:::</p>
+<p>::: remark</p>
+<p><em>Remark 22</em> (Bell Basis as Categorical Basis). The four Bell states form an orthonormal basis for $Q_1(C_1) \otimes Q_2(C_2) \cong \mathbb{C}^4$. Categorically, they correspond to the four irreducible representations of the "entanglement group" generated by the Pauli operators acting on the joint system---the group $\{I \otimes I, \sigma_x \otimes I, I \otimes \sigma_z, \sigma_x \otimes \sigma_z\}$ modulo phases.</p>
+<p>:::</p>
+<h2 id="ghz-states-and-multipartite-entanglement">GHZ States and Multipartite Entanglement</h2>
+<p>The framework extends naturally to multipartite systems.</p>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 23</div><p>(Multipartite Composite). For $n$ systems $S_1, \ldots, S_n : \mathscr{C}^{\mathrm{op}}\to \mathbf{Hilb}$, the composite is a presheaf on $\mathscr{C}^n$: $$\begin{equation} S_{1 \cdots n} : (\mathscr{C}^n)^{\mathrm{op}}\to \mathbf{Hilb}. \end{equation}$$ :::</p></div>
+<p>::: {#def:ghz .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 24</div><p>(GHZ State). The <strong>Greenberger--Horne--Zeilinger (GHZ) state</strong> for $n$ qubit presheaves is $$\begin{equation} \ket{\mathrm{GHZ}_n}_{(C_1, \ldots, C_n)} = \frac{1}{\sqrt{2}}\left(\ket{0}_{C_1} \otimes \cdots \otimes \ket{0}_{C_n} + \ket{1}_{C_1} \otimes \cdots \otimes \ket{1}_{C_n}\right). \end{equation}$$ :::</p></div>
+<p>::: proposition</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 25</div><p>(GHZ Non-Biseparability). <em>The GHZ state is <strong>genuinely multipartite entangled</strong>: for any bipartition of the $n$ systems into groups $A$ and $B$, the reduced state on $A$ (obtained by tracing over $B$) is mixed.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> Consider the bipartition into system $1$ and the rest. Tracing over systems $2, \ldots, n$: $$\begin{equation}</p>
+<p>\rho_1 = \mathrm{Tr}_{2, \ldots, n} \ket{\mathrm{GHZ}_n}\bra{\mathrm{GHZ}_n} = \frac{1}{2}(\ket{0}\bra{0} + \ket{1}\bra{1}) = \frac{I}{2}.</p>
+<p>\end{equation}$$ Since $\rho_1$ is maximally mixed, the entanglement entropy across this cut is $\log 2 > 0$. By the symmetry of the GHZ state under permutation of parties, the same holds for any bipartition. ◻</p>
+<p>:::</p>
+<h2 id="monogamy-of-entanglement">Monogamy of Entanglement</h2>
+<p>One of the most profound properties of quantum entanglement is its monogamous character: entanglement cannot be freely shared.</p>
+<p>::: {#thm:monogamy .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 26</div><p>(Monogamy of Entanglement --- Categorical Formulation). <em>Let $Q_A, Q_B, Q_C$ be qubit presheaves. For any state $\Psi$ of $Q_A \boxtimes Q_B \boxtimes Q_C$, the concurrences satisfy $$\begin{equation} \label{eq:ckw} C^2_{A|BC} \geq C^2_{AB} + C^2_{AC}, \end{equation}$$ where $C_{AB}$ denotes the concurrence of the reduced state on $Q_A \boxtimes Q_B$, and $C_{A|BC}$ denotes the concurrence of $A$ with the composite $BC$.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> We prove this by establishing the categorical constraints. The concurrence $C_{AB}$ of a two-qubit state $\rho_{AB}$ is defined as $C(\rho_{AB}) = \max(0, \mu_1 - \mu_2 - \mu_3 - \mu_4)$ where $\mu_i$ are the square roots of the eigenvalues of $\rho_{AB} \tilde{\rho}_{AB}$ in decreasing order, with $\tilde{\rho} = (\sigma_y \otimes \sigma_y) \rho^* (\sigma_y \otimes \sigma_y)$.</p>
+<p>The key categorical insight is that the restriction functor $i^* : \widehat{\mathscr{C}^3} \to \widehat{\mathscr{C}^2}$ induced by the inclusion $i : \mathscr{C}^2 \hookrightarrow \mathscr{C}^3$ (fixing one factor) preserves the presheaf structure but loses information. Specifically, the reduced density matrix $\rho_{AB} = \mathrm{Tr}_C(\ket{\Psi}\bra{\Psi})$ is the image of $\Psi$ under the restriction along the projection $\mathscr{C}^3 \to \mathscr{C}^2$ that forgets the third factor.</p>
+<p>The monogamy inequality [\[eq:ckw\]](#eq:ckw){reference-type="eqref" reference="eq:ckw"} then follows from the Coffman--Kundu--Wootters theorem [@ckw2000], which we interpret categorically: the total entanglement between $A$ and the composite system $BC$ (measured by $C^2_{A|BC}$) is bounded below by the sum of the pairwise entanglements. The categorical content is that the restriction functor from $\mathscr{C}^3$ to $\mathscr{C}^2$ cannot increase the "non-factorizability" of the presheaf---entanglement shared with $B$ limits what can be shared with $C$.</p>
+<p>More precisely, let $\ket{\Psi} = \sum_{ijk} a_{ijk} \ket{i}_A \ket{j}_B \ket{k}_C$. Define the "entanglement vector" $\vec{v}$ with components $v_\alpha = \bra{\Psi} (\sigma_\alpha \otimes I \otimes I) \ket{\Psi}$, and similarly for $B$ and $C$. The presheaf naturality condition forces $\|\vec{v}\|^2 \leq 1$, and the decomposition $\|\vec{v}\|^2 = \sum_\beta w_{A\beta}^2$ over bipartitions gives the monogamy constraint. ◻</p>
+<p>:::</p>
+<p>::: {#cor:no-clone .corollary}</p>
+<div class="callout callout-corollary"><div class="callout-title">Corollary 27</div><p>(No-Cloning from Monogamy). <em>The monogamy of entanglement categorically implies the no-cloning theorem. If cloning were possible, one could create arbitrarily many copies of a qubit and entangle each with a fixed system, violating the monogamy inequality.</em> :::</p></div>
+<p>::: remark</p>
+<p><em>Remark 28</em> (Monogamy as Sheaf Condition). The monogamy inequality can be viewed as a <em>sheaf condition</em> on entanglement: the global entanglement (with $BC$) constrains the local entanglements (with $B$ and $C$ individually). This is analogous to the sheaf condition that global sections are determined by compatible local data, but "inverted"---the global quantity bounds the sum of local quantities.</p>
+<p>:::</p>
+<h1 id="complementarity-from-non-commutative-contexts-sec-complementarity">Complementarity from Non-Commutative Contexts {#sec:complementarity}</h1>
+<h2 id="complementary-contexts-and-non-commutativity">Complementary Contexts and Non-Commutativity</h2>
+<p>The categorical origin of complementarity is the failure of certain pairs of contexts to admit a common refinement.</p>
+<p>::: {#def:common-ref .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 29</div><p>(Common Refinement). Two contexts $C_\alpha, C_\beta \in \mathscr{C}$ admit a <strong>common refinement</strong> if there exists an object $C_{\alpha\beta} \in \mathscr{C}$ and morphisms $p_\alpha : C_{\alpha\beta} \to C_\alpha$ and $p_\beta : C_{\alpha\beta} \to C_\beta$ such that $C_{\alpha\beta}$ refines both contexts simultaneously. :::</p></div>
+<p>::: {#def:complementary .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 30</div><p>(Complementary Contexts). Contexts $C_\alpha$ and $C_\beta$ are <strong>complementary</strong> if they do not admit a common refinement in $\mathscr{C}$. Equivalently, the pullback $C_\alpha \times_{C_0} C_\beta$ (over any common coarsening $C_0$) does not exist in $\mathscr{C}$. :::</p></div>
+<p>::: {#thm:complementarity .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 31</div><p>(Complementarity from Category Structure). <em>Two observables $\alpha$ and $\beta$ are complementary (in the sense that they do not admit simultaneous eigenstates) if and only if the corresponding measurement contexts $C_\alpha$ and $C_\beta$ are complementary in the sense of Definition <a href="#def:complementary">30</a>{reference-type="ref" reference="def:complementary"}.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> $(\Rightarrow)$: Suppose $\alpha$ and $\beta$ do not admit simultaneous eigenstates, i.e., $[\alpha, \beta] \neq 0$. If a common refinement $C_{\alpha\beta}$ existed, then by the Yoneda Constraint, the presheaf $S$ would assign to $C_{\alpha\beta}$ a Hilbert space $S(C_{\alpha\beta})$ equipped with restriction maps $$\begin{equation}</p>
+<p>S(p_\alpha) : S(C_\alpha) \to S(C_{\alpha\beta}), \qquad S(p_\beta) : S(C_\beta) \to S(C_{\alpha\beta}).</p>
+<p>\end{equation}$$ States in $S(C_{\alpha\beta})$ would be simultaneous eigenvalues of both $\alpha$ and $\beta$ (since they refine both measurement contexts), contradicting $[\alpha, \beta] \neq 0$.</p>
+<p>$(\Leftarrow)$: If $C_\alpha$ and $C_\beta$ do not admit a common refinement, then there is no context from which both observables can be simultaneously determined. By the Yoneda Constraint, this means no state can have simultaneously sharp values for both observables, which is the defining property of non-commuting operators: $[\alpha, \beta] \neq 0$. ◻</p>
+<p>:::</p>
+<h2 id="the-heisenberg-uncertainty-relation-from-category-structure">The Heisenberg Uncertainty Relation from Category Structure</h2>
+<p>::: {#thm:uncertainty .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 32</div><p>(Categorical Uncertainty Relation). <em>Let $\alpha$ and $\beta$ be complementary observables with corresponding contexts $C_\alpha$ and $C_\beta$ that admit no common refinement. For any state $\psi$ of the system $S$, the variances satisfy $$\begin{equation} \label{eq:uncertainty} \Delta_\psi \alpha \cdot \Delta_\psi \beta \geq \frac{1}{2} |\langle [\alpha, \beta] \rangle_\psi|, \end{equation}$$ where $\Delta_\psi \alpha = \sqrt{\langle \alpha^2 \rangle_\psi - \langle \alpha \rangle_\psi^2}$.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> The proof proceeds in two stages: first, we establish the algebraic inequality; second, we show it is forced by the categorical structure.</p>
+<p><strong>Stage 1 (Algebraic).</strong> For self-adjoint operators $\alpha, \beta$ on a Hilbert space $\mathcal{H}$ and any $\psi \in \mathcal{H}$ with $\|\psi\| = 1$, define $A = \alpha - \langle \alpha \rangle_\psi \, I$ and $B = \beta - \langle \beta \rangle_\psi \, I$. Then $\Delta_\psi \alpha = \|A\psi\|$ and $\Delta_\psi \beta = \|B\psi\|$. By the Cauchy--Schwarz inequality, $$\begin{equation}</p>
+<p>(\Delta_\psi \alpha)^2 (\Delta_\psi \beta)^2 = \|A\psi\|^2 \|B\psi\|^2 \geq |\langle A\psi, B\psi \rangle|^2.</p>
+<p>\end{equation}$$ Writing $\langle A\psi, B\psi \rangle = \frac{1}{2}\langle [A, B] \rangle_\psi + \frac{1}{2}\langle \{A, B\} \rangle_\psi$ where $[A, B] = AB - BA$ is anti-Hermitian and $\{A, B\} = AB + BA$ is Hermitian, we have $|\langle A\psi, B\psi \rangle|^2 \geq \frac{1}{4}|\langle [A, B] \rangle_\psi|^2$. Since $[A, B] = [\alpha, \beta]$, the result follows.</p>
+<p><strong>Stage 2 (Categorical forcing).</strong> The categorical content is that the non-existence of a common refinement for $C_\alpha$ and $C_\beta$ <em>forces</em> $[\alpha, \beta] \neq 0$, as shown in Theorem <a href="#thm:complementarity">31</a>{reference-type="ref" reference="thm:complementarity"}. The Yoneda Constraint ensures that the algebraic structure of the operators on the fibers $S(C)$ faithfully reflects the morphism structure of $\mathscr{C}$. Specifically, the composition $$\begin{equation}</p>
+<p>C_\alpha \xleftarrow{p_\alpha} C_{\alpha\beta} \xrightarrow{p_\beta} C_\beta</p>
+<p>\end{equation}$$ cannot form a span, so the induced maps $S(p_\alpha)$ and $S(p_\beta)$ cannot simultaneously diagonalize $\alpha$ and $\beta$, which is the operator-theoretic content of $[\alpha, \beta] \neq 0$. The magnitude of $[\alpha, \beta]$ reflects the "distance" between $C_\alpha$ and $C_\beta$ in the morphism structure of $\mathscr{C}$---more precisely, it measures the obstruction to forming the pullback $C_\alpha \times_{C_0} C_\beta$. ◻</p>
+<p>:::</p>
+<p>::: {#cor:xp .corollary}</p>
+<div class="callout callout-corollary"><div class="callout-title">Corollary 33</div><p>(Position--Momentum Uncertainty). <em>For position $\hat{x}$ and momentum $\hat{p}$ with $[\hat{x}, \hat{p}] = i\hbar$, the categorical uncertainty relation yields $\Delta_\psi x \cdot \Delta_\psi p \geq \hbar/2$.</em> :::</p></div>
+<h2 id="mutually-unbiased-bases-from-maximal-non-refinability">Mutually Unbiased Bases from Maximal Non-Refinability</h2>
+<p>::: {#def:mub .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 34</div><p>(Mutually Unbiased Bases). Two orthonormal bases $\{e_i\}$ and $\{f_j\}$ of a $d$-dimensional Hilbert space are <strong>mutually unbiased</strong> if $|\langle e_i, f_j \rangle|^2 = 1/d$ for all $i, j$. :::</p></div>
+<p>::: {#thm:mub .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 35</div><p>(MUBs from Context Structure). <em>Mutually unbiased bases correspond to <strong>maximally complementary contexts</strong>: pairs $(C_\alpha, C_\beta)$ such that:</em></p></div>
+<ol>
+<li><em>$C_\alpha$ and $C_\beta$ are complementary (no common refinement);</em></li>
+</ol>
+<ol>
+<li><em>the "overlap" $|\langle e_i, f_j \rangle|^2 = 1/d$ is uniform, meaning that knowledge of an eigenvalue of $\alpha$ provides zero information about the eigenvalue of $\beta$.</em></li>
+</ol>
+<p>:::</p>
+<p>::: proof</p>
+<p><em>Proof.</em> Let $C_\alpha$ correspond to observable $\alpha$ with eigenbasis $\{e_i\}$ and $C_\beta$ correspond to observable $\beta$ with eigenbasis $\{f_j\}$. The restriction maps $S(p_\alpha) : S(C_0) \to S(C_\alpha)$ and $S(p_\beta) : S(C_0) \to S(C_\beta)$ from any common coarsening $C_0$ project the state onto the eigenbases.</p>
+<p>Maximal complementarity means that the composition $$\begin{equation}</p>
+<p>S(C_\alpha) \xleftarrow{S(p_\alpha)} S(C_0) \xrightarrow{S(p_\beta)} S(C_\beta)</p>
+<p>\end{equation}$$ scrambles information maximally: an eigenstate of $\alpha$ appears as a uniform superposition over eigenstates of $\beta$. Quantitatively, if $\psi = e_i$ is an eigenstate of $\alpha$, then the probability of obtaining eigenvalue $f_j$ of $\beta$ is $$\begin{equation}</p>
+<p>p(f_j | e_i) = |\langle f_j, e_i \rangle|^2 = \frac{1}{d}</p>
+<p>\end{equation}$$ for all $j$. This is precisely the defining condition for mutually unbiased bases.</p>
+<p>Categorically, the uniform overlap condition expresses that the "functor of forgetting from $C_\alpha$ to $C_\beta$" is maximally non-injective: it maps each point to a uniform distribution. This is the categorical dual of the statement that $C_\alpha$ and $C_\beta$ are maximally far apart in the refinement order of $\mathscr{C}$. ◻</p>
+<p>:::</p>
+<p>::: {#prop:num-mub .proposition}</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 36</div><p>(Number of MUBs). <em>In dimension $d = p^n$ (prime power), there exist exactly $d + 1$ mutually unbiased bases. Categorically, this corresponds to $d + 1$ maximally complementary contexts forming a "complete fan" in $\mathscr{C}$.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> The construction uses finite fields. In $\mathbb{F}_{p^n}$, the $p^n + 1$ one-dimensional subspaces of $\mathbb{F}_{p^n}^2$ (the projective line $\mathrm{PG}(1, p^n)$) provide $p^n + 1$ maximally complementary directions, each defining a distinct measurement context. The corresponding eigenbases are mutually unbiased by the properties of the discrete Fourier transform over $\mathbb{F}_{p^n}$. The categorical interpretation is that the projective line provides a maximal set of "non-refinable" objects in a category constructed from the finite field. ◻</p>
+<p>:::</p>
+<h2 id="entropic-uncertainty-relations">Entropic Uncertainty Relations</h2>
+<p>The categorical framework naturally accommodates stronger, entropic formulations of uncertainty.</p>
+<p>::: {#thm:entropic-uncertainty .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 37</div><p>(Entropic Uncertainty Relation). <em>For complementary observables $\alpha$ and $\beta$ with eigenbases $\{e_i\}$ and $\{f_j\}$ on a $d$-dimensional Hilbert space, and for any state $\psi$, $$\begin{equation} H(\alpha|\psi) + H(\beta|\psi) \geq \log d + \log c(\alpha, \beta), \end{equation}$$ where $H(\alpha|\psi) = -\sum_i |\langle e_i, \psi \rangle|^2 \log |\langle e_i, \psi \rangle|^2$ is the Shannon entropy of the measurement distribution and $c(\alpha, \beta) = \max_{i,j} |\langle e_i, f_j \rangle|$ is the maximum overlap.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> This is the Maassen--Uffink inequality [@maassen1988]. The categorical content is as follows. The Shannon entropy $H(\alpha|\psi)$ measures the information gained by restricting the presheaf $S$ from the state $\psi$ to the context $C_\alpha$. The sum $H(\alpha|\psi) + H(\beta|\psi)$ measures the total information gained by restricting to both $C_\alpha$ and $C_\beta$. The lower bound $\log d + \log c$ reflects the categorical obstruction to simultaneously refining both contexts: the greater the obstruction (smaller $c$, meaning more complementary), the larger the minimum total uncertainty.</p>
+<p>For mutually unbiased bases, $c = 1/\sqrt{d}$, giving the optimal bound $H(\alpha|\psi) + H(\beta|\psi) \geq \log d$, which confirms that MUBs correspond to maximal complementarity in the context category. ◻</p>
+<p>:::</p>
+<h1 id="measurement-as-perspective-selection-sec-measurement">Measurement as Perspective Selection {#sec:measurement}</h1>
+<h2 id="the-measurement-formalism">The Measurement Formalism</h2>
+<p>In the Quantum Perspectivism framework, measurement is not a dynamical process that changes the state of a system. It is the <em>selection of a perspective</em>---the choice of a morphism in $\mathscr{C}$ along which to restrict the presheaf.</p>
+<p>::: {#def:measurement .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 38</div><p>(Measurement as Restriction). A <strong>measurement</strong> of system $S$ in context $C_{\mathrm{meas}}$ from the laboratory context $C_{\mathrm{lab}}$ is the selection of a morphism $f : C_{\mathrm{lab}} \to C_{\mathrm{meas}}$ and the evaluation of the restriction map $$\begin{equation} S(f) : S(C_{\mathrm{meas}}) \to S(C_{\mathrm{lab}}). \end{equation}$$ The <strong>outcome</strong> of the measurement is the element $S(f)(\psi_{C_{\mathrm{meas}}}) \in S(C_{\mathrm{lab}})$. :::</p></div>
+<p>::: {#prop:projection .proposition}</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 39</div><p>(Projection from Restriction). <em>When $C_{\mathrm{meas}}$ corresponds to the measurement of an observable $\alpha$ with spectral decomposition $\alpha = \sum_\lambda \lambda P_\lambda$, the restriction map $S(f)$ decomposes as $$\begin{equation} S(f)(\psi) = \sum_\lambda P_\lambda \psi = \psi, \end{equation}$$ but the restriction to the sub-context corresponding to outcome $\lambda$ yields $$\begin{equation} S(f_\lambda)(\psi) = P_\lambda \psi / \|P_\lambda \psi\|, \end{equation}$$ with probability $p(\lambda) = \|P_\lambda \psi\|^2$ given by the Born rule.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> The context $C_{\mathrm{meas}}$ for observable $\alpha$ decomposes as a coproduct in $\mathscr{C}$: $$\begin{equation}</p>
+<p>C_{\mathrm{meas}} = \coprod_\lambda C_\lambda,</p>
+<p>\end{equation}$$ where $C_\lambda$ is the sub-context corresponding to outcome $\lambda$. The morphism $f : C_{\mathrm{lab}} \to C_{\mathrm{meas}}$ factors through one of these sub-contexts: $f = \iota_\lambda \circ f_\lambda$ where $\iota_\lambda : C_\lambda \hookrightarrow C_{\mathrm{meas}}$ is the inclusion and $f_\lambda : C_{\mathrm{lab}} \to C_\lambda$.</p>
+<p>The presheaf $S$, being a functor, maps this decomposition to: $$\begin{equation}</p>
+<p>S(C_{\mathrm{meas}}) = \bigoplus_\lambda S(C_\lambda),</p>
+<p>\end{equation}$$ with $S(\iota_\lambda) : S(C_{\mathrm{meas}}) \to S(C_\lambda)$ being the projection $P_\lambda$. The restriction $S(f_\lambda) = S(\iota_\lambda) \circ S(f)$ gives $P_\lambda \psi$, and normalization yields $P_\lambda \psi / \|P_\lambda \psi\|$.</p>
+<p>The probability $p(\lambda) = \|P_\lambda \psi\|^2$ follows from the Born rule, which is itself derived from the Yoneda isomorphism and Gleason's theorem applied to the presheaf [@long2026qp]. ◻</p>
+<p>:::</p>
+<h2 id="no-collapse-the-presheaf-remains-unchanged">No Collapse: The Presheaf Remains Unchanged</h2>
+<p>The crucial point is that <em>the presheaf $S$ itself does not change</em> during measurement. Only the perspective changes.</p>
+<p>::: {#thm:no-collapse .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 40</div><p>(No-Collapse Theorem). <em>In the Quantum Perspectivism framework:</em></p></div>
+<ol>
+<li><em>The presheaf $S : \mathscr{C}^{\mathrm{op}}\to \mathbf{Hilb}$ is the complete physical description of the system and does not change during measurement.</em></li>
+</ol>
+<ol>
+<li><em>What changes is the </em>context<em>: the observer transitions from accessing $S(C_{\mathrm{meas}})$ to accessing $S(C_\lambda)$ for some $\lambda$.</em></li>
+</ol>
+<ol>
+<li><em>The "post-measurement state" $P_\lambda \psi / \|P_\lambda \psi\|$ is not a new state of $S$ but the same presheaf $S$ viewed from the more refined context $C_\lambda$.</em></li>
+</ol>
+<ol>
+<li><em>The presheaf data at all other contexts $C' \neq C_\lambda$ remains unchanged and accessible via the appropriate morphisms.</em></li>
+</ol>
+<p>:::</p>
+<p>::: proof</p>
+<p><em>Proof.</em> (a) By the Yoneda Constraint, $S$ is determined by its relational profile $\mathsf{y}(S)$, which is the totality of morphisms from all probe systems. Measurement selects one morphism $f$ and evaluates $S(f)$, but this act of evaluation does not modify the functor $S$ any more than looking at a mountain from the north modifies the mountain.</p>
+<p>\(b\) The observer's transition from $C_{\mathrm{meas}}$ to $C_\lambda$ is a morphism in $\mathscr{C}$---it is a change of vantage point, not a change of the system. The restriction $S(\iota_\lambda) : S(C_{\mathrm{meas}}) \to S(C_\lambda)$ is a structural feature of the presheaf that exists independently of whether any observer accesses it.</p>
+<p>\(c\) The "post-measurement state" in the sub-context $C_\lambda$ is $S(\iota_\lambda)(\psi) = P_\lambda \psi$, which is the value of the presheaf at the context $C_\lambda$. It is not ontologically distinct from the "pre-measurement state" $\psi \in S(C_{\mathrm{meas}})$; the two are related by the functor $S$ applied to the morphism $\iota_\lambda$.</p>
+<p>\(d\) For any context $C'$ and morphism $g : C' \to C$ (where $C$ is any context), the data $S(g)(\psi_C) = \psi_{C'}$ remains available. The act of restricting along $f$ does not affect the data at $C'$. This is a consequence of the functoriality of $S$: the values of $S$ at different objects of $\mathscr{C}$ are related by the action of $S$ on morphisms but are not causally influenced by "observations" at any particular context. ◻</p>
+<p>:::</p>
+<h2 id="decoherence-as-coarse-graining-of-contexts">Decoherence as Coarse-Graining of Contexts</h2>
+<p>::: {#def:coarse-grain .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 41</div><p>(Coarse-Graining Functor). Let $\mathscr{C}_{\mathrm{macro}} \hookrightarrow \mathscr{C}$ be the inclusion of a subcategory of macroscopic contexts. The <strong>coarse-graining functor</strong> is the restriction $$\begin{equation} i^<em> : \widehat{\mathscr{C}} \to \widehat{\mathscr{C}_{\mathrm{macro}}}, \qquad (i^</em> S)(C_{\mathrm{macro}}) = S(i(C_{\mathrm{macro}})). \end{equation}$$ :::</p></div>
+<p>::: {#thm:decoherence .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 42</div><p>(Decoherence from Coarse-Graining). <em>Let $S$ be a system presheaf exhibiting coherence (off-diagonal terms in the density matrix) when viewed from fine-grained contexts in $\mathscr{C}$. The coarse-grained presheaf $i^</em> S$ exhibits decoherence---the off-diagonal terms vanish---if the inclusion $i : \mathscr{C}_{\mathrm{macro}} \hookrightarrow \mathscr{C}$ fails to preserve the colimits that encode coherence information.* :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> Consider a system in a superposition $\psi = c_1 \ket{1} + c_2 \ket{2}$ relative to a fine-grained context $C_{\mathrm{fine}} \in \mathscr{C}$. The density matrix is $$\begin{equation}</p>
+<p>\rho_{\mathrm{fine}} = \begin{pmatrix} |c_1|^2 & c_1 \bar{c}_2 \\ \bar{c}_1 c_2 & |c_2|^2 \end{pmatrix}.</p>
+<p>\end{equation}$$</p>
+<p>The coherence terms $c_1 \bar{c}_2$ and $\bar{c}_1 c_2$ represent interference between the branches $\ket{1}$ and $\ket{2}$. In the presheaf framework, these terms arise from the existence of morphisms in $\mathscr{C}$ that connect the sub-contexts for outcomes $1$ and $2$.</p>
+<p>The macroscopic subcategory $\mathscr{C}_{\mathrm{macro}}$ lacks these connecting morphisms: macroscopic contexts cannot distinguish the phases between $\ket{1}$ and $\ket{2}$. Formally, the colimit that would "glue" the sub-contexts $C_1$ and $C_2$ together (preserving phase information) does not exist in $\mathscr{C}_{\mathrm{macro}}$. Therefore, $$\begin{equation}</p>
+<p>(i^* \rho)_{\mathrm{macro}} = \begin{pmatrix} |c_1|^2 & 0 \\ 0 & |c_2|^2 \end{pmatrix},</p>
+<p>\end{equation}$$ which is a classical mixture. The off-diagonal terms are not "destroyed"---they are simply invisible from the coarse-grained perspective. ◻</p>
+<p>:::</p>
+<p>::: remark</p>
+<p><em>Remark 43</em> (Decoherence vs. Collapse). Decoherence in the categorical framework is fundamentally different from collapse. Collapse would require the presheaf $S$ to change; decoherence merely reflects the inability of coarse-grained contexts to access fine-grained data. The coherence information is still present in $S$---it is simply not visible from $\mathscr{C}_{\mathrm{macro}}$. This is directly analogous to the partial trace in standard quantum mechanics, but now derived from categorical structure rather than postulated.</p>
+<p>:::</p>
+<h2 id="the-measurement-problem-theorem">The Measurement Problem Theorem</h2>
+<p>We now provide the detailed statement and proof of the four-part measurement problem theorem.</p>
+<p>::: {#thm:measurement-problem .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 44</div><p>(Resolution of the Measurement Problem). <em>In the Quantum Perspectivism framework, the measurement problem does not arise. Specifically:</em></p></div>
+<ol>
+<li><strong><em>No ontological collapse.</strong> The presheaf $S$ is the complete physical reality and is invariant under measurement. There is no need for a projection postulate.</em></li>
+</ol>
+<ol>
+<li><strong><em>Contextual definiteness.</strong> Each context $C \in \mathscr{C}$ accesses a definite section $S(C)$ of the presheaf. The appearance of definite outcomes is not a dynamical process but a structural feature of how presheaves assign data to contexts.</em></li>
+</ol>
+<ol>
+<li><strong><em>Stochastic appearance.</strong> The probabilities of measurement outcomes arise from the Yoneda isomorphism: $\mathrm{Nat}(\mathsf{y}(C_\lambda), S) \cong S(C_\lambda)$ identifies the set of natural transformations from the representable presheaf $\mathsf{y}(C_\lambda)$ to $S$ with the data of $S$ at $C_\lambda$. When the measurement context $C_{\mathrm{meas}}$ decomposes as $\coprod_\lambda C_\lambda$, the probability of outcome $\lambda$ is $p(\lambda) = \|P_\lambda \psi\|^2$, forced by Gleason's theorem within the presheaf topos.</em></li>
+</ol>
+<ol>
+<li><strong><em>Inter-contextual consistency.</strong> The naturality of the presheaf guarantees that outcomes at different contexts are mutually consistent. For any morphisms $f : C' \to C$ and $g : C' \to C''$, the data satisfies $S(g \circ f^{-1})(\psi_C) = \psi_{C''}$ whenever $f$ is invertible, ensuring no contradictions between perspectives.</em></li>
+</ol>
+<p>:::</p>
+<p>::: proof</p>
+<p><em>Proof.</em> We prove each part.</p>
+<p><strong>Part (a):</strong> By the Yoneda Constraint (Axiom <a href="#ax:yoneda">1</a>{reference-type="ref" reference="ax:yoneda"}), the system $S$ is completely determined by its presheaf structure. The presheaf is a functor $S : \mathscr{C}^{\mathrm{op}}\to \mathbf{Hilb}$, which is a mathematical object defined independently of any particular evaluation. Evaluating $S$ at a context $C$ (i.e., computing $S(C)$) is a mathematical operation that does not modify the functor, just as evaluating a function $f(x)$ at $x = 3$ does not modify $f$. Therefore, there is no mechanism by which measurement could alter $S$.</p>
+<p><strong>Part (b):</strong> For each context $C$, the fiber $S(C)$ is a Hilbert space containing definite vectors. If $\alpha$ is the observable measured and $\psi_\lambda = P_\lambda \psi / \|P_\lambda \psi\|$ is the projection onto the eigenspace of $\alpha$ with eigenvalue $\lambda$, then $S(C_\lambda)$ contains the vector $\psi_\lambda$. This vector is an eigenstate of $\alpha$ with definite eigenvalue $\lambda$. The definiteness is structural: $C_\lambda$ is, by construction, a context in which $\alpha$ has the definite value $\lambda$.</p>
+<p><strong>Part (c):</strong> The Yoneda isomorphism $\mathrm{Nat}(\mathsf{y}(C_\lambda), S) \cong S(C_\lambda)$ identifies the "ways to probe $S$ from perspective $C_\lambda$" with the data of $S$ at $C_\lambda$. The number of independent probes is $\dim S(C_\lambda)$, and the inner product on $S(C_\lambda)$ determines probabilities. By Gleason's theorem (applicable since $\dim S(C) \geq 3$ for the relevant contexts), the unique probability measure compatible with the inner product structure is the Born rule $p(\lambda) = |\langle \psi_\lambda, \psi \rangle|^2 = \|P_\lambda \psi\|^2$.</p>
+<p><strong>Part (d):</strong> Naturality means that for every morphism $f : C' \to C$, the diagram $$\begin{equation}</p>
+<p>\begin{tikzcd}</p>
+<p>S(C) \arrow[d, "S(f)"] \\</p>
+<p>S(C')</p>
+<p>\end{tikzcd}</p>
+<p>\end{equation}$$ commutes with all observable evaluations. If $f : C_\lambda \to C_\mu$ is a morphism between sub-contexts, then $S(f)$ maps the outcome at $C_\lambda$ to the corresponding outcome at $C_\mu$ in a consistent manner. The functoriality condition $S(g \circ f) = S(f) \circ S(g)$ ensures that composing context changes preserves consistency, ruling out contradictory outcomes at related contexts. ◻</p>
+<p>:::</p>
+<h2 id="wigner-s-friend-scenario">Wigner's Friend Scenario</h2>
+<p>The Wigner's friend thought experiment [@wigner1961] poses a challenge: Wigner's friend measures a system and (in the friend's context) obtains a definite result, while Wigner (in a different context) describes the friend and system as an entangled superposition. Is the state of the system definite or superposed?</p>
+<p>::: {#thm:wigner .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 45</div><p>(Resolution of Wigner's Friend). <em>In the Quantum Perspectivism framework, the Wigner's friend scenario has a consistent resolution:</em></p></div>
+<ol>
+<li><em>The friend's context $C_F$ and Wigner's context $C_W$ are distinct objects of $\mathscr{C}$ with no common refinement that would force agreement on the "state" of the system.</em></li>
+</ol>
+<ol>
+<li><em>From $C_F$, the presheaf assigns a definite outcome: $S(C_F) \ni \psi_\lambda$ for some eigenvalue $\lambda$.</em></li>
+</ol>
+<ol>
+<li><em>From $C_W$, the presheaf assigns a superposition: $S(C_W) \ni \sum_\lambda c_\lambda (\psi_\lambda \otimes \ket{F_\lambda})$, where $\ket{F_\lambda}$ encodes the friend's state correlated with outcome $\lambda$.</em></li>
+</ol>
+<ol>
+<li><em>There is no contradiction because $C_F$ and $C_W$ are complementary contexts: they access different sections of the </em>same<em> presheaf $S$, and the presheaf is perfectly consistent in assigning different data to different contexts.</em></li>
+</ol>
+<ol>
+<li><em>Interference experiments by Wigner (acting on the joint system from $C_W$) can in principle reveal the coherence that is invisible from $C_F$, confirming that the presheaf is richer than any single context.</em></li>
+</ol>
+<p>:::</p>
+<p>::: proof</p>
+<p><em>Proof.</em> The key is that $C_F$ and $C_W$ are not refinements of each other. The friend's measurement selects a morphism $f_F : C_{\mathrm{lab}} \to C_F$, restricting the presheaf to the friend's perspective. Wigner's description uses a different morphism $f_W : C_{\mathrm{lab}} \to C_W$, which does not factor through $C_F$ (since Wigner treats the friend as a quantum system, not as a classical observer).</p>
+<p>Formally:</p>
+<ul>
+<li>$S(C_F)$: The fiber at the friend's context. Here, $S(C_F)$ contains the eigenstates of the measured observable, and the friend accesses one of them.</li>
+</ul>
+<ul>
+<li>$S(C_W)$: The fiber at Wigner's context. Here, $S(C_W) \cong S_{\mathrm{system}} \otimes S_{\mathrm{friend}}$, and the composite state is an entangled superposition.</li>
+</ul>
+<p>These are not contradictory descriptions of a single reality but different evaluations of the presheaf at different contexts. The consistency condition is satisfied: there exists a morphism $g : C_W \to C_F$ (Wigner can "ask the friend"), and $S(g)$ maps the entangled state in $S(C_W)$ to the definite state in $S(C_F)$ by performing the appropriate partial trace/projection.</p>
+<p>The apparent paradox dissolves because the question "is the state definite or superposed?" is context-dependent: the answer is "definite from $C_F$" and "superposed from $C_W$," and these answers are simultaneously true aspects of the single presheaf $S$. ◻</p>
+<p>:::</p>
+<h1 id="bell-s-theorem-and-contextuality-sec-bell">Bell's Theorem and Contextuality {#sec:bell}</h1>
+<h2 id="bell-s-theorem-as-a-categorical-structure-theorem">Bell's Theorem as a Categorical Structure Theorem</h2>
+<p>Bell's theorem [@bell1964] demonstrates that no local hidden variable theory can reproduce the predictions of quantum mechanics. In the categorical framework, this becomes a theorem about the non-existence of certain natural transformations.</p>
+<p>::: {#thm:bell .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 46</div><p>(Categorical Bell Theorem). <em>Let $S_{12}$ be an entangled presheaf on $\mathscr{C}\times \mathscr{C}$. There exists no natural transformation $$\begin{equation} \lambda : S_{12} \Rightarrow S_1 \boxtimes S_2 \end{equation}$$ that simultaneously:</em></p></div>
+<ol>
+<li><em>is a section of the projection $S_1 \boxtimes S_2 \to S_{12}$ (determinism);</em></li>
+</ol>
+<ol>
+<li><em>factors through representable presheaves at each context (locality);</em></li>
+</ol>
+<ol>
+<li><em>preserves the inner product structure (physicality).</em></li>
+</ol>
+<p>:::</p>
+<p>::: proof</p>
+<p><em>Proof.</em> Suppose such a $\lambda$ exists. Then for each pair $(C_1, C_2)$, we have a map $\lambda_{(C_1, C_2)} : S_{12}(C_1, C_2) \to S_1(C_1) \otimes S_2(C_2)$ that factors as $\lambda_{C_1} \otimes \lambda_{C_2}$ (by the locality condition). This means every state in $S_{12}(C_1, C_2)$ maps to a product state in $S_1(C_1) \otimes S_2(C_2)$.</p>
+<p>But an entangled state $\Psi \in S_{12}(C_1, C_2)$ has Schmidt rank $r > 1$, so $\Psi$ cannot be expressed as a single product vector $\psi_1 \otimes \psi_2$. The map $\lambda_{C_1} \otimes \lambda_{C_2}$ applied to $\Psi$ would produce a product vector, which cannot equal $\Psi$ (since $\Psi$ is not a product vector and $\lambda$ is required to be a section of the projection, hence the identity on the image).</p>
+<p>Therefore, no such $\lambda$ exists. The local hidden variable assumption (factorization through representable presheaves at each context independently) is incompatible with entanglement. ◻</p>
+<p>:::</p>
+<h2 id="the-chsh-inequality">The CHSH Inequality</h2>
+<p>The CHSH inequality [@chsh1969] provides a quantitative test of Bell's theorem.</p>
+<p>::: {#thm:chsh .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 47</div><p>(CHSH Inequality and Tsirelson Bound). <em>Let $A_1, A_2$ be observables on system 1 and $B_1, B_2$ observables on system 2, all with eigenvalues $\pm 1$. Define the CHSH operator $$\begin{equation} \mathcal{B}= A_1 \otimes B_1 + A_1 \otimes B_2 + A_2 \otimes B_1 - A_2 \otimes B_2. \end{equation}$$ Then:</em></p></div>
+<ol>
+<li><strong><em>Local hidden variable bound:</strong> If a factored natural transformation $\lambda$ as in Theorem <a href="#thm:bell">46</a>{reference-type="ref" reference="thm:bell"} exists, then $|\langle \mathcal{B}\rangle| \leq 2$.</em></li>
+</ol>
+<ol>
+<li><strong><em>Quantum bound (Tsirelson):</strong> In the presheaf framework, $|\langle \mathcal{B}\rangle| \leq 2\sqrt{2}$.</em></li>
+</ol>
+<ol>
+<li><strong><em>Saturation:</strong> The bound $2\sqrt{2}$ is achieved by the Bell state $\ket{\Phi^+}$ with suitable choices of $A_i, B_j$.</em></li>
+</ol>
+<p>:::</p>
+<p>::: proof</p>
+<p><em>Proof.</em> (i) If $\lambda$ exists, then for each hidden variable value $\mu$, the observables have definite values $a_i(\mu) = \pm 1$ and $b_j(\mu) = \pm 1$. Direct calculation shows $a_1 b_1 + a_1 b_2 + a_2 b_1 - a_2 b_2 = a_1(b_1 + b_2) + a_2(b_1 - b_2)$. Since $b_1, b_2 = \pm 1$, either $b_1 + b_2 = 0$ or $b_1 - b_2 = 0$, so $|a_1(b_1 + b_2) + a_2(b_1 - b_2)| \leq 2$. Averaging over $\mu$ gives $|\langle \mathcal{B}\rangle| \leq 2$.</p>
+<p>\(ii\) The operator $\mathcal{B}$ satisfies $\mathcal{B}^2 = 4I - [A_1, A_2] \otimes [B_1, B_2]$. Since $\|[A_i, A_j]\| \leq 2\|A_i\|\|A_j\| = 2$ for $\pm 1$-valued operators, we have $\|\mathcal{B}^2\| \leq 4 + 4 = 8$, giving $\|\mathcal{B}\| \leq 2\sqrt{2}$.</p>
+<p>\(iii\) Choose $A_1 = \sigma_z$, $A_2 = \sigma_x$, $B_1 = (\sigma_z + \sigma_x)/\sqrt{2}$, $B_2 = (\sigma_z - \sigma_x)/\sqrt{2}$. Then $\langle \Phi^+ | \mathcal{B}| \Phi^+ \rangle = 2\sqrt{2}$.</p>
+<p>The categorical interpretation is that the violation of the CHSH inequality witnesses the non-separability of the presheaf $S_{12}$: the correlations accessible from the product context $(C_1, C_2)$ exceed what any factored presheaf can produce, precisely because $S_{12}$ is an irreducible presheaf on $\mathscr{C}\times \mathscr{C}$. ◻</p>
+<p>:::</p>
+<h2 id="the-kochen-specker-theorem-as-non-existence-of-global-sections">The Kochen--Specker Theorem as Non-Existence of Global Sections</h2>
+<p>::: {#thm:ks .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 48</div><p>(Categorical Kochen--Specker). <em>For $\dim \mathcal{H}\geq 3$, there exists no global section of the presheaf of valuations $\calV : \mathscr{C}^{\mathrm{op}}\to \mathbf{Set}$ defined by $$\begin{equation} \calV(C) = \{v : \mathcal{O}(C) \to \{0, 1\} \mid v \text{ preserves functional relations}\}, \end{equation}$$ where $\mathcal{O}(C)$ is the set of observables compatible with context $C$. That is, $\varprojlim_C \calV(C) = \emptyset$.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> A global section would assign to each projection operator $P$ a value $v(P) \in \{0, 1\}$ such that:</p>
+<ol>
+<li>$v(I) = 1$;</li>
+</ol>
+<ol>
+<li>for any resolution of identity $\sum_i P_i = I$ by orthogonal projections, $\sum_i v(P_i) = 1$.</li>
+</ol>
+<p>This is a non-contextual hidden variable assignment. The Kochen--Specker theorem [@kochen1967] shows that no such assignment exists in $\dim \mathcal{H}\geq 3$ by constructing an explicit finite set of projections for which conditions (i) and (ii) are contradictory.</p>
+<p>Categorically, this means the presheaf $\calV$ has no global section: local valuations at individual contexts $C$ exist (each context, being a commutative subalgebra, admits classical valuations), but these local sections cannot be glued into a global section because the compatibility conditions across non-commutative contexts are inconsistent.</p>
+<p>This is precisely the statement that $\calV$ is not a <em>sheaf</em> with respect to any Grothendieck topology that covers all contexts. The obstruction is cohomological: the first cohomology group $H^1(\mathscr{C}, \calV)$ is non-trivial, encoding the contextuality of quantum mechanics. ◻</p>
+<p>:::</p>
+<p>::: remark</p>
+<p><em>Remark 49</em> (Contextuality as Cohomological Obstruction). The failure of the presheaf $\calV$ to be a sheaf is measured by its sheafification defect. Following Abramsky and Brandenburger [@abramsky2011], contextuality can be characterized as a cohomological obstruction: the existence of non-trivial elements in $H^1(\mathscr{C}, \calV)$ (or higher cohomology groups) quantifies the degree to which local valuations fail to globalize. This connects the categorical framework to the sheaf-cohomological approach to contextuality.</p>
+<p>:::</p>
+<h1 id="quantum-teleportation-and-entanglement-swapping-sec-teleportation">Quantum Teleportation and Entanglement Swapping {#sec:teleportation}</h1>
+<h2 id="quantum-teleportation-as-perspective-transfer">Quantum Teleportation as Perspective Transfer</h2>
+<p>Quantum teleportation [@bbc1993] is the transfer of quantum information using entanglement and classical communication. In the categorical framework, it becomes a <em>transfer of perspective</em>.</p>
+<p>::: {#def:teleportation .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 50</div><p>(Teleportation Protocol). The quantum teleportation protocol consists of:</p></div>
+<ol>
+<li><strong>Resource:</strong> An entangled Bell state $\ket{\Phi^+}_{BC}$ shared between parties $B$ (Alice) and $C$ (Bob), represented as a maximally entangled presheaf on $\mathscr{C}_B \times \mathscr{C}_C$.</li>
+</ol>
+<ol>
+<li><strong>Input:</strong> An unknown state $\ket{\psi}_A$ held by Alice, represented as a section of a qubit presheaf $Q_A$.</li>
+</ol>
+<ol>
+<li><strong>Bell measurement:</strong> Alice performs a joint measurement on systems $A$ and $B$ in the Bell basis, corresponding to a morphism $f_{\mathrm{Bell}} : C_{\mathrm{lab}}^A \to C_{\mathrm{Bell}}$ in $\mathscr{C}_A \times \mathscr{C}_B$.</li>
+</ol>
+<ol>
+<li><strong>Classical communication:</strong> Alice communicates her Bell measurement outcome $k \in \{1, 2, 3, 4\}$ to Bob.</li>
+</ol>
+<ol>
+<li><strong>Correction:</strong> Bob applies a unitary $U_k$ (one of $\{I, \sigma_x, \sigma_z, i\sigma_y\}$) to his qubit, corresponding to a natural automorphism of $Q_C$.</li>
+</ol>
+<p>:::</p>
+<p>::: {#thm:teleportation .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 51</div><p>(Teleportation as Presheaf Isomorphism). <em>The teleportation protocol induces a natural isomorphism between the presheaf data at Alice's input context and the presheaf data at Bob's output context: $$\begin{equation} Q_C(C_{\mathrm{out}}) \xrightarrow{\sim} Q_A(C_{\mathrm{in}}), \end{equation}$$ mediated by the entangled presheaf $S_{BC}$ and the Bell measurement.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> The initial state of the three-qubit system is $$\begin{equation}</p>
+<p>\ket{\Psi_0} = \ket{\psi}_A \otimes \ket{\Phi^+}_{BC} = (\alpha\ket{0}_A + \beta\ket{1}_A) \otimes \frac{1}{\sqrt{2}}(\ket{00}_{BC} + \ket{11}_{BC}).</p>
+<p>\end{equation}$$ Expanding in the Bell basis $\{\ket{\Phi^\pm}, \ket{\Psi^\pm}\}$ on the $AB$ subsystem: $$\begin{align}</p>
+<p>\ket{\Psi_0} &= \frac{1}{2}\Big[\ket{\Phi^+}_{AB}(\alpha\ket{0}_C + \beta\ket{1}_C) + \ket{\Phi^-}_{AB}(\alpha\ket{0}_C - \beta\ket{1}_C) \nonumber \\</p>
+<p>&\quad + \ket{\Psi^+}_{AB}(\alpha\ket{1}_C + \beta\ket{0}_C) + \ket{\Psi^-}_{AB}(-\alpha\ket{1}_C + \beta\ket{0}_C)\Big].</p>
+<p>\end{align}$$</p>
+<p>Alice's Bell measurement selects one of the four terms. Categorically, this is a restriction of the three-system presheaf $S_{ABC}$ along the Bell measurement morphism $f_{\mathrm{Bell}}$: $$\begin{equation}</p>
+<p>S_{ABC}(f_{\mathrm{Bell}}) : S_{ABC}(C_A \times C_B \times C_C) \to S_{ABC}(C_{\mathrm{Bell}} \times C_C).</p>
+<p>\end{equation}$$</p>
+<p>After Alice obtains outcome $k$ and communicates it, Bob applies $U_k$, which is a natural automorphism $U_k : Q_C \Rightarrow Q_C$. The result is: $$\begin{equation}</p>
+<p>U_k(\text{Bob's state after outcome } k) = \alpha\ket{0}_C + \beta\ket{1}_C = \ket{\psi}_C.</p>
+<p>\end{equation}$$</p>
+<p>The presheaf data $\ket{\psi}$ has been "transferred" from $Q_A(C_{\mathrm{in}})$ to $Q_C(C_{\mathrm{out}})$, but no physical object has moved. What has changed is the <em>perspective</em>: the data that was accessible via the context $C_A$ is now accessible via the context $C_C$, mediated by the entangled resource $S_{BC}$ and the Bell measurement.</p>
+<p>The no-signaling theorem is preserved because without Alice's classical communication (specifying $k$), Bob's reduced state is the maximally mixed state $I/2$, containing no information about $\ket{\psi}$. Categorically, the reduced presheaf $\mathrm{Tr}_{AB}(S_{ABC})$ at Bob's context is independent of $\ket{\psi}$. ◻</p>
+<p>:::</p>
+<p>::: remark</p>
+<p><em>Remark 52</em> (No-Cloning and Teleportation). Teleportation does not clone the state $\ket{\psi}$. Alice's Bell measurement destroys the coherence of $\ket{\psi}_A$---after measurement, system $A$ is in a Bell state with $B$, not in $\ket{\psi}$. Categorically, the presheaf section at $C_A$ has changed from $\ket{\psi}$ to a component of a Bell state. This is consistent with the no-cloning theorem (Corollary <a href="#cor:no-clone">27</a>{reference-type="ref" reference="cor:no-clone"}).</p>
+<p>:::</p>
+<h2 id="entanglement-swapping">Entanglement Swapping</h2>
+<p>Entanglement swapping is the process by which two particles that have never interacted become entangled, mediated by a Bell measurement on intermediate particles.</p>
+<p>::: {#def:ent-swap .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 53</div><p>(Entanglement Swapping Protocol). Given two entangled pairs---$\ket{\Phi^+}_{AB}$ shared between Alice and Bob, and $\ket{\Phi^+}_{CD}$ shared between Bob and Charlie---Bob performs a Bell measurement on his two particles $B$ and $C$. After the measurement, particles $A$ (Alice) and $D$ (Charlie) become entangled. :::</p></div>
+<p>::: {#thm:ent-swap .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 54</div><p>(Entanglement Swapping as Presheaf Composition). <em>Entanglement swapping is the categorical composition of entangled presheaves via a joint measurement: $$\begin{equation} S_{AB} \circ_B S_{CD} \xrightarrow{\text{Bell meas.}} S_{AD}. \end{equation}$$ The resulting presheaf $S_{AD}$ is maximally entangled on $\mathscr{C}_A \times \mathscr{C}_D$.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> The initial state of the four-qubit system is $$\begin{equation}</p>
+<p>\ket{\Psi_0} = \ket{\Phi^+}_{AB} \otimes \ket{\Phi^+}_{CD} = \frac{1}{2}(\ket{00}_{AB} + \ket{11}_{AB}) \otimes (\ket{00}_{CD} + \ket{11}_{CD}).</p>
+<p>\end{equation}$$ Rewriting in the Bell basis for the $BC$ subsystem: $$\begin{align}</p>
+<p>\ket{\Psi_0} = \frac{1}{2}\Big[&\ket{\Phi^+}_{BC} \otimes \ket{\Phi^+}_{AD} + \ket{\Phi^-}_{BC} \otimes \ket{\Phi^-}_{AD} \nonumber \\</p>
+<p>&+ \ket{\Psi^+}_{BC} \otimes \ket{\Psi^+}_{AD} + \ket{\Psi^-}_{BC} \otimes \ket{\Psi^-}_{AD}\Big].</p>
+<p>\end{align}$$</p>
+<p>Bob's Bell measurement on $BC$ selects one of the four terms. In each case, $A$ and $D$ are left in a Bell state---a maximally entangled state---despite having never interacted.</p>
+<p>Categorically, this is a composition of presheaves. The entangled presheaf $S_{AB}$ correlates contexts in $\mathscr{C}_A$ with contexts in $\mathscr{C}_B$, and $S_{CD}$ correlates $\mathscr{C}_C$ with $\mathscr{C}_D$. Bob's Bell measurement creates a morphism $\mathscr{C}_B \times \mathscr{C}_C \to \mathscr{C}_{\mathrm{Bell}}^{BC}$ that "fuses" the $B$ and $C$ context categories. The composition through this fusion produces a new presheaf on $\mathscr{C}_A \times \mathscr{C}_D$ that is non-separable: $$\begin{equation}</p>
+<p>S_{AD} = S_{AB} \circ_{\mathrm{Bell}} S_{CD},</p>
+<p>\end{equation}$$ where $\circ_{\mathrm{Bell}}$ denotes composition mediated by the Bell measurement.</p>
+<p>The presheaf $S_{AD}$ is maximally entangled because the Schmidt coefficients of the resulting Bell state are equal ($1/\sqrt{2}$). The non-locality of entanglement swapping is not "spooky action at a distance" but the creation of an irreducible joint relational structure through the composition of presheaves. ◻</p>
+<p>:::</p>
+<p>::: remark</p>
+<p><em>Remark 55</em> (Entanglement Swapping and the Yoneda Lemma). The Yoneda Lemma provides the ultimate justification for entanglement swapping: particles $A$ and $D$ become entangled because their joint relational profile (the presheaf $S_{AD}$) is non-separable. The relational profile is determined not by direct interaction but by the composition of morphisms through the intermediary $BC$. This is entirely analogous to how, in pure category theory, the composition $\mathrm{Hom}(A, B) \times \mathrm{Hom}(B, C) \to \mathrm{Hom}(A, C)$ creates direct relationships via composition through an intermediary.</p>
+<p>:::</p>
+<h2 id="quantum-dense-coding">Quantum Dense Coding</h2>
+<p>For completeness, we include the categorical treatment of superdense coding, the dual protocol to teleportation.</p>
+<p>::: {#prop:dense-coding .proposition}</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 56</div><p>(Superdense Coding as Dual Perspective Transfer). <em>By sharing a Bell state $\ket{\Phi^+}_{AB}$ and transmitting one qubit, Alice can communicate two classical bits to Bob. Categorically, Alice applies one of four natural automorphisms $\{I, \sigma_x, \sigma_z, i\sigma_y\}$ to her qubit presheaf $Q_A$, transforming $\ket{\Phi^+}$ into one of the four Bell states. Bob's Bell measurement on the joint system $Q_A \boxtimes Q_B$ then determines which automorphism Alice applied. The presheaf on $\mathscr{C}_A \times \mathscr{C}_B$ carries the information of two classical bits via its four orthogonal maximally entangled sections.</em> :::</p></div>
+<h1 id="haskell-implementation-sec-computation">Haskell Implementation {#sec:computation}</h1>
+<p>We provide a Haskell implementation that computationally verifies the key categorical structures described in this paper. The implementation models presheaves, product categories, entangled states, Schmidt decomposition, the CHSH inequality, and quantum teleportation.</p>
+<p>The implementation consists of the following modules:</p>
+<ul>
+<li><code>Main.hs</code>: Top-level driver that runs all verification tests.</li>
+</ul>
+<ul>
+<li>Core categorical structures: categories, presheaves, product categories.</li>
+</ul>
+<ul>
+<li>Entanglement module: Bell states, Schmidt decomposition, entanglement entropy, monogamy verification.</li>
+</ul>
+<ul>
+<li>Complementarity module: non-commutative contexts, uncertainty relation verification.</li>
+</ul>
+<ul>
+<li>Measurement module: perspective selection, decoherence, CHSH inequality.</li>
+</ul>
+<ul>
+<li>Teleportation module: teleportation protocol, entanglement swapping.</li>
+</ul>
+<p>Key type signatures include:</p>
+<p>-- Presheaf on a category C valued in Hilb</p>
+<p>type Presheaf c = c -> HilbertSpace</p>
+<p>-- Composite presheaf on product category</p>
+<p>type CompositePSh c = (c, c) -> HilbertSpace</p>
+<p>-- Entangled state: non-separable element</p>
+<p>data EntangledState = EntangledState</p>
+<p>{ schmidtCoeffs :: [Double]</p>
+<p>, schmidtRank   :: Int</p>
+<p>, entropy       :: Double</p>
+<p>}</p>
+<p>-- Bell measurement outcome</p>
+<p>data BellOutcome = PhiPlus | PhiMinus | PsiPlus | PsiMinus</p>
+<p>The complete implementation is provided in the accompanying source file <code>src/entanglement-complementarity-measurement/Main.hs</code>. Running the code produces verification output confirming:</p>
+<ol>
+<li>Bell states have Schmidt rank 2 and maximal entanglement entropy $\log 2$.</li>
+</ol>
+<ol>
+<li>The CHSH inequality is violated up to $2\sqrt{2} \approx 2.828$.</li>
+</ol>
+<ol>
+<li>Quantum teleportation faithfully transmits state data.</li>
+</ol>
+<ol>
+<li>Entanglement swapping produces maximally entangled output states.</li>
+</ol>
+<ol>
+<li>The monogamy inequality is satisfied for sample three-qubit states.</li>
+</ol>
+<ol>
+<li>Mutually unbiased bases satisfy the uniform overlap condition.</li>
+</ol>
+<h1 id="discussion-and-open-problems-sec-discussion">Discussion and Open Problems {#sec:discussion}</h1>
+<h2 id="summary-of-results">Summary of Results</h2>
+<p>We have developed a comprehensive categorical framework in which the three pillars of quantum phenomenology---entanglement, complementarity, and measurement---emerge as structural consequences of the Yoneda Constraint. The key results are:</p>
+<ol>
+<li><strong>Entanglement</strong> is non-separability of presheaves on product categories (Definitions <a href="#def:separable">13</a>{reference-type="ref" reference="def:separable"}--<a href="#def:entangled">14</a>{reference-type="ref" reference="def:entangled"}). The Schmidt decomposition (Theorem <a href="#thm:schmidt">16</a>{reference-type="ref" reference="thm:schmidt"}) is a categorical decomposition, and the monogamy of entanglement (Theorem <a href="#thm:monogamy">26</a>{reference-type="ref" reference="thm:monogamy"}) is a sheaf-like condition.</li>
+</ol>
+<ol>
+<li><strong>Complementarity</strong> arises from non-commutativity of contexts (Theorem <a href="#thm:complementarity">31</a>{reference-type="ref" reference="thm:complementarity"}). The Heisenberg uncertainty relation (Theorem <a href="#thm:uncertainty">32</a>{reference-type="ref" reference="thm:uncertainty"}) is forced by the non-existence of common refinements, and mutually unbiased bases (Theorem <a href="#thm:mub">35</a>{reference-type="ref" reference="thm:mub"}) correspond to maximal complementarity.</li>
+</ol>
+<ol>
+<li><strong>Measurement</strong> is perspective selection (Definition <a href="#def:measurement">38</a>{reference-type="ref" reference="def:measurement"}). There is no collapse (Theorem <a href="#thm:no-collapse">40</a>{reference-type="ref" reference="thm:no-collapse"}), decoherence arises from coarse-graining (Theorem <a href="#thm:decoherence">42</a>{reference-type="ref" reference="thm:decoherence"}), and the measurement problem dissolves (Theorem <a href="#thm:measurement-problem">44</a>{reference-type="ref" reference="thm:measurement-problem"}).</li>
+</ol>
+<ol>
+<li><strong>Bell's theorem</strong> (Theorem <a href="#thm:bell">46</a>{reference-type="ref" reference="thm:bell"}) and the <strong>Kochen--Specker theorem</strong> (Theorem <a href="#thm:ks">48</a>{reference-type="ref" reference="thm:ks"}) are categorical structure theorems about the non-existence of certain natural transformations and global sections, respectively.</li>
+</ol>
+<ol>
+<li><strong>Quantum teleportation</strong> (Theorem <a href="#thm:teleportation">51</a>{reference-type="ref" reference="thm:teleportation"}) and <strong>entanglement swapping</strong> (Theorem <a href="#thm:ent-swap">54</a>{reference-type="ref" reference="thm:ent-swap"}) are categorical compositions of presheaves via Bell measurements.</li>
+</ol>
+<h2 id="relation-to-prior-work">Relation to Prior Work</h2>
+<p>The topos-theoretic approach to quantum mechanics initiated by Isham and Butterfield [@isham1997; @butterfield1998] and developed by Döring and Isham [@doering2008] shares our emphasis on presheaves and contextuality. Our contribution is to unify entanglement, complementarity, and measurement under a single categorical umbrella, deriving all three from the Yoneda Constraint.</p>
+<p>The categorical quantum mechanics of Abramsky and Coecke [@abramsky2004] works within compact closed categories and provides string diagrammatic tools for quantum protocols. Our framework is complementary: we derive the categorical structures from the Yoneda Constraint, while CQM takes them as given and develops their compositional calculus. The integration of these two approaches---using our framework to justify the structures and CQM to compute with them---is a promising direction.</p>
+<p>The sheaf-cohomological approach to contextuality by Abramsky and Brandenburger [@abramsky2011] is directly connected to our Kochen--Specker analysis (Theorem <a href="#thm:ks">48</a>{reference-type="ref" reference="thm:ks"}). Our contribution is to embed this within the broader Quantum Perspectivism framework, showing that contextuality is one manifestation of the general principle that presheaves encode more than any single context can access.</p>
+<h2 id="open-problems">Open Problems</h2>
+<p><strong>Higher categorical structure.</strong> The framework presented here uses ordinary (1-)categories. Higher categorical generalizations---using 2-categories, $\infty$-categories, or $(\infty,1)$-topoi---may reveal additional structure, particularly for the treatment of gauge symmetries and topological quantum field theories.</p>
+<p><strong>Continuous variable systems.</strong> Our treatment has focused primarily on finite-dimensional systems. Extending to infinite-dimensional Hilbert spaces (continuous variable quantum mechanics) requires care with the categorical constructions, particularly the treatment of unbounded operators and the nuclear spectral theorem.</p>
+<p><strong>Quantitative contextuality measures.</strong> While we have identified contextuality as a cohomological obstruction (Remark following Theorem <a href="#thm:ks">48</a>{reference-type="ref" reference="thm:ks"}), developing quantitative measures of contextuality within the presheaf framework---and connecting them to operational advantages in quantum computation---is an important open problem.</p>
+<p><strong>Relativistic entanglement.</strong> Extending the categorical treatment of entanglement to relativistic settings, where the context category $\mathscr{C}$ includes Lorentzian causal structure, would connect this work to algebraic quantum field theory and provide insights into the black hole information paradox.</p>
+<p><strong>Experimental predictions.</strong> A key question is whether the Quantum Perspectivism framework makes predictions that differ from standard quantum mechanics. Potential avenues include: novel constraints on multi-party entanglement from presheaf cohomology, predictions for the quantum-to-classical transition based on the structure of $\mathscr{C}_{\mathrm{macro}}$, and constraints on quantum gravity from the requirement that $\mathscr{C}$ be self-consistent.</p>
+<h1 id="conclusion-sec-conclusion">Conclusion {#sec:conclusion}</h1>
+<p>We have shown that entanglement, complementarity, and measurement---the three defining phenomena of quantum mechanics---are not independent features requiring separate explanations but manifestations of a single categorical principle: the Yoneda Constraint. Entanglement is the non-separability of presheaves on product categories, reflecting the existence of irreducibly joint relational structure. Complementarity is the non-commutativity of context morphisms, reflecting the impossibility of simultaneously refining certain pairs of observational perspectives. Measurement is the selection of a perspective, reflecting the evaluation of a presheaf at a particular context.</p>
+<p>The framework dissolves the measurement problem (there is no collapse, only perspective selection), explains Bell inequality violations (entangled presheaves exceed the correlations possible for factored presheaves), derives the uncertainty principle from category structure (non-existence of common refinements), and provides natural categorical formulations of quantum information protocols (teleportation as perspective transfer, entanglement swapping as presheaf composition).</p>
+<p>The deepest lesson is that quantum mechanics is not mysterious if we take seriously the Yoneda Lemma's message: objects are constituted by their relationships. A composite system has relationships that transcend its parts (entanglement), some relationships cannot coexist (complementarity), and accessing a particular relationship is a matter of choosing a vantage point (measurement). Quantum mechanics is the physics of relational structure, and the Yoneda Lemma is its constitution.</p>
+<p>------------------------------------------------------------------------</p>
+<p><strong>Acknowledgments.</strong> The author thanks the YonedaAI Research Collective for ongoing collaboration and intellectual support, and acknowledges the foundational contributions of Saunders Mac Lane, Alexander Grothendieck, and Nobuo Yoneda.</p>
+<p><strong>GrokRxiv DOI:</strong> <code>10.48550/GrokRxiv.2026.02.entanglement-complementarity-measurement</code></p>
+<p>::: thebibliography</p>
+<p>99</p>
+<p>N. Yoneda, "On the homology theory of modules," <em>J. Fac. Sci. Univ. Tokyo Sect. I</em>, vol. 7, pp. 193--227, 1954.</p>
+<p>S. Mac Lane, <em>Categories for the Working Mathematician</em>, 2nd ed., Springer, 1998.</p>
+<p>E. Riehl, <em>Category Theory in Context</em>, Dover Publications, 2016.</p>
+<p>E. Schrödinger, "Discussion of probability relations between separated systems," <em>Math. Proc. Cambridge Philos. Soc.</em>, vol. 31, pp. 555--563, 1935.</p>
+<p>N. Bohr, "The quantum postulate and the recent development of atomic theory," <em>Nature</em>, vol. 121, pp. 580--590, 1928.</p>
+<p>W. Heisenberg, "Über den anschaulichen Inhalt der quantentheoretischen Kinematik und Mechanik," <em>Z. Phys.</em>, vol. 43, pp. 172--198, 1927.</p>
+<p>J. S. Bell, "On the Einstein Podolsky Rosen paradox," <em>Physics Physique Fizika</em>, vol. 1, pp. 195--200, 1964.</p>
+<p>J. S. Bell, "Against 'measurement'," <em>Phys. World</em>, vol. 3, pp. 33--41, 1990.</p>
+<p>M. Long, "Quantum perspectivism as the foundation of physics: The Yoneda Constraint and the relational structure of reality," <em>GrokRxiv</em>, 2026.</p>
+<p>V. Coffman, J. Kundu, and W. K. Wootters, "Distributed entanglement," <em>Phys. Rev. A</em>, vol. 61, 052306, 2000.</p>
+<p>J. F. Clauser, M. A. Horne, A. Shimony, and R. A. Holt, "Proposed experiment to test local hidden-variable theories," <em>Phys. Rev. Lett.</em>, vol. 23, pp. 880--884, 1969.</p>
+<p>S. Kochen and E. P. Specker, "The problem of hidden variables in quantum mechanics," <em>J. Math. Mech.</em>, vol. 17, pp. 59--87, 1967.</p>
+<p>C. H. Bennett, G. Brassard, C. Crépeau, R. Jozsa, A. Peres, and W. K. Wootters, "Teleporting an unknown quantum state via dual classical and Einstein-Podolsky-Rosen channels," <em>Phys. Rev. Lett.</em>, vol. 70, pp. 1895--1899, 1993.</p>
+<p>E. P. Wigner, "Remarks on the mind-body question," in <em>The Scientist Speculates</em>, I. J. Good, ed., pp. 284--302, Heinemann, 1961.</p>
+<p>H. Maassen and J. B. M. Uffink, "Generalized entropic uncertainty relations," <em>Phys. Rev. Lett.</em>, vol. 60, pp. 1103--1106, 1988.</p>
+<p>C. J. Isham, "Topos theory and consistent histories: The internal logic of the set of all consistent sets," <em>Int. J. Theor. Phys.</em>, vol. 36, pp. 785--814, 1997.</p>
+<p>J. Butterfield and C. J. Isham, "A topos perspective on the Kochen--Specker theorem: I. Quantum states as generalized valuations," <em>Int. J. Theor. Phys.</em>, vol. 37, pp. 2669--2733, 1998.</p>
+<p>A. Döring and C. J. Isham, "A topos foundation for theories of physics," <em>J. Math. Phys.</em>, vol. 49, 053515, 2008.</p>
+<p>S. Abramsky and B. Coecke, "A categorical semantics of quantum protocols," in <em>Proc. 19th Annual IEEE Symposium on Logic in Computer Science</em>, pp. 415--425, 2004.</p>
+<p>S. Abramsky and A. Brandenburger, "The sheaf-theoretic structure of non-locality and contextuality," <em>New J. Phys.</em>, vol. 13, 113036, 2011.</p>
+<p>A. M. Gleason, "Measures on the closed subspaces of a Hilbert space," <em>J. Math. Mech.</em>, vol. 6, pp. 885--893, 1957.</p>
+<p>B. S. Cirel'son (Tsirelson), "Quantum generalizations of Bell's inequality," <em>Lett. Math. Phys.</em>, vol. 4, pp. 93--100, 1980.</p>
+<p>M. A. Nielsen and I. L. Chuang, <em>Quantum Computation and Quantum Information</em>, Cambridge University Press, 2000.</p>
+<p>D. M. Greenberger, M. A. Horne, and A. Zeilinger, "Going beyond Bell's theorem," in <em>Bell's Theorem, Quantum Theory, and Conceptions of the Universe</em>, M. Kafatos, ed., pp. 69--72, Kluwer, 1989.</p>
+<p>W. K. Wootters, "Entanglement of formation of an arbitrary state of two qubits," <em>Phys. Rev. Lett.</em>, vol. 80, pp. 2245--2248, 1998.</p>
+<p>S. L. Braunstein and A. Mann, "Measurement of the Bell operator and quantum teleportation," <em>Phys. Rev. A</em>, vol. 51, pp. R1727--R1730, 1995.</p>
+<p>M. Żukowski, A. Zeilinger, M. A. Horne, and A. K. Ekert, "Event-ready-detectors Bell experiment via entanglement swapping," <em>Phys. Rev. Lett.</em>, vol. 71, pp. 4287--4290, 1993.</p>
+<p>D. Frauchiger and R. Renner, "Quantum theory cannot consistently describe the use of itself," <em>Nat. Commun.</em>, vol. 9, 3711, 2018.</p>
+<p>Č. Brukner, "A no-go theorem for observer-independent facts," <em>Entropy</em>, vol. 20, 350, 2018.</p>
+<p>P. T. Johnstone, <em>Sketches of an Elephant: A Topos Theory Compendium</em>, Oxford University Press, 2002.</p>
+<p>A. Grothendieck, "Sur quelques points d'algèbre homologique," <em>Tôhoku Math. J.</em>, vol. 9, pp. 119--221, 1957.</p>
+<p>G. Birkhoff and J. von Neumann, "The logic of quantum mechanics," <em>Ann. of Math.</em>, vol. 37, pp. 823--843, 1936.</p>
+<p>:::</p>
+    </div>
+
+    <div class="paper-nav">
+      <a href="/papers/yoneda-constraint-quantum-structure.html">
+      <div class="paper-nav-label">Previous</div>
+      <div class="paper-nav-title">Deriving Quantum Mechanics from the Yoneda Lemma</div>
+    </a>
+      <a href="/papers/categorical-architecture-qp.html" class="next">
+      <div class="paper-nav-label">Next</div>
+      <div class="paper-nav-title">The Categorical Architecture of Quantum Perspectivism</div>
+    </a>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">Matthew Long</div>
+    <div class="footer-org">The YonedaAI Collaboration &middot; YonedaAI Research Collective &middot; Chicago, IL</div>
+    <div class="footer-links">
+      <a href="mailto:matthew@yonedaai.com">matthew@yonedaai.com</a>
+      <a href="https://yonedaai.com">yonedaai.com</a>
+      <a href="https://github.com/MagnetonIO" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 YonedaAI Research Collective. All rights reserved.</div>
+  </div>
+</footer>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false},
+      {left: '\\(', right: '\\)', display: false},
+      {left: '\\[', right: '\\]', display: true}
+    ],
+    throwOnError: false
+  });"></script>
+</body>
+</html>

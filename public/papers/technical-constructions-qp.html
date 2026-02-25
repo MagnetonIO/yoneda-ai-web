@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Constructions in Quantum Perspectivism - YonedaAI</title>
+  <meta name="description" content="Technical Constructions in Quantum Perspectivism by Matthew Long, YonedaAI Research Collective">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff; --bg-alt: #f8f9fa; --bg-card: #ffffff;
+      --text: #1a1a2e; --text-secondary: #555770; --text-muted: #8b8da3;
+      --accent: #6c5ce7; --accent-light: #a29bfe; --accent-bg: #f0eeff;
+      --border: #e8e8ef;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+      --radius: 12px; --radius-sm: 8px;
+      --max-width: 1200px; --nav-height: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); height: var(--nav-height);
+    }
+    .nav-inner {
+      max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 100%;
+    }
+    .nav-logo { font-weight: 700; font-size: 1.15rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .gh-link { display: flex; align-items: center; gap: 6px; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--text); }
+    .nav-hamburger svg { display: block; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: var(--nav-height); left: 0; right: 0; background: var(--bg); flex-direction: column; padding: 16px 24px; gap: 16px; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); }
+      .nav-links.open { display: flex; }
+      .nav-hamburger { display: block; }
+    }
+    footer { border-top: 1px solid var(--border); padding: 48px 24px; text-align: center; }
+    .footer-inner { max-width: var(--max-width); margin: 0 auto; }
+    .footer-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .footer-org { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.85rem; color: var(--accent); text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+    .footer-copy { margin-top: 24px; font-size: 0.8rem; color: var(--text-muted); }
+
+    /* Paper page layout */
+    .paper-layout { display: flex; max-width: var(--max-width); margin: 0 auto; padding: 0 24px; gap: 40px; }
+    .paper-sidebar { width: 240px; flex-shrink: 0; position: sticky; top: calc(var(--nav-height) + 24px); align-self: flex-start; max-height: calc(100vh - var(--nav-height) - 48px); overflow-y: auto; padding: 16px 0; }
+    .paper-sidebar h4 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+    .paper-sidebar ul { list-style: none; }
+    .paper-sidebar li { margin-bottom: 4px; }
+    .paper-sidebar a { font-size: 0.82rem; color: var(--text-secondary); text-decoration: none; display: block; padding: 4px 12px; border-left: 2px solid transparent; transition: all 0.15s; line-height: 1.4; }
+    .paper-sidebar a:hover { color: var(--accent); border-left-color: var(--accent); background: var(--accent-bg); }
+    .paper-sidebar a.depth-2 { padding-left: 24px; font-size: 0.78rem; }
+    .paper-main { flex: 1; min-width: 0; padding: 40px 0 80px; }
+    @media (max-width: 960px) {
+      .paper-sidebar { display: none; }
+      .paper-layout { padding: 0 16px; }
+    }
+
+    /* Breadcrumb */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* Paper header */
+    .paper-header { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+    .paper-header h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
+    .paper-meta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px; }
+    .paper-meta-item { font-size: 0.85rem; color: var(--text-secondary); }
+    .paper-meta-tag { font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+    .badge-pr { display: inline-flex; align-items: center; gap: 4px; font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: #e8f5e9; color: #2e7d32; }
+
+    /* Action bar */
+    .action-bar { display: flex; gap: 12px; flex-wrap: wrap; }
+    .action-bar .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: all 0.2s; border: 1px solid var(--border); color: var(--text); background: var(--bg); }
+    .action-bar .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .action-bar .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .action-bar .btn-primary:hover { background: #5a4bd4; }
+    .action-bar .btn svg { width: 16px; height: 16px; }
+
+    /* Content styling */
+    .paper-content h2 { font-size: 1.5rem; font-weight: 700; margin: 48px 0 16px; padding-top: 16px; letter-spacing: -0.02em; border-top: 1px solid var(--border); }
+    .paper-content h2:first-child { border-top: none; margin-top: 0; }
+    .paper-content h3 { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; }
+    .paper-content h4 { font-size: 1.05rem; font-weight: 600; margin: 24px 0 8px; }
+    .paper-content p { margin-bottom: 16px; color: var(--text); }
+    .paper-content ul, .paper-content ol { margin: 0 0 16px 24px; }
+    .paper-content li { margin-bottom: 6px; }
+    .paper-content blockquote { border-left: 3px solid var(--accent); padding: 12px 20px; margin: 16px 0; background: var(--accent-bg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+    .paper-content blockquote p { margin-bottom: 0; color: var(--text-secondary); font-style: italic; }
+    .paper-content code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: var(--bg-alt); padding: 2px 6px; border-radius: 4px; }
+    .paper-content pre { background: #1e1e2e; color: #cdd6f4; padding: 20px; border-radius: var(--radius-sm); overflow-x: auto; margin: 16px 0; }
+    .paper-content pre code { background: none; padding: 0; color: inherit; }
+    .paper-content a { color: var(--accent); text-decoration: none; }
+    .paper-content a:hover { text-decoration: underline; }
+    .paper-content hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+    .paper-content strong { font-weight: 600; }
+    .paper-content em { font-style: italic; }
+
+    /* Theorem/Definition blocks */
+    .callout { border-left: 4px solid; padding: 16px 20px; margin: 20px 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+    .callout-theorem { border-color: #6c5ce7; background: #f0eeff; }
+    .callout-definition { border-color: #00b894; background: #e8f8f5; }
+    .callout-proposition { border-color: #fdcb6e; background: #fef9e7; }
+    .callout-lemma { border-color: #74b9ff; background: #eef6ff; }
+    .callout-corollary { border-color: #a29bfe; background: #f5f3ff; }
+    .callout-remark { border-color: #636e72; background: #f5f6f7; }
+    .callout-example { border-color: #00cec9; background: #e8fffe; }
+    .callout-axiom { border-color: #e17055; background: #fef0ed; }
+    .callout-title { font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; }
+
+    /* Table */
+    .paper-content table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    .paper-content th, .paper-content td { padding: 10px 14px; border: 1px solid var(--border); text-align: left; font-size: 0.9rem; }
+    .paper-content th { background: var(--bg-alt); font-weight: 600; }
+
+    /* Prev/Next nav */
+    .paper-nav { display: flex; justify-content: space-between; gap: 20px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .paper-nav a { text-decoration: none; color: var(--text); padding: 16px 20px; border: 1px solid var(--border); border-radius: var(--radius-sm); flex: 1; transition: border-color 0.2s, box-shadow 0.2s; }
+    .paper-nav a:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
+    .paper-nav-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+    .paper-nav-title { font-size: 0.95rem; font-weight: 600; margin-top: 4px; }
+    .paper-nav .next { text-align: right; }
+
+    /* KaTeX overrides */
+    .katex-display { overflow-x: auto; overflow-y: hidden; padding: 8px 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Yoneda<span>AI</span></a>
+    <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#series1">Series 1</a></li>
+      <li><a href="/#series2">Series 2</a></li>
+      <li><a href="/#framework">Framework</a></li>
+      <li><a href="/#repos">Repositories</a></li>
+      <li><a href="https://github.com/MagnetonIO" class="gh-link" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="paper-layout">
+  <aside class="paper-sidebar">
+    <h4>Table of Contents</h4>
+    <ul>
+      <li><a href="#categorical-foundations" class="">Categorical Foundations</a></li>
+<li><a href="#quantum-mechanical-preliminaries" class="">Quantum-Mechanical Preliminaries</a></li>
+<li><a href="#the-yoneda-constraint-recap" class="">The Yoneda Constraint: Recap</a></li>
+<li><a href="#the-physical-requirements" class="">The Physical Requirements</a></li>
+<li><a href="#classification-of-candidate-fields" class="">Classification of Candidate Fields</a></li>
+<li><a href="#the-super-braiding-argument" class="">The Super-Braiding Argument</a></li>
+<li><a href="#the-spin-statistics-connection-from-categorical-braiding" class="">The Spin-Statistics Connection from Categorical Braiding</a></li>
+<li><a href="#the-full-reconstruction-theorem" class="">The Full Reconstruction Theorem</a></li>
+<li><a href="#detailed-algebraic-construction" class="">Detailed Algebraic Construction</a></li>
+<li><a href="#classical-gleason-s-theorem-statement-and-proof-outline" class="">Classical Gleason&#x27;s Theorem: Statement and Proof Outline</a></li>
+<li><a href="#the-topos-theoretic-setting" class="">The Topos-Theoretic Setting</a></li>
+<li><a href="#the-topos-gleason-theorem-statement" class="">The Topos Gleason Theorem: Statement</a></li>
+<li><a href="#proof-of-the-topos-gleason-theorem" class="">Proof of the Topos Gleason Theorem</a></li>
+<li><a href="#the-born-rule-as-a-corollary" class="">The Born Rule as a Corollary</a></li>
+<li><a href="#the-kochen-specker-theorem-as-a-topos-theoretic-statement" class="">The Kochen--Specker Theorem as a Topos-Theoretic Statement</a></li>
+<li><a href="#concrete-calculation-gleason-on-a-qubit-pair" class="">Concrete Calculation: Gleason on a Qubit Pair</a></li>
+<li><a href="#the-physical-picture" class="">The Physical Picture</a></li>
+<li><a href="#the-restriction-functor" class="">The Restriction Functor</a></li>
+<li><a href="#loss-of-coherence-the-mechanism" class="">Loss of Coherence: The Mechanism</a></li>
+<li><a href="#environment-induced-superselection" class="">Environment-Induced Superselection</a></li>
+<li><a href="#the-partial-trace-as-a-categorical-construction" class="">The Partial Trace as a Categorical Construction</a></li>
+<li><a href="#detailed-example-qubit-environment-decoherence" class="">Detailed Example: Qubit-Environment Decoherence</a></li>
+<li><a href="#the-single-qubit-complete-analysis" class="">The Single Qubit: Complete Analysis</a></li>
+<li><a href="#two-qubit-system-entanglement-and-bell-states" class="">Two-Qubit System: Entanglement and Bell States</a></li>
+<li><a href="#the-harmonic-oscillator-infinite-dimensional-case" class="">The Harmonic Oscillator: Infinite-Dimensional Case</a></li>
+<li><a href="#three-level-system-the-minimal-gleason-setting" class="">Three-Level System: The Minimal Gleason Setting</a></li>
+<li><a href="#the-hierarchy-of-context-categories" class="">The Hierarchy of Context Categories</a></li>
+<li><a href="#phase-space-emergence" class="">Phase Space Emergence</a></li>
+<li><a href="#wigner-function-and-the-semiclassical-limit" class="">Wigner Function and the Semiclassical Limit</a></li>
+<li><a href="#hamilton-s-equations-from-presheaf-dynamics" class="">Hamilton&#x27;s Equations from Presheaf Dynamics</a></li>
+<li><a href="#ehrenfest-s-theorem-a-categorical-derivation" class="">Ehrenfest&#x27;s Theorem: A Categorical Derivation</a></li>
+<li><a href="#type-level-categories" class="">Type-Level Categories</a></li>
+<li><a href="#verification-of-key-results" class="">Verification of Key Results</a></li>
+<li><a href="#summary-of-results" class="">Summary of Results</a></li>
+<li><a href="#relation-to-prior-work" class="">Relation to Prior Work</a></li>
+<li><a href="#open-problems" class="">Open Problems</a></li>
+<li><a href="#complex-number-verification" class="">Complex Number Verification</a></li>
+<li><a href="#gleason-frame-function" class="">Gleason Frame Function</a></li>
+<li><a href="#decoherence-computation" class="">Decoherence Computation</a></li>
+    </ul>
+  </aside>
+
+  <main class="paper-main">
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/#series2">Series 2</a>
+      <span>/</span>
+      <span>Technical Constructions in Quantum Perspectivism</span>
+    </div>
+
+    <div class="paper-header">
+      <h1>Technical Constructions in Quantum Perspectivism</h1>
+      <div class="paper-meta">
+        <span class="paper-meta-tag">math-ph</span>
+        <span class="paper-meta-item">26 pages</span>
+        <span class="paper-meta-item">Matthew Long</span>
+        <span class="paper-meta-item">24 February 2026</span>
+        <span class="badge-pr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+      </div>
+      <div class="action-bar">
+        <a href="/papers/pdf/technical-constructions-qp.pdf" class="btn btn-primary" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+        <a href="https://github.com/MagnetonIO/technical-constructions-qp" class="btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          View on GitHub
+        </a>
+        <a href="https://github.com/MagnetonIO/technical-constructions-qp" class="btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Haskell Code
+        </a>
+      </div>
+    </div>
+
+    <div class="paper-content">
+      <h2 id="categorical-foundations">Categorical Foundations</h2>
+<p>We recall the essential definitions. Throughout, $\mathscr{C}$ denotes a small category whose objects are <strong>observational contexts</strong> and whose morphisms are <strong>refinements</strong> between contexts.</p>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 1</div><p>(Presheaf and Presheaf Topos). A presheaf on $\mathscr{C}$ is a functor $F : \mathscr{C}^{\mathrm{op}}\to \mathbf{Set}$. The <strong>presheaf topos</strong> is the functor category $\widehat{\mathscr{C}} = [\mathscr{C}^{\mathrm{op}}, \mathbf{Set}]$. It is a complete and cocomplete elementary topos with a subobject classifier $$\Omega(C) = \{ \text{sieves on } C \}$$ for each object $C \in \mathscr{C}$. :::</p></div>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 2</div><p>(Monoidal Category). A <strong>monoidal category</strong> $(\mathscr{C}, \otimes, I, \alpha, \lambda, \rho)$ consists of a bifunctor $\otimes : \mathscr{C}\times \mathscr{C}\to \mathscr{C}$, a unit object $I$, and natural isomorphisms --- the associator $\alpha_{A,B,C} : (A \otimes B) \otimes C \xrightarrow{\sim} A \otimes (B \otimes C)$, left unitor $\lambda_A : I \otimes A \xrightarrow{\sim} A$, and right unitor $\rho_A : A \otimes I \xrightarrow{\sim} A$ --- satisfying the pentagon and triangle axioms. :::</p></div>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 3</div><p>(Braided Monoidal Category). A monoidal category is <strong>braided</strong> if it is equipped with a natural isomorphism $\beta_{A,B} : A \otimes B \xrightarrow{\sim} B \otimes A$ satisfying the hexagon axioms: $$\begin{align} \alpha_{B,C,A} \circ \beta_{A, B \otimes C} \circ \alpha_{A,B,C} &= (\mathrm{id}_B \otimes \beta_{A,C}) \circ \alpha_{B,A,C} \circ (\beta_{A,B} \otimes \mathrm{id}_C), \label{eq:hex1}\\ \alpha_{C,A,B}^{-1} \circ \beta_{A \otimes B, C} \circ \alpha_{A,B,C}^{-1} &= (\beta_{A,C} \otimes \mathrm{id}_B) \circ \alpha_{A,C,B}^{-1} \circ (\mathrm{id}_A \otimes \beta_{B,C}). \label{eq:hex2} \end{align}$$ The braiding is <strong>symmetric</strong> if $\beta_{B,A} \circ \beta_{A,B} = \mathrm{id}_{A \otimes B}$ for all $A, B$. :::</p></div>
+<p>::: {#def:super .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 4</div><p>(Super-Category and $\mathbb{Z}/2$-Grading). A <strong>super-category</strong> is a $\mathbb{Z}/2\mathbb{Z}$-graded monoidal category $\mathscr{C}= \mathscr{C}_0 \oplus \mathscr{C}_1$ where $\mathscr{C}_0$ is the <strong>bosonic</strong> (even) sector and $\mathscr{C}_1$ is the <strong>fermionic</strong> (odd) sector. The monoidal product respects the grading: $\mathscr{C}_i \otimes \mathscr{C}_j \subset \mathscr{C}_{i+j \bmod 2}$. The braiding on homogeneous elements satisfies $$\begin{equation} \label{eq:superbraiding} \beta_{A,B} \circ \beta_{B,A} = (-1)^{|A| \cdot |B|} \, \mathrm{id}_{A \otimes B}, \end{equation}$$ where $|A| \in \{0, 1\}$ is the grading of $A$. :::</p></div>
+<h2 id="quantum-mechanical-preliminaries">Quantum-Mechanical Preliminaries</h2>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 5</div><p>(Hilbert Space and Operators). A <strong>Hilbert space</strong> $\mathcal{H}$ is a complete inner product space over $\mathbb{C}$. A <strong>bounded linear operator</strong> $A : \mathcal{H}\to \mathcal{H}$ has an adjoint $A\ensuremath{^{\dagger}}$ satisfying $\langle A\ensuremath{^{\dagger}}\phi, \psi \rangle = \langle \phi, A\psi \rangle$. An operator is <strong>self-adjoint</strong> if $A = A\ensuremath{^{\dagger}}$. A <strong>projection</strong> is a self-adjoint idempotent: $P^2 = P = P\ensuremath{^{\dagger}}$. A <strong>density operator</strong> $\rho$ is a positive trace-class operator with $\mathrm{Tr}(\rho) = 1$. :::</p></div>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 6</div><p>(Frame Function [@gleason1957]). A <strong>frame function</strong> on a Hilbert space $\mathcal{H}$ of dimension $d \geq 3$ is a function $f : S(\mathcal{H}) \to [0,1]$ from the unit sphere such that for every orthonormal basis $\{e_1, \ldots, e_d\}$, $$\begin{equation} \label{eq:framefunction} \sum_{i=1}^{d} f(e_i) = 1. \end{equation}$$ :::</p></div>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 7</div><p>(Partial Trace). Given a bipartite Hilbert space $\mathcal{H}= \mathcal{H}_A \otimes \mathcal{H}_B$, the <strong>partial trace</strong> over $\mathcal{H}_B$ is the unique linear map $\mathrm{Tr}_B : \mathcal{L}(\mathcal{H}) \to \mathcal{L}(\mathcal{H}_A)$ satisfying $$\begin{equation} \mathrm{Tr}_B(|\phi_1\rangle\langle \phi_2| \otimes |\psi_1\rangle\langle \psi_2|) = \langle \psi_2|\psi_1\rangle |\phi_1\rangle\langle \phi_2|. \end{equation}$$ :::</p></div>
+<h2 id="the-yoneda-constraint-recap">The Yoneda Constraint: Recap</h2>
+<p>We recall from [@long2026qp] that the <strong>Yoneda Constraint</strong> requires every physical system $S$ to be a presheaf $S : \mathscr{C}^{\mathrm{op}}\to \mathbf{Set}$, with the Yoneda embedding $\mathsf{y}: \mathscr{C}\hookrightarrow \widehat{\mathscr{C}}$ being fully faithful. The key consequence is that physical identity is relational: a system is completely determined by the totality of its interactions with all possible probes.</p>
+<h1 id="reconstruction-of-mathbb-c-from-braided-monoidal-structure-sec-complex">Reconstruction of $\mathbb{C}$ from Braided Monoidal Structure {#sec:complex}</h1>
+<p>Why are quantum amplitudes complex-valued? This section provides a complete categorical answer.</p>
+<h2 id="the-physical-requirements">The Physical Requirements</h2>
+<p>We posit that the category $\mathscr{C}$ of observational contexts carries the structure of a braided monoidal category, and that presheaves $S : \mathscr{C}^{\mathrm{op}}\to \mathbf{Vect}_k$ take values in the category of vector spaces over a field $k$. We require:</p>
+<ol>
+<li>[]{#req:algclosed label="req:algclosed"} $k$ is <strong>algebraically closed</strong>: every non-constant polynomial over $k$ has a root in $k$. This is forced by the spectral theorem --- every observable must have a complete set of eigenvalues.</li>
+</ol>
+<ol>
+<li>[]{#req:char0 label="req:char0"} $k$ has <strong>characteristic zero</strong>: $\underbrace{1 + \cdots + 1}_{n} \neq 0$ for all $n \geq 1$. This is required for the continuity of physical evolution --- the exponential map $e^{iHt}$ must converge.</li>
+</ol>
+<ol>
+<li>[]{#req:super label="req:super"} $\mathscr{C}$ admits both <strong>bosonic and fermionic sectors</strong> (Definition <a href="#def:super">4</a>{reference-type="ref" reference="def:super"}), with the super-braiding relation [\[eq:superbraiding\]](#eq:superbraiding){reference-type="eqref" reference="eq:superbraiding"}.</li>
+</ol>
+<ol>
+<li>[]{#req:positivity label="req:positivity"} $k$ admits an <strong>involution</strong> $\overline{(\cdot)} : k \to k$ and a <strong>positivity structure</strong>: for every $z \in k$, $z \bar{z} \geq 0$ with equality if and only if $z = 0$, where $\geq$ refers to an ordering on the fixed field $k_0 = \{z \in k : \bar{z} = z\}$.</li>
+</ol>
+<h2 id="classification-of-candidate-fields">Classification of Candidate Fields</h2>
+<p>::: {#lem:fieldclass .lemma}</p>
+<div class="callout callout-lemma"><div class="callout-title">Lemma 8</div><p><em>The only fields satisfying [\[req:algclosed\]](#req:algclosed){reference-type="ref" reference="req:algclosed"} and [\[req:char0\]](#req:char0){reference-type="ref" reference="req:char0"} simultaneously are the algebraic closure $\overline{\mathbb{R}}$ of $\mathbb{R}$ (which is $\mathbb{C}$) and, formally, algebraic closures of other characteristic-zero fields. Among those admitting the positivity structure [\[req:positivity\]](#req:positivity){reference-type="ref" reference="req:positivity"}, the unique candidate is $k \cong \mathbb{C}$.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> By the Artin--Schreier theorem, a field admits a total ordering if and only if it is formally real (i.e., $-1$ is not a sum of squares). Among algebraically closed fields, none is formally real, but the requirement [\[req:positivity\]](#req:positivity){reference-type="ref" reference="req:positivity"} asks only that the fixed field $k_0$ under the involution be ordered.</p>
+<p>For an algebraically closed field $k$ of characteristic zero with an involution $\sigma$, the fixed field $k_0 = k^\sigma$ is a real-closed field (by the Artin--Schreier theorem applied to the extension $k/k_0$, which is necessarily of degree 2). Every real-closed field is elementarily equivalent to $\mathbb{R}$ by the Tarski--Seidenberg theorem, but the positivity condition together with the Archimedean property (forced by the convergence requirement for physical evolution) restricts $k_0$ to be isomorphic to $\mathbb{R}$ as an ordered field.</p>
+<p>Since $k$ is the algebraic closure of $k_0 \cong \mathbb{R}$, we obtain $k \cong \mathbb{C}$. ◻</p>
+<p>:::</p>
+<h2 id="the-super-braiding-argument">The Super-Braiding Argument</h2>
+<p>The requirement of fermionic sectors provides an independent route to $\mathbb{C}$.</p>
+<p>::: {#prop:fermionic .proposition}</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 9</div><p>(Fermionic Braiding Forces $\sqrt{-1}$). <em>Let $(\mathscr{C}, \otimes, \beta)$ be a braided monoidal category with a $\mathbb{Z}/2$-grading, and let $V$ be a one-dimensional object in the odd sector $\mathscr{C}_1$. Then the braiding $\beta_{V,V} : V \otimes V \to V \otimes V$ satisfies $\beta_{V,V}^2 = -\mathrm{id}_{V \otimes V}$. For this to be expressible as a scalar action, the ground field must contain $\sqrt{-1}$.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> By the super-braiding relation [\[eq:superbraiding\]](#eq:superbraiding){reference-type="eqref" reference="eq:superbraiding"} with $A = B = V$ and $|V| = 1$: $$\beta_{V,V} \circ \beta_{V,V} = (-1)^{1 \cdot 1} \mathrm{id}_{V \otimes V} = -\mathrm{id}_{V \otimes V}.$$ Since $V$ is one-dimensional, $V \otimes V$ is also one-dimensional, and $\beta_{V,V}$ acts as multiplication by a scalar $\lambda \in k$. We need $\lambda^2 = -1$, so $k$ must contain a square root of $-1$. Over any subfield of $\mathbb{R}$, no such element exists, hence $k$ must be a proper extension. Combined with Lemma <a href="#lem:fieldclass">8</a>{reference-type="ref" reference="lem:fieldclass"}, we obtain $k \cong \mathbb{C}$. ◻</p>
+<p>:::</p>
+<h2 id="the-spin-statistics-connection-from-categorical-braiding">The Spin-Statistics Connection from Categorical Braiding</h2>
+<p>The deep connection between spin and statistics --- that integer-spin particles are bosons and half-integer-spin particles are fermions --- emerges naturally from the braiding structure.</p>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 10</div><p>(Twist / Topological Spin). In a braided monoidal category, the <strong>twist</strong> on an object $V$ is the morphism $\theta_V : V \to V$ defined as the composition $$\begin{equation} \label{eq:twist} \theta_V = (\mathrm{ev}_V \otimes \mathrm{id}_V) \circ (\mathrm{id}_{V^<em>} \otimes \beta_{V,V}) \circ (\mathrm{coev}_V \otimes \mathrm{id}_V) \end{equation}$$ when $V$ has a dual $V^</em>$ with evaluation $\mathrm{ev}_V : V^<em> \otimes V \to I$ and coevaluation $\mathrm{coev}_V : I \to V \otimes V^</em>$. In a ribbon category, $\theta_V$ is a natural automorphism. :::</p></div>
+<p>::: {#thm:spinstats .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 11</div><p>(Categorical Spin-Statistics). <em>Let $(\mathscr{C}, \otimes, \beta, \theta)$ be a ribbon category with $\mathbb{Z}/2$-grading. Then for any simple object $V$:</em></p></div>
+<ol>
+<li><em>If $V$ is bosonic ($|V| = 0$), then $\theta_V = +\mathrm{id}_V$ (integer spin).</em></li>
+</ol>
+<ol>
+<li><em>If $V$ is fermionic ($|V| = 1$), then $\theta_V = -\mathrm{id}_V$ (half-integer spin).</em></li>
+</ol>
+<p><em>More precisely, $\theta_V = (-1)^{|V|} \mathrm{id}_V$ for simple objects, which is exactly the spin-statistics relation.</em></p>
+<p>:::</p>
+<p>::: proof</p>
+<p><em>Proof.</em> For a simple object $V$ in a ribbon category, $\theta_V$ acts as a scalar $\theta_V = e^{2\pi i s_V} \mathrm{id}_V$ where $s_V$ is the topological spin. The relation between the twist and the braiding gives $$\theta_{V \otimes V} = \beta_{V,V} \circ \beta_{V,V} \circ (\theta_V \otimes \theta_V).$$ For the monoidal unit $I$, $\theta_I = \mathrm{id}_I$. Now, $V \otimes V$ lies in the even sector regardless of $|V|$, so if $V \otimes V$ decomposes into simple components in $\mathscr{C}_0$, each has twist $+1$.</p>
+<p>On the other hand, $\beta_{V,V}^2 = (-1)^{|V|^2} \mathrm{id}= (-1)^{|V|} \mathrm{id}$ and $\theta_V^2 = e^{4\pi i s_V}$. Combining: $$1 = (-1)^{|V|} \cdot e^{4\pi i s_V}$$ which forces $e^{4\pi i s_V} = (-1)^{|V|}$, i.e., $2s_V \equiv |V|/2 \pmod{1}$. This gives $s_V \in \mathbb{Z}$ for bosons and $s_V \in \mathbb{Z}+ 1/2$ for fermions --- exactly the spin-statistics theorem. ◻</p>
+<p>:::</p>
+<p>::: remark</p>
+<p><em>Remark 12</em> (Categorical vs. Physical Spin). The identification of the categorical twist $\theta_V$ with the physical spin quantum number in Theorem <a href="#thm:spinstats">11</a>{reference-type="ref" reference="thm:spinstats"} rests on the correspondence between ribbon categories and three-dimensional topological field theories, where the twist implements a $2\pi$ rotation [@turaev2010]. The connection to the physical angular momentum classification of particles requires the additional input that the spacetime symmetry group $\mathrm{SO}(3,1)$ acts on the category of physical systems, and that the categorical twist matches the action of the $2\pi$ rotation in the Lorentz group. This identification is standard in the context of algebraic quantum field theory [@streater1964] but merits emphasis here.</p>
+<p>:::</p>
+<h2 id="the-full-reconstruction-theorem">The Full Reconstruction Theorem</h2>
+<p>We now assemble the complete result.</p>
+<p>::: {#thm:reconstruction .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 13</div><p>(Reconstruction of $\mathbb{C}$ from Physical Structure). <em>Let $(\mathscr{C}, \otimes, \beta)$ be a braided monoidal category satisfying:</em></p></div>
+<ol>
+<li><em>$\mathscr{C}$ is $\mathbb{Z}/2$-graded with non-trivial fermionic sector $\mathscr{C}_1 \neq \varnothing$.</em></li>
+</ol>
+<ol>
+<li><em>Presheaves $\mathscr{C}^{\mathrm{op}}\to \mathbf{Vect}_k$ are monoidal.</em></li>
+</ol>
+<ol>
+<li><em>The ground field $k$ is algebraically closed of characteristic zero.</em></li>
+</ol>
+<ol>
+<li><em>$k$ admits an involution with Archimedean positivity on the fixed field.</em></li>
+</ol>
+<p><em>Then $k \cong \mathbb{C}$. Moreover, the braiding encodes the spin-statistics connection (Theorem <a href="#thm:spinstats">11</a>{reference-type="ref" reference="thm:spinstats"}), and the involution on $k$ is complex conjugation.</em></p>
+<p>:::</p>
+<p>::: proof</p>
+<p><em>Proof.</em> Condition (c) and the Archimedean property of (d) force $k_0 = k^{\bar{(\cdot)}} \cong \mathbb{R}$ by Lemma <a href="#lem:fieldclass">8</a>{reference-type="ref" reference="lem:fieldclass"}. Then $[k : k_0] = 2$ by the Artin--Schreier theorem (the algebraic closure of a real-closed field is a degree-2 extension). The existence of fermionic objects in (a) requires $\sqrt{-1} \in k$ by Proposition <a href="#prop:fermionic">9</a>{reference-type="ref" reference="prop:fermionic"}. Hence $k = k_0(\sqrt{-1}) = \mathbb{R}(i) = \mathbb{C}$.</p>
+<p>The involution must fix $k_0 = \mathbb{R}$ and send $i \mapsto -i$, so it is complex conjugation. The Hermitian inner product on Hilbert-space fibers is then the unique sesquilinear pairing compatible with this involution and the positivity condition. The spin-statistics connection follows from Theorem <a href="#thm:spinstats">11</a>{reference-type="ref" reference="thm:spinstats"}. ◻</p>
+<p>:::</p>
+<p>::: remark</p>
+<p><em>Remark 14</em> (Why Not $\mathbb{R}$ or $\mathbb{H}$?). Over $\mathbb{R}$, fermionic sectors cannot exist because $\mathbb{R}$ lacks $\sqrt{-1}$. The quaternions $\mathbb{H}$ satisfy some requirements but fail algebraic closure (the fundamental theorem of algebra does not extend to $\mathbb{H}$ in the commutative sense) and, crucially, are non-commutative, which prevents the construction of a well-defined tensor product of Hilbert spaces. The Solèr--Holland--Morash theorem [@soler1995] independently establishes that infinite-dimensional orthomodular spaces over a $*$-field with the lattice-theoretic properties required for quantum logic are necessarily over $\mathbb{R}$, $\mathbb{C}$, or $\mathbb{H}$, and the braiding/spin-statistics argument selects $\mathbb{C}$ uniquely.</p>
+<p>:::</p>
+<h2 id="detailed-algebraic-construction">Detailed Algebraic Construction</h2>
+<p>We now give an explicit algebraic construction illustrating the reconstruction.</p>
+<p>::: {#const:clifford .construction}</p>
+<p><strong>Construction 15</strong> (The Clifford Algebra Route). Let $V$ be a real vector space with a non-degenerate symmetric bilinear form $q$. The Clifford algebra $\mathrm{Cl}(V, q)$ carries a natural $\mathbb{Z}/2$-grading $\mathrm{Cl} = \mathrm{Cl}_0 \oplus \mathrm{Cl}_1$. For $V = \mathbb{R}^1$ with $q(x,x) = -x^2$: $$\mathrm{Cl}(\mathbb{R}^1, -x^2) = \mathbb{R}\oplus \mathbb{R}\cdot e \quad \text{with } e^2 = -1.$$ This is precisely $\mathbb{C}$, with the grading $\mathbb{C}_0 = \mathbb{R}$ and $\mathbb{C}_1 = \mathbb{R}\cdot i$. The fermionic generator $e = i$ satisfies the required super-braiding: if $V$ carries the odd grading, then swapping two copies of $V$ introduces a sign, and $e^2 = -1$ encodes this algebraically.</p>
+<p>:::</p>
+<p>::: {#ex:qubitcomplex .example}</p>
+<div class="callout callout-example"><div class="callout-title">Example 16</div><p>(Qubit System). Consider a single qubit with Hilbert space $\mathcal{H}= \mathbb{C}^2$. The bosonic sector is spanned by the identity $I$ and $\sigma_z$ (diagonal, preserving $\mathbb{Z}/2$-grading). The fermionic sector is spanned by $\sigma_x$ and $\sigma_y$ (off-diagonal, mixing sectors). The commutation relations $[\sigma_x, \sigma_y] = 2i\sigma_z$ explicitly require $i = \sqrt{-1}$: the structure constants of $\mathfrak{su}(2)$ are inherently complex.</p></div>
+<p>Over $\mathbb{R}$, one would have only $\mathfrak{so}(3) \cong \mathfrak{su}(2)_\mathbb{R}$, but the representation theory differs: $\mathbb{C}^2$ as a representation of $\mathrm{SU}(2)$ requires complex structure. The spinor representation --- fundamental to fermionic physics --- does not exist over $\mathbb{R}$.</p>
+<p>:::</p>
+<h1 id="gleason-s-theorem-in-the-presheaf-topos-sec-gleason">Gleason's Theorem in the Presheaf Topos {#sec:gleason}</h1>
+<h2 id="classical-gleason-s-theorem-statement-and-proof-outline">Classical Gleason's Theorem: Statement and Proof Outline</h2>
+<p>We begin by recalling the classical result.</p>
+<p>::: {#thm:gleason-classical .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 17</div><p>(Gleason [@gleason1957]). <em>Let $\mathcal{H}$ be a separable Hilbert space of dimension $d \geq 3$. Every frame function $f : S(\mathcal{H}) \to [0,1]$ (satisfying [\[eq:framefunction\]](#eq:framefunction){reference-type="eqref" reference="eq:framefunction"}) has the form $$\begin{equation} \label{eq:gleasonform} f(v) = \langle v, \rho \, v \rangle = \mathrm{Tr}(\rho |v\rangle\langle v|) \end{equation}$$ for a unique density operator $\rho$ on $\mathcal{H}$.</em> :::</p></div>
+<p>The proof proceeds in stages:</p>
+<ol>
+<li><strong>Reduction to $d = 3$.</strong> If the theorem holds for $\mathbb{C}^3$, it extends to any $d \geq 3$ by restriction to three-dimensional subspaces.</li>
+</ol>
+<ol>
+<li><strong>Regularity of the frame function.</strong> A frame function on $S(\mathbb{C}^3)$ is shown to be continuous. The argument uses the compactness of $S^2$ (the real unit sphere) and the frame-function constraint to establish that $f$ cannot have discontinuities.</li>
+</ol>
+<ol>
+<li><strong>Expansion in spherical harmonics.</strong> On $S^2$, $f$ restricts to a continuous function. The frame-function condition $\sum_{i=1}^3 f(e_i) = 1$ for every orthonormal frame forces the restriction to $S^2 \subset \mathbb{R}^3$ to have vanishing components of angular momentum $\ell \geq 3$. Concretely, writing $f(\hat{n}) = \sum_{\ell=0}^{\infty} \sum_{m=-\ell}^{\ell} a_{\ell m} Y_\ell^m(\hat{n})$, the frame condition implies: $$\begin{equation}</li>
+</ol>
+<p>\label{eq:frameexpansion}</p>
+<p>\sum_{i=1}^{3} \sum_{\ell, m} a_{\ell m} Y_\ell^m(\hat{n}_i) = 1</p>
+<p>\end{equation}$$ for every orthonormal triple $\{\hat{n}_1, \hat{n}_2, \hat{n}_3\}$. Using the addition theorem for spherical harmonics, this forces $a_{\ell m} = 0$ for $\ell \geq 3$.</p>
+<ol>
+<li><strong>Identification with $\mathrm{Tr}(\rho P)$.</strong> The surviving terms ($\ell = 0$ and $\ell = 2$) are exactly the form $f(\hat{n}) = \hat{n}^T M \hat{n}$ for a $3 \times 3$ real symmetric matrix $M$ with $\mathrm{Tr}(M) = 1$ and $M \geq 0$. This is exactly $\mathrm{Tr}(\rho |\hat{n}\rangle\langle \hat{n}|)$ where $\rho$ is the density matrix corresponding to $M$ in the spin-1 representation.</li>
+</ol>
+<ol>
+<li><strong>Extension to complex Hilbert spaces.</strong> The argument extends from $\mathbb{R}^3$ to $\mathbb{C}^3$ by using the real and imaginary parts of the inner product and the frame function on complex projective space.</li>
+</ol>
+<h2 id="the-topos-theoretic-setting">The Topos-Theoretic Setting</h2>
+<p>We now generalize to the presheaf topos $\widehat{\mathscr{C}}$.</p>
+<p>::: {#def:hilbpresheaf .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 18</div><p>(Presheaf with Hilbert-Space Fibers). A <strong>Hilbert presheaf</strong> on $\mathscr{C}$ is a functor $S : \mathscr{C}^{\mathrm{op}}\to \mathbf{Hilb}$ assigning to each context $C$ a Hilbert space $S(C) = \mathcal{H}_C$ and to each morphism $f : C' \to C$ a bounded linear map $S(f) : \mathcal{H}_C \to \mathcal{H}_{C'}$ that is an isometry (preserving the inner product). :::</p></div>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 19</div><p>(Subobjects of a Hilbert Presheaf). A <strong>subobject</strong> of a Hilbert presheaf $S$ is a subfunctor $P \hookrightarrow S$ such that each $P(C) \subseteq S(C)$ is a closed subspace, and the restriction maps of $P$ are the restrictions of those of $S$. The <strong>subobject lattice</strong> $\mathrm{Sub}(S)$ is the collection of all such subfunctors, ordered by inclusion. :::</p></div>
+<p>::: {#def:probval .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 20</div><p>(Probability Valuation on $\mathrm{Sub}(S)$). A <strong>probability valuation</strong> on $\mathrm{Sub}(S)$ is a function $\mu : \mathrm{Sub}(S) \to [0,1]$ satisfying:</p></div>
+<ol>
+<li>$\mu(S) = 1$ (normalization).</li>
+</ol>
+<ol>
+<li>$\mu(0) = 0$ where $0$ is the zero subfunctor.</li>
+</ol>
+<ol>
+<li>For mutually orthogonal subobjects $P_1, \ldots, P_n$ (meaning $P_i(C) \perp P_j(C)$ for all $C$ and all $i \neq j$) with $\bigoplus_i P_i = Q$: $$\mu(Q) = \sum_{i=1}^{n} \mu(P_i).$$</li>
+</ol>
+<ol>
+<li><strong>Yoneda compatibility</strong>: for every representable presheaf $\mathsf{y}(C)$ and every morphism $\alpha : \mathsf{y}(C) \to S$ (which by Yoneda corresponds to a vector $v_C \in S(C)$), the map $\alpha$ factors through the subobject $P$ if and only if $v_C \in P(C)$. The valuation must be consistent with this factorization structure.</li>
+</ol>
+<p>:::</p>
+<h2 id="the-topos-gleason-theorem-statement">The Topos Gleason Theorem: Statement</h2>
+<p>::: {#thm:toposgleason .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 21</div><p>(Topos Gleason). <em>Let $S : \mathscr{C}^{\mathrm{op}}\to \mathbf{Hilb}$ be a Hilbert presheaf with $\dim S(C) \geq 3$ for all $C$. Every probability valuation $\mu$ on $\mathrm{Sub}(S)$ (in the sense of Definition <a href="#def:probval">20</a>{reference-type="ref" reference="def:probval"}) has the form $$\begin{equation} \label{eq:toposgleason} \mu(P) = \mathrm{Tr}_C(\rho_C \, \Pi_{P(C)}) \end{equation}$$ for every context $C$, where $\rho_C$ is a density operator on $\mathcal{H}_C = S(C)$, $\Pi_{P(C)}$ is the orthogonal projection onto $P(C)$, and the family $\{\rho_C\}_{C \in \mathscr{C}}$ is compatible with the restriction maps: $S(f) \rho_C S(f)\ensuremath{^{\dagger}}= \rho_{C'}$ for every $f : C' \to C$.</em> :::</p></div>
+<h2 id="proof-of-the-topos-gleason-theorem">Proof of the Topos Gleason Theorem</h2>
+<p>The proof proceeds in four steps.</p>
+<p><strong>Step 1: Restriction to fibers.</strong> Fix a context $C \in \mathscr{C}$. The subobjects of $S$ that are "supported at $C$" --- those $P$ such that $P(C) \neq 0$ --- form a sublattice of $\mathrm{Sub}(S)$ isomorphic to the lattice of closed subspaces of $\mathcal{H}_C$. The restriction $\mu_C := \mu|_{\text{fiber at }C}$ is therefore a frame function on $\mathcal{H}_C$.</p>
+<p>::: {#lem:fiberframe .lemma}</p>
+<div class="callout callout-lemma"><div class="callout-title">Lemma 22</div><p><em>For each $C$, the restriction $\mu_C : \mathcal{L}(\mathcal{H}_C) \to [0,1]$ defined by $\mu_C(V) := \mu(P_V)$ (where $P_V$ is the subobject with $P_V(C) = V$ and $P_V(C') = S(f)(V)$ for $f : C' \to C$) is a frame function on $\mathcal{H}_C$.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> The additivity of $\mu$ on orthogonal subobjects translates directly to the frame-function condition: for an orthonormal basis $\{e_i\}$ of $\mathcal{H}_C$, the one-dimensional subobjects $P_{\mathbb{C}e_i}$ are mutually orthogonal and span $S$, so $$\sum_i \mu(P_{\mathbb{C}e_i}) = \mu(S) = 1.$$ Writing $f(e_i) := \mu(P_{\mathbb{C}e_i})$ gives a frame function. ◻</p>
+<p>:::</p>
+<p><strong>Step 2: Apply classical Gleason.</strong> Since $\dim \mathcal{H}_C \geq 3$, Theorem <a href="#thm:gleason-classical">17</a>{reference-type="ref" reference="thm:gleason-classical"} applies to each fiber. Therefore, for each $C$, there exists a unique density operator $\rho_C$ on $\mathcal{H}_C$ such that $$\mu_C(V) = \mathrm{Tr}(\rho_C \, \Pi_V)$$ for all closed subspaces $V \subseteq \mathcal{H}_C$.</p>
+<p><strong>Step 3: Naturality forces compatibility.</strong> For a morphism $f : C' \to C$, the restriction map $S(f) : \mathcal{H}_C \to \mathcal{H}_{C'}$ is an isometry. A subobject $P$ assigns $P(C')$ = $S(f)(P(C))$ by the functoriality of $P$. Therefore: $$\mu_{C'}(S(f)(V)) = \mu(P_{S(f)(V)}) = \mu(P_V) = \mu_C(V).$$ Using $\mu_C(V) = \mathrm{Tr}(\rho_C \Pi_V)$ and $\mu_{C'}(S(f)(V)) = \mathrm{Tr}(\rho_{C'} \, \Pi_{S(f)(V)})$: $$\mathrm{Tr}(\rho_{C'} \, S(f) \Pi_V S(f)\ensuremath{^{\dagger}}) = \mathrm{Tr}(\rho_C \, \Pi_V).$$ Since this holds for all projections $\Pi_V$, we obtain: $$\begin{equation}</p>
+<p>\label{eq:rhocompat}</p>
+<p>S(f)\ensuremath{^{\dagger}}\, \rho_{C'} \, S(f) = \rho_C.</p>
+<p>\end{equation}$$ When $S(f)$ is an isometry (and hence $S(f)\ensuremath{^{\dagger}}S(f) = \mathrm{id}$), this is equivalent to $\rho_{C'} = S(f) \, \rho_C \, S(f)\ensuremath{^{\dagger}}$.</p>
+<p><strong>Step 4: Yoneda compatibility fixes uniqueness.</strong> The Yoneda compatibility condition (iv) ensures that the family $\{\rho_C\}$ is determined by the natural transformation structure of the presheaf. By the Yoneda lemma, $\mathrm{Nat}(\mathsf{y}(C), S) \cong S(C) = \mathcal{H}_C$, so each state $\psi \in \mathcal{H}_C$ corresponds to a unique natural transformation. The density operator $\rho_C$ acts on this space, and its naturality condition [\[eq:rhocompat\]](#eq:rhocompat){reference-type="eqref" reference="eq:rhocompat"} ensures global coherence.</p>
+<p>::: flushright</p>
+<p>$\square$</p>
+<p>:::</p>
+<h2 id="the-born-rule-as-a-corollary">The Born Rule as a Corollary</h2>
+<p>::: {#cor:born .corollary}</p>
+<div class="callout callout-corollary"><div class="callout-title">Corollary 23</div><p>(Born Rule from Topos Gleason). <em>For a pure state $\psi \in \mathcal{H}_C$ (so $\rho_C = |\psi\rangle\langle \psi|$) and a measurement projector $P_\lambda = |e_\lambda\rangle\langle e_\lambda|$ corresponding to eigenvalue $\lambda$ of an observable: $$\begin{equation} p(\lambda) = \mathrm{Tr}(\rho_C P_\lambda) = |\langle e_\lambda|\psi\rangle|^2. \end{equation}$$ This is the Born rule, now derived from the topos structure of the presheaf category and the Yoneda embedding.</em> :::</p></div>
+<h2 id="the-kochen-specker-theorem-as-a-topos-theoretic-statement">The Kochen--Specker Theorem as a Topos-Theoretic Statement</h2>
+<p>::: {#prop:KS .proposition}</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 24</div><p>(Kochen--Specker from Topos Logic). <em>The subobject classifier $\Omega$ of the presheaf topos $\widehat{\mathscr{C}}$ is not Boolean when $\mathscr{C}$ has non-commutative structure. Equivalently, there exists no global section $1 \to \Omega$ that serves as a two-valued truth assignment compatible with all subobjects simultaneously. This is the Kochen--Specker theorem [@kochen1967], now seen as a structural feature of the presheaf topos.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> A global element of $\Omega$ assigns to each context $C$ a sieve on $C$, and these must be compatible under restriction. A two-valued truth valuation would require each sieve to be either the maximal sieve $\mathrm{Hom}(\text{--}, C)$ or the empty sieve $\varnothing$. But for non-commutative observational contexts, the compatibility condition forces contradictions: there exist collections of projectors that cannot simultaneously be assigned $\{0, 1\}$ values consistently across all contexts, exactly as in the standard Kochen--Specker construction with 117 vectors in $\mathbb{R}^3$ or 18 vectors in $\mathbb{C}^4$. ◻</p>
+<p>:::</p>
+<h2 id="concrete-calculation-gleason-on-a-qubit-pair">Concrete Calculation: Gleason on a Qubit Pair</h2>
+<p>::: {#ex:gleasonqubit .example}</p>
+<div class="callout callout-example"><div class="callout-title">Example 25</div><p>(Two-Qubit Gleason). Consider $\mathcal{H}= \mathbb{C}^2 \otimes \mathbb{C}^2 \cong \mathbb{C}^4$ (dimension 4, so Gleason applies). Let the Bell state $|\Phi^+\rangle = \frac{1}{\sqrt{2}}(|00\rangle + |11\rangle)$ define $\rho = |\Phi^+\rangle\langle \Phi^+|$.</p></div>
+<p>The frame function on a rank-1 projector $P_v = |v\rangle\langle v|$ is computed as follows. Writing $v = (a, b, c, d)^T$ in the basis $\{|00\rangle, |01\rangle, |10\rangle, |11\rangle\}$, we have $\langle v|\Phi^+\rangle = \frac{1}{\sqrt{2}}(\bar{a} + \bar{d})$, and therefore: $$f(v) = |\langle v|\Phi^+\rangle|^2 = \frac{1}{2}|\bar{a} + \bar{d}|^2 = \frac{1}{2}(|a|^2 + |d|^2 + a\bar{d} + \bar{a}d).$$ For the computational basis vectors: $f(|00\rangle) = f(|11\rangle) = 1/2$ and $f(|01\rangle) = f(|10\rangle) = 0$, consistent with the Bell state having equal probability for the $|00\rangle$ and $|11\rangle$ outcomes and zero for the others.</p>
+<p>The frame-function condition checks: for the standard basis $\{e_i\}_{i=1}^4$, $$\sum_{i=1}^{4} f(e_i) = 1/2 + 0 + 0 + 1/2 = 1. \quad \checkmark$$</p>
+<p>For any other orthonormal basis obtained by a unitary $U$, $f(Ue_i) = \mathrm{Tr}(\rho \, U|e_i\rangle\langle e_i|U\ensuremath{^{\dagger}}) = (U\ensuremath{^{\dagger}}\rho U)_{ii}$, and $\sum_i (U\ensuremath{^{\dagger}}\rho U)_{ii} = \mathrm{Tr}(\rho) = 1$. $\checkmark$</p>
+<p>:::</p>
+<h1 id="decoherence-as-coarse-graining-of-contexts-sec-decoherence">Decoherence as Coarse-Graining of Contexts {#sec:decoherence}</h1>
+<h2 id="the-physical-picture">The Physical Picture</h2>
+<p>Decoherence is the process by which quantum superpositions become effectively classical through interaction with an environment. In the Quantum Perspectivism framework, decoherence is not a dynamical process happening "to" a system but a structural consequence of restricting from fine-grained to coarse-grained observational contexts.</p>
+<h2 id="the-restriction-functor">The Restriction Functor</h2>
+<p>::: {#def:restriction .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 26</div><p>(Context Inclusion and Restriction). Let $i : \mathscr{C}_{\mathrm{macro}} \hookrightarrow \mathscr{C}$ be the inclusion of a full subcategory of macroscopic contexts. The <strong>restriction functor</strong> is the precomposition $$\begin{equation} i^<em> : \widehat{\mathscr{C}} \to \widehat{\mathscr{C}_{\mathrm{macro}}}, \qquad i^</em>(S) = S \circ i^{\mathrm{op}}. \end{equation}$$ This functor has both a left adjoint $i_!$ (left Kan extension) and a right adjoint $i_<em>$ (right Kan extension): $$\begin{equation} i_! \dashv i^</em> \dashv i_*. \end{equation}$$ :::</p></div>
+<p>::: {#prop:istar .proposition}</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 27</div><p>(Properties of $i^<em>$). </em>The restriction functor $i^<em>$ satisfies:</em></p></div>
+<ol>
+<li><em>$i^</em>$ preserves all limits (as a right adjoint, it is left-exact; as a left adjoint, it preserves colimits only if $i$ is additionally a cosieve or satisfies further conditions).*</li>
+</ol>
+<ol>
+<li><em>In general, $i^</em>$ does <strong>not</strong> preserve colimits. Specifically, it may fail to preserve coproducts and coequalizers.*</li>
+</ol>
+<ol>
+<li><em>$i^</em>$ is exact (preserves finite limits) since $\widehat{\mathscr{C}}$ is a topos and $i^<em>$ is the inverse image part of a geometric morphism.</em></li>
+</ol>
+<p>:::</p>
+<h2 id="loss-of-coherence-the-mechanism">Loss of Coherence: The Mechanism</h2>
+<p>The key observation is that off-diagonal coherences in the density matrix correspond to certain colimit structures in the presheaf topos, and $i^*$ may fail to preserve these.</p>
+<p>::: {#def:coherence .definition}</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 28</div><p>(Coherence Subobject). Given a Hilbert presheaf $S$ and two orthogonal subobjects $P_1, P_2 \hookrightarrow S$ (representing distinct classical outcomes), the <strong>coherence between $P_1$ and $P_2$ relative to context $C$</strong> is the off-diagonal block $$\begin{equation} \mathcal{O}_{12}(C) := \{ \langle \phi_1, \rho_C \, \phi_2 \rangle \mid \phi_1 \in P_1(C), \, \phi_2 \in P_2(C) \}. \end{equation}$$ This defines a presheaf $\mathcal{O}_{12} : \mathscr{C}^{\mathrm{op}}\to \mathbf{Set}$ (or more precisely, to $\mathbb{C}$-modules). :::</p></div>
+<p>::: {#thm:decoherence .theorem}</p>
+<div class="callout callout-theorem"><div class="callout-title">Theorem 29</div><p>(Decoherence as Failure to Preserve Colimits). <em>Let $S : \mathscr{C}^{\mathrm{op}}\to \mathbf{Hilb}$ be a Hilbert presheaf representing a quantum system coupled to an environment. Let $i : \mathscr{C}_{\mathrm{macro}} \hookrightarrow \mathscr{C}$ be the inclusion of macroscopic contexts. Then:</em></p></div>
+<ol>
+<li>*The full presheaf $S$ admits a decomposition as a colimit $$\begin{equation}</li>
+</ol>
+<p>\label{eq:colimit}</p>
+<p>S \cong \mathrm{colim}_{j \in J} S_j</p>
+<p>\end{equation}$$ over an indexing category $J$ encoding the superposition of classical branches $\{S_j\}$.*</p>
+<ol>
+<li><em>The restricted presheaf $i^</em>(S)$ does <strong>not</strong> decompose as the corresponding colimit: $$\begin{equation}</li>
+</ol>
+<p>\label{eq:nocolimit}</p>
+<p>i^<em>(S) \ncong \mathrm{colim}_{j \in J}\, i^</em>(S_j).</p>
+<p>\end{equation}$$*</p>
+<ol>
+<li><em>Instead, $i^</em>(S)$ decomposes as a <strong>coproduct</strong> (disjoint union) of the classical branches: $$\begin{equation}</li>
+</ol>
+<p>\label{eq:coproduct}</p>
+<p>i^<em>(S) \cong \coprod_{j \in J} i^</em>(S_j)</p>
+<p>\end{equation}$$ with the "gluing data" (off-diagonal coherences) lost.*</p>
+<ol>
+<li>*In terms of density matrices, if $\rho = \sum_{j,k} c_j \bar{c}_k |\psi_j\rangle\langle \psi_k|$, then the restriction satisfies $$\begin{equation}</li>
+</ol>
+<p>\label{eq:decoherentdensity}</p>
+<p>i^*(\rho)_C \approx \sum_j |c_j|^2 |\psi_j^C\rangle\langle \psi_j^C|</p>
+<p>\end{equation}$$ where $\psi_j^C = S(i(C) \hookrightarrow C_{\text{full}})(\psi_j)$ and the off-diagonal terms $c_j \bar{c}_k |\psi_j^C\rangle\langle \psi_k^C|$ for $j \neq k$ vanish in the macroscopic restriction.*</p>
+<p>:::</p>
+<p>::: proof</p>
+<p><em>Proof.</em> <strong>Part (a):</strong> In the full presheaf topos $\widehat{\mathscr{C}}$, the superposition $|\psi\rangle = \sum_j c_j |\psi_j\rangle$ corresponds to a colimit construction. The individual branches $S_j$ (presheaves corresponding to the states $|\psi_j\rangle$) are glued together via the coherence data $\mathcal{O}_{jk}$, and the colimit assembles these into the full superposition $S$.</p>
+<p><strong>Part (b):</strong> The restriction functor $i^*$ is a left exact functor (preserves limits) but need not preserve colimits. The colimit [\[eq:colimit\]](#eq:colimit){reference-type="eqref" reference="eq:colimit"} is computed using the gluing data $\mathcal{O}_{jk}$, which involves contexts $C \in \mathscr{C}$ that may not lie in $\mathscr{C}_{\mathrm{macro}}$. When restricted to macroscopic contexts, the gluing maps $\mathcal{O}_{jk}(C)$ for $C \in \mathscr{C}_{\mathrm{macro}}$ vanish because the environmental degrees of freedom that mediate coherence are not accessible from macroscopic contexts.</p>
+<p>Formally, $\mathcal{O}_{jk}(i(C_{\mathrm{macro}})) = 0$ because the macroscopic context $i(C_{\mathrm{macro}})$ cannot resolve the fine-grained correlations between branches $j$ and $k$. This is exactly the condition for environment-induced decoherence: the environment carries away the "which-branch" information into degrees of freedom invisible to macroscopic observers.</p>
+<p><strong>Part (c):</strong> With vanishing gluing data, the colimit degenerates into a coproduct --- a disjoint union where each branch exists independently, with no interference.</p>
+<p><strong>Part (d):</strong> Translating to the density-matrix language: the off-diagonal terms $\rho_{jk} = c_j \bar{c}_k \langle \psi_k^C|\psi_j^C\rangle_{\mathrm{env}}$ involve inner products of environmental states. For macroscopic environments with many degrees of freedom, the environmental states $|\psi_j^{\mathrm{env}}\rangle$ and $|\psi_k^{\mathrm{env}}\rangle$ become approximately orthogonal (by the random-phase argument or the large-Hilbert-space-dimension argument), yielding $\langle \psi_k^{\mathrm{env}}|\psi_j^{\mathrm{env}}\rangle \approx \delta_{jk}$ and hence the diagonal form [\[eq:decoherentdensity\]](#eq:decoherentdensity){reference-type="eqref" reference="eq:decoherentdensity"}. ◻</p>
+<p>:::</p>
+<p>::: {#rem:colimitprecision .remark}</p>
+<p><em>Remark 30</em> (Precision on the Colimit Characterization). The indexing category $J$ in Theorem <a href="#thm:decoherence">29</a>{reference-type="ref" reference="thm:decoherence"}(a) is constructed as follows. For a superposition $|\psi\rangle = \sum_j c_j |\psi_j\rangle$, take $J$ to be the discrete category on the index set $\{j\}$, augmented by morphisms encoding the coherence data. Concretely, $J$ has objects $\{j\}$ and a morphism $j \to k$ for each pair $(j,k)$ with $j \neq k$, weighted by $c_j \bar{c}_k$. The colimit cocone maps $S_j \to S$ are the inclusion of each branch, and the universal property of the colimit encodes the fact that the full state is not merely the disjoint union of branches but is glued together by the coherence data $\mathcal{O}_{jk}$. The failure of $i^<em>$ to preserve this colimit is quantified by the condition: a morphism $f : C' \to C$ in $\mathscr{C}$ that factors through an environment context $C_E \notin \mathscr{C}_{\mathrm{macro}}$ contributes to $\mathcal{O}_{jk}(C)$ but not to $\mathcal{O}_{jk}(i(C_{\mathrm{macro}}))$. When $\mathscr{C}_{\mathrm{macro}}$ excludes all fine-grained environment contexts, the coherence morphisms in $J$ become trivial under $i^</em>$, and the colimit degenerates to a coproduct.</p>
+<p>:::</p>
+<h2 id="environment-induced-superselection">Environment-Induced Superselection</h2>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 31</div><p>(Superselection Sector). A <strong>superselection sector</strong> in the categorical framework is a connected component of the presheaf $i^*(S)$ after restriction to macroscopic contexts. Two states lie in the same superselection sector if and only if there exists a macroscopic context from which both are accessible (i.e., connected by a morphism in $\mathscr{C}_{\mathrm{macro}}$). :::</p></div>
+<p>::: {#prop:einselection .proposition}</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 32</div><p>(Einselection as Connected Components). <em>The <strong>environment-induced superselection</strong> (einselection) of Zurek [@zurek2003] is the decomposition of $i^</em>(S)$ into connected components. The <strong>pointer states</strong> are the sections of $i^<em>(S)$ that are stable under the restriction --- formally, the elements of $\varprojlim_{C \in \mathscr{C}_{\mathrm{macro}}} i^</em>(S)(C)$ that survive the coarse-graining.* :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> A pointer state $|\pi_j\rangle$ is characterized by its robustness under environmental interaction: it is an eigenstate of the decoherence functional. In the categorical language, this means $|\pi_j\rangle$ defines a global section of the restricted presheaf $i^<em>(S)$ over all macroscopic contexts --- it "looks the same" from every macroscopic perspective. The decomposition into connected components $i^</em>(S) \cong \coprod_j S_{\pi_j}$ is exactly the einselection into pointer states.</p>
+<p>The pointer states are determined by the interaction Hamiltonian $H_{\mathrm{int}}$ between system and environment. In categorical terms, $H_{\mathrm{int}}$ determines the morphisms in $\mathscr{C}$ connecting system-contexts to environment-contexts, and the pointer states are the sections of $S$ that are mapped to themselves (up to phase) by the environmental restriction maps $S(f)$ for all $f$ in the image of $i$. ◻</p>
+<p>:::</p>
+<h2 id="the-partial-trace-as-a-categorical-construction">The Partial Trace as a Categorical Construction</h2>
+<p>::: {#prop:partialtrace .proposition}</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 33</div><p>(Partial Trace from Restriction). <em>Let $S = S_A \otimes S_E$ be a presheaf on a product category $\mathscr{C}_A \times \mathscr{C}_E$ (system $\times$ environment). Let $i : \mathscr{C}_A \hookrightarrow \mathscr{C}_A \times \mathscr{C}_E$ be the inclusion $C_A \mapsto (C_A, C_E^0)$ for a fixed environment context $C_E^0$. Then the restriction $i^</em>(S)$ is the presheaf $S_A$ with density matrix $$\begin{equation} \rho_A = i^<em>(\rho) = \mathrm{Tr}_E(\rho_{AE}) \end{equation}$$ where $\mathrm{Tr}_E$ is the partial trace over $\mathcal{H}_E = S_E(C_E^0)$.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof.</em> By definition, $i^<em>(S)(C_A) = S(C_A, C_E^0) = \mathcal{H}_A^{C_A} \otimes \mathcal{H}_E^{C_E^0}$. The density matrix on $i^</em>(S)(C_A)$, computed from the probability valuation $\mu$ restricted to subobjects visible from $(C_A, C_E^0)$, involves only those projectors of the form $P_A \otimes \mathrm{id}_E$. For any such projector: $$\mu(P_A \otimes \mathrm{id}_E) = \mathrm{Tr}_{AE}(\rho_{AE} (P_A \otimes \mathrm{id}_E)) = \mathrm{Tr}_A(\mathrm{Tr}_E(\rho_{AE}) P_A) = \mathrm{Tr}_A(\rho_A P_A).$$ By Gleason's theorem (applied to $\mathcal{H}_A$), this determines $\rho_A = \mathrm{Tr}_E(\rho_{AE})$ uniquely. ◻</p>
+<p>:::</p>
+<h2 id="detailed-example-qubit-environment-decoherence">Detailed Example: Qubit-Environment Decoherence</h2>
+<p>::: {#ex:decoherence .example}</p>
+<div class="callout callout-example"><div class="callout-title">Example 34</div><p>(Qubit Coupled to $N$-Qubit Environment). Let the system be a single qubit with $\mathcal{H}_S = \mathbb{C}^2$ in state $|\psi\rangle = \alpha|0\rangle + \beta|1\rangle$, coupled to an $N$-qubit environment initially in state $|0\rangle^{\otimes N}$. The interaction Hamiltonian produces: $$|\Psi\rangle = \alpha |0\rangle \otimes |E_0\rangle + \beta |1\rangle \otimes |E_1\rangle$$ where $|E_0\rangle$ and $|E_1\rangle$ are environmental states. The full density matrix is: $$\begin{align} \rho &= |\alpha|^2 |0\rangle\langle 0| \otimes |E_0\rangle\langle E_0| + \alpha\bar{\beta} |0\rangle\langle 1| \otimes |E_0\rangle\langle E_1| \nonumber\\ &\quad + \bar{\alpha}\beta |1\rangle\langle 0| \otimes |E_1\rangle\langle E_0| + |\beta|^2 |1\rangle\langle 1| \otimes |E_1\rangle\langle E_1|. \end{align}$$</p></div>
+<p>Taking the partial trace (restriction to system contexts): $$\begin{equation}</p>
+<p>\rho_S = \mathrm{Tr}_E(\rho) = |\alpha|^2 |0\rangle\langle 0| + \alpha\bar{\beta}\langle E_1|E_0\rangle|0\rangle\langle 1| + \bar{\alpha}\beta\langle E_0|E_1\rangle|1\rangle\langle 0| + |\beta|^2|1\rangle\langle 1|.</p>
+<p>\end{equation}$$</p>
+<p>The decoherence factor is $\Gamma = |\langle E_1|E_0\rangle|$. For the categorical interpretation:</p>
+<p><strong>Full context $\mathscr{C}$:</strong> Includes both system and environment contexts. The coherence $\mathcal{O}_{01}(C) = \alpha\bar{\beta}\langle E_1|E_0\rangle$ is non-zero.</p>
+<p><strong>Restricted context $\mathscr{C}_{\mathrm{macro}}$:</strong> Only system contexts. The off-diagonal coherence becomes $i^*(\mathcal{O}_{01})(C_S) = \alpha\bar{\beta}\Gamma$. As $N \to \infty$ (many environment qubits), $\Gamma \to 0$ exponentially: $$\Gamma = |\langle E_1|E_0\rangle| = |\cos\theta|^N \to 0 \quad \text{as } N \to \infty$$ where $\theta$ is the rotation angle per environment qubit. This is the exponential suppression of coherence characteristic of decoherence.</p>
+<p>In the categorical language: the colimit computing the superposition $S$ uses gluing data that lives in environmental contexts. Restricting to $\mathscr{C}_{\mathrm{macro}}$ eliminates these contexts, and the colimit degenerates into a coproduct of the pointer states $|0\rangle$ and $|1\rangle$.</p>
+<p>:::</p>
+<h1 id="toy-models-and-explicit-calculations-sec-toymodels">Toy Models and Explicit Calculations {#sec:toymodels}</h1>
+<h2 id="the-single-qubit-complete-analysis">The Single Qubit: Complete Analysis</h2>
+<p>::: {#ex:qubitcontext .example}</p>
+<div class="callout callout-example"><div class="callout-title">Example 35</div><p>(Single-Qubit Context Category). We construct the context category $\mathscr{C}_{\mathrm{qubit}}$ explicitly. Objects are measurement bases for a single qubit, parametrized by points on the Bloch sphere $S^2$: $$\mathrm{Ob}(\mathscr{C}_{\mathrm{qubit}}) = \{ C_{\hat{n}} : \hat{n} \in S^2 \}$$ where $C_{\hat{n}}$ is the context corresponding to measurement of the spin observable $\hat{n} \cdot \vec{\sigma}$ along direction $\hat{n}$.</p></div>
+<p>Morphisms between contexts are $\mathrm{SO}(3)$ rotations: $\mathrm{Hom}(C_{\hat{n}}, C_{\hat{m}}) = \{ R \in \mathrm{SO}(3) : R\hat{n} = \hat{m} \}$. The presheaf $S : \mathscr{C}_{\mathrm{qubit}}^{\mathrm{op}}\to \mathbf{Vect}_\mathbb{C}$ assigns: $$S(C_{\hat{n}}) = \mathbb{C}^2, \qquad S(R) = D^{1/2}(R) : \mathbb{C}^2 \to \mathbb{C}^2$$ where $D^{1/2}$ is the spin-$1/2$ representation of $\mathrm{SU}(2)$ (the double cover of $\mathrm{SO}(3)$).</p>
+<p>A state $|\psi\rangle = \cos(\theta/2)|0\rangle + e^{i\phi}\sin(\theta/2)|1\rangle$ (in the $\hat{z}$-basis) assigns to each context $C_{\hat{n}}$ the probabilities: $$\begin{align}</p>
+<p>p(+|\hat{n}) &= |\langle +_{\hat{n}}|\psi\rangle|^2 = \frac{1}{2}(1 + \hat{n} \cdot \hat{r}), \\</p>
+<p>p(-|\hat{n}) &= |\langle -_{\hat{n}}|\psi\rangle|^2 = \frac{1}{2}(1 - \hat{n} \cdot \hat{r}),</p>
+<p>\end{align}$$ where $\hat{r} = (\sin\theta\cos\phi, \sin\theta\sin\phi, \cos\theta)$ is the Bloch vector. This is the Born rule, confirmed by the topos Gleason theorem applied to this context category.</p>
+<p>The Yoneda embedding sends $C_{\hat{n}}$ to the representable presheaf $\mathsf{y}(C_{\hat{n}})$, which collects all rotations into $C_{\hat{n}}$. The Yoneda lemma gives $\mathrm{Nat}(\mathsf{y}(C_{\hat{n}}), S) \cong S(C_{\hat{n}}) = \mathbb{C}^2$, identifying natural transformations with spin states.</p>
+<p>:::</p>
+<h2 id="two-qubit-system-entanglement-and-bell-states">Two-Qubit System: Entanglement and Bell States</h2>
+<p>::: {#ex:twoqubit .example}</p>
+<div class="callout callout-example"><div class="callout-title">Example 36</div><p>(Two-Qubit Context Category and Entanglement). For two qubits, the context category is $\mathscr{C}_2 = \mathscr{C}_{\mathrm{qubit}} \times \mathscr{C}_{\mathrm{qubit}}$. Objects are pairs $(C_{\hat{n}}, C_{\hat{m}})$ representing simultaneous measurements on both qubits.</p></div>
+<p>The Bell state $|\Phi^+\rangle = \frac{1}{\sqrt{2}}(|00\rangle + |11\rangle)$ defines a presheaf on $\mathscr{C}_2$ that is <strong>not</strong> a product: $$S_{\Phi^+} \ncong S_1 \times S_2$$ for any presheaves $S_1, S_2$ on the individual qubit context categories. This is entanglement viewed categorically.</p>
+<p>The correlations predicted by the presheaf are: $$\begin{align}</p>
+<p>E(\hat{n}, \hat{m}) &= \langle \Phi^+|(\hat{n}\cdot\vec{\sigma} \otimes \hat{m}\cdot\vec{\sigma})|\Phi^+\rangle = \hat{n} \cdot \hat{m}.</p>
+<p>\end{align}$$</p>
+<p>For the CHSH inequality with settings $\hat{a}, \hat{a}', \hat{b}, \hat{b}'$: $$\begin{equation}</p>
+<p>|E(\hat{a},\hat{b}) - E(\hat{a},\hat{b}') + E(\hat{a}',\hat{b}) + E(\hat{a}',\hat{b}')| \leq 2\sqrt{2}</p>
+<p>\end{equation}$$ which achieves the Tsirelson bound $2\sqrt{2}$ for appropriate choices (e.g., $\hat{a} = \hat{z}$, $\hat{a}' = \hat{x}$, $\hat{b} = (\hat{z}+\hat{x})/\sqrt{2}$, $\hat{b}' = (\hat{z}-\hat{x})/\sqrt{2}$), violating the classical bound of 2.</p>
+<p>In the topos framework, this violation is a consequence of the non-Boolean nature of the subobject classifier $\Omega$ on the product context category --- the subobject lattice of the Bell-state presheaf does not admit a two-valued homomorphism, which is the Kochen--Specker obstruction applied to the two-qubit system.</p>
+<p>:::</p>
+<h2 id="the-harmonic-oscillator-infinite-dimensional-case">The Harmonic Oscillator: Infinite-Dimensional Case</h2>
+<p>::: {#ex:harmonic .example}</p>
+<div class="callout callout-example"><div class="callout-title">Example 37</div><p>(Quantum Harmonic Oscillator). The quantum harmonic oscillator has Hilbert space $\mathcal{H}= L^2(\mathbb{R})$ with Hamiltonian $H = \frac{1}{2}(p^2 + \omega^2 x^2)$. The context category $\mathscr{C}_{\mathrm{HO}}$ has:</p></div>
+<ul>
+<li><strong>Position contexts</strong> $C_x$: measurement of position, yielding eigenstates $|x\rangle$.</li>
+</ul>
+<ul>
+<li><strong>Momentum contexts</strong> $C_p$: measurement of momentum, yielding eigenstates $|p\rangle$.</li>
+</ul>
+<ul>
+<li><strong>Number contexts</strong> $C_n$: measurement of the number operator $N = a\ensuremath{^{\dagger}}a$, yielding Fock states $|n\rangle$.</li>
+</ul>
+<ul>
+<li><strong>Coherent-state contexts</strong> $C_\alpha$: for each $\alpha \in \mathbb{C}$, measurement in the coherent-state basis.</li>
+</ul>
+<p>The presheaf assigns to each context the appropriate Hilbert space (all isomorphic to $L^2(\mathbb{R})$, but with different preferred bases): $$S(C_x) = L^2(\mathbb{R}) \text{ with position basis}, \quad S(C_p) = L^2(\mathbb{R}) \text{ with momentum basis}.$$</p>
+<p>The restriction maps between position and momentum contexts are Fourier transforms: $$S(f_{p \to x}) : L^2(\mathbb{R}) \to L^2(\mathbb{R}), \qquad \psi(x) = \frac{1}{\sqrt{2\pi\hbar}} \int e^{ipx/\hbar} \tilde{\psi}(p) \, dp.$$</p>
+<p><strong>Gleason's theorem</strong> applies since $\dim \mathcal{H}= \infty > 3$. Any frame function on $L^2(\mathbb{R})$ is of the form $f(\psi) = \mathrm{Tr}(\rho |\psi\rangle\langle \psi|)$.</p>
+<p><strong>Coherent-state decoherence:</strong> Consider a superposition of coherent states $|\psi\rangle = \frac{1}{\sqrt{2}}(|\alpha\rangle + |-\alpha\rangle)$ (a "Schrödinger cat" state). The density matrix has off-diagonal terms $\frac{1}{2}|\alpha\rangle\langle -\alpha|$ with overlap $\langle -\alpha|\alpha\rangle = e^{-2|\alpha|^2}$. For large $|\alpha|$ (macroscopic oscillation), the off-diagonal coherences are exponentially suppressed: $$|\langle -\alpha|\alpha\rangle| = e^{-2|\alpha|^2} \xrightarrow{|\alpha| \gg 1} 0.$$ This is categorical decoherence: the macroscopic context category cannot resolve the coherence between $|\alpha\rangle$ and $|-\alpha\rangle$ when $|\alpha|$ is large. The colimit computing the superposition degenerates into a coproduct (classical mixture).</p>
+<p>:::</p>
+<h2 id="three-level-system-the-minimal-gleason-setting">Three-Level System: The Minimal Gleason Setting</h2>
+<p>::: {#ex:qutrit .example}</p>
+<div class="callout callout-example"><div class="callout-title">Example 38</div><p>(Qutrit: Minimal Gleason). The qutrit ($\mathcal{H}= \mathbb{C}^3$) is the minimal system where Gleason's theorem applies. We construct an explicit frame function and verify it has the Born-rule form.</p></div>
+<p>Let $\rho = \frac{1}{3}(I + \sqrt{2} \lambda_3 + \sqrt{2} \lambda_8)$ where $\lambda_3, \lambda_8$ are Gell-Mann matrices (the diagonal generators of $\mathfrak{su}(3)$). Explicitly: $$\rho = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}$$ which is the pure state $|0\rangle\langle 0|$. The frame function is $f(v) = |v_1|^2$ for $v = (v_1, v_2, v_3)^T$.</p>
+<p>For the orthonormal basis $\{e_1, e_2, e_3\}$: $f(e_1) = 1$, $f(e_2) = 0$, $f(e_3) = 0$. Sum = 1. $\checkmark$</p>
+<p>For the basis $\{(1,1,0)/\sqrt{2}, (1,-1,0)/\sqrt{2}, (0,0,1)\}$: $f = 1/2 + 1/2 + 0 = 1$. $\checkmark$</p>
+<p>For the basis $\{(1,1,1)/\sqrt{3}, (1,\omega,\omega^2)/\sqrt{3}, (1,\omega^2,\omega)/\sqrt{3}\}$ with $\omega = e^{2\pi i/3}$: $f = 1/3 + 1/3 + 1/3 = 1$. $\checkmark$</p>
+<p>The frame function is $f(v) = \mathrm{Tr}(\rho |v\rangle\langle v|)$, confirming Gleason's theorem explicitly for this qutrit state.</p>
+<p>Note that for a <strong>qubit</strong> ($d = 2$), Gleason's theorem fails: there exist non-Born-rule frame functions (dispersion-free valuations) corresponding to hidden-variable models. The context category for a qubit has insufficient structure to force the Born rule, reflecting the known fact that the Kochen--Specker theorem requires $d \geq 3$.</p>
+<p>:::</p>
+<h1 id="the-classical-limit-via-coarse-graining-sec-classical">The Classical Limit via Coarse-Graining {#sec:classical}</h1>
+<h2 id="the-hierarchy-of-context-categories">The Hierarchy of Context Categories</h2>
+<p>The transition from quantum to classical physics can be understood as a hierarchy of context categories: $$\begin{equation}</p>
+<p>\mathscr{C}_{\mathrm{Planck}} \supset \mathscr{C}_{\mathrm{micro}} \supset \mathscr{C}_{\mathrm{meso}} \supset \mathscr{C}_{\mathrm{macro}} \supset \mathscr{C}_{\mathrm{classical}}.</p>
+<p>\end{equation}$$</p>
+<p>Each inclusion $i : \mathscr{C}_{\mathrm{coarse}} \hookrightarrow \mathscr{C}_{\mathrm{fine}}$ induces a restriction functor $i^*$ that "forgets" fine-grained coherences.</p>
+<p>::: definition</p>
+<div class="callout callout-definition"><div class="callout-title">Definition 39</div><p>(Classical Context Category). The <strong>classical context category</strong> $\mathscr{C}_{\mathrm{classical}}$ is the maximal subcategory of $\mathscr{C}$ on which:</p></div>
+<ol>
+<li>All presheaves $i^*(S)$ assign commuting data: for any two contexts $C, C' \in \mathscr{C}_{\mathrm{classical}}$, the restriction maps $S(f)$ and $S(g)$ commute.</li>
+</ol>
+<ol>
+<li>The subobject classifier $\Omega_{\mathrm{classical}}$ of $\widehat{\mathscr{C}_{\mathrm{classical}}}$ is Boolean.</li>
+</ol>
+<ol>
+<li>Every probability valuation on $\mathrm{Sub}(i^*(S))$ is a classical probability measure (Kolmogorov axioms).</li>
+</ol>
+<p>:::</p>
+<h2 id="phase-space-emergence">Phase Space Emergence</h2>
+<p>::: {#prop:phasespace .proposition}</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 40</div><p>(Phase Space from Commutative Contexts). <em>If $\mathscr{C}_{\mathrm{classical}}$ is a category with commutative diagram structure (all diagrams commute), then the presheaf topos $\widehat{\mathscr{C}_{\mathrm{classical}}}$ is equivalent to the category of sheaves on a topological space $X$. When $X$ is a smooth manifold, it is the <strong>phase space</strong> of the classical system.</em> :::</p></div>
+<p>::: proof</p>
+<p><em>Proof sketch.</em> The condition that "all diagrams commute" is equivalent to saying that between any two objects there is at most one morphism; such a category is a <strong>preorder</strong>. The presheaf topos on a preorder is equivalent to the topos of sheaves on the Alexandrov topology of the preorder. If the preorder has the structure of a lattice of open sets of a Hausdorff space $X$, then $\widehat{\mathscr{C}_{\mathrm{classical}}} \simeq \mathrm{Sh}(X)$ and $X$ is the phase space.</p>
+<p>In the quantum-to-classical limit, the non-commutativity of the full context category $\mathscr{C}$ (which reflects the Heisenberg uncertainty principle) is resolved by the restriction to $\mathscr{C}_{\mathrm{classical}}$, where all observables commute. The emergent topology on $X$ is determined by the inclusion structure of the commutative contexts. ◻</p>
+<p>:::</p>
+<h2 id="wigner-function-and-the-semiclassical-limit">Wigner Function and the Semiclassical Limit</h2>
+<p>::: {#ex:wigner .example}</p>
+<div class="callout callout-example"><div class="callout-title">Example 41</div><p>(Wigner Function as a Classical Restriction). The Wigner function $W(x, p)$ of a quantum state $\rho$ provides the bridge between quantum and classical descriptions. In the categorical framework, $W$ is the image of the density operator under the restriction to phase-space contexts: $$\begin{equation} W(x,p) = \frac{1}{\pi\hbar} \int \langle x+y|\rho|x-y\rangle e^{-2ipy/\hbar} \, dy. \end{equation}$$</p></div>
+<p>For a coherent state $|\alpha\rangle$ with $\alpha = (x_0 + ip_0)/\sqrt{2}$: $$W(x,p) = \frac{1}{\pi\hbar} \exp\left(-\frac{(x-x_0)^2}{\hbar} - \frac{(p-p_0)^2}{\hbar}\right),$$ which is a Gaussian centered at $(x_0, p_0)$ with width $\sqrt{\hbar}$. In the limit $\hbar \to 0$, $W \to \delta(x - x_0)\delta(p - p_0)$: the quantum presheaf restricts to a classical point in phase space.</p>
+<p>For the Schrödinger cat state $\frac{1}{\sqrt{2}}(|\alpha\rangle + |-\alpha\rangle)$: $$W(x,p) = \frac{1}{2}[W_\alpha(x,p) + W_{-\alpha}(x,p)] + \frac{1}{\pi\hbar}\cos(2p x_0/\hbar) \, e^{-(x^2 + p^2)/\hbar}.$$ The interference term (third piece) oscillates rapidly when $x_0 / \sqrt{\hbar} \gg 1$. After coarse-graining (averaging over phase-space cells of size $\gg \hbar$), the interference term averages to zero, leaving only the classical mixture $\frac{1}{2}(W_\alpha + W_{-\alpha})$. This is exactly the categorical decoherence mechanism: the macroscopic context category $\mathscr{C}_{\mathrm{macro}}$ averages over fine-grained phase-space cells, destroying the colimit structure that encoded the interference.</p>
+<p>:::</p>
+<h2 id="hamilton-s-equations-from-presheaf-dynamics">Hamilton's Equations from Presheaf Dynamics</h2>
+<p>::: {#prop:hamilton .proposition}</p>
+<div class="callout callout-proposition"><div class="callout-title">Proposition 42</div><p>(Classical Dynamics from Restricted Natural Transformations). <em>Let $U_t : S \Rightarrow S$ be a unitary natural automorphism (quantum evolution) generated by the Hamiltonian $H$. The restriction $i^</em>(U_t) : i^<em>(S) \Rightarrow i^</em>(S)$ to the classical context category, in the semiclassical limit $\hbar \to 0$, yields Hamilton's equations: $$\begin{equation} \dot{x} = \frac{\partial H}{\partial p}, \qquad \dot{p} = -\frac{\partial H}{\partial x}. \end{equation}$$* :::</p></div>
+<p>::: proof</p>
+<p><em>Proof sketch.</em> The unitary evolution $U_t = e^{-iHt/\hbar}$ acts on the Wigner function as a Moyal flow. In the limit $\hbar \to 0$, the Moyal bracket $\{f, g\}_{\mathrm{Moyal}} \to \{f, g\}_{\mathrm{Poisson}}$ (the Poisson bracket), and the Moyal flow reduces to the Hamiltonian flow on phase space. The restriction functor $i^*$ implements this limit by eliminating the higher-order $\hbar$ corrections that encode quantum coherence. ◻</p>
+<p>:::</p>
+<h2 id="ehrenfest-s-theorem-a-categorical-derivation">Ehrenfest's Theorem: A Categorical Derivation</h2>
+<p>::: {#ex:ehrenfest .example}</p>
+<div class="callout callout-example"><div class="callout-title">Example 43</div><p>(Ehrenfest from Presheaf Restriction). Ehrenfest's theorem states that $\frac{d}{dt}\langle x \rangle = \langle p \rangle / m$ and $\frac{d}{dt}\langle p \rangle = -\langle V'(x) \rangle$. In the categorical framework:</p></div>
+<p>The expectation values $\langle x \rangle$ and $\langle p \rangle$ are the images of the quantum state $\psi$ under the restriction to position and momentum contexts: $$\langle x \rangle = i^<em>_x(S)(\psi), \qquad \langle p \rangle = i^</em>_p(S)(\psi).$$</p>
+<p>The natural transformation $U_t$ restricts to: $$\frac{d}{dt} i^<em>_x(U_t(\psi)) = i^</em>_x\left(\frac{i}{\hbar}[H, x] \cdot U_t(\psi)\right) = \frac{1}{m} i^*_p(U_t(\psi))$$ using $[H, x] = -i\hbar p/m$. This is Ehrenfest's theorem, derived as a consequence of the compatibility of the natural transformation $U_t$ with the restriction functor.</p>
+<p>For a harmonic oscillator ($V(x) = \frac{1}{2}m\omega^2 x^2$), Ehrenfest's equations are exact: $$\frac{d}{dt}\langle x \rangle = \frac{\langle p \rangle}{m}, \qquad \frac{d}{dt}\langle p \rangle = -m\omega^2 \langle x \rangle.$$ The quantum presheaf, when restricted to the centroid context (tracking expectation values), exactly reproduces the classical harmonic oscillator.</p>
+<p>:::</p>
+<h1 id="companion-haskell-implementation-sec-haskell">Companion Haskell Implementation {#sec:haskell}</h1>
+<p>We provide a companion Haskell implementation that encodes the categorical structures and verifies the key results computationally. The code is available in the repository at <code>src/technical-constructions-qp/Main.hs</code>.</p>
+<h2 id="type-level-categories">Type-Level Categories</h2>
+<p>The implementation uses Haskell's type system to model categorical structures. Categories are represented as type classes:</p>
+<p>class Category cat where</p>
+<p>type Obj cat :: *</p>
+<p>identity :: Obj cat -> cat</p>
+<p>compose  :: cat -> cat -> Maybe cat</p>
+<p>Braided monoidal structure is encoded via an additional type class:</p>
+<p>class Category cat => BraidedMonoidal cat where</p>
+<p>tensor   :: cat -> cat -> cat</p>
+<p>braiding :: Obj cat -> Obj cat -> cat</p>
+<p>unit     :: Obj cat</p>
+<h2 id="verification-of-key-results">Verification of Key Results</h2>
+<p>The implementation verifies:</p>
+<ol>
+<li>The braiding relation $\beta^2 = (-1)^{|A||B|}$ for graded objects.</li>
+</ol>
+<ol>
+<li>Gleason's frame-function condition for qubit and qutrit density matrices.</li>
+</ol>
+<ol>
+<li>Decoherence: exponential decay of off-diagonal elements under partial trace.</li>
+</ol>
+<ol>
+<li>The Born rule as the unique frame function for $d \geq 3$.</li>
+</ol>
+<p>See Section <a href="#sec:haskellcode">11</a>{reference-type="ref" reference="sec:haskellcode"} for code excerpts and the full implementation in the companion file.</p>
+<h1 id="discussion-and-open-problems-sec-discussion">Discussion and Open Problems {#sec:discussion}</h1>
+<h2 id="summary-of-results">Summary of Results</h2>
+<p>We have provided complete technical constructions for three central results in Quantum Perspectivism:</p>
+<ol>
+<li><strong>$\mathbb{C}$ from braiding</strong>: The complex numbers are the unique ground field compatible with a braided monoidal category of physical contexts admitting fermionic sectors, algebraic closure, characteristic zero, and Archimedean positivity. The spin-statistics connection emerges from the categorical twist.</li>
+</ol>
+<ol>
+<li><strong>Topos Gleason</strong>: The Born rule is the unique probability assignment on the subobject lattice of a Hilbert presheaf with fibers of dimension $\geq 3$, compatible with the Yoneda embedding. The proof proceeds fiber-by-fiber using classical Gleason, with naturality enforcing global coherence.</li>
+</ol>
+<ol>
+<li><strong>Categorical decoherence</strong>: The quantum-to-classical transition is the failure of the restriction functor $i^*$ to preserve the colimit structure that encodes superposition. Off-diagonal coherences are lost when passing to macroscopic contexts, recovering classical probability theory.</li>
+</ol>
+<h2 id="relation-to-prior-work">Relation to Prior Work</h2>
+<p>The reconstruction of $\mathbb{C}$ from physical postulates has a rich history. The Solèr--Holland--Morash theorem [@soler1995] establishes $\mathbb{C}$ from lattice-theoretic axioms. Our approach is complementary: we derive $\mathbb{C}$ from categorical braiding and the spin-statistics connection, which is more directly physical.</p>
+<p>The topos-theoretic approach to quantum mechanics originates with Isham and Butterfield [@butterfield1998] and was extensively developed by Döring and Isham [@doering2008]. Their "daseinisation" of projectors into the presheaf topos is closely related to our subobject construction. Our contribution is to show that Gleason's theorem extends naturally to this setting.</p>
+<p>The decoherence program of Zurek [@zurek2003] and others is given a fully categorical reformulation. The key new insight is that decoherence is the failure to preserve colimits --- a precise categorical characterization of information loss.</p>
+<h2 id="open-problems">Open Problems</h2>
+<ol>
+<li><strong>Explicit construction of $\mathscr{C}$ for realistic systems.</strong> The context category $\mathscr{C}$ has been treated abstractly. Constructing $\mathscr{C}$ explicitly for the Standard Model, including gauge symmetries and the particle spectrum, is an important open problem.</li>
+</ol>
+<ol>
+<li><strong>Quantitative decoherence rates.</strong> While we have shown that decoherence corresponds to the failure of $i^<em>$ to preserve colimits, computing decoherence </em>rates* categorically (connecting to the physical decoherence time $\tau_D$) requires specifying the morphism structure of $\mathscr{C}$ in detail.</li>
+</ol>
+<ol>
+<li><strong>Gravity from context categories.</strong> If spacetime is emergent from the category of contexts (as proposed in [@long2026qp]), then the Einstein field equations should arise as constraints on the Grothendieck topology of $\mathscr{C}$. Deriving $G_{\mu\nu} = 8\pi T_{\mu\nu}$ from categorical data is a major research target.</li>
+</ol>
+<ol>
+<li><strong>The $d = 2$ gap.</strong> Gleason's theorem requires $d \geq 3$. For qubits ($d = 2$), the Born rule is not forced by the frame-function condition alone. Understanding what additional structure (perhaps from the embedding of qubits into larger systems via the context category) closes this gap is an important question.</li>
+</ol>
+<ol>
+<li><strong>Non-Archimedean extensions.</strong> If the Archimedean property is relaxed, $p$-adic or adelic quantum mechanics becomes possible. The categorical framework may accommodate such extensions, potentially connecting to the Langlands program.</li>
+</ol>
+<h1 id="conclusion-sec-conclusion">Conclusion {#sec:conclusion}</h1>
+<p>The three technical constructions developed in this paper --- the reconstruction of $\mathbb{C}$ from braided monoidal structure, the topos Gleason theorem, and categorical decoherence --- constitute the mathematical backbone of Quantum Perspectivism. Together, they show that the complex amplitudes, the Born rule, and the classical limit are not independent postulates but structural consequences of the Yoneda Constraint: the requirement that physical systems be presheaves on a category of observational contexts.</p>
+<p>The reconstruction of $\mathbb{C}$ demonstrates that the choice of complex amplitudes is forced by the existence of fermionic matter. The topos Gleason theorem establishes that the Born rule is the unique probability assignment compatible with the Yoneda embedding. And categorical decoherence shows that the classical world emerges through coarse-graining of contexts, with the off-diagonal coherences living in fine-grained contexts inaccessible to macroscopic observers.</p>
+<p>These results vindicate the claim that quantum mechanics is not a collection of empirical postulates but the unique physics forced by the structural constraint that identity is relational.</p>
+<p>------------------------------------------------------------------------</p>
+<p><strong>Acknowledgments.</strong> The author thanks the YonedaAI Research Collective for ongoing collaboration and intellectual support, and acknowledges discussions with colleagues in the categorical quantum mechanics community.</p>
+<p><strong>Companion Code:</strong><https://github.com/YonedaAI/technical-constructions-qp></p>
+<p><strong>GrokRxiv DOI:</strong> <code>10.48550/GrokRxiv.2026.02.technical-constructions-qp</code></p>
+<h1 id="haskell-code-listings-sec-haskellcode">Haskell Code Listings {#sec:haskellcode}</h1>
+<p>We provide key excerpts from the companion Haskell implementation.</p>
+<h2 id="complex-number-verification">Complex Number Verification</h2>
+<p>-- | Verify that fermionic braiding requires sqrt(-1)</p>
+<p>fermionicBraiding :: Complex Double -> Bool</p>
+<p>fermionicBraiding lambda =</p>
+<p>let lambdaSq = lambda * lambda</p>
+<p>in magnitude (lambdaSq + 1) < 1e-10</p>
+<p>-- | The unique solution over C</p>
+<p>fermionicSolutions :: [Complex Double]</p>
+<p>fermionicSolutions = [0 :+ 1, 0 :+ (-1)]  -- +i, -i</p>
+<h2 id="gleason-frame-function">Gleason Frame Function</h2>
+<p>-- | Verify frame function condition for density matrix rho</p>
+<p>-- on all orthonormal bases of C^d</p>
+<p>verifyFrameFunction :: Matrix (Complex Double)</p>
+<p>-> [[Vector (Complex Double)]]</p>
+<p>-> Bool</p>
+<p>verifyFrameFunction rho bases =</p>
+<p>all (\basis -></p>
+<p>abs (sum [frameValue rho v | v <- basis] - 1.0) < 1e-10</p>
+<p>) bases</p>
+<p>where</p>
+<p>frameValue rho v = realPart $</p>
+<p>(conjugateTranspose v) <code>multiply</code> rho <code>multiply</code> v</p>
+<h2 id="decoherence-computation">Decoherence Computation</h2>
+<p>-- | Compute decoherence factor for N-qubit environment</p>
+<p>decoherenceFactor :: Int -> Double -> Double</p>
+<p>decoherenceFactor n theta = (cos theta) ^ n</p>
+<p>-- | Verify exponential decay</p>
+<p>decoherenceDecay :: [(Int, Double)]</p>
+<p>decoherenceDecay =</p>
+<p>[(n, decoherenceFactor n (pi/4)) | n <- [1..20]]</p>
+<p>-- Shows exponential decay: (cos(pi/4))^n = (1/sqrt(2))^n</p>
+<p>::: thebibliography</p>
+<p>99</p>
+<p>M. Long, "Quantum perspectivism as the foundation of physics: The Yoneda constraint and the relational structure of reality," <em>GrokRxiv:2026.02.quantum-perspectivism-yoneda</em>, 2026.</p>
+<p>A. M. Gleason, "Measures on the closed subspaces of a Hilbert space," <em>J. Math. Mech.</em>, vol. 6, pp. 885--893, 1957.</p>
+<p>S. Kochen and E. P. Specker, "The problem of hidden variables in quantum mechanics," <em>J. Math. Mech.</em>, vol. 17, pp. 59--87, 1967.</p>
+<p>W. H. Zurek, "Decoherence, einselection, and the quantum origins of the classical," <em>Rev. Mod. Phys.</em>, vol. 75, pp. 715--775, 2003.</p>
+<p>M. P. Solèr, "Characterization of Hilbert spaces by orthomodular spaces," <em>Comm. Algebra</em>, vol. 23, pp. 219--243, 1995.</p>
+<p>J. Butterfield and C. J. Isham, "A topos perspective on the Kochen--Specker theorem: I. Quantum states as generalized valuations," <em>Int. J. Theor. Phys.</em>, vol. 37, pp. 2669--2733, 1998.</p>
+<p>A. Döring and C. J. Isham, "A topos foundation for theories of physics," <em>J. Math. Phys.</em>, vol. 49, 053515, 2008.</p>
+<p>S. Mac Lane, <em>Categories for the Working Mathematician</em>, 2nd ed., Springer, 1998.</p>
+<p>A. Joyal and R. Street, "Braided tensor categories," <em>Adv. Math.</em>, vol. 102, pp. 20--78, 1993.</p>
+<p>P. Deligne, "Catégories tensorielles," <em>Mosc. Math. J.</em>, vol. 2, pp. 227--248, 2002.</p>
+<p>V. G. Turaev, <em>Quantum Invariants of Knots and 3-Manifolds</em>, 2nd ed., de Gruyter, 2010.</p>
+<p>J. C. Baez and J. Dolan, "From finite sets to Feynman diagrams," in <em>Mathematics Unlimited --- 2001 and Beyond</em>, pp. 29--50, Springer, 2001.</p>
+<p>S. Abramsky and B. Coecke, "A categorical semantics of quantum protocols," in <em>Proc. 19th Annual IEEE Symposium on Logic in Computer Science</em>, pp. 415--425, 2004.</p>
+<p>E. Riehl, <em>Category Theory in Context</em>, Dover Publications, 2016.</p>
+<p>P. T. Johnstone, <em>Sketches of an Elephant: A Topos Theory Compendium</em>, Oxford University Press, 2002.</p>
+<p>M. Schlosshauer, <em>Decoherence and the Quantum-to-Classical Transition</em>, Springer, 2007.</p>
+<p>E. Joos, H. D. Zeh, C. Kiefer, D. Giulini, J. Kupsch, and I.-O. Stamatescu, <em>Decoherence and the Appearance of a Classical World in Quantum Theory</em>, 2nd ed., Springer, 2003.</p>
+<p>W. H. Zurek, "Pointer basis of quantum apparatus: Into what mixture does the wave packet collapse?" <em>Phys. Rev. D</em>, vol. 24, pp. 1516--1525, 1981.</p>
+<p>C. Heunen, N. P. Landsman, and B. Spitters, "A topos for algebraic quantum theory," <em>Comm. Math. Phys.</em>, vol. 291, pp. 63--110, 2009.</p>
+<p>C. J. Isham, "Topos theory and consistent histories: The internal logic of the set of all consistent sets," <em>Int. J. Theor. Phys.</em>, vol. 36, pp. 785--814, 1997.</p>
+<p>J. S. Bell, "On the Einstein Podolsky Rosen paradox," <em>Physics Physique Fizika</em>, vol. 1, pp. 195--200, 1964.</p>
+<p>M. Born, "Zur Quantenmechanik der Stoßvorgänge," <em>Z. Phys.</em>, vol. 37, pp. 863--867, 1926.</p>
+<p>E. Wigner, "On the quantum correction for thermodynamic equilibrium," <em>Phys. Rev.</em>, vol. 40, pp. 749--759, 1932.</p>
+<p>R. F. Streater and A. S. Wightman, <em>PCT, Spin and Statistics, and All That</em>, W.A. Benjamin, 1964.</p>
+<p>R. Haag and D. Kastler, "An algebraic approach to quantum field theory," <em>J. Math. Phys.</em>, vol. 5, pp. 848--861, 1964.</p>
+<p>M. Long, "ContextFS: Typed persistent memory for AI systems," <em>GrokRxiv</em>, 2026.</p>
+<p>:::</p>
+    </div>
+
+    <div class="paper-nav">
+      <a href="/papers/philosophical-implications-qp.html">
+      <div class="paper-nav-label">Previous</div>
+      <div class="paper-nav-title">Philosophical Implications of Quantum Perspectivism</div>
+    </a>
+      <a href="/papers/open-problems-qp.html" class="next">
+      <div class="paper-nav-label">Next</div>
+      <div class="paper-nav-title">Open Problems in Quantum Perspectivism</div>
+    </a>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">Matthew Long</div>
+    <div class="footer-org">The YonedaAI Collaboration &middot; YonedaAI Research Collective &middot; Chicago, IL</div>
+    <div class="footer-links">
+      <a href="mailto:matthew@yonedaai.com">matthew@yonedaai.com</a>
+      <a href="https://yonedaai.com">yonedaai.com</a>
+      <a href="https://github.com/MagnetonIO" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 YonedaAI Research Collective. All rights reserved.</div>
+  </div>
+</footer>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false},
+      {left: '\\(', right: '\\)', display: false},
+      {left: '\\[', right: '\\]', display: true}
+    ],
+    throwOnError: false
+  });"></script>
+</body>
+</html>

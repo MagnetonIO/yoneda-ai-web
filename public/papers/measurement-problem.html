@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Measurement Problem - YonedaAI</title>
+  <meta name="description" content="The Measurement Problem by Matthew Long, YonedaAI Research Collective">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff; --bg-alt: #f8f9fa; --bg-card: #ffffff;
+      --text: #1a1a2e; --text-secondary: #555770; --text-muted: #8b8da3;
+      --accent: #6c5ce7; --accent-light: #a29bfe; --accent-bg: #f0eeff;
+      --border: #e8e8ef;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+      --radius: 12px; --radius-sm: 8px;
+      --max-width: 1200px; --nav-height: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); height: var(--nav-height);
+    }
+    .nav-inner {
+      max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 100%;
+    }
+    .nav-logo { font-weight: 700; font-size: 1.15rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .gh-link { display: flex; align-items: center; gap: 6px; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--text); }
+    .nav-hamburger svg { display: block; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: var(--nav-height); left: 0; right: 0; background: var(--bg); flex-direction: column; padding: 16px 24px; gap: 16px; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); }
+      .nav-links.open { display: flex; }
+      .nav-hamburger { display: block; }
+    }
+    footer { border-top: 1px solid var(--border); padding: 48px 24px; text-align: center; }
+    .footer-inner { max-width: var(--max-width); margin: 0 auto; }
+    .footer-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .footer-org { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.85rem; color: var(--accent); text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+    .footer-copy { margin-top: 24px; font-size: 0.8rem; color: var(--text-muted); }
+
+    /* Paper page layout */
+    .paper-layout { display: flex; max-width: var(--max-width); margin: 0 auto; padding: 0 24px; gap: 40px; }
+    .paper-sidebar { width: 240px; flex-shrink: 0; position: sticky; top: calc(var(--nav-height) + 24px); align-self: flex-start; max-height: calc(100vh - var(--nav-height) - 48px); overflow-y: auto; padding: 16px 0; }
+    .paper-sidebar h4 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+    .paper-sidebar ul { list-style: none; }
+    .paper-sidebar li { margin-bottom: 4px; }
+    .paper-sidebar a { font-size: 0.82rem; color: var(--text-secondary); text-decoration: none; display: block; padding: 4px 12px; border-left: 2px solid transparent; transition: all 0.15s; line-height: 1.4; }
+    .paper-sidebar a:hover { color: var(--accent); border-left-color: var(--accent); background: var(--accent-bg); }
+    .paper-sidebar a.depth-2 { padding-left: 24px; font-size: 0.78rem; }
+    .paper-main { flex: 1; min-width: 0; padding: 40px 0 80px; }
+    @media (max-width: 960px) {
+      .paper-sidebar { display: none; }
+      .paper-layout { padding: 0 16px; }
+    }
+
+    /* Breadcrumb */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* Paper header */
+    .paper-header { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+    .paper-header h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
+    .paper-meta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px; }
+    .paper-meta-item { font-size: 0.85rem; color: var(--text-secondary); }
+    .paper-meta-tag { font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+    .badge-pr { display: inline-flex; align-items: center; gap: 4px; font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: #e8f5e9; color: #2e7d32; }
+
+    /* Action bar */
+    .action-bar { display: flex; gap: 12px; flex-wrap: wrap; }
+    .action-bar .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: all 0.2s; border: 1px solid var(--border); color: var(--text); background: var(--bg); }
+    .action-bar .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .action-bar .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .action-bar .btn-primary:hover { background: #5a4bd4; }
+    .action-bar .btn svg { width: 16px; height: 16px; }
+
+    /* Content styling */
+    .paper-content h2 { font-size: 1.5rem; font-weight: 700; margin: 48px 0 16px; padding-top: 16px; letter-spacing: -0.02em; border-top: 1px solid var(--border); }
+    .paper-content h2:first-child { border-top: none; margin-top: 0; }
+    .paper-content h3 { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; }
+    .paper-content h4 { font-size: 1.05rem; font-weight: 600; margin: 24px 0 8px; }
+    .paper-content p { margin-bottom: 16px; color: var(--text); }
+    .paper-content ul, .paper-content ol { margin: 0 0 16px 24px; }
+    .paper-content li { margin-bottom: 6px; }
+    .paper-content blockquote { border-left: 3px solid var(--accent); padding: 12px 20px; margin: 16px 0; background: var(--accent-bg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+    .paper-content blockquote p { margin-bottom: 0; color: var(--text-secondary); font-style: italic; }
+    .paper-content code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; background: var(--bg-alt); padding: 2px 6px; border-radius: 4px; }
+    .paper-content pre { background: #1e1e2e; color: #cdd6f4; padding: 20px; border-radius: var(--radius-sm); overflow-x: auto; margin: 16px 0; }
+    .paper-content pre code { background: none; padding: 0; color: inherit; }
+    .paper-content a { color: var(--accent); text-decoration: none; }
+    .paper-content a:hover { text-decoration: underline; }
+    .paper-content hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+    .paper-content strong { font-weight: 600; }
+    .paper-content em { font-style: italic; }
+
+    /* Theorem/Definition blocks */
+    .callout { border-left: 4px solid; padding: 16px 20px; margin: 20px 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+    .callout-theorem { border-color: #6c5ce7; background: #f0eeff; }
+    .callout-definition { border-color: #00b894; background: #e8f8f5; }
+    .callout-proposition { border-color: #fdcb6e; background: #fef9e7; }
+    .callout-lemma { border-color: #74b9ff; background: #eef6ff; }
+    .callout-corollary { border-color: #a29bfe; background: #f5f3ff; }
+    .callout-remark { border-color: #636e72; background: #f5f6f7; }
+    .callout-example { border-color: #00cec9; background: #e8fffe; }
+    .callout-axiom { border-color: #e17055; background: #fef0ed; }
+    .callout-title { font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; }
+
+    /* Table */
+    .paper-content table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    .paper-content th, .paper-content td { padding: 10px 14px; border: 1px solid var(--border); text-align: left; font-size: 0.9rem; }
+    .paper-content th { background: var(--bg-alt); font-weight: 600; }
+
+    /* Prev/Next nav */
+    .paper-nav { display: flex; justify-content: space-between; gap: 20px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .paper-nav a { text-decoration: none; color: var(--text); padding: 16px 20px; border: 1px solid var(--border); border-radius: var(--radius-sm); flex: 1; transition: border-color 0.2s, box-shadow 0.2s; }
+    .paper-nav a:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
+    .paper-nav-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+    .paper-nav-title { font-size: 0.95rem; font-weight: 600; margin-top: 4px; }
+    .paper-nav .next { text-align: right; }
+
+    /* KaTeX overrides */
+    .katex-display { overflow-x: auto; overflow-y: hidden; padding: 8px 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Yoneda<span>AI</span></a>
+    <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#series1">Series 1</a></li>
+      <li><a href="/#series2">Series 2</a></li>
+      <li><a href="/#framework">Framework</a></li>
+      <li><a href="/#repos">Repositories</a></li>
+      <li><a href="https://github.com/MagnetonIO" class="gh-link" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="paper-layout">
+  <aside class="paper-sidebar">
+    <h4>Table of Contents</h4>
+    <ul>
+      <li><a href="#abstract" class="">Abstract</a></li>
+<li><a href="#key-results" class="">Key Results</a></li>
+<li><a href="#full-paper" class="">Full Paper</a></li>
+<li><a href="#series-1-context" class="">Series 1 Context</a></li>
+    </ul>
+  </aside>
+
+  <main class="paper-main">
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/#series1">Series 1</a>
+      <span>/</span>
+      <span>The Measurement Problem</span>
+    </div>
+
+    <div class="paper-header">
+      <h1>The Measurement Problem</h1>
+      <div class="paper-meta">
+        <span class="paper-meta-tag">quant-ph</span>
+        <span class="paper-meta-item">28 pages</span>
+        <span class="paper-meta-item">Matthew Long</span>
+        <span class="paper-meta-item">17 February 2026</span>
+        <span class="badge-pr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
+      </div>
+      <div class="action-bar">
+        <a href="/papers/pdf/measurement-problem.pdf" class="btn btn-primary" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+        <a href="https://github.com/MagnetonIO/yoneda-ai" class="btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          View on GitHub
+        </a>
+        <a href="https://github.com/MagnetonIO/yoneda-ai" class="btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Haskell Code
+        </a>
+      </div>
+    </div>
+
+    <div class="paper-content">
+      <h2 id="abstract">Abstract</h2>
+<p>We present a rigorous category-theoretic reformulation of the quantum measurement problem in which the apparent "collapse of the wave function" is identified as a structural obstruction arising from the Yoneda lemma applied to embedded observers in quantum measurement categories. The Yoneda Constraint on Observer Knowledge---that an embedded observer accesses reality only through the representable presheaf---provides a structural resolution: collapse is not a physical process but the mathematical expression of the fact that no embedded observer can access the global state. We construct a measurement cohomology that classifies the obstruction and prove that its non-vanishing is equivalent to the measurement problem.</p>
+<h2 id="key-results">Key Results</h2>
+<p>This paper applies the Yoneda Constraint on Observer Knowledge to provide a rigorous category-theoretic analysis of one of the deepest open problems in quantum foundations and gravitational physics.</p>
+<p>The central mathematical framework involves:</p>
+<ul>
+<li><strong>Measurement Categories</strong>: Observer-system interactions formalized as morphisms in structured categories</li>
+<li><strong>Representable Presheaves</strong>: The Yoneda embedding maps each observer to their complete relational profile</li>
+<li><strong>Kan Extension Deficits</strong>: Information loss at epistemic horizons quantified as failures of exactness</li>
+<li><strong>Cohomological Obstructions</strong>: No-go theorems arising as non-vanishing cohomology classes</li>
+</ul>
+<h2 id="full-paper">Full Paper</h2>
+<p>The complete paper is available as a PDF (28 pages) with all proofs, constructions, and detailed mathematical development.</p>
+<p>The companion Haskell codebase implementing all categorical constructions is available on GitHub.</p>
+<h2 id="series-1-context">Series 1 Context</h2>
+<p>This paper is part of <strong>Series 1: Foundational Problems</strong>, a collection of six papers applying the Yoneda Constraint to the deepest open questions in quantum foundations, black hole physics, and quantum gravity. The full series is available in the <a href="https://github.com/MagnetonIO/yoneda-ai">yoneda-ai repository</a>.</p>
+    </div>
+
+    <div class="paper-nav">
+      <a href="/papers/hidden-variable-debates.html">
+      <div class="paper-nav-label">Previous</div>
+      <div class="paper-nav-title">Hidden Variable Debates Reconsidered</div>
+    </a>
+      <a href="/papers/wigners-friend.html" class="next">
+      <div class="paper-nav-label">Next</div>
+      <div class="paper-nav-title">Wigner&#x27;s Friend and the Yoneda Constraint</div>
+    </a>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">Matthew Long</div>
+    <div class="footer-org">The YonedaAI Collaboration &middot; YonedaAI Research Collective &middot; Chicago, IL</div>
+    <div class="footer-links">
+      <a href="mailto:matthew@yonedaai.com">matthew@yonedaai.com</a>
+      <a href="https://yonedaai.com">yonedaai.com</a>
+      <a href="https://github.com/MagnetonIO" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 YonedaAI Research Collective. All rights reserved.</div>
+  </div>
+</footer>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false},
+      {left: '\\(', right: '\\)', display: false},
+      {left: '\\[', right: '\\]', display: true}
+    ],
+    throwOnError: false
+  });"></script>
+</body>
+</html>

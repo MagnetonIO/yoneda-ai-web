@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a2e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a1a4e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d0d3a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glow1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0" />
+      <stop offset="50%" style="stop-color:#4facfe;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#4facfe;stop-opacity:0" />
+    </linearGradient>
+    <linearGradient id="glow2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0" />
+      <stop offset="50%" style="stop-color:#f093fb;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#f093fb;stop-opacity:0" />
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="3" />
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="8" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <!-- Grid pattern (context category) -->
+  <g opacity="0.15" stroke="#4facfe" stroke-width="0.5">
+    <line x1="0" y1="100" x2="1200" y2="100" />
+    <line x1="0" y1="200" x2="1200" y2="200" />
+    <line x1="0" y1="300" x2="1200" y2="300" />
+    <line x1="0" y1="400" x2="1200" y2="400" />
+    <line x1="0" y1="500" x2="1200" y2="500" />
+    <line x1="200" y1="0" x2="200" y2="630" />
+    <line x1="400" y1="0" x2="400" y2="630" />
+    <line x1="600" y1="0" x2="600" y2="630" />
+    <line x1="800" y1="0" x2="800" y2="630" />
+    <line x1="1000" y1="0" x2="1000" y2="630" />
+  </g>
+
+  <!-- Braided strands (representing braided monoidal structure) -->
+  <g filter="url(#blur)">
+    <!-- Strand 1: bosonic (blue) -->
+    <path d="M 150 250 C 250 250, 300 350, 400 350 C 500 350, 550 250, 650 250 C 750 250, 800 350, 900 350 C 1000 350, 1050 250, 1100 250"
+          stroke="#4facfe" stroke-width="3" fill="none" opacity="0.8" />
+    <!-- Strand 2: fermionic (magenta) -->
+    <path d="M 150 350 C 250 350, 300 250, 400 250 C 500 250, 550 350, 650 350 C 750 350, 800 250, 900 250 C 1000 250, 1050 350, 1100 350"
+          stroke="#f093fb" stroke-width="3" fill="none" opacity="0.8" />
+  </g>
+
+  <!-- Glowing intersection points (where braiding happens) -->
+  <circle cx="325" cy="300" r="6" fill="#ffffff" opacity="0.8" filter="url(#softglow)" />
+  <circle cx="525" cy="300" r="6" fill="#ffffff" opacity="0.8" filter="url(#softglow)" />
+  <circle cx="725" cy="300" r="6" fill="#ffffff" opacity="0.8" filter="url(#softglow)" />
+  <circle cx="925" cy="300" r="6" fill="#ffffff" opacity="0.8" filter="url(#softglow)" />
+
+  <!-- Decoherence: fading interference pattern on right -->
+  <g opacity="0.3">
+    <rect x="950" y="180" width="2" height="270" fill="#4facfe" opacity="1.0" />
+    <rect x="960" y="180" width="2" height="270" fill="#f093fb" opacity="0.85" />
+    <rect x="970" y="180" width="2" height="270" fill="#4facfe" opacity="0.7" />
+    <rect x="980" y="180" width="2" height="270" fill="#f093fb" opacity="0.55" />
+    <rect x="990" y="180" width="2" height="270" fill="#4facfe" opacity="0.4" />
+    <rect x="1000" y="180" width="2" height="270" fill="#f093fb" opacity="0.25" />
+    <rect x="1010" y="180" width="2" height="270" fill="#4facfe" opacity="0.15" />
+    <rect x="1020" y="180" width="2" height="270" fill="#f093fb" opacity="0.08" />
+    <rect x="1030" y="180" width="2" height="270" fill="#4facfe" opacity="0.03" />
+  </g>
+
+  <!-- Complex plane symbol (C) -->
+  <text x="100" y="320" font-family="serif" font-size="80" fill="#4facfe" opacity="0.25" font-style="italic">C</text>
+
+  <!-- Mathematical notation: Born rule -->
+  <text x="600" y="520" font-family="serif" font-size="18" fill="#8899bb" opacity="0.5" text-anchor="middle">
+    p(lambda) = |&lt;e_lambda | psi&gt;|^2
+  </text>
+
+  <!-- Title -->
+  <text x="600" y="80" font-family="sans-serif" font-weight="bold" font-size="28" fill="#e0e8f0" text-anchor="middle" letter-spacing="1">
+    TECHNICAL CONSTRUCTIONS IN QUANTUM PERSPECTIVISM
+  </text>
+  <text x="600" y="115" font-family="sans-serif" font-size="16" fill="#8899bb" text-anchor="middle">
+    Complex Amplitudes, Gleason, and Decoherence
+  </text>
+
+  <!-- Author -->
+  <text x="600" y="590" font-family="sans-serif" font-size="14" fill="#667788" text-anchor="middle">
+    Matthew Long | YonedaAI | GrokRxiv:2026.02.technical-constructions-qp [math-ph]
+  </text>
+
+  <!-- Category badge -->
+  <rect x="20" y="590" width="80" height="24" rx="4" fill="#4facfe" opacity="0.2" />
+  <text x="60" y="607" font-family="monospace" font-size="12" fill="#4facfe" text-anchor="middle">math-ph</text>
+</svg>
