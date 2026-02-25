@@ -492,6 +492,374 @@
       background: #e8f5e9;
       color: #2e7d32;
     }
+
+    /* About Section */
+    .about-section { background: var(--bg); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    .about-content p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .about-content p strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .about-sidebar {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .about-sidebar h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .about-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .about-detail:last-child { margin-bottom: 0; }
+
+    .about-detail-icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--accent-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+    }
+
+    .about-detail-icon svg { width: 16px; height: 16px; }
+
+    .about-detail-text {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .about-detail-text strong {
+      display: block;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 2px;
+    }
+
+    /* Methodology Section */
+    .methodology-section { background: var(--bg-alt); }
+
+    .methodology-intro {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 800px;
+      margin-bottom: 48px;
+    }
+
+    .pipeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+
+    .pipeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .pipeline-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .pipeline-card-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .pipeline-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .pipeline-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .pipeline-card ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 8px;
+    }
+
+    .pipeline-card ul li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .pipeline-card ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-light);
+    }
+
+    .pipeline-diagram {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 48px;
+      overflow-x: auto;
+    }
+
+    .pipeline-diagram pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin: 0;
+      text-align: center;
+      white-space: pre;
+    }
+
+    .methodology-subsection {
+      margin-bottom: 40px;
+    }
+
+    .methodology-subsection:last-child { margin-bottom: 0; }
+
+    .methodology-subsection h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .stack-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+
+    .stack-item-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+    }
+
+    .stack-item-icon svg { width: 18px; height: 18px; }
+
+    .stack-item-text {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .stack-item-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .result-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+    }
+
+    .result-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .result-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Derivation Chain Section */
+    .derivation-section { background: var(--bg); }
+
+    .derivation-table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 32px;
+    }
+
+    .derivation-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.9rem;
+    }
+
+    .derivation-table thead th {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .derivation-table thead th:first-child {
+      border-radius: var(--radius-sm) 0 0 0;
+    }
+
+    .derivation-table thead th:last-child {
+      border-radius: 0 var(--radius-sm) 0 0;
+    }
+
+    .derivation-table tbody tr {
+      transition: background 0.15s;
+    }
+
+    .derivation-table tbody tr:hover {
+      background: var(--accent-bg);
+    }
+
+    .derivation-table tbody td {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .derivation-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .derivation-table .step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.85rem;
+      width: 48px;
+    }
+
+    .derivation-table .step-input {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .derivation-table .step-arrow {
+      text-align: center;
+      color: var(--accent);
+      font-size: 1.1rem;
+      width: 40px;
+    }
+
+    .derivation-table .step-output {
+      color: var(--text);
+    }
+
+    .derivation-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .derivation-note {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .derivation-note code {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--accent-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-style: normal;
+    }
   </style>
 </head>
 <body>
@@ -505,9 +873,12 @@
     </button>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#methodology">Methodology</a></li>
       <li><a href="#series1">Series 1</a></li>
       <li><a href="#series2">Series 2</a></li>
       <li><a href="#framework">Framework</a></li>
+      <li><a href="#derivation">Derivation</a></li>
       <li><a href="#repos">Repositories</a></li>
       <li>
         <a href="https://github.com/MagnetonIO" class="gh-link" target="_blank" rel="noopener">
@@ -536,6 +907,189 @@
         View on GitHub
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <h2 class="section-title">About YonedaAI</h2>
+    <div class="about-grid">
+      <div class="about-content">
+        <p><strong>YonedaAI Research Collective</strong> is a frontier research organization applying category theory and advanced AI to the foundational problems of physics.</p>
+        <p><strong>Mission:</strong> To derive the mathematical structures of physics from first principles using the Yoneda Lemma as a foundational constraint, and to publish rigorous, peer-reviewed research with complete executable codebases.</p>
+        <p><strong>Research Program:</strong> 16+ peer-reviewed papers spanning quantum mechanics, quantum gravity, black hole physics, and the philosophy of physics. Every paper includes a complete Haskell implementation that verifies the mathematical constructions and provides executable demonstrations of the theoretical results.</p>
+      </div>
+      <div class="about-sidebar">
+        <h3>Details</h3>
+        <div class="about-detail">
+          <div class="about-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="about-detail-text">
+            <strong>Founder</strong>
+            Matthew Long
+          </div>
+        </div>
+        <div class="about-detail">
+          <div class="about-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="about-detail-text">
+            <strong>Location</strong>
+            Chicago, IL
+          </div>
+        </div>
+        <div class="about-detail">
+          <div class="about-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="about-detail-text">
+            <strong>Contact</strong>
+            <a href="mailto:matthew@yonedaai.com" style="color: var(--accent); text-decoration: none;">matthew@yonedaai.com</a>
+          </div>
+        </div>
+        <div class="about-detail">
+          <div class="about-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          </div>
+          <div class="about-detail-text">
+            <strong>Output</strong>
+            16 papers, 291+ pages, 16 codebases
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Methodology -->
+<section class="methodology-section" id="methodology">
+  <div class="container">
+    <div class="section-label">Methodology</div>
+    <h2 class="section-title">Agent Orchestration for Frontier Science</h2>
+    <p class="methodology-intro">YonedaAI developed a multi-agent parallel execution architecture that transforms research questions into peer-reviewed papers with verified code. This is what makes YonedaAI unique: cutting-edge AI agent orchestration applied to real science, producing rigorous mathematical research at unprecedented speed and scale.</p>
+
+    <div class="methodology-subsection">
+      <h3>The Pipeline</h3>
+      <div class="pipeline-grid">
+        <div class="pipeline-card">
+          <div class="pipeline-card-number">1</div>
+          <h3>Knowledge Base Agent</h3>
+          <p>Ingests all source materials -- .tex papers, .md notes, prior results -- and generates a consolidated, cross-referenced knowledge base that serves as the foundation for all downstream agents.</p>
+        </div>
+        <div class="pipeline-card">
+          <div class="pipeline-card-number">2</div>
+          <h3>N Parallel Worker Agents</h3>
+          <p>Each agent takes a subject and independently:</p>
+          <ul>
+            <li>Writes a 20-30 page arxiv-format paper with full mathematical rigor</li>
+            <li>Implements the framework in Haskell with executable demonstrations</li>
+            <li>Submits to automated peer review</li>
+            <li>Revises based on feedback</li>
+            <li>Compiles publication-ready PDF</li>
+            <li>Generates cover artwork and accessible summaries</li>
+          </ul>
+        </div>
+        <div class="pipeline-card">
+          <div class="pipeline-card-number">3</div>
+          <h3>Peer Review</h3>
+          <p>Every paper undergoes rigorous automated review checking mathematical correctness, code quality, internal consistency, and adherence to the categorical framework.</p>
+        </div>
+        <div class="pipeline-card">
+          <div class="pipeline-card-number">4</div>
+          <h3>Revision Cycle</h3>
+          <p>All review feedback is addressed systematically before publication. Papers are iteratively refined until they meet the standard of mathematical rigor and code correctness.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipeline-diagram">
+      <pre>
+  Knowledge Base Agent
+          |
+          v
+  +---+---+---+---+---+---+
+  |W1 |W2 |W3 |W4 |W5 |W6 |  Parallel Worker Agents
+  +---+---+---+---+---+---+
+    |   |   |   |   |   |
+    v   v   v   v   v   v
+  Draft > Review > Revise > Compile > Publish</pre>
+    </div>
+
+    <div class="methodology-subsection">
+      <h3>The Stack</h3>
+      <div class="stack-grid">
+        <div class="stack-item">
+          <div class="stack-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <div class="stack-item-text">Claude Code</div>
+            <div class="stack-item-desc">Orchestration &amp; code generation</div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <div>
+            <div class="stack-item-text">Gemini CLI</div>
+            <div class="stack-item-desc">Independent peer review</div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div>
+            <div class="stack-item-text">GHC / Cabal</div>
+            <div class="stack-item-desc">Haskell compilation &amp; verification</div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <div class="stack-item-text">pdfLaTeX</div>
+            <div class="stack-item-desc">Publication-ready typesetting</div>
+          </div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div>
+            <div class="stack-item-text">Category Theory</div>
+            <div class="stack-item-desc">Unifying mathematical language</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="methodology-subsection">
+      <h3>Results</h3>
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-number">16</div>
+          <div class="result-label">Peer-reviewed papers</div>
+        </div>
+        <div class="result-card">
+          <div class="result-number">291+</div>
+          <div class="result-label">Pages of research</div>
+        </div>
+        <div class="result-card">
+          <div class="result-number">16</div>
+          <div class="result-label">Haskell codebases</div>
+        </div>
+        <div class="result-card">
+          <div class="result-number">42</div>
+          <div class="result-label">Modules in unified framework</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -853,6 +1407,105 @@
   </div>
 </section>
 
+<!-- Derivation Chain -->
+<section class="derivation-section" id="derivation">
+  <div class="container">
+    <div class="section-label">The Derivation</div>
+    <h2 class="section-title">From Yoneda to Quantum Mechanics</h2>
+    <p class="section-subtitle">The complete 11-step derivation chain showing how quantum mechanics emerges as a mathematical consequence of the Yoneda Lemma.</p>
+
+    <div class="derivation-table-wrapper">
+      <table class="derivation-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Structural Input</th>
+            <th></th>
+            <th>Physical Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="step-num">01</td>
+            <td class="step-input">Yoneda Lemma</td>
+            <td class="step-arrow">&rarr;</td>
+            <td class="step-output">Physical identity is relational</td>
+          </tr>
+          <tr>
+            <td class="step-num">02</td>
+            <td class="step-input">Presheaf condition</td>
+            <td class="step-arrow">&rarr;</td>
+            <td class="step-output">States are context-dependent data</td>
+          </tr>
+          <tr>
+            <td class="step-num">03</td>
+            <td class="step-input">Monoidal contexts</td>
+            <td class="step-arrow">&rarr;</td>
+            <td class="step-output">Linear (vector space) structure</td>
+          </tr>
+          <tr>
+            <td class="step-num">04</td>
+            <td class="step-input">Perspectival consistency</td>
+            <td class="step-arrow">&rarr;</td>
+            <td class="step-output">Inner product / Hilbert space</td>
+          </tr>
+          <tr>
+            <td class="step-num">05</td>
+            <td class="step-input">Naturality of observables</td>
+            <td class="step-arrow">&rarr;</td>
+            <td class="step-output">Self-adjoint operators</td>
+          </tr>
+          <tr>
+            <td class="step-num">06</td>
+            <td class="step-input">Yoneda isomorphism + Gleason</td>
+            <td class="step-arrow">&rarr;</td>
+            <td class="step-output">Born rule</td>
+          </tr>
+          <tr>
+            <td class="step-num">07</td>
+            <td class="step-input">Product categories</td>
+            <td class="step-arrow">&rarr;</td>
+            <td class="step-output">Entanglement</td>
+          </tr>
+          <tr>
+            <td class="step-num">08</td>
+            <td class="step-input">Non-commutative contexts</td>
+            <td class="step-arrow">&rarr;</td>
+            <td class="step-output">Complementarity / uncertainty</td>
+          </tr>
+          <tr>
+            <td class="step-num">09</td>
+            <td class="step-input">Presheaf restriction</td>
+            <td class="step-arrow">&rarr;</td>
+            <td class="step-output">Measurement (no collapse)</td>
+          </tr>
+          <tr>
+            <td class="step-num">10</td>
+            <td class="step-input">Topos structure</td>
+            <td class="step-arrow">&rarr;</td>
+            <td class="step-output">Quantum logic</td>
+          </tr>
+          <tr>
+            <td class="step-num">11</td>
+            <td class="step-input">Natural automorphisms</td>
+            <td class="step-arrow">&rarr;</td>
+            <td class="step-output">Unitary evolution / Schr&ouml;dinger eq.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="derivation-footer">
+      <div class="derivation-note">Every step is implemented in Haskell with verified tests.</div>
+      <a href="https://github.com/MagnetonIO/quantum-perspectivism-haskell" class="btn btn-primary" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View Haskell Implementation
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- Repositories -->
 <section class="repos-section" id="repos">
   <div class="container">
@@ -915,8 +1568,8 @@
 <!-- Footer -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-name">Matthew Long</div>
-    <div class="footer-org">The YonedaAI Collaboration &middot; YonedaAI Research Collective &middot; Chicago, IL</div>
+    <div class="footer-name">YonedaAI Research Collective</div>
+    <div class="footer-org">Founded by Matthew Long &middot; Chicago, IL</div>
     <div class="footer-links">
       <a href="mailto:matthew@yonedaai.com">matthew@yonedaai.com</a>
       <a href="https://yonedaai.com">yonedaai.com</a>
