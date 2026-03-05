@@ -35,9 +35,10 @@
   <meta name="robots" content="index, follow">
   <meta name="keywords" content="category theory, quantum mechanics, Yoneda lemma, quantum foundations, Haskell, mathematical physics, quantum gravity, presheaf, topos theory, structural realism">
 
+  <meta name="color-scheme" content="light">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -548,8 +549,7 @@
     }
 
     .footer-inner { max-width: var(--max-width); margin: 0 auto; }
-    .footer-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
-    .footer-org { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .footer-name { font-weight: 700; font-size: 1rem; margin-bottom: 12px; }
 
     .footer-links {
       display: flex;
@@ -599,18 +599,8 @@
       font-weight: 600;
     }
 
-    .about-detail-text {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    .about-detail-text strong {
-      display: block;
-      color: var(--text);
-      font-weight: 600;
-      font-size: 0.85rem;
-      margin-bottom: 2px;
+    .about-content {
+      max-width: 720px;
     }
 
     /* Methodology Section */
@@ -914,6 +904,44 @@
       font-size: 0.82rem;
       color: var(--accent);
       font-style: normal;
+    }
+
+    /* Focus-visible for keyboard navigation */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* Keyboard-accessible table rows */
+    .derivation-table tbody tr.step-row:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; transform: none !important; }
+    }
+
+    /* Mobile: tighter section padding, prevent grid overflow */
+    @media (max-width: 768px) {
+      section { padding: 56px 20px; }
+      .hero { padding: 72px 20px 56px; }
+      .papers-grid { grid-template-columns: 1fr; }
+      .repos-list { grid-template-columns: 1fr; }
+      .pipeline-grid { grid-template-columns: 1fr; }
+      .framework-grid { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: repeat(2, 1fr); }
+      .paper-actions a { font-size: 0.88rem; padding: 6px 0; min-height: 44px; }
+    }
+
+    /* Very small screens */
+    @media (max-width: 380px) {
+      .hero-stats { gap: 16px; }
+      .results-grid { grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: 1fr; }
     }
   </style>
 
@@ -1655,6 +1683,25 @@
   document.querySelectorAll('.nav-dropdown-menu a').forEach(function(link) {
     link.addEventListener('click', function() {
       this.closest('.nav-dropdown').classList.remove('open');
+    });
+  });
+
+  // Close mobile nav when any nav link is clicked
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+
+  // Keyboard accessibility for derivation table rows
+  document.querySelectorAll('.derivation-table .step-row').forEach(function(row) {
+    row.setAttribute('tabindex', '0');
+    row.setAttribute('role', 'link');
+    row.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        row.click();
+      }
     });
   });
 </script>
