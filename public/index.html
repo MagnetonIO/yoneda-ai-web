@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>YonedaAI Research Collective</title>
   <meta name="description" content="Category-theoretic foundations for open problems in quantum mechanics, gravity, and observer theory. 16 peer-reviewed papers, 291+ pages, 16 Haskell codebases.">
-  <meta name="author" content="Matthew Long, YonedaAI Research Collective">
+  <meta name="author" content="YonedaAI Research Collective">
   <meta property="og:title" content="YonedaAI Research Collective">
   <meta property="og:description" content="Category-theoretic foundations for open problems in quantum mechanics, gravity, and observer theory.">
   <meta property="og:type" content="website">
@@ -27,7 +27,7 @@
   <meta name="twitter:image:alt" content="YonedaAI Research Collective">
 
   <!-- LinkedIn -->
-  <meta property="article:author" content="Matthew Long">
+  <meta property="article:author" content="YonedaAI Research Collective">
   <meta property="article:publisher" content="YonedaAI Research Collective">
 
   <!-- SEO -->
@@ -587,17 +587,6 @@
     /* About Section */
     .about-section { background: var(--bg); }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    @media (max-width: 768px) {
-      .about-grid { grid-template-columns: 1fr; gap: 32px; }
-    }
-
     .about-content p {
       font-size: 1rem;
       color: var(--text-secondary);
@@ -609,43 +598,6 @@
       color: var(--text);
       font-weight: 600;
     }
-
-    .about-sidebar {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-    }
-
-    .about-sidebar h3 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: var(--text);
-    }
-
-    .about-detail {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .about-detail:last-child { margin-bottom: 0; }
-
-    .about-detail-icon {
-      flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--accent-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent);
-    }
-
-    .about-detail-icon svg { width: 16px; height: 16px; }
 
     .about-detail-text {
       font-size: 0.88rem;
@@ -983,12 +935,6 @@
     "url": "https://yonedaai.com",
     "logo": "https://yonedaai.com/images/og-social.png",
     "description": "Category-theoretic foundations for open problems in quantum mechanics, gravity, and observer theory.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Chicago",
-      "addressRegion": "IL",
-      "addressCountry": "US"
-    },
     "sameAs": [
       "https://github.com/MagnetonIO"
     ]
@@ -1054,42 +1000,10 @@
   <div class="container">
     <div class="section-label">About</div>
     <h2 class="section-title">About YonedaAI</h2>
-    <div class="about-grid">
-      <div class="about-content">
-        <p><strong>YonedaAI Research Collective</strong> is a frontier research organization applying category theory and advanced AI to the foundational problems of physics.</p>
-        <p><strong>Mission:</strong> To derive the mathematical structures of physics from first principles using the Yoneda Lemma as a foundational constraint, and to publish rigorous, peer-reviewed research with complete executable codebases.</p>
-        <p><strong>Research Program:</strong> 16+ peer-reviewed papers spanning quantum mechanics, quantum gravity, black hole physics, and the philosophy of physics. Every paper includes a complete Haskell implementation that verifies the mathematical constructions and provides executable demonstrations of the theoretical results.</p>
-      </div>
-      <div class="about-sidebar">
-        <h3>Details</h3>
-        <div class="about-detail">
-          <div class="about-detail-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div class="about-detail-text">
-            <strong>Location</strong>
-            Chicago, IL
-          </div>
-        </div>
-        <div class="about-detail">
-          <div class="about-detail-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div class="about-detail-text">
-            <strong>Contact</strong>
-            <a href="mailto:matthew@yonedaai.com" style="color: var(--accent); text-decoration: none;">matthew@yonedaai.com</a>
-          </div>
-        </div>
-        <div class="about-detail">
-          <div class="about-detail-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-          </div>
-          <div class="about-detail-text">
-            <strong>Output</strong>
-            16 papers, 291+ pages, 16 codebases
-          </div>
-        </div>
-      </div>
+    <div class="about-content">
+      <p><strong>YonedaAI Research Collective</strong> is a frontier research organization applying category theory and advanced AI to the foundational problems of physics.</p>
+      <p><strong>Mission:</strong> To derive the mathematical structures of physics from first principles using the Yoneda Lemma as a foundational constraint, and to publish rigorous, peer-reviewed research with complete executable codebases.</p>
+      <p><strong>Research Program:</strong> 16+ peer-reviewed papers spanning quantum mechanics, quantum gravity, black hole physics, and the philosophy of physics. Every paper includes a complete Haskell implementation that verifies the mathematical constructions and provides executable demonstrations of the theoretical results.</p>
     </div>
   </div>
 </section>
@@ -1710,9 +1624,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-name">YonedaAI Research Collective</div>
-    <div class="footer-org">Founded by Matthew Long &middot; Chicago, IL</div>
     <div class="footer-links">
-      <a href="mailto:matthew@yonedaai.com">matthew@yonedaai.com</a>
       <a href="https://yonedaai.com">yonedaai.com</a>
       <a href="https://github.com/MagnetonIO" target="_blank" rel="noopener">GitHub</a>
     </div>
