@@ -153,7 +153,7 @@
     .nav-dropdown-menu {
       display: none;
       position: absolute;
-      top: calc(100% + 8px);
+      top: 100%;
       left: 50%;
       transform: translateX(-50%);
       background: var(--bg-card);
@@ -162,11 +162,13 @@
       box-shadow: var(--shadow-md);
       min-width: 180px;
       padding: 8px 0;
+      padding-top: 16px;
       list-style: none;
       z-index: 1001;
     }
 
-    .nav-dropdown:hover .nav-dropdown-menu {
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown.open .nav-dropdown-menu {
       display: block;
     }
 
@@ -209,6 +211,15 @@
       }
       .nav-links.open { display: flex; }
       .nav-hamburger { display: block; }
+      .nav-dropdown-menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        padding: 4px 0 0 16px;
+        min-width: auto;
+      }
     }
 
     /* Sections */
@@ -1722,6 +1733,33 @@
     <div class="footer-copy">&copy; 2026 YonedaAI Research Collective. All rights reserved.</div>
   </div>
 </footer>
+
+<script>
+  // Research dropdown click toggle (works on mobile and desktop)
+  document.querySelectorAll('.nav-dropdown > a').forEach(function(trigger) {
+    trigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      var dropdown = this.parentElement;
+      dropdown.classList.toggle('open');
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
+        d.classList.remove('open');
+      });
+    }
+  });
+
+  // Close dropdown when a menu item is clicked
+  document.querySelectorAll('.nav-dropdown-menu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      this.closest('.nav-dropdown').classList.remove('open');
+    });
+  });
+</script>
 
 </body>
 </html>
