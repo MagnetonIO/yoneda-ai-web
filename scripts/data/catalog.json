@@ -1,0 +1,733 @@
+[
+ {
+  "id": "quantum-perspectivism",
+  "name": "Quantum Perspectivism & Foundational Problems",
+  "field": "Physics & Quantum",
+  "site": null,
+  "github": "MagnetonIO/yoneda-ai",
+  "papers": [
+   {
+    "title": "The Black Hole Information Paradox",
+    "pdf": "/papers/pdf/black-hole-information-paradox.pdf"
+   },
+   {
+    "title": "The Categorical Architecture of Quantum Perspectivism",
+    "pdf": "/papers/pdf/categorical-architecture-qp.pdf"
+   },
+   {
+    "title": "Connections to Existing Frameworks",
+    "pdf": "/papers/pdf/connections-existing-frameworks.pdf"
+   },
+   {
+    "title": "The Crisis of Quantum Foundations",
+    "pdf": "/papers/pdf/crisis-of-foundations.pdf"
+   },
+   {
+    "title": "Entanglement, Complementarity, and Measurement",
+    "pdf": "/papers/pdf/entanglement-complementarity-measurement.pdf"
+   },
+   {
+    "title": "Hidden Variable Debates Reconsidered",
+    "pdf": "/papers/pdf/hidden-variable-debates.pdf"
+   },
+   {
+    "title": "Horizon Problems and the Yoneda Constraint",
+    "pdf": "/papers/pdf/horizon-problems.pdf"
+   },
+   {
+    "title": "Limits of Quantum Gravity Observation",
+    "pdf": "/papers/pdf/limits-quantum-gravity-observation.pdf"
+   },
+   {
+    "title": "The Measurement Problem",
+    "pdf": "/papers/pdf/measurement-problem.pdf"
+   },
+   {
+    "title": "Open Problems in Quantum Perspectivism",
+    "pdf": "/papers/pdf/open-problems-qp.pdf"
+   },
+   {
+    "title": "Philosophical Implications of Quantum Perspectivism",
+    "pdf": "/papers/pdf/philosophical-implications-qp.pdf"
+   },
+   {
+    "title": "Quantum Gravity and Emergent Spacetime",
+    "pdf": "/papers/pdf/quantum-gravity-emergent-spacetime.pdf"
+   },
+   {
+    "title": "Technical Constructions in Quantum Perspectivism",
+    "pdf": "/papers/pdf/technical-constructions-qp.pdf"
+   },
+   {
+    "title": "Wigner's Friend and the Yoneda Constraint",
+    "pdf": "/papers/pdf/wigners-friend.pdf"
+   },
+   {
+    "title": "Deriving Quantum Mechanics from the Yoneda Lemma",
+    "pdf": "/papers/pdf/yoneda-constraint-quantum-structure.pdf"
+   },
+   {
+    "title": "The Yoneda Lemma as Physical Law",
+    "pdf": "/papers/pdf/yoneda-physical-content.pdf"
+   }
+  ]
+ },
+ {
+  "id": "condensed-representation",
+  "name": "Condensed Representation Theory of Physics",
+  "field": "Physics & Quantum",
+  "site": "https://condensed-representation-theory-of.vercel.app",
+  "github": "MagnetonIO/condensed-representation-theory-of-physics",
+  "papers": [
+   {
+    "title": "From Manifolds to Condensed Spaces Part I of Toward a Condensed Representation Theory of Physics",
+    "pdf": "/papers/pdf/library/condensed-representation/part1-manifolds-to-condensed-spaces.pdf"
+   },
+   {
+    "title": "Observables as Condensed Sheaves Part II of Toward a Condensed Representation Theory of Physics",
+    "pdf": "/papers/pdf/library/condensed-representation/part2-observables-as-condensed-sheaves.pdf"
+   },
+   {
+    "title": "Information as the Primitive Object: Condensed Cohomology and Quantum Information Part III of Toward a Condensed Representation Theory of Physics",
+    "pdf": "/papers/pdf/library/condensed-representation/part3-condensed-cohomology-quantum-information.pdf"
+   },
+   {
+    "title": "Fields Without Background Manifolds Part IV of Toward a Condensed Representation Theory of Physics",
+    "pdf": "/papers/pdf/library/condensed-representation/part4-fields-without-background-manifolds.pdf"
+   },
+   {
+    "title": "Geometry as a Realization Functor Part V of Toward a Condensed Representation Theory of Physics",
+    "pdf": "/papers/pdf/library/condensed-representation/part5-geometry-as-realization-functor.pdf"
+   },
+   {
+    "title": "A Representation-Theoretic Foundation for Quantum Gravity Part VI of Toward a Condensed Representation Theory of Physics",
+    "pdf": "/papers/pdf/library/condensed-representation/part6-condensed-quantum-gravity.pdf"
+   },
+   {
+    "title": "Toward a Condensed Representation Theory of Physics: A Condensed Representation Principle Part VII (capstone) of Toward a Condensed Representation Theory of Physics",
+    "pdf": "/papers/pdf/library/condensed-representation/part7-condensed-representation-principle.pdf"
+   },
+   {
+    "title": "The Condensed Representation Program: A Modular Synthesis of Parts I--VII Synthesis of Toward a Condensed Representation Theory of Physics",
+    "pdf": "/papers/pdf/library/condensed-representation/synthesis.pdf"
+   }
+  ]
+ },
+ {
+  "id": "math-qg-library",
+  "name": "Mathematical Representations of Quantum Gravity",
+  "field": "Physics & Quantum",
+  "site": "https://math-qg-representation-library.vercel.app",
+  "github": "MagnetonIO/math-qg-representation-library",
+  "papers": [
+   {
+    "title": "A Fixed Point in Theory Space: Asymptotic Safety as the Renormalization-Group Completion Regime of a Modular Reconstruction Program",
+    "pdf": "/papers/pdf/library/math-qg-library/asymptotic-safety.pdf"
+   },
+   {
+    "title": "Observables as Cohomology: BV--BRST Complexes and Derived Critical Loci as the Gauge Layer of Reconstructed Spacetime",
+    "pdf": "/papers/pdf/library/math-qg-library/bv-brst-derived-geometry.pdf"
+   },
+   {
+    "title": "The Flat-Space S-Matrix as Conformal Data on the Celestial Sphere: Mellin Bases, Asymptotic Symmetries, and Soft Theorems as Ward Identities as the Boundary Layer of Reconstructed Spacetime",
+    "pdf": "/papers/pdf/library/math-qg-library/celestial-cft.pdf"
+   },
+   {
+    "title": "Gravity as the Square of Gauge Theory: Color--Kinematics Duality, the Double Copy, and the KLT Kernel as the Reconstruction Layer of Perturbative Spacetime",
+    "pdf": "/papers/pdf/library/math-qg-library/double-copy.pdf"
+   },
+   {
+    "title": "Observables from Gluing: Factorization Algebras, Cosheaves, and the Local-to-Global Reconstruction of Quantum Observables",
+    "pdf": "/papers/pdf/library/math-qg-library/factorization-algebras.pdf"
+   },
+   {
+    "title": "The Solution Stack of General Relativity: Diffeomorphism Equivalence, Isotropy, and the Classical Geometry Regime of a Reconstruction Program",
+    "pdf": "/papers/pdf/library/math-qg-library/lorentzian-geometry.pdf"
+   },
+   {
+    "title": "Geometry as a Theorem About an Algebra: Spectral Triples, the Connes Distance Formula, and the Reconstruction of Metric Spacetime from Spectral Data",
+    "pdf": "/papers/pdf/library/math-qg-library/noncommutative-geometry.pdf"
+   },
+   {
+    "title": "Amplitudes as Canonical Forms: Positive Geometries, Residue Trees, and the Conjectural Bridge to Motivic Coactions as the Amplitude Layer of Reconstructed Spacetime",
+    "pdf": "/papers/pdf/library/math-qg-library/positive-geometries.pdf"
+   },
+   {
+    "title": "Causal Order as Representation Data: Process Matrices, Causal Inequalities, and Locally Finite Posets as Reconstructions of Causality",
+    "pdf": "/papers/pdf/library/math-qg-library/quantum-causal-structures.pdf"
+   },
+   {
+    "title": "Covariant Quantum Geometry as a State Sum: Spin Foams, Vertex Amplitudes, and the Refinement Problem of Boundary Amplitudes",
+    "pdf": "/papers/pdf/library/math-qg-library/spin-foams.pdf"
+   },
+   {
+    "title": "Quantum Spatial Geometry as Representation Data: Spin Networks, Intertwiners, and the Geometric Operators of the Boundary Hilbert Space",
+    "pdf": "/papers/pdf/library/math-qg-library/spin-networks.pdf"
+   },
+   {
+    "title": "A Modular Site of Reconstruction Regimes: Twelve Representations of Quantum Gravity and the Weakest-Link Calculus that Composes Them",
+    "pdf": "/papers/pdf/library/math-qg-library/synthesis.pdf"
+   },
+   {
+    "title": "Many Boundary Representatives, One Bulk Operator: Tensor Networks, Operator-Algebra Quantum Error Correction, and the Holographic-Emergence Regime of a Reconstruction Program",
+    "pdf": "/papers/pdf/library/math-qg-library/tensor-networks-qec.pdf"
+   }
+  ]
+ },
+ {
+  "id": "mathematics-physical-representation",
+  "name": "Mathematics as Physical Representation",
+  "field": "Mathematics",
+  "site": "https://mathematics-physical-representation.vercel.app",
+  "github": "MagnetonIO/mathematics-physical-representation",
+  "papers": [
+   {
+    "title": "Kinematic Domains and Observable Ratios: Cross-Ratios and the Field of Physical Values",
+    "pdf": "/papers/pdf/library/mathematics-physical-representation/kinematic-domains-observable-ratios.pdf"
+   },
+   {
+    "title": "The Goncharov Lie Coalgebra of Observables: Coproduct, Cobracket, and the Decomposition Law",
+    "pdf": "/papers/pdf/library/mathematics-physical-representation/lie-coalgebra-of-observables.pdf"
+   },
+   {
+    "title": "Motives as the Pre-Numerical Object: Betti, de Rham, and Hodge Realizations of Physical Information",
+    "pdf": "/papers/pdf/library/mathematics-physical-representation/motives-prenumerical-object.pdf"
+   },
+   {
+    "title": "Polylogarithms and Iterated Propagation: Transcendental Weight as Loop Order Rung II of a Modular Ladder from Kinematic Domains to Measurement",
+    "pdf": "/papers/pdf/library/mathematics-physical-representation/polylogarithms-iterated-propagation.pdf"
+   },
+   {
+    "title": "Regulators and the Period Pairing: From Motivic Object to Measurable Number Part V of Mathematics Physical Representation: A Modular Library",
+    "pdf": "/papers/pdf/library/mathematics-physical-representation/regulators-period-pairing.pdf"
+   },
+   {
+    "title": "Measurement as the Closure of the Ladder: A Synthesis of the Modular Library Mathematics Physical Representation",
+    "pdf": "/papers/pdf/library/mathematics-physical-representation/synthesis.pdf"
+   }
+  ]
+ },
+ {
+  "id": "topological-phases",
+  "name": "Topological Phases of Matter",
+  "field": "Physics & Quantum",
+  "site": "https://condensed-phase-spectrum.vercel.app",
+  "github": "MagnetonIO/topological-phases-of-matter",
+  "papers": [
+   {
+    "title": "Condensed Families of Quantum Observables: Positivity, C*-Norms, and Solid K-Theory",
+    "pdf": "/papers/pdf/library/topological-phases/condensed-observables.pdf"
+   },
+   {
+    "title": "The Invertible Condensed Phase Spectrum Program: A Conditional Synthesis of Locality, Gaps, Phases, and Realization",
+    "pdf": "/papers/pdf/library/topological-phases/invertible-condensed-phase-spectrum.pdf"
+   },
+   {
+    "title": "Uniform Locality for Condensed Families of Quantum Lattice Interactions",
+    "pdf": "/papers/pdf/library/topological-phases/locality-condensed-families.pdf"
+   },
+   {
+    "title": "From Microscopic Lattice Hamiltonians to Effective Theories: Controlled K-Theory Maps, Information Loss, and Realization Limits",
+    "pdf": "/papers/pdf/library/topological-phases/microscopic-effective-theories.pdf"
+   },
+   {
+    "title": "Physical Realizability of Invertible Phase Classes: Microscopic Witnesses, Bordism Targets, and Relative Charges",
+    "pdf": "/papers/pdf/library/topological-phases/physical-realizability.pdf"
+   },
+   {
+    "title": "Thermodynamic Spectral Gaps in Parameterized Quantum Lattice Systems: Definitions, Stability, and a Condensed Moduli Formulation",
+    "pdf": "/papers/pdf/library/topological-phases/thermodynamic-gaps.pdf"
+   }
+  ]
+ },
+ {
+  "id": "yoneda-constraint",
+  "name": "The Yoneda Constraint: Universal Formulation",
+  "field": "Physics & Quantum",
+  "site": "https://yoneda-constraint.vercel.app",
+  "github": "MagnetonIO/yoneda-constraint",
+  "papers": [
+   {
+    "title": "The Yoneda Constraint: A Universal Axiom for Embedded Systems Unifying G\u00f6del, the Measurement Problem, Compiler Bootstrap, and AI Alignment Under One Categorical Principle",
+    "pdf": "/papers/pdf/library/yoneda-constraint/yoneda-constraint-universal.pdf"
+   }
+  ]
+ },
+ {
+  "id": "minimal-runtime-axiom",
+  "name": "The Minimal Runtime Axiom",
+  "field": "Physics & Quantum",
+  "site": "https://minimal-runtime-axiom.vercel.app",
+  "github": "MagnetonIO/minimal-runtime-axiom",
+  "papers": [
+   {
+    "title": "The Minimal Runtime Axiom Runtime Is Proof of Ignorance: A Type-Theoretic and Category-Theoretic Formalization of the Compile-Time/Runtime Boundary",
+    "pdf": "/papers/pdf/library/minimal-runtime-axiom/minimal-runtime-axiom.pdf"
+   }
+  ]
+ },
+ {
+  "id": "joule-standard",
+  "name": "The Joule Standard: Energy Economics of Intelligence",
+  "field": "AI & Computation",
+  "site": "https://joule-standard.vercel.app",
+  "github": "MagnetonIO/joule-standard",
+  "papers": [
+   {
+    "title": "The Cognitive Rebound Effect: Why Efficient AI May Increase Energy Demand",
+    "pdf": "/papers/pdf/library/joule-standard/cognitive-rebound-effect.pdf"
+   },
+   {
+    "title": "Energy Markets for Machine Intelligence and Cryptographic Settlement",
+    "pdf": "/papers/pdf/library/joule-standard/energy-markets-for-machine-intelligence-and-cryptographic-settlement.pdf"
+   },
+   {
+    "title": "From Exergy to Intelligence: A General Theory of Economic Transduction",
+    "pdf": "/papers/pdf/library/joule-standard/exergy-to-intelligence.pdf"
+   },
+   {
+    "title": "The Joule Standard: A Unified Economics of Work, Trust and Intelligence",
+    "pdf": "/papers/pdf/library/joule-standard/joule-standard.pdf"
+   },
+   {
+    "title": "Marginal Value of Energy in an Automated Economy",
+    "pdf": "/papers/pdf/library/joule-standard/marginal-value-of-energy.pdf"
+   },
+   {
+    "title": "Quality-Adjusted Intelligence per Joule A boundary-explicit measure of useful AI task service",
+    "pdf": "/papers/pdf/library/joule-standard/quality-adjusted-intelligence-per-joule.pdf"
+   },
+   {
+    "title": "Tokens Are Not Value: Economic Accounting for AI Inference",
+    "pdf": "/papers/pdf/library/joule-standard/tokens-are-not-value.pdf"
+   },
+   {
+    "title": "Trust per Joule: The Thermoeconomics of Proof-of-Work Settlement",
+    "pdf": "/papers/pdf/library/joule-standard/trust-per-joule.pdf"
+   },
+   {
+    "title": "A Value-per-Joule National Accounting System",
+    "pdf": "/papers/pdf/library/joule-standard/value-per-joule-national-accounting.pdf"
+   },
+   {
+    "title": "Value per Joule: Foundations of an Energy-Normalized Economics",
+    "pdf": "/papers/pdf/library/joule-standard/value-per-joule.pdf"
+   }
+  ]
+ },
+ {
+  "id": "ferrous-bridge",
+  "name": "Ferrous Bridge: Verified C-to-Rust Migration",
+  "field": "AI & Computation",
+  "site": "https://ferrous-bridge.vercel.app",
+  "github": "MagnetonIO/ferrous-bridge",
+  "papers": [
+   {
+    "title": "Climbing the Safety Ladder: From c2rust's Raw Lift to Idiomatic Safe Rust via Differential Fuzzing, Miri, and Refinement Verification A 1-Week libyaml Case Study and Generalization to libexpat",
+    "pdf": "/papers/pdf/library/ferrous-bridge/c-rust-transpiling.pdf"
+   },
+   {
+    "title": "The C Language as a Translation Source: Semantics, Undefined Behavior, and the libyaml Idiom Set A Reference for the Ferrous Bridge -to- Pipeline",
+    "pdf": "/papers/pdf/library/ferrous-bridge/c.pdf"
+   },
+   {
+    "title": "Idiomatic Safe Rust as a Translation Target: Ownership, Lifetimes, and ABI-Compatible Parser Design A Case Study in safe-libyaml",
+    "pdf": "/papers/pdf/library/ferrous-bridge/rust.pdf"
+   },
+   {
+    "title": "Ferrous Bridge: A C \u2192 Rust Automated Agent Orchestration Pipeline with Type Checks and Safety Guarantees A Synthesis of the c, rust, and c-rust-transpiling Companion Papers",
+    "pdf": "/papers/pdf/library/ferrous-bridge/synthesis.pdf"
+   }
+  ]
+ },
+ {
+  "id": "categorical-qec",
+  "name": "Topological & Categorical Quantum Error Correction",
+  "field": "Physics & Quantum",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "Braiding Operations in Topological Quantum Systems: Theoretical Foundations, Physical Parallels, and Computational Implications",
+    "pdf": "/papers/pdf/library/categorical-qec/braidingoperations_topologicalquantumsystems.pdf"
+   },
+   {
+    "title": "Towards Self-Correcting Topological Codes Through Functorial Physics: Unifying Universal Invariants, Braided Categories, and Thermodynamics",
+    "pdf": "/papers/pdf/library/categorical-qec/functorial_qec.pdf"
+   },
+   {
+    "title": "Hardware Layout",
+    "pdf": "/papers/pdf/library/categorical-qec/hardware_layout.pdf"
+   },
+   {
+    "title": "Proof-of-Concept: A Curry\u2013Howard Approach to Universal Invariants and Error Correction in Haskell",
+    "pdf": "/papers/pdf/library/categorical-qec/poc_curry_howard.pdf"
+   },
+   {
+    "title": "The Principle of Least Action and Penalty Terms in Quantum Error Correction Codes",
+    "pdf": "/papers/pdf/library/categorical-qec/principle_of_least_action_penalty_terms_in_qec.pdf"
+   },
+   {
+    "title": "Proof as Code in Mathematics and Quantum Physics: A Type-Theoretic Approach to Formalizing Physical Phenomena",
+    "pdf": "/papers/pdf/library/categorical-qec/proof_as_code_math_physics.pdf"
+   },
+   {
+    "title": "Towards a Unified Framework of Mathematics, Physics, and Computer Science: The Proof-as-Code Paradigm and Its Applications to Quantum Phenomena",
+    "pdf": "/papers/pdf/library/categorical-qec/proof_as_code_unification_quantum.pdf"
+   },
+   {
+    "title": "Towards Self-Correcting Topological Codes Through Functorial Physics: An Abstract",
+    "pdf": "/papers/pdf/library/categorical-qec/qec_categorical_unification.pdf"
+   },
+   {
+    "title": "Towards Derived Universal Error Invariants: Quantum Error Correction as Inverse Topological State",
+    "pdf": "/papers/pdf/library/categorical-qec/qec_inverse_topo_state.pdf"
+   },
+   {
+    "title": "Quantum Error Correction via Topological Approaches: A Categorical Perspective with Thermodynamic Considerations",
+    "pdf": "/papers/pdf/library/categorical-qec/qec_topo_categorical.pdf"
+   },
+   {
+    "title": "Formalizing Quantum Error Correction Through Code: A Rigorous Approach to Fault-Tolerant Quantum Information Processing",
+    "pdf": "/papers/pdf/library/categorical-qec/quantum_error_correction_code_breakthrough.pdf"
+   },
+   {
+    "title": "Universal Invariants and Inverse Topological States in Quantum Error Correction: A Categorical and Thermodynamic Approach via Lambek\u2019s Lemma",
+    "pdf": "/papers/pdf/library/categorical-qec/univ_invar_inverse_topo_qec.pdf"
+   }
+  ]
+ },
+ {
+  "id": "derived-functors-qec",
+  "name": "Derived Functors & Teleological QEC",
+  "field": "Physics & Quantum",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "Inverse Topological Decoding and Derived Hamiltonians: A Teleological Framework for Advanced Quantum Error Correction",
+    "pdf": "/papers/pdf/library/derived-functors-qec/Inverse_Topological_Decoding_Derived_Hamiltonians.pdf"
+   },
+   {
+    "title": "Derived Functors and Quantum Error Correction: A Homotopy-Theoretic Approach",
+    "pdf": "/papers/pdf/library/derived-functors-qec/derived_functors_qec.pdf"
+   },
+   {
+    "title": "A Teleological Parallel: Derived Hamiltonians and Genetic Transcription as Robust Information Processing Paradigms",
+    "pdf": "/papers/pdf/library/derived-functors-qec/derived_hamiltonians_and_genetic_transcription.pdf"
+   },
+   {
+    "title": "Expanded Explanation: Derived Functors in Quantum Error Correction",
+    "pdf": "/papers/pdf/library/derived-functors-qec/expanded_explanation_qec.pdf"
+   },
+   {
+    "title": "Inverse Topological Decoding and Derived Hamiltonians A Hardware-Embedded Approach to Quantum Error Correction",
+    "pdf": "/papers/pdf/library/derived-functors-qec/inverse_topological_decoding_hardware_qec.pdf"
+   },
+   {
+    "title": "Refactoring the Schr\u00f6dinger Equation: Teleological and Penalty-Term Extensions for Stable Quantum Systems",
+    "pdf": "/papers/pdf/library/derived-functors-qec/refactored_schrodinger_teleological_penalty_terms.pdf"
+   },
+   {
+    "title": "Towards Room-Temperature Quantum Computing: Hardware Advances and Mathematical Frameworks",
+    "pdf": "/papers/pdf/library/derived-functors-qec/room_temperature_quantum_computing.pdf"
+   },
+   {
+    "title": "Teleological Information Processing: A New Paradigm in Computer Science and Quantum Information",
+    "pdf": "/papers/pdf/library/derived-functors-qec/teleological_information_processing.pdf"
+   },
+   {
+    "title": "Teleological Information Processing and Natural Language: A Formal Exploration with Quantum Parallels",
+    "pdf": "/papers/pdf/library/derived-functors-qec/teleological_information_processing_nlp_quantum.pdf"
+   },
+   {
+    "title": "A Unified Teleological Formalism for Quantum Error Correction: Bridging Computer Science, Physics, Mathematics, and Engineering",
+    "pdf": "/papers/pdf/library/derived-functors-qec/teleological_qec_formalism.pdf"
+   },
+   {
+    "title": "A Unifying Perspective: Wittgenstein, Teleological Systems, and Extended Schr\u00f6dinger Equations",
+    "pdf": "/papers/pdf/library/derived-functors-qec/unifying_perspective_wittgenstein_teleology_schrodinger.pdf"
+   }
+  ]
+ },
+ {
+  "id": "proof-as-code-qec",
+  "name": "Proof as Code: Functorial Quantum Engineering",
+  "field": "Physics & Quantum",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "The Precision of Category Theory and the Power of Abstraction: Functorial Mapping of Quantum Phenomena and Engineering Physical Processes as Code for Industrial Applications",
+    "pdf": "/papers/pdf/library/proof-as-code-qec/precision_category_theory_functorial_quantum_engineering.pdf"
+   },
+   {
+    "title": "A Compositional Quantum Error Correction Pipeline: A Functorial Physics Approach",
+    "pdf": "/papers/pdf/library/proof-as-code-qec/quantum_error_correction_pipeline.pdf"
+   },
+   {
+    "title": "Quantum Programming with Haskell: A Detailed Analysis Incorporating Error Correction and Entanglement",
+    "pdf": "/papers/pdf/library/proof-as-code-qec/quantum_programming_haskell.pdf"
+   }
+  ]
+ },
+ {
+  "id": "quantumflow",
+  "name": "QuantumFlow & Derived Hamiltonians",
+  "field": "Physics & Quantum",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "Derived Hamiltonians and Higher-Order Functors: Unifying Quantum Mechanics, Spacetime Dynamics, and Biophysical Systems",
+    "pdf": "/papers/pdf/library/quantumflow/Derived_Hamiltonian_QuantumFlow.pdf"
+   },
+   {
+    "title": "US Patent Inverse Topological Decoding Derived Hamiltonians",
+    "pdf": "/papers/pdf/library/quantumflow/US_Patent_Inverse_Topological_Decoding_Derived_Hamiltonians.pdf"
+   }
+  ]
+ },
+ {
+  "id": "mathematical-physics",
+  "name": "Mathematical Physics: Frameworks & Duality",
+  "field": "Physics & Quantum",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "Towards a Functorial Unification of Physics via Foundational Mathematics",
+    "pdf": "/papers/pdf/library/mathematical-physics/quantum_unification.pdf"
+   },
+   {
+    "title": "A Unified Mathematical Framework For Classical And Quantum Physics Using Advanced Mathematical Structures",
+    "pdf": "/papers/pdf/library/mathematical-physics/A_Unified_Mathematical_Framework_for_Classical_and_Quantum_Physics_Using_Advanced_Mathematical_Structures.pdf"
+   },
+   {
+    "title": "Unified Framework for Quantum and Relativistic Systems with Computational Extensions",
+    "pdf": "/papers/pdf/library/mathematical-physics/physical_duality.pdf"
+   },
+   {
+    "title": "Toward a Unified Framework for Quantum-Relativistic Systems: A Higher-Categorical and Noncommutative Geometric Formulation",
+    "pdf": "/papers/pdf/library/mathematical-physics/prototype-unifying-equation.pdf"
+   }
+  ]
+ },
+ {
+  "id": "foundations-mathematics",
+  "name": "Foundations of Mathematics",
+  "field": "Mathematics",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "Towards a Unified Proof of the Foundations of Mathematics (Doctoral Thesis, 2004)",
+    "pdf": "/papers/pdf/library/foundations-mathematics/unified_foundations.pdf"
+   },
+   {
+    "title": "Only 0 and Infinity Exist: A Categorical and Topos-Theoretic Minimal Ontology of Number",
+    "pdf": "/papers/pdf/library/foundations-mathematics/zero_and_infinity_only_exist.pdf"
+   }
+  ]
+ },
+ {
+  "id": "geometric-langlands",
+  "name": "Geometric Langlands & Universal Categories",
+  "field": "Mathematics",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "Integrating the Langlands Functor into Universal Categorical Algebraic Topology (UCAT)",
+    "pdf": "/papers/pdf/library/geometric-langlands/lg-ucat.pdf"
+   },
+   {
+    "title": "Integration of Automorphic and Spectral Data into Universal Categorical Algebraic Topology (UCAT)",
+    "pdf": "/papers/pdf/library/geometric-langlands/ucat-abstract.pdf"
+   }
+  ]
+ },
+ {
+  "id": "encoding-primes",
+  "name": "Proof as Code: Number Theory",
+  "field": "Mathematics",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "Encoding Primes in Quantum Superposition: A Type-Theoretic and Quantum Approach to Twin Primes and the Riemann Hypothesis",
+    "pdf": "/papers/pdf/library/encoding-primes/encoding_primes.pdf"
+   }
+  ]
+ },
+ {
+  "id": "functorial-fission",
+  "name": "Functorial Fission",
+  "field": "Physics & Quantum",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "A Functorial Formulation of Nuclear Fission: Mass--Energy Equivalence, Binding Energy, and Chain-Reaction Dynamics in a Categorical Framework",
+    "pdf": "/papers/pdf/library/functorial-fission/main.pdf"
+   }
+  ]
+ },
+ {
+  "id": "type-safe-physics",
+  "name": "Type-Safe Physics",
+  "field": "Physics & Quantum",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "The Rise of Type-Safe Physics: A Global Revolution in Theoretical Foundations From Dimensional Analysis to Dependent Types: How Category Theory, Type Theory, and Formal Methods Are Transforming Physics",
+    "pdf": "/papers/pdf/library/type-safe-physics/type_safe_physics.pdf"
+   }
+  ]
+ },
+ {
+  "id": "type-safe-biophysics",
+  "name": "Type-Safe Biophysics & Context Engineering",
+  "field": "Interdisciplinary",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "Type-Safe Context Engineering: Lessons from Protein Folding for Building Reliable AI Systems",
+    "pdf": "/papers/pdf/library/type-safe-biophysics/TypeSafe_Context_Engineering.pdf"
+   },
+   {
+    "title": "The Protein Folding Problem as Type Inference: Why AlphaFold Works and What It Teaches Us About Machine Learning",
+    "pdf": "/papers/pdf/library/type-safe-biophysics/TypeSafe_Protein_Folding_Paper.pdf"
+   }
+  ]
+ },
+ {
+  "id": "fibered-sheaf-memory",
+  "name": "Fibered Sheaf Memory for AI",
+  "field": "AI & Computation",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "An Integrated Memory and Knowledge-Graph Architecture Leveraging mem0, Fibered-Sheaf Merging, and AI Preprint Forge",
+    "pdf": "/papers/pdf/library/fibered-sheaf-memory/fibered_sheaf_memory_ai.pdf"
+   },
+   {
+    "title": "Patent Application: Systems and Methods for Integrating Ephemeral Memory, Fibered-Sheaf Merge, and Research Ingestion Pipelines",
+    "pdf": "/papers/pdf/library/fibered-sheaf-memory/patent_fibered_sheaf_memory.pdf"
+   }
+  ]
+ },
+ {
+  "id": "homotopical-semantics",
+  "name": "Homotopical Semantics & AI Hallucination",
+  "field": "AI & Computation",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "The Hallucination--Homotopy Correspondence A Complete Classification of Language Model Failure Modes via Algebraic Topology and Homotopy Type Theory",
+    "pdf": "/papers/pdf/library/homotopical-semantics/hallucination-homotopy-correspondence.pdf"
+   },
+   {
+    "title": "Homotopical Semantics for Language Models: Algebraic Topological and Homotopy Type-Theoretic Approaches to the Hallucination Problem",
+    "pdf": "/papers/pdf/library/homotopical-semantics/homotopical-semantics.pdf"
+   }
+  ]
+ },
+ {
+  "id": "quantum-database-theory",
+  "name": "Quantum Database Theory",
+  "field": "AI & Computation",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "Quantum Database Theory: Topos Theory and Entanglement for Global Consistency",
+    "pdf": "/papers/pdf/library/quantum-database-theory/quantum_database_theory_topos_theory_entanglement_for_global_consistency.pdf"
+   },
+   {
+    "title": "A Unified Framework for Distributed Quantum Databases Integrating Topos-Theoretic Approaches, Entanglement, and QEC Pipelines",
+    "pdf": "/papers/pdf/library/quantum-database-theory/dist_qdb_qec_framework.pdf"
+   },
+   {
+    "title": "Quantum Databases: The Potential of Entanglement with Global Mathematical Structures A Proof-Axiom Approach for Distributed Data Systems",
+    "pdf": "/papers/pdf/library/quantum-database-theory/quantum_databases_expanded.pdf"
+   },
+   {
+    "title": "Quantum Database Theory: Topos Theory and Entanglement for Global Consistency A Functorial Pipeline for an Entangled Quantum Database",
+    "pdf": "/papers/pdf/library/quantum-database-theory/quantum_db_topos_entanglement_pipeline.pdf"
+   },
+   {
+    "title": "Augmented Science: AI-Enhanced Collaborative Frameworks in Mathematics, Physics, Computer Science, and Genetics",
+    "pdf": "/papers/pdf/library/quantum-database-theory/augmented_science.pdf"
+   }
+  ]
+ },
+ {
+  "id": "topos-database-theory",
+  "name": "Topos-Theoretic Database Theory",
+  "field": "AI & Computation",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "Topos Theory in Database Design: A Unified Framework for Backend Storage Models and Functional Query Programming",
+    "pdf": "/papers/pdf/library/topos-database-theory/topos-db-framework.pdf"
+   },
+   {
+    "title": "Next Evolution in Data Management: A Topos-Theoretic Approach to Virtualized Data Benefits and Technical Foundations",
+    "pdf": "/papers/pdf/library/topos-database-theory/topos_data_virtualization.pdf"
+   },
+   {
+    "title": "A Topos-Theoretic Framework for Multi-Model Schema Migrations",
+    "pdf": "/papers/pdf/library/topos-database-theory/topos_database_bridge.pdf"
+   },
+   {
+    "title": "On-Demand Schema Migrations for Multi-Model Data Integration: A Topos-Theoretic and Generative AI Perspective",
+    "pdf": "/papers/pdf/library/topos-database-theory/topos_schema_migrations.pdf"
+   }
+  ]
+ },
+ {
+  "id": "ai-code-generation",
+  "name": "AI Code Generation",
+  "field": "AI & Computation",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "Mitigating AI Code Generation Limitations: Risk-Aware Engineering, Golden Paths, and Enterprise AI Governance Frameworks",
+    "pdf": "/papers/pdf/library/ai-code-generation/ai_code_generation_paper.pdf"
+   }
+  ]
+ },
+ {
+  "id": "time-compression",
+  "name": "The Time Compression Paradox",
+  "field": "AI & Computation",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "The Paradox of Time Compression in the Age of AI: A Formal Analysis of Why Artificial Intelligence Increases Rather Than Eliminates Work",
+    "pdf": "/papers/pdf/library/time-compression/time-compression-paradox.pdf"
+   }
+  ]
+ },
+ {
+  "id": "cannabinoid-adhd",
+  "name": "Pathway-Selective Cannabinoids for ADHD",
+  "field": "Interdisciplinary",
+  "site": null,
+  "github": null,
+  "papers": [
+   {
+    "title": "Rational Design of Pathway-Selective Cannabinoid Compounds for Attention-Deficit/Hyperactivity Disorder: Dissociating Therapeutic Efficacy from Orexigenic Effects Through Biased Signaling, Prodrug Activation, and Multi-Target Pharmacology",
+    "pdf": "/papers/pdf/library/cannabinoid-adhd/pathway-selective-cannabinoids-adhd.pdf"
+   }
+  ]
+ }
+]

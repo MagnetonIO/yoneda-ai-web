@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>YonedaAI Research Collective</title>
-  <meta name="description" content="Category-theoretic foundations for physics, mathematics, and AI. A library of 122 papers across 27 research collections, plus a network of 23 companion research sites.">
+  <meta name="description" content="Category-theoretic foundations for physics, mathematics, and AI. A library of 122 papers across 27 research collections, 23 companion research sites, and 50 open-source repositories.">
   <meta name="author" content="YonedaAI Research Collective">
   <meta property="og:title" content="YonedaAI Research Collective">
   <meta property="og:description" content="Category-theoretic foundations for open problems in quantum mechanics, gravity, and observer theory.">
@@ -22,7 +22,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="YonedaAI Research Collective">
-  <meta name="twitter:description" content="Category-theoretic foundations for physics, mathematics, and AI. A library of 122 papers across 27 research collections, plus a network of 23 companion research sites.">
+  <meta name="twitter:description" content="Category-theoretic foundations for physics, mathematics, and AI. A library of 122 papers across 27 research collections, 23 companion research sites, and 50 open-source repositories.">
   <meta name="twitter:image" content="https://yonedaai.com/images/og-social.png">
   <meta name="twitter:image:alt" content="YonedaAI Research Collective">
 
@@ -1000,6 +1000,33 @@
       .lib-col-links { margin-left: 0; }
     }
 
+  
+    /* Research Programs + Repositories */
+    .prog-band { margin-bottom: 34px; }
+    .prog-band:last-child { margin-bottom: 0; }
+    .prog-band-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; }
+    .prog-band-head h3 { font-size: 1.15rem; font-weight: 700; color: var(--text); }
+    .prog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+    .prog-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px; }
+    .prog-card h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 4px; }
+    .prog-card h4 a { color: var(--text); text-decoration: none; }
+    .prog-card h4 a:hover { color: var(--accent); }
+    .prog-links { font-size: 0.78rem; color: var(--text-muted); }
+    .prog-links a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .prog-links a:hover { text-decoration: underline; }
+    .repo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+    .repo-card { display: block; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px; text-decoration: none; transition: border-color .15s, transform .15s; }
+    .repo-card:hover { border-color: var(--accent-light); transform: translateY(-2px); }
+    .repo-card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .repo-card h4 { font-size: 0.88rem; font-weight: 600; color: var(--text); font-family: 'JetBrains Mono', monospace; overflow-wrap: anywhere; }
+    .repo-lang { margin-left: auto; flex: none; font-size: 0.66rem; font-weight: 700; color: var(--accent); background: var(--accent-bg); border-radius: 999px; padding: 2px 8px; }
+    .repo-card p { font-size: 0.8rem; line-height: 1.5; color: var(--text-secondary); }
+    .flagship-h3 { font-size: 1.3rem; font-weight: 700; color: var(--text); margin: 36px 0 8px; }
+    .lib-read { flex: none; font-size: 0.76rem; font-weight: 600; color: var(--accent); text-decoration: none; padding: 4px 0; }
+    .lib-read:hover { text-decoration: underline; }
+    .lib-paper { display: flex; align-items: center; gap: 12px; }
+    .lib-paper > a:first-child { flex: 1; }
+
   </style>
 
   <!-- Google Analytics (GA4) — Replace G-RRMGVEWKVR with your Measurement ID -->
@@ -1019,7 +1046,7 @@
     "name": "YonedaAI Research Collective",
     "url": "https://yonedaai.com",
     "logo": "https://yonedaai.com/images/og-social.png",
-    "description": "Category-theoretic foundations for open problems in quantum mechanics, gravity, and observer theory.",
+    "description": "Category-theoretic foundations for physics, mathematics, and AI: 122 papers, 27 research collections, 23 research sites, 50 open-source repositories.",
     "sameAs": [
       "https://github.com/MagnetonIO"
     ]
@@ -1036,21 +1063,12 @@
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#methodology">Methodology</a></li>
-      <li class="nav-dropdown">
-        <a>Research</a>
-        <ul class="nav-dropdown-menu">
-          <li><a href="#series1">Series 1 — Foundational Problems</a></li>
-          <li><a href="#series2">Series 2 — Quantum Perspectivism</a></li>
-          <li><a href="#framework">Framework</a></li>
-          <li><a href="#derivation">Derivation Chain</a></li>
-        </ul>
-      </li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#flagship">Flagship</a></li>
       <li><a href="#library">Library</a></li>
       <li><a href="#network">Network</a></li>
-      <li><a href="#repos">Repos</a></li>
+      <li><a href="#repos">Repositories</a></li>
+      <li><a href="#about">About</a></li>
       <li>
         <a href="https://github.com/MagnetonIO" class="gh-link" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -1065,15 +1083,15 @@
 <section class="hero" id="home">
   <div class="container">
     <h1>Yoneda<span>AI</span> Research Collective</h1>
-    <p class="subtitle">Category-theoretic foundations for open problems in quantum mechanics, gravity, and observer theory</p>
+    <p class="subtitle">Category-theoretic foundations for physics, mathematics, and AI &mdash; a modular body of research spanning quantum foundations, foundations of mathematics, and the mathematics of intelligence</p>
     <div class="hero-stats">
       <div class="hero-stat"><strong>122</strong> Papers</div>
       <div class="hero-stat"><strong>27</strong> Collections</div>
       <div class="hero-stat"><strong>23</strong> Research Sites</div>
-      <div class="hero-stat"><strong>16</strong> Haskell Codebases</div>
+      <div class="hero-stat"><strong>50</strong> Repositories</div>
     </div>
     <div class="hero-buttons">
-      <a href="#library" class="btn btn-primary">Browse the Library</a>
+      <a href="#programs" class="btn btn-primary">Explore the Research</a>
       <a href="https://github.com/MagnetonIO" class="btn btn-secondary" target="_blank" rel="noopener">
         View on GitHub
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
@@ -1082,436 +1100,40 @@
   </div>
 </section>
 
-<!-- About -->
-<section class="about-section" id="about">
+<!-- Research Programs -->
+<section class="programs-section" id="programs" style="background: var(--bg-alt);">
+  <span id="series1"></span><span id="series2"></span>
   <div class="container">
-    <div class="section-label">About</div>
-    <h2 class="section-title">About YonedaAI</h2>
-    <div class="about-content">
-      <p><strong>YonedaAI Research Collective</strong> is a frontier research organization applying category theory and advanced AI to the foundational problems of physics.</p>
-      <p><strong>Mission:</strong> To derive the mathematical structures of physics from first principles using the Yoneda Lemma as a foundational constraint, and to publish rigorous, peer-reviewed research with complete executable codebases.</p>
-      <p><strong>Research Program:</strong> 16+ peer-reviewed papers spanning quantum mechanics, quantum gravity, black hole physics, and the philosophy of physics. Every paper includes a complete Haskell implementation that verifies the mathematical constructions and provides executable demonstrations of the theoretical results.</p>
+    <div class="section-label">The Research</div>
+    <h2 class="section-title">Research Programs</h2>
+    <p class="section-subtitle">27 collections across four fields. Each program links into the full paper library below; many have dedicated sites and repositories.</p>
+    
+    <div class="prog-band">
+      <div class="prog-band-head"><h3>Physics &amp; Quantum</h3><span class="lib-col-meta">13 collections · 79 papers</span></div>
+      <div class="prog-grid"><div class="prog-card"><h4><a href="#lib-quantum-perspectivism">Quantum Perspectivism &amp; Foundational Problems</a></h4><div class="prog-links"><a href="#lib-quantum-perspectivism">16 papers</a> · <a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener">GitHub ↗</a></div></div><div class="prog-card"><h4><a href="#lib-condensed-representation">Condensed Representation Theory of Physics</a></h4><div class="prog-links"><a href="#lib-condensed-representation">8 papers</a> · <a href="https://condensed-representation-theory-of.vercel.app" target="_blank" rel="noopener">Site ↗</a> · <a href="https://github.com/MagnetonIO/condensed-representation-theory-of-physics" target="_blank" rel="noopener">GitHub ↗</a></div></div><div class="prog-card"><h4><a href="#lib-math-qg-library">Mathematical Representations of Quantum Gravity</a></h4><div class="prog-links"><a href="#lib-math-qg-library">13 papers</a> · <a href="https://math-qg-representation-library.vercel.app" target="_blank" rel="noopener">Site ↗</a> · <a href="https://github.com/MagnetonIO/math-qg-representation-library" target="_blank" rel="noopener">GitHub ↗</a></div></div><div class="prog-card"><h4><a href="#lib-topological-phases">Topological Phases of Matter</a></h4><div class="prog-links"><a href="#lib-topological-phases">6 papers</a> · <a href="https://condensed-phase-spectrum.vercel.app" target="_blank" rel="noopener">Site ↗</a> · <a href="https://github.com/MagnetonIO/topological-phases-of-matter" target="_blank" rel="noopener">GitHub ↗</a></div></div><div class="prog-card"><h4><a href="#lib-yoneda-constraint">The Yoneda Constraint: Universal Formulation</a></h4><div class="prog-links"><a href="#lib-yoneda-constraint">1 papers</a> · <a href="https://yoneda-constraint.vercel.app" target="_blank" rel="noopener">Site ↗</a> · <a href="https://github.com/MagnetonIO/yoneda-constraint" target="_blank" rel="noopener">GitHub ↗</a></div></div><div class="prog-card"><h4><a href="#lib-minimal-runtime-axiom">The Minimal Runtime Axiom</a></h4><div class="prog-links"><a href="#lib-minimal-runtime-axiom">1 papers</a> · <a href="https://minimal-runtime-axiom.vercel.app" target="_blank" rel="noopener">Site ↗</a> · <a href="https://github.com/MagnetonIO/minimal-runtime-axiom" target="_blank" rel="noopener">GitHub ↗</a></div></div><div class="prog-card"><h4><a href="#lib-categorical-qec">Topological &amp; Categorical Quantum Error Correction</a></h4><div class="prog-links"><a href="#lib-categorical-qec">12 papers</a></div></div><div class="prog-card"><h4><a href="#lib-derived-functors-qec">Derived Functors &amp; Teleological QEC</a></h4><div class="prog-links"><a href="#lib-derived-functors-qec">11 papers</a></div></div><div class="prog-card"><h4><a href="#lib-proof-as-code-qec">Proof as Code: Functorial Quantum Engineering</a></h4><div class="prog-links"><a href="#lib-proof-as-code-qec">3 papers</a></div></div><div class="prog-card"><h4><a href="#lib-quantumflow">QuantumFlow &amp; Derived Hamiltonians</a></h4><div class="prog-links"><a href="#lib-quantumflow">2 papers</a></div></div><div class="prog-card"><h4><a href="#lib-mathematical-physics">Mathematical Physics: Frameworks &amp; Duality</a></h4><div class="prog-links"><a href="#lib-mathematical-physics">4 papers</a></div></div><div class="prog-card"><h4><a href="#lib-functorial-fission">Functorial Fission</a></h4><div class="prog-links"><a href="#lib-functorial-fission">1 papers</a></div></div><div class="prog-card"><h4><a href="#lib-type-safe-physics">Type-Safe Physics</a></h4><div class="prog-links"><a href="#lib-type-safe-physics">1 papers</a></div></div></div>
+    </div>
+    <div class="prog-band">
+      <div class="prog-band-head"><h3>Mathematics</h3><span class="lib-col-meta">4 collections · 11 papers</span></div>
+      <div class="prog-grid"><div class="prog-card"><h4><a href="#lib-mathematics-physical-representation">Mathematics as Physical Representation</a></h4><div class="prog-links"><a href="#lib-mathematics-physical-representation">6 papers</a> · <a href="https://mathematics-physical-representation.vercel.app" target="_blank" rel="noopener">Site ↗</a> · <a href="https://github.com/MagnetonIO/mathematics-physical-representation" target="_blank" rel="noopener">GitHub ↗</a></div></div><div class="prog-card"><h4><a href="#lib-foundations-mathematics">Foundations of Mathematics</a></h4><div class="prog-links"><a href="#lib-foundations-mathematics">2 papers</a></div></div><div class="prog-card"><h4><a href="#lib-geometric-langlands">Geometric Langlands &amp; Universal Categories</a></h4><div class="prog-links"><a href="#lib-geometric-langlands">2 papers</a></div></div><div class="prog-card"><h4><a href="#lib-encoding-primes">Proof as Code: Number Theory</a></h4><div class="prog-links"><a href="#lib-encoding-primes">1 papers</a></div></div></div>
+    </div>
+    <div class="prog-band">
+      <div class="prog-band-head"><h3>AI &amp; Computation</h3><span class="lib-col-meta">8 collections · 29 papers</span></div>
+      <div class="prog-grid"><div class="prog-card"><h4><a href="#lib-joule-standard">The Joule Standard: Energy Economics of Intelligence</a></h4><div class="prog-links"><a href="#lib-joule-standard">10 papers</a> · <a href="https://joule-standard.vercel.app" target="_blank" rel="noopener">Site ↗</a> · <a href="https://github.com/MagnetonIO/joule-standard" target="_blank" rel="noopener">GitHub ↗</a></div></div><div class="prog-card"><h4><a href="#lib-ferrous-bridge">Ferrous Bridge: Verified C-to-Rust Migration</a></h4><div class="prog-links"><a href="#lib-ferrous-bridge">4 papers</a> · <a href="https://ferrous-bridge.vercel.app" target="_blank" rel="noopener">Site ↗</a> · <a href="https://github.com/MagnetonIO/ferrous-bridge" target="_blank" rel="noopener">GitHub ↗</a></div></div><div class="prog-card"><h4><a href="#lib-fibered-sheaf-memory">Fibered Sheaf Memory for AI</a></h4><div class="prog-links"><a href="#lib-fibered-sheaf-memory">2 papers</a></div></div><div class="prog-card"><h4><a href="#lib-homotopical-semantics">Homotopical Semantics &amp; AI Hallucination</a></h4><div class="prog-links"><a href="#lib-homotopical-semantics">2 papers</a></div></div><div class="prog-card"><h4><a href="#lib-quantum-database-theory">Quantum Database Theory</a></h4><div class="prog-links"><a href="#lib-quantum-database-theory">5 papers</a></div></div><div class="prog-card"><h4><a href="#lib-topos-database-theory">Topos-Theoretic Database Theory</a></h4><div class="prog-links"><a href="#lib-topos-database-theory">4 papers</a></div></div><div class="prog-card"><h4><a href="#lib-ai-code-generation">AI Code Generation</a></h4><div class="prog-links"><a href="#lib-ai-code-generation">1 papers</a></div></div><div class="prog-card"><h4><a href="#lib-time-compression">The Time Compression Paradox</a></h4><div class="prog-links"><a href="#lib-time-compression">1 papers</a></div></div></div>
+    </div>
+    <div class="prog-band">
+      <div class="prog-band-head"><h3>Interdisciplinary</h3><span class="lib-col-meta">2 collections · 3 papers</span></div>
+      <div class="prog-grid"><div class="prog-card"><h4><a href="#lib-type-safe-biophysics">Type-Safe Biophysics &amp; Context Engineering</a></h4><div class="prog-links"><a href="#lib-type-safe-biophysics">2 papers</a></div></div><div class="prog-card"><h4><a href="#lib-cannabinoid-adhd">Pathway-Selective Cannabinoids for ADHD</a></h4><div class="prog-links"><a href="#lib-cannabinoid-adhd">1 papers</a></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- Methodology -->
-<section class="methodology-section" id="methodology">
+
+<!-- Flagship: The Yoneda Constraint -->
+<section id="flagship">
   <div class="container">
-    <div class="section-label">Methodology</div>
-    <h2 class="section-title">Agent Orchestration for Frontier Science</h2>
-    <p class="methodology-intro">YonedaAI developed a multi-agent parallel execution architecture that transforms research questions into peer-reviewed papers with verified code. This is what makes YonedaAI unique: cutting-edge AI agent orchestration applied to real science, producing rigorous mathematical research at unprecedented speed and scale.</p>
-
-    <div class="methodology-subsection">
-      <h3>The Pipeline</h3>
-      <div class="pipeline-grid">
-        <div class="pipeline-card">
-          <div class="pipeline-card-number">1</div>
-          <h3>Knowledge Base Agent</h3>
-          <p>Ingests all source materials -- .tex papers, .md notes, prior results -- and generates a consolidated, cross-referenced knowledge base that serves as the foundation for all downstream agents.</p>
-        </div>
-        <div class="pipeline-card">
-          <div class="pipeline-card-number">2</div>
-          <h3>N Parallel Worker Agents</h3>
-          <p>Each agent takes a subject and independently:</p>
-          <ul>
-            <li>Writes a 20-30 page arxiv-format paper with full mathematical rigor</li>
-            <li>Implements the framework in Haskell with executable demonstrations</li>
-            <li>Submits to automated peer review</li>
-            <li>Revises based on feedback</li>
-            <li>Compiles publication-ready PDF</li>
-            <li>Generates cover artwork and accessible summaries</li>
-          </ul>
-        </div>
-        <div class="pipeline-card">
-          <div class="pipeline-card-number">3</div>
-          <h3>Peer Review</h3>
-          <p>Every paper undergoes rigorous automated review checking mathematical correctness, code quality, internal consistency, and adherence to the categorical framework.</p>
-        </div>
-        <div class="pipeline-card">
-          <div class="pipeline-card-number">4</div>
-          <h3>Revision Cycle</h3>
-          <p>All review feedback is addressed systematically before publication. Papers are iteratively refined until they meet the standard of mathematical rigor and code correctness.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="pipeline-diagram">
-      <pre>
-  Knowledge Base Agent
-          |
-          v
-  +---+---+---+---+---+---+
-  |W1 |W2 |W3 |W4 |W5 |W6 |  Parallel Worker Agents
-  +---+---+---+---+---+---+
-    |   |   |   |   |   |
-    v   v   v   v   v   v
-  Draft > Review > Revise > Compile > Publish</pre>
-    </div>
-
-    <div class="methodology-subsection">
-      <h3>The Stack</h3>
-      <div class="stack-grid">
-        <div class="stack-item">
-          <div class="stack-item-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <div>
-            <div class="stack-item-text">Claude Code</div>
-            <div class="stack-item-desc">Orchestration &amp; code generation</div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <div class="stack-item-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </div>
-          <div>
-            <div class="stack-item-text">Gemini CLI</div>
-            <div class="stack-item-desc">Independent peer review</div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <div class="stack-item-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          </div>
-          <div>
-            <div class="stack-item-text">GHC / Cabal</div>
-            <div class="stack-item-desc">Haskell compilation &amp; verification</div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <div class="stack-item-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </div>
-          <div>
-            <div class="stack-item-text">pdfLaTeX</div>
-            <div class="stack-item-desc">Publication-ready typesetting</div>
-          </div>
-        </div>
-        <div class="stack-item">
-          <div class="stack-item-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          </div>
-          <div>
-            <div class="stack-item-text">Category Theory</div>
-            <div class="stack-item-desc">Unifying mathematical language</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="methodology-subsection">
-      <h3>Results</h3>
-      <div class="results-grid">
-        <div class="result-card">
-          <div class="result-number">16</div>
-          <div class="result-label">Peer-reviewed papers</div>
-        </div>
-        <div class="result-card">
-          <div class="result-number">291+</div>
-          <div class="result-label">Pages of research</div>
-        </div>
-        <div class="result-card">
-          <div class="result-number">16</div>
-          <div class="result-label">Haskell codebases</div>
-        </div>
-        <div class="result-card">
-          <div class="result-number">42</div>
-          <div class="result-label">Modules in unified framework</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Series 1 -->
-<section class="papers-section" id="series1">
-  <div class="container">
-    <div class="section-label">Series 1</div>
-    <h2 class="section-title">Foundational Problems</h2>
-    <p class="section-subtitle">Six papers applying the Yoneda Constraint to the deepest open questions in quantum foundations, black hole physics, and quantum gravity.</p>
-
-    <div class="papers-grid">
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">01</span>
-          <span class="paper-tag">hep-th</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">26 pp</span>
-        </div>
-        <h3><a href="/papers/black-hole-information-paradox.html">The Black Hole Information Paradox</a></h3>
-        <p class="paper-desc">Representable functors, epistemic horizons, and the Page curve as Kan extension. The information paradox is resolved as a structural consequence of observer embedding.</p>
-        <div class="paper-actions">
-          <a href="/papers/black-hole-information-paradox.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/black-hole-information-paradox.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">02</span>
-          <span class="paper-tag">quant-ph</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">27 pp</span>
-        </div>
-        <h3><a href="/papers/hidden-variable-debates.html">Hidden Variable Debates Reconsidered</a></h3>
-        <p class="paper-desc">Unified no-go theorems as presheaf obstructions. The hidden variable question is reframed as whether quantum indeterminacy reflects genuine ontological structure.</p>
-        <div class="paper-actions">
-          <a href="/papers/hidden-variable-debates.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/hidden-variable-debates.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">03</span>
-          <span class="paper-tag">quant-ph</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">28 pp</span>
-        </div>
-        <h3><a href="/papers/measurement-problem.html">The Measurement Problem</a></h3>
-        <p class="paper-desc">Measurement as Yoneda obstruction with cohomological invariant. The collapse of the wave function is identified as a structural obstruction from the Yoneda lemma.</p>
-        <div class="paper-actions">
-          <a href="/papers/measurement-problem.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/measurement-problem.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">04</span>
-          <span class="paper-tag">quant-ph</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">32 pp</span>
-        </div>
-        <h3><a href="/papers/wigners-friend.html">Wigner's Friend and the Yoneda Constraint</a></h3>
-        <p class="paper-desc">Presheaf Irreconcilability Theorem. A rigorous category-theoretic analysis of Wigner's friend and its modern extensions using the Yoneda Constraint.</p>
-        <div class="paper-actions">
-          <a href="/papers/wigners-friend.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/wigners-friend.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">05</span>
-          <span class="paper-tag">hep-th</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">33 pp</span>
-        </div>
-        <h3><a href="/papers/horizon-problems.html">Horizon Problems and the Yoneda Constraint</a></h3>
-        <p class="paper-desc">All horizon types as accessible subcategory inclusions. A systematic analysis of cosmological, event, and Cauchy horizons through the Yoneda framework.</p>
-        <div class="paper-actions">
-          <a href="/papers/horizon-problems.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/horizon-problems.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">06</span>
-          <span class="paper-tag">gr-qc</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">33 pp</span>
-        </div>
-        <h3><a href="/papers/limits-quantum-gravity-observation.html">Limits of Quantum Gravity Observation</a></h3>
-        <p class="paper-desc">Three independent Yoneda obstructions to Planck-scale observation. Fundamental observational limits derived from categorical embedding of observers in quantum gravity.</p>
-        <div class="paper-actions">
-          <a href="/papers/limits-quantum-gravity-observation.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/limits-quantum-gravity-observation.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Series 2 -->
-<section id="series2">
-  <div class="container">
-    <div class="section-label">Series 2</div>
-    <h2 class="section-title">Quantum Perspectivism</h2>
-    <p class="section-subtitle">Ten papers developing the full Quantum Perspectivism program: from foundational crisis through mathematical construction to open problems.</p>
-
-    <div class="papers-grid">
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">01</span>
-          <span class="paper-tag">quant-ph</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">27 pp</span>
-        </div>
-        <h3><a href="/papers/crisis-of-foundations.html">The Crisis of Quantum Foundations</a></h3>
-        <p class="paper-desc">Why physics needs the Yoneda Constraint. A comprehensive introduction to the foundational crisis and how category theory provides the missing structural principle.</p>
-        <div class="paper-actions">
-          <a href="/papers/crisis-of-foundations.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/crisis-of-foundations.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/crisis-of-foundations" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">02</span>
-          <span class="paper-tag">math.CT</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">29 pp</span>
-        </div>
-        <h3><a href="/papers/yoneda-physical-content.html">The Yoneda Lemma as Physical Law</a></h3>
-        <p class="paper-desc">Identity, relation, and the structure of reality. The Yoneda Lemma carries deep physical content: objects are exhaustively determined by their relational profiles.</p>
-        <div class="paper-actions">
-          <a href="/papers/yoneda-physical-content.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/yoneda-physical-content.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/yoneda-physical-content" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">03</span>
-          <span class="paper-tag">quant-ph</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">36 pp</span>
-        </div>
-        <h3><a href="/papers/yoneda-constraint-quantum-structure.html">Deriving Quantum Mechanics from the Yoneda Lemma</a></h3>
-        <p class="paper-desc">The Yoneda Constraint as the single structural principle from which Hilbert spaces, the Born rule, and the projection postulate follow as mathematical theorems.</p>
-        <div class="paper-actions">
-          <a href="/papers/yoneda-constraint-quantum-structure.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/yoneda-constraint-quantum-structure.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/yoneda-constraint-quantum-structure" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">04</span>
-          <span class="paper-tag">quant-ph</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">27 pp</span>
-        </div>
-        <h3><a href="/papers/entanglement-complementarity-measurement.html">Entanglement, Complementarity, and Measurement</a></h3>
-        <p class="paper-desc">A unified treatment of entanglement and complementarity as natural consequences of the Yoneda Constraint on observer-accessible knowledge.</p>
-        <div class="paper-actions">
-          <a href="/papers/entanglement-complementarity-measurement.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/entanglement-complementarity-measurement.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/entanglement-complementarity-measurement" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">05</span>
-          <span class="paper-tag">math-ph</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">27 pp</span>
-        </div>
-        <h3><a href="/papers/categorical-architecture-qp.html">The Categorical Architecture of Quantum Perspectivism</a></h3>
-        <p class="paper-desc">The complete mathematical architecture: measurement categories, presheaf topoi, Kan extensions, and the cohomological characterization of quantum phenomena.</p>
-        <div class="paper-actions">
-          <a href="/papers/categorical-architecture-qp.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/categorical-architecture-qp.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/categorical-architecture-qp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">06</span>
-          <span class="paper-tag">hep-th</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">29 pp</span>
-        </div>
-        <h3><a href="/papers/quantum-gravity-emergent-spacetime.html">Quantum Gravity and Emergent Spacetime</a></h3>
-        <p class="paper-desc">Spacetime as emergent from the presheaf topos of observer perspectives. A categorical approach to quantum gravity and the problem of background independence.</p>
-        <div class="paper-actions">
-          <a href="/papers/quantum-gravity-emergent-spacetime.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/quantum-gravity-emergent-spacetime.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/quantum-gravity-emergent-spacetime" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">07</span>
-          <span class="paper-tag">quant-ph</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">32 pp</span>
-        </div>
-        <h3><a href="/papers/connections-existing-frameworks.html">Connections to Existing Frameworks</a></h3>
-        <p class="paper-desc">Detailed comparison with QBism, relational QM, consistent histories, topos approaches, and operational reconstruction programs.</p>
-        <div class="paper-actions">
-          <a href="/papers/connections-existing-frameworks.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/connections-existing-frameworks.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/connections-existing-frameworks" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">08</span>
-          <span class="paper-tag">physics.hist-ph</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">26 pp</span>
-        </div>
-        <h3><a href="/papers/philosophical-implications-qp.html">Philosophical Implications of Quantum Perspectivism</a></h3>
-        <p class="paper-desc">What Quantum Perspectivism means for realism, objectivity, the mind-body problem, and the philosophy of science.</p>
-        <div class="paper-actions">
-          <a href="/papers/philosophical-implications-qp.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/philosophical-implications-qp.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/philosophical-implications-qp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">09</span>
-          <span class="paper-tag">math-ph</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">26 pp</span>
-        </div>
-        <h3><a href="/papers/technical-constructions-qp.html">Technical Constructions in Quantum Perspectivism</a></h3>
-        <p class="paper-desc">Detailed proofs, constructions, and worked examples: Kan extensions, sheaf cohomology, enriched categories, and model-theoretic semantics.</p>
-        <div class="paper-actions">
-          <a href="/papers/technical-constructions-qp.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/technical-constructions-qp.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/technical-constructions-qp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-      <div class="paper-card">
-        <div class="paper-card-header">
-          <span class="paper-number">10</span>
-          <span class="paper-tag">quant-ph</span>
-          <span class="badge-reviewed"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Peer Reviewed</span>
-          <span class="paper-pages">32 pp</span>
-        </div>
-        <h3><a href="/papers/open-problems-qp.html">Open Problems in Quantum Perspectivism</a></h3>
-        <p class="paper-desc">Research frontiers: from higher-categorical extensions to experimental predictions, quantum computing applications, and connections to quantum gravity.</p>
-        <div class="paper-actions">
-          <a href="/papers/open-problems-qp.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Read Online</a>
-          <a href="/papers/pdf/open-problems-qp.pdf" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> PDF</a>
-          <a href="https://github.com/MagnetonIO/open-problems-qp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Framework -->
-<section id="framework" style="background: var(--bg-alt);">
-  <div class="container">
-    <div class="section-label">Core Framework</div>
+    <div class="section-label">Flagship Program</div>
     <h2 class="section-title">The Yoneda Constraint</h2>
-    <p class="section-subtitle">Four interconnected concepts form the mathematical backbone of Quantum Perspectivism.</p>
+    <p class="section-subtitle">Four interconnected concepts form the mathematical backbone of Quantum Perspectivism &mdash; and the derivation chain runs from the Yoneda Lemma to quantum mechanics.</p>
     <div class="framework-grid">
       <div class="framework-card">
         <div class="framework-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
@@ -1534,15 +1156,9 @@
         <p>No-go theorems as presheaf failures. Bell's theorem, Kochen-Specker, and contextuality arise as non-vanishing cohomology classes.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Derivation Chain -->
-<section class="derivation-section" id="derivation">
-  <div class="container">
-    <div class="section-label">The Derivation</div>
-    <h2 class="section-title">From Yoneda to Quantum Mechanics</h2>
+    <h3 class="flagship-h3">From Yoneda to Quantum Mechanics</h3>
     <p class="section-subtitle">The complete 11-step derivation chain showing how quantum mechanics emerges as a mathematical consequence of the Yoneda Lemma.</p>
+    
 
     <div class="derivation-table-wrapper">
       <table class="derivation-table">
@@ -1645,32 +1261,32 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
       </a>
     </div>
+  
   </div>
 </section>
 
-<!-- Repositories -->
 
 <!-- Paper Library -->
 <section class="library-section" id="library">
   <div class="container">
     <div class="section-label">Complete Catalog</div>
     <h2 class="section-title">Paper Library</h2>
-    <p class="section-subtitle">122 papers across 27 collections — quantum foundations, category theory, condensed mathematics, quantum error correction, foundations of mathematics, and the mathematics of AI. Every paper is available as a PDF.</p>
+    <p class="section-subtitle">122 papers across 27 collections &mdash; quantum foundations, category theory, quantum error correction, foundations of mathematics, and the mathematics of AI. Every paper is available as a PDF.</p>
     <div class="lib-controls">
       <input type="search" id="libSearch" class="lib-search" placeholder="Search 122 papers…" aria-label="Search papers">
       <div class="lib-chips" role="group" aria-label="Filter by field"><button class="lib-chip active" data-field="all" type="button">All</button><button class="lib-chip" data-field="Physics &amp; Quantum" type="button">Physics &amp; Quantum</button><button class="lib-chip" data-field="Mathematics" type="button">Mathematics</button><button class="lib-chip" data-field="AI &amp; Computation" type="button">AI &amp; Computation</button><button class="lib-chip" data-field="Interdisciplinary" type="button">Interdisciplinary</button></div>
     </div>
     <div id="libList">
-      <div class="lib-collection" data-field="Physics &amp; Quantum">
+      <div class="lib-collection" id="lib-quantum-perspectivism" data-field="Physics &amp; Quantum">
         <div class="lib-col-head">
           <h3>Quantum Perspectivism &amp; Foundational Problems</h3>
           <span class="lib-col-meta">16 papers · Physics &amp; Quantum</span>
           <span class="lib-col-links"><a href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener">GitHub ↗</a></span>
         </div>
-        <ul class="lib-papers"><li class="lib-paper" data-search="the black hole information paradox quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/black-hole-information-paradox.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Black Hole Information Paradox</span></a></li><li class="lib-paper" data-search="the categorical architecture of quantum perspectivism quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/categorical-architecture-qp.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Categorical Architecture of Quantum Perspectivism</span></a></li><li class="lib-paper" data-search="connections to existing frameworks quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/connections-existing-frameworks.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Connections to Existing Frameworks</span></a></li><li class="lib-paper" data-search="the crisis of quantum foundations quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/crisis-of-foundations.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Crisis of Quantum Foundations</span></a></li><li class="lib-paper" data-search="entanglement, complementarity, and measurement quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/entanglement-complementarity-measurement.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Entanglement, Complementarity, and Measurement</span></a></li><li class="lib-paper" data-search="hidden variable debates reconsidered quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/hidden-variable-debates.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Hidden Variable Debates Reconsidered</span></a></li><li class="lib-paper" data-search="horizon problems and the yoneda constraint quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/horizon-problems.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Horizon Problems and the Yoneda Constraint</span></a></li><li class="lib-paper" data-search="limits of quantum gravity observation quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/limits-quantum-gravity-observation.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Limits of Quantum Gravity Observation</span></a></li><li class="lib-paper" data-search="the measurement problem quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/measurement-problem.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Measurement Problem</span></a></li><li class="lib-paper" data-search="open problems in quantum perspectivism quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/open-problems-qp.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Open Problems in Quantum Perspectivism</span></a></li><li class="lib-paper" data-search="philosophical implications of quantum perspectivism quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/philosophical-implications-qp.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Philosophical Implications of Quantum Perspectivism</span></a></li><li class="lib-paper" data-search="quantum gravity and emergent spacetime quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/quantum-gravity-emergent-spacetime.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Quantum Gravity and Emergent Spacetime</span></a></li><li class="lib-paper" data-search="technical constructions in quantum perspectivism quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/technical-constructions-qp.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Technical Constructions in Quantum Perspectivism</span></a></li><li class="lib-paper" data-search="wigner's friend and the yoneda constraint quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/wigners-friend.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Wigner's Friend and the Yoneda Constraint</span></a></li><li class="lib-paper" data-search="deriving quantum mechanics from the yoneda lemma quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/yoneda-constraint-quantum-structure.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Deriving Quantum Mechanics from the Yoneda Lemma</span></a></li><li class="lib-paper" data-search="the yoneda lemma as physical law quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/yoneda-physical-content.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Yoneda Lemma as Physical Law</span></a></li>
+        <ul class="lib-papers"><li class="lib-paper" data-search="the black hole information paradox quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/black-hole-information-paradox.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Black Hole Information Paradox</span></a><a class="lib-read" href="/papers/black-hole-information-paradox.html">Read online</a></li><li class="lib-paper" data-search="the categorical architecture of quantum perspectivism quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/categorical-architecture-qp.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Categorical Architecture of Quantum Perspectivism</span></a><a class="lib-read" href="/papers/categorical-architecture-qp.html">Read online</a></li><li class="lib-paper" data-search="connections to existing frameworks quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/connections-existing-frameworks.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Connections to Existing Frameworks</span></a><a class="lib-read" href="/papers/connections-existing-frameworks.html">Read online</a></li><li class="lib-paper" data-search="the crisis of quantum foundations quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/crisis-of-foundations.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Crisis of Quantum Foundations</span></a><a class="lib-read" href="/papers/crisis-of-foundations.html">Read online</a></li><li class="lib-paper" data-search="entanglement, complementarity, and measurement quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/entanglement-complementarity-measurement.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Entanglement, Complementarity, and Measurement</span></a><a class="lib-read" href="/papers/entanglement-complementarity-measurement.html">Read online</a></li><li class="lib-paper" data-search="hidden variable debates reconsidered quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/hidden-variable-debates.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Hidden Variable Debates Reconsidered</span></a><a class="lib-read" href="/papers/hidden-variable-debates.html">Read online</a></li><li class="lib-paper" data-search="horizon problems and the yoneda constraint quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/horizon-problems.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Horizon Problems and the Yoneda Constraint</span></a><a class="lib-read" href="/papers/horizon-problems.html">Read online</a></li><li class="lib-paper" data-search="limits of quantum gravity observation quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/limits-quantum-gravity-observation.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Limits of Quantum Gravity Observation</span></a><a class="lib-read" href="/papers/limits-quantum-gravity-observation.html">Read online</a></li><li class="lib-paper" data-search="the measurement problem quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/measurement-problem.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Measurement Problem</span></a><a class="lib-read" href="/papers/measurement-problem.html">Read online</a></li><li class="lib-paper" data-search="open problems in quantum perspectivism quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/open-problems-qp.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Open Problems in Quantum Perspectivism</span></a><a class="lib-read" href="/papers/open-problems-qp.html">Read online</a></li><li class="lib-paper" data-search="philosophical implications of quantum perspectivism quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/philosophical-implications-qp.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Philosophical Implications of Quantum Perspectivism</span></a><a class="lib-read" href="/papers/philosophical-implications-qp.html">Read online</a></li><li class="lib-paper" data-search="quantum gravity and emergent spacetime quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/quantum-gravity-emergent-spacetime.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Quantum Gravity and Emergent Spacetime</span></a><a class="lib-read" href="/papers/quantum-gravity-emergent-spacetime.html">Read online</a></li><li class="lib-paper" data-search="technical constructions in quantum perspectivism quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/technical-constructions-qp.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Technical Constructions in Quantum Perspectivism</span></a><a class="lib-read" href="/papers/technical-constructions-qp.html">Read online</a></li><li class="lib-paper" data-search="wigner's friend and the yoneda constraint quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/wigners-friend.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Wigner's Friend and the Yoneda Constraint</span></a><a class="lib-read" href="/papers/wigners-friend.html">Read online</a></li><li class="lib-paper" data-search="deriving quantum mechanics from the yoneda lemma quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/yoneda-constraint-quantum-structure.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Deriving Quantum Mechanics from the Yoneda Lemma</span></a><a class="lib-read" href="/papers/yoneda-constraint-quantum-structure.html">Read online</a></li><li class="lib-paper" data-search="the yoneda lemma as physical law quantum perspectivism &amp; foundational problems"><a href="/papers/pdf/yoneda-physical-content.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Yoneda Lemma as Physical Law</span></a><a class="lib-read" href="/papers/yoneda-physical-content.html">Read online</a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Physics &amp; Quantum">
+      <div class="lib-collection" id="lib-condensed-representation" data-field="Physics &amp; Quantum">
         <div class="lib-col-head">
           <h3>Condensed Representation Theory of Physics</h3>
           <span class="lib-col-meta">8 papers · Physics &amp; Quantum</span>
@@ -1679,7 +1295,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="from manifolds to condensed spaces part i of toward a condensed representation theory of physics condensed representation theory of physics"><a href="/papers/pdf/library/condensed-representation/part1-manifolds-to-condensed-spaces.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>From Manifolds to Condensed Spaces Part I of Toward a Condensed Representation Theory of Physics</span></a></li><li class="lib-paper" data-search="observables as condensed sheaves part ii of toward a condensed representation theory of physics condensed representation theory of physics"><a href="/papers/pdf/library/condensed-representation/part2-observables-as-condensed-sheaves.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Observables as Condensed Sheaves Part II of Toward a Condensed Representation Theory of Physics</span></a></li><li class="lib-paper" data-search="information as the primitive object: condensed cohomology and quantum information part iii of toward a condensed representation theory of physics condensed representation theory of physics"><a href="/papers/pdf/library/condensed-representation/part3-condensed-cohomology-quantum-information.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Information as the Primitive Object: Condensed Cohomology and Quantum Information Part III of Toward a Condensed Representation Theory of Physics</span></a></li><li class="lib-paper" data-search="fields without background manifolds part iv of toward a condensed representation theory of physics condensed representation theory of physics"><a href="/papers/pdf/library/condensed-representation/part4-fields-without-background-manifolds.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Fields Without Background Manifolds Part IV of Toward a Condensed Representation Theory of Physics</span></a></li><li class="lib-paper" data-search="geometry as a realization functor part v of toward a condensed representation theory of physics condensed representation theory of physics"><a href="/papers/pdf/library/condensed-representation/part5-geometry-as-realization-functor.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Geometry as a Realization Functor Part V of Toward a Condensed Representation Theory of Physics</span></a></li><li class="lib-paper" data-search="a representation-theoretic foundation for quantum gravity part vi of toward a condensed representation theory of physics condensed representation theory of physics"><a href="/papers/pdf/library/condensed-representation/part6-condensed-quantum-gravity.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>A Representation-Theoretic Foundation for Quantum Gravity Part VI of Toward a Condensed Representation Theory of Physics</span></a></li><li class="lib-paper" data-search="toward a condensed representation theory of physics: a condensed representation principle part vii (capstone) of toward a condensed representation theory of physics condensed representation theory of physics"><a href="/papers/pdf/library/condensed-representation/part7-condensed-representation-principle.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Toward a Condensed Representation Theory of Physics: A Condensed Representation Principle Part VII (capstone) of Toward a Condensed Representation Theory of Physics</span></a></li><li class="lib-paper" data-search="the condensed representation program: a modular synthesis of parts i--vii synthesis of toward a condensed representation theory of physics condensed representation theory of physics"><a href="/papers/pdf/library/condensed-representation/synthesis.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Condensed Representation Program: A Modular Synthesis of Parts I--VII Synthesis of Toward a Condensed Representation Theory of Physics</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Physics &amp; Quantum">
+      <div class="lib-collection" id="lib-math-qg-library" data-field="Physics &amp; Quantum">
         <div class="lib-col-head">
           <h3>Mathematical Representations of Quantum Gravity</h3>
           <span class="lib-col-meta">13 papers · Physics &amp; Quantum</span>
@@ -1688,7 +1304,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="a fixed point in theory space: asymptotic safety as the renormalization-group completion regime of a modular reconstruction program mathematical representations of quantum gravity"><a href="/papers/pdf/library/math-qg-library/asymptotic-safety.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>A Fixed Point in Theory Space: Asymptotic Safety as the Renormalization-Group Completion Regime of a Modular Reconstruction Program</span></a></li><li class="lib-paper" data-search="observables as cohomology: bv--brst complexes and derived critical loci as the gauge layer of reconstructed spacetime mathematical representations of quantum gravity"><a href="/papers/pdf/library/math-qg-library/bv-brst-derived-geometry.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Observables as Cohomology: BV--BRST Complexes and Derived Critical Loci as the Gauge Layer of Reconstructed Spacetime</span></a></li><li class="lib-paper" data-search="the flat-space s-matrix as conformal data on the celestial sphere: mellin bases, asymptotic symmetries, and soft theorems as ward identities as the boundary layer of reconstructed spacetime mathematical representations of quantum gravity"><a href="/papers/pdf/library/math-qg-library/celestial-cft.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Flat-Space S-Matrix as Conformal Data on the Celestial Sphere: Mellin Bases, Asymptotic Symmetries, and Soft Theorems as Ward Identities as the Boundary Layer of Reconstructed Spacetime</span></a></li><li class="lib-paper" data-search="gravity as the square of gauge theory: color--kinematics duality, the double copy, and the klt kernel as the reconstruction layer of perturbative spacetime mathematical representations of quantum gravity"><a href="/papers/pdf/library/math-qg-library/double-copy.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Gravity as the Square of Gauge Theory: Color--Kinematics Duality, the Double Copy, and the KLT Kernel as the Reconstruction Layer of Perturbative Spacetime</span></a></li><li class="lib-paper" data-search="observables from gluing: factorization algebras, cosheaves, and the local-to-global reconstruction of quantum observables mathematical representations of quantum gravity"><a href="/papers/pdf/library/math-qg-library/factorization-algebras.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Observables from Gluing: Factorization Algebras, Cosheaves, and the Local-to-Global Reconstruction of Quantum Observables</span></a></li><li class="lib-paper" data-search="the solution stack of general relativity: diffeomorphism equivalence, isotropy, and the classical geometry regime of a reconstruction program mathematical representations of quantum gravity"><a href="/papers/pdf/library/math-qg-library/lorentzian-geometry.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Solution Stack of General Relativity: Diffeomorphism Equivalence, Isotropy, and the Classical Geometry Regime of a Reconstruction Program</span></a></li><li class="lib-paper" data-search="geometry as a theorem about an algebra: spectral triples, the connes distance formula, and the reconstruction of metric spacetime from spectral data mathematical representations of quantum gravity"><a href="/papers/pdf/library/math-qg-library/noncommutative-geometry.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Geometry as a Theorem About an Algebra: Spectral Triples, the Connes Distance Formula, and the Reconstruction of Metric Spacetime from Spectral Data</span></a></li><li class="lib-paper" data-search="amplitudes as canonical forms: positive geometries, residue trees, and the conjectural bridge to motivic coactions as the amplitude layer of reconstructed spacetime mathematical representations of quantum gravity"><a href="/papers/pdf/library/math-qg-library/positive-geometries.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Amplitudes as Canonical Forms: Positive Geometries, Residue Trees, and the Conjectural Bridge to Motivic Coactions as the Amplitude Layer of Reconstructed Spacetime</span></a></li><li class="lib-paper" data-search="causal order as representation data: process matrices, causal inequalities, and locally finite posets as reconstructions of causality mathematical representations of quantum gravity"><a href="/papers/pdf/library/math-qg-library/quantum-causal-structures.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Causal Order as Representation Data: Process Matrices, Causal Inequalities, and Locally Finite Posets as Reconstructions of Causality</span></a></li><li class="lib-paper" data-search="covariant quantum geometry as a state sum: spin foams, vertex amplitudes, and the refinement problem of boundary amplitudes mathematical representations of quantum gravity"><a href="/papers/pdf/library/math-qg-library/spin-foams.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Covariant Quantum Geometry as a State Sum: Spin Foams, Vertex Amplitudes, and the Refinement Problem of Boundary Amplitudes</span></a></li><li class="lib-paper" data-search="quantum spatial geometry as representation data: spin networks, intertwiners, and the geometric operators of the boundary hilbert space mathematical representations of quantum gravity"><a href="/papers/pdf/library/math-qg-library/spin-networks.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Quantum Spatial Geometry as Representation Data: Spin Networks, Intertwiners, and the Geometric Operators of the Boundary Hilbert Space</span></a></li><li class="lib-paper" data-search="a modular site of reconstruction regimes: twelve representations of quantum gravity and the weakest-link calculus that composes them mathematical representations of quantum gravity"><a href="/papers/pdf/library/math-qg-library/synthesis.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>A Modular Site of Reconstruction Regimes: Twelve Representations of Quantum Gravity and the Weakest-Link Calculus that Composes Them</span></a></li><li class="lib-paper" data-search="many boundary representatives, one bulk operator: tensor networks, operator-algebra quantum error correction, and the holographic-emergence regime of a reconstruction program mathematical representations of quantum gravity"><a href="/papers/pdf/library/math-qg-library/tensor-networks-qec.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Many Boundary Representatives, One Bulk Operator: Tensor Networks, Operator-Algebra Quantum Error Correction, and the Holographic-Emergence Regime of a Reconstruction Program</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Mathematics">
+      <div class="lib-collection" id="lib-mathematics-physical-representation" data-field="Mathematics">
         <div class="lib-col-head">
           <h3>Mathematics as Physical Representation</h3>
           <span class="lib-col-meta">6 papers · Mathematics</span>
@@ -1697,7 +1313,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="kinematic domains and observable ratios: cross-ratios and the field of physical values mathematics as physical representation"><a href="/papers/pdf/library/mathematics-physical-representation/kinematic-domains-observable-ratios.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Kinematic Domains and Observable Ratios: Cross-Ratios and the Field of Physical Values</span></a></li><li class="lib-paper" data-search="the goncharov lie coalgebra of observables: coproduct, cobracket, and the decomposition law mathematics as physical representation"><a href="/papers/pdf/library/mathematics-physical-representation/lie-coalgebra-of-observables.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Goncharov Lie Coalgebra of Observables: Coproduct, Cobracket, and the Decomposition Law</span></a></li><li class="lib-paper" data-search="motives as the pre-numerical object: betti, de rham, and hodge realizations of physical information mathematics as physical representation"><a href="/papers/pdf/library/mathematics-physical-representation/motives-prenumerical-object.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Motives as the Pre-Numerical Object: Betti, de Rham, and Hodge Realizations of Physical Information</span></a></li><li class="lib-paper" data-search="polylogarithms and iterated propagation: transcendental weight as loop order rung ii of a modular ladder from kinematic domains to measurement mathematics as physical representation"><a href="/papers/pdf/library/mathematics-physical-representation/polylogarithms-iterated-propagation.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Polylogarithms and Iterated Propagation: Transcendental Weight as Loop Order Rung II of a Modular Ladder from Kinematic Domains to Measurement</span></a></li><li class="lib-paper" data-search="regulators and the period pairing: from motivic object to measurable number part v of mathematics physical representation: a modular library mathematics as physical representation"><a href="/papers/pdf/library/mathematics-physical-representation/regulators-period-pairing.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Regulators and the Period Pairing: From Motivic Object to Measurable Number Part V of Mathematics Physical Representation: A Modular Library</span></a></li><li class="lib-paper" data-search="measurement as the closure of the ladder: a synthesis of the modular library mathematics physical representation mathematics as physical representation"><a href="/papers/pdf/library/mathematics-physical-representation/synthesis.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Measurement as the Closure of the Ladder: A Synthesis of the Modular Library Mathematics Physical Representation</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Physics &amp; Quantum">
+      <div class="lib-collection" id="lib-topological-phases" data-field="Physics &amp; Quantum">
         <div class="lib-col-head">
           <h3>Topological Phases of Matter</h3>
           <span class="lib-col-meta">6 papers · Physics &amp; Quantum</span>
@@ -1706,7 +1322,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="condensed families of quantum observables: positivity, c*-norms, and solid k-theory topological phases of matter"><a href="/papers/pdf/library/topological-phases/condensed-observables.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Condensed Families of Quantum Observables: Positivity, C*-Norms, and Solid K-Theory</span></a></li><li class="lib-paper" data-search="the invertible condensed phase spectrum program: a conditional synthesis of locality, gaps, phases, and realization topological phases of matter"><a href="/papers/pdf/library/topological-phases/invertible-condensed-phase-spectrum.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Invertible Condensed Phase Spectrum Program: A Conditional Synthesis of Locality, Gaps, Phases, and Realization</span></a></li><li class="lib-paper" data-search="uniform locality for condensed families of quantum lattice interactions topological phases of matter"><a href="/papers/pdf/library/topological-phases/locality-condensed-families.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Uniform Locality for Condensed Families of Quantum Lattice Interactions</span></a></li><li class="lib-paper" data-search="from microscopic lattice hamiltonians to effective theories: controlled k-theory maps, information loss, and realization limits topological phases of matter"><a href="/papers/pdf/library/topological-phases/microscopic-effective-theories.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>From Microscopic Lattice Hamiltonians to Effective Theories: Controlled K-Theory Maps, Information Loss, and Realization Limits</span></a></li><li class="lib-paper" data-search="physical realizability of invertible phase classes: microscopic witnesses, bordism targets, and relative charges topological phases of matter"><a href="/papers/pdf/library/topological-phases/physical-realizability.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Physical Realizability of Invertible Phase Classes: Microscopic Witnesses, Bordism Targets, and Relative Charges</span></a></li><li class="lib-paper" data-search="thermodynamic spectral gaps in parameterized quantum lattice systems: definitions, stability, and a condensed moduli formulation topological phases of matter"><a href="/papers/pdf/library/topological-phases/thermodynamic-gaps.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Thermodynamic Spectral Gaps in Parameterized Quantum Lattice Systems: Definitions, Stability, and a Condensed Moduli Formulation</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Physics &amp; Quantum">
+      <div class="lib-collection" id="lib-yoneda-constraint" data-field="Physics &amp; Quantum">
         <div class="lib-col-head">
           <h3>The Yoneda Constraint: Universal Formulation</h3>
           <span class="lib-col-meta">1 paper · Physics &amp; Quantum</span>
@@ -1715,7 +1331,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="the yoneda constraint: a universal axiom for embedded systems unifying gödel, the measurement problem, compiler bootstrap, and ai alignment under one categorical principle the yoneda constraint: universal formulation"><a href="/papers/pdf/library/yoneda-constraint/yoneda-constraint-universal.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Yoneda Constraint: A Universal Axiom for Embedded Systems Unifying Gödel, the Measurement Problem, Compiler Bootstrap, and AI Alignment Under One Categorical Principle</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Physics &amp; Quantum">
+      <div class="lib-collection" id="lib-minimal-runtime-axiom" data-field="Physics &amp; Quantum">
         <div class="lib-col-head">
           <h3>The Minimal Runtime Axiom</h3>
           <span class="lib-col-meta">1 paper · Physics &amp; Quantum</span>
@@ -1724,7 +1340,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="the minimal runtime axiom runtime is proof of ignorance: a type-theoretic and category-theoretic formalization of the compile-time/runtime boundary the minimal runtime axiom"><a href="/papers/pdf/library/minimal-runtime-axiom/minimal-runtime-axiom.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Minimal Runtime Axiom Runtime Is Proof of Ignorance: A Type-Theoretic and Category-Theoretic Formalization of the Compile-Time/Runtime Boundary</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="AI &amp; Computation">
+      <div class="lib-collection" id="lib-joule-standard" data-field="AI &amp; Computation">
         <div class="lib-col-head">
           <h3>The Joule Standard: Energy Economics of Intelligence</h3>
           <span class="lib-col-meta">10 papers · AI &amp; Computation</span>
@@ -1733,7 +1349,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="the cognitive rebound effect: why efficient ai may increase energy demand the joule standard: energy economics of intelligence"><a href="/papers/pdf/library/joule-standard/cognitive-rebound-effect.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Cognitive Rebound Effect: Why Efficient AI May Increase Energy Demand</span></a></li><li class="lib-paper" data-search="energy markets for machine intelligence and cryptographic settlement the joule standard: energy economics of intelligence"><a href="/papers/pdf/library/joule-standard/energy-markets-for-machine-intelligence-and-cryptographic-settlement.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Energy Markets for Machine Intelligence and Cryptographic Settlement</span></a></li><li class="lib-paper" data-search="from exergy to intelligence: a general theory of economic transduction the joule standard: energy economics of intelligence"><a href="/papers/pdf/library/joule-standard/exergy-to-intelligence.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>From Exergy to Intelligence: A General Theory of Economic Transduction</span></a></li><li class="lib-paper" data-search="the joule standard: a unified economics of work, trust and intelligence the joule standard: energy economics of intelligence"><a href="/papers/pdf/library/joule-standard/joule-standard.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Joule Standard: A Unified Economics of Work, Trust and Intelligence</span></a></li><li class="lib-paper" data-search="marginal value of energy in an automated economy the joule standard: energy economics of intelligence"><a href="/papers/pdf/library/joule-standard/marginal-value-of-energy.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Marginal Value of Energy in an Automated Economy</span></a></li><li class="lib-paper" data-search="quality-adjusted intelligence per joule a boundary-explicit measure of useful ai task service the joule standard: energy economics of intelligence"><a href="/papers/pdf/library/joule-standard/quality-adjusted-intelligence-per-joule.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Quality-Adjusted Intelligence per Joule A boundary-explicit measure of useful AI task service</span></a></li><li class="lib-paper" data-search="tokens are not value: economic accounting for ai inference the joule standard: energy economics of intelligence"><a href="/papers/pdf/library/joule-standard/tokens-are-not-value.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Tokens Are Not Value: Economic Accounting for AI Inference</span></a></li><li class="lib-paper" data-search="trust per joule: the thermoeconomics of proof-of-work settlement the joule standard: energy economics of intelligence"><a href="/papers/pdf/library/joule-standard/trust-per-joule.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Trust per Joule: The Thermoeconomics of Proof-of-Work Settlement</span></a></li><li class="lib-paper" data-search="a value-per-joule national accounting system the joule standard: energy economics of intelligence"><a href="/papers/pdf/library/joule-standard/value-per-joule-national-accounting.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>A Value-per-Joule National Accounting System</span></a></li><li class="lib-paper" data-search="value per joule: foundations of an energy-normalized economics the joule standard: energy economics of intelligence"><a href="/papers/pdf/library/joule-standard/value-per-joule.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Value per Joule: Foundations of an Energy-Normalized Economics</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="AI &amp; Computation">
+      <div class="lib-collection" id="lib-ferrous-bridge" data-field="AI &amp; Computation">
         <div class="lib-col-head">
           <h3>Ferrous Bridge: Verified C-to-Rust Migration</h3>
           <span class="lib-col-meta">4 papers · AI &amp; Computation</span>
@@ -1742,7 +1358,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="climbing the safety ladder: from c2rust's raw lift to idiomatic safe rust via differential fuzzing, miri, and refinement verification a 1-week libyaml case study and generalization to libexpat ferrous bridge: verified c-to-rust migration"><a href="/papers/pdf/library/ferrous-bridge/c-rust-transpiling.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Climbing the Safety Ladder: From c2rust's Raw Lift to Idiomatic Safe Rust via Differential Fuzzing, Miri, and Refinement Verification A 1-Week libyaml Case Study and Generalization to libexpat</span></a></li><li class="lib-paper" data-search="the c language as a translation source: semantics, undefined behavior, and the libyaml idiom set a reference for the ferrous bridge -to- pipeline ferrous bridge: verified c-to-rust migration"><a href="/papers/pdf/library/ferrous-bridge/c.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The C Language as a Translation Source: Semantics, Undefined Behavior, and the libyaml Idiom Set A Reference for the Ferrous Bridge -to- Pipeline</span></a></li><li class="lib-paper" data-search="idiomatic safe rust as a translation target: ownership, lifetimes, and abi-compatible parser design a case study in safe-libyaml ferrous bridge: verified c-to-rust migration"><a href="/papers/pdf/library/ferrous-bridge/rust.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Idiomatic Safe Rust as a Translation Target: Ownership, Lifetimes, and ABI-Compatible Parser Design A Case Study in safe-libyaml</span></a></li><li class="lib-paper" data-search="ferrous bridge: a c → rust automated agent orchestration pipeline with type checks and safety guarantees a synthesis of the c, rust, and c-rust-transpiling companion papers ferrous bridge: verified c-to-rust migration"><a href="/papers/pdf/library/ferrous-bridge/synthesis.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Ferrous Bridge: A C → Rust Automated Agent Orchestration Pipeline with Type Checks and Safety Guarantees A Synthesis of the c, rust, and c-rust-transpiling Companion Papers</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Physics &amp; Quantum">
+      <div class="lib-collection" id="lib-categorical-qec" data-field="Physics &amp; Quantum">
         <div class="lib-col-head">
           <h3>Topological &amp; Categorical Quantum Error Correction</h3>
           <span class="lib-col-meta">12 papers · Physics &amp; Quantum</span>
@@ -1751,7 +1367,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="braiding operations in topological quantum systems: theoretical foundations, physical parallels, and computational implications topological &amp; categorical quantum error correction"><a href="/papers/pdf/library/categorical-qec/braidingoperations_topologicalquantumsystems.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Braiding Operations in Topological Quantum Systems: Theoretical Foundations, Physical Parallels, and Computational Implications</span></a></li><li class="lib-paper" data-search="towards self-correcting topological codes through functorial physics: unifying universal invariants, braided categories, and thermodynamics topological &amp; categorical quantum error correction"><a href="/papers/pdf/library/categorical-qec/functorial_qec.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Towards Self-Correcting Topological Codes Through Functorial Physics: Unifying Universal Invariants, Braided Categories, and Thermodynamics</span></a></li><li class="lib-paper" data-search="hardware layout topological &amp; categorical quantum error correction"><a href="/papers/pdf/library/categorical-qec/hardware_layout.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Hardware Layout</span></a></li><li class="lib-paper" data-search="proof-of-concept: a curry–howard approach to universal invariants and error correction in haskell topological &amp; categorical quantum error correction"><a href="/papers/pdf/library/categorical-qec/poc_curry_howard.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Proof-of-Concept: A Curry–Howard Approach to Universal Invariants and Error Correction in Haskell</span></a></li><li class="lib-paper" data-search="the principle of least action and penalty terms in quantum error correction codes topological &amp; categorical quantum error correction"><a href="/papers/pdf/library/categorical-qec/principle_of_least_action_penalty_terms_in_qec.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Principle of Least Action and Penalty Terms in Quantum Error Correction Codes</span></a></li><li class="lib-paper" data-search="proof as code in mathematics and quantum physics: a type-theoretic approach to formalizing physical phenomena topological &amp; categorical quantum error correction"><a href="/papers/pdf/library/categorical-qec/proof_as_code_math_physics.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Proof as Code in Mathematics and Quantum Physics: A Type-Theoretic Approach to Formalizing Physical Phenomena</span></a></li><li class="lib-paper" data-search="towards a unified framework of mathematics, physics, and computer science: the proof-as-code paradigm and its applications to quantum phenomena topological &amp; categorical quantum error correction"><a href="/papers/pdf/library/categorical-qec/proof_as_code_unification_quantum.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Towards a Unified Framework of Mathematics, Physics, and Computer Science: The Proof-as-Code Paradigm and Its Applications to Quantum Phenomena</span></a></li><li class="lib-paper" data-search="towards self-correcting topological codes through functorial physics: an abstract topological &amp; categorical quantum error correction"><a href="/papers/pdf/library/categorical-qec/qec_categorical_unification.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Towards Self-Correcting Topological Codes Through Functorial Physics: An Abstract</span></a></li><li class="lib-paper" data-search="towards derived universal error invariants: quantum error correction as inverse topological state topological &amp; categorical quantum error correction"><a href="/papers/pdf/library/categorical-qec/qec_inverse_topo_state.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Towards Derived Universal Error Invariants: Quantum Error Correction as Inverse Topological State</span></a></li><li class="lib-paper" data-search="quantum error correction via topological approaches: a categorical perspective with thermodynamic considerations topological &amp; categorical quantum error correction"><a href="/papers/pdf/library/categorical-qec/qec_topo_categorical.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Quantum Error Correction via Topological Approaches: A Categorical Perspective with Thermodynamic Considerations</span></a></li><li class="lib-paper" data-search="formalizing quantum error correction through code: a rigorous approach to fault-tolerant quantum information processing topological &amp; categorical quantum error correction"><a href="/papers/pdf/library/categorical-qec/quantum_error_correction_code_breakthrough.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Formalizing Quantum Error Correction Through Code: A Rigorous Approach to Fault-Tolerant Quantum Information Processing</span></a></li><li class="lib-paper" data-search="universal invariants and inverse topological states in quantum error correction: a categorical and thermodynamic approach via lambek’s lemma topological &amp; categorical quantum error correction"><a href="/papers/pdf/library/categorical-qec/univ_invar_inverse_topo_qec.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Universal Invariants and Inverse Topological States in Quantum Error Correction: A Categorical and Thermodynamic Approach via Lambek’s Lemma</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Physics &amp; Quantum">
+      <div class="lib-collection" id="lib-derived-functors-qec" data-field="Physics &amp; Quantum">
         <div class="lib-col-head">
           <h3>Derived Functors &amp; Teleological QEC</h3>
           <span class="lib-col-meta">11 papers · Physics &amp; Quantum</span>
@@ -1760,7 +1376,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="inverse topological decoding and derived hamiltonians: a teleological framework for advanced quantum error correction derived functors &amp; teleological qec"><a href="/papers/pdf/library/derived-functors-qec/Inverse_Topological_Decoding_Derived_Hamiltonians.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Inverse Topological Decoding and Derived Hamiltonians: A Teleological Framework for Advanced Quantum Error Correction</span></a></li><li class="lib-paper" data-search="derived functors and quantum error correction: a homotopy-theoretic approach derived functors &amp; teleological qec"><a href="/papers/pdf/library/derived-functors-qec/derived_functors_qec.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Derived Functors and Quantum Error Correction: A Homotopy-Theoretic Approach</span></a></li><li class="lib-paper" data-search="a teleological parallel: derived hamiltonians and genetic transcription as robust information processing paradigms derived functors &amp; teleological qec"><a href="/papers/pdf/library/derived-functors-qec/derived_hamiltonians_and_genetic_transcription.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>A Teleological Parallel: Derived Hamiltonians and Genetic Transcription as Robust Information Processing Paradigms</span></a></li><li class="lib-paper" data-search="expanded explanation: derived functors in quantum error correction derived functors &amp; teleological qec"><a href="/papers/pdf/library/derived-functors-qec/expanded_explanation_qec.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Expanded Explanation: Derived Functors in Quantum Error Correction</span></a></li><li class="lib-paper" data-search="inverse topological decoding and derived hamiltonians a hardware-embedded approach to quantum error correction derived functors &amp; teleological qec"><a href="/papers/pdf/library/derived-functors-qec/inverse_topological_decoding_hardware_qec.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Inverse Topological Decoding and Derived Hamiltonians A Hardware-Embedded Approach to Quantum Error Correction</span></a></li><li class="lib-paper" data-search="refactoring the schrödinger equation: teleological and penalty-term extensions for stable quantum systems derived functors &amp; teleological qec"><a href="/papers/pdf/library/derived-functors-qec/refactored_schrodinger_teleological_penalty_terms.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Refactoring the Schrödinger Equation: Teleological and Penalty-Term Extensions for Stable Quantum Systems</span></a></li><li class="lib-paper" data-search="towards room-temperature quantum computing: hardware advances and mathematical frameworks derived functors &amp; teleological qec"><a href="/papers/pdf/library/derived-functors-qec/room_temperature_quantum_computing.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Towards Room-Temperature Quantum Computing: Hardware Advances and Mathematical Frameworks</span></a></li><li class="lib-paper" data-search="teleological information processing: a new paradigm in computer science and quantum information derived functors &amp; teleological qec"><a href="/papers/pdf/library/derived-functors-qec/teleological_information_processing.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Teleological Information Processing: A New Paradigm in Computer Science and Quantum Information</span></a></li><li class="lib-paper" data-search="teleological information processing and natural language: a formal exploration with quantum parallels derived functors &amp; teleological qec"><a href="/papers/pdf/library/derived-functors-qec/teleological_information_processing_nlp_quantum.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Teleological Information Processing and Natural Language: A Formal Exploration with Quantum Parallels</span></a></li><li class="lib-paper" data-search="a unified teleological formalism for quantum error correction: bridging computer science, physics, mathematics, and engineering derived functors &amp; teleological qec"><a href="/papers/pdf/library/derived-functors-qec/teleological_qec_formalism.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>A Unified Teleological Formalism for Quantum Error Correction: Bridging Computer Science, Physics, Mathematics, and Engineering</span></a></li><li class="lib-paper" data-search="a unifying perspective: wittgenstein, teleological systems, and extended schrödinger equations derived functors &amp; teleological qec"><a href="/papers/pdf/library/derived-functors-qec/unifying_perspective_wittgenstein_teleology_schrodinger.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>A Unifying Perspective: Wittgenstein, Teleological Systems, and Extended Schrödinger Equations</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Physics &amp; Quantum">
+      <div class="lib-collection" id="lib-proof-as-code-qec" data-field="Physics &amp; Quantum">
         <div class="lib-col-head">
           <h3>Proof as Code: Functorial Quantum Engineering</h3>
           <span class="lib-col-meta">3 papers · Physics &amp; Quantum</span>
@@ -1769,7 +1385,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="the precision of category theory and the power of abstraction: functorial mapping of quantum phenomena and engineering physical processes as code for industrial applications proof as code: functorial quantum engineering"><a href="/papers/pdf/library/proof-as-code-qec/precision_category_theory_functorial_quantum_engineering.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Precision of Category Theory and the Power of Abstraction: Functorial Mapping of Quantum Phenomena and Engineering Physical Processes as Code for Industrial Applications</span></a></li><li class="lib-paper" data-search="a compositional quantum error correction pipeline: a functorial physics approach proof as code: functorial quantum engineering"><a href="/papers/pdf/library/proof-as-code-qec/quantum_error_correction_pipeline.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>A Compositional Quantum Error Correction Pipeline: A Functorial Physics Approach</span></a></li><li class="lib-paper" data-search="quantum programming with haskell: a detailed analysis incorporating error correction and entanglement proof as code: functorial quantum engineering"><a href="/papers/pdf/library/proof-as-code-qec/quantum_programming_haskell.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Quantum Programming with Haskell: A Detailed Analysis Incorporating Error Correction and Entanglement</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Physics &amp; Quantum">
+      <div class="lib-collection" id="lib-quantumflow" data-field="Physics &amp; Quantum">
         <div class="lib-col-head">
           <h3>QuantumFlow &amp; Derived Hamiltonians</h3>
           <span class="lib-col-meta">2 papers · Physics &amp; Quantum</span>
@@ -1778,7 +1394,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="derived hamiltonians and higher-order functors: unifying quantum mechanics, spacetime dynamics, and biophysical systems quantumflow &amp; derived hamiltonians"><a href="/papers/pdf/library/quantumflow/Derived_Hamiltonian_QuantumFlow.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Derived Hamiltonians and Higher-Order Functors: Unifying Quantum Mechanics, Spacetime Dynamics, and Biophysical Systems</span></a></li><li class="lib-paper" data-search="us patent inverse topological decoding derived hamiltonians quantumflow &amp; derived hamiltonians"><a href="/papers/pdf/library/quantumflow/US_Patent_Inverse_Topological_Decoding_Derived_Hamiltonians.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>US Patent Inverse Topological Decoding Derived Hamiltonians</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Physics &amp; Quantum">
+      <div class="lib-collection" id="lib-mathematical-physics" data-field="Physics &amp; Quantum">
         <div class="lib-col-head">
           <h3>Mathematical Physics: Frameworks &amp; Duality</h3>
           <span class="lib-col-meta">4 papers · Physics &amp; Quantum</span>
@@ -1787,16 +1403,16 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="towards a functorial unification of physics via foundational mathematics mathematical physics: frameworks &amp; duality"><a href="/papers/pdf/library/mathematical-physics/quantum_unification.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Towards a Functorial Unification of Physics via Foundational Mathematics</span></a></li><li class="lib-paper" data-search="a unified mathematical framework for classical and quantum physics using advanced mathematical structures mathematical physics: frameworks &amp; duality"><a href="/papers/pdf/library/mathematical-physics/A_Unified_Mathematical_Framework_for_Classical_and_Quantum_Physics_Using_Advanced_Mathematical_Structures.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>A Unified Mathematical Framework For Classical And Quantum Physics Using Advanced Mathematical Structures</span></a></li><li class="lib-paper" data-search="unified framework for quantum and relativistic systems with computational extensions mathematical physics: frameworks &amp; duality"><a href="/papers/pdf/library/mathematical-physics/physical_duality.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Unified Framework for Quantum and Relativistic Systems with Computational Extensions</span></a></li><li class="lib-paper" data-search="toward a unified framework for quantum-relativistic systems: a higher-categorical and noncommutative geometric formulation mathematical physics: frameworks &amp; duality"><a href="/papers/pdf/library/mathematical-physics/prototype-unifying-equation.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Toward a Unified Framework for Quantum-Relativistic Systems: A Higher-Categorical and Noncommutative Geometric Formulation</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Mathematics">
+      <div class="lib-collection" id="lib-foundations-mathematics" data-field="Mathematics">
         <div class="lib-col-head">
           <h3>Foundations of Mathematics</h3>
           <span class="lib-col-meta">2 papers · Mathematics</span>
           
         </div>
-        <ul class="lib-papers"><li class="lib-paper" data-search="towards a unified proof of the foundations of mathematics foundations of mathematics"><a href="/papers/pdf/library/foundations-mathematics/unified_foundations.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Towards a Unified Proof of the Foundations of Mathematics</span></a></li><li class="lib-paper" data-search="only 0 and infinity exist: a categorical and topos-theoretic minimal ontology of number foundations of mathematics"><a href="/papers/pdf/library/foundations-mathematics/zero_and_infinity_only_exist.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Only 0 and Infinity Exist: A Categorical and Topos-Theoretic Minimal Ontology of Number</span></a></li>
+        <ul class="lib-papers"><li class="lib-paper" data-search="towards a unified proof of the foundations of mathematics (doctoral thesis, 2004) foundations of mathematics"><a href="/papers/pdf/library/foundations-mathematics/unified_foundations.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Towards a Unified Proof of the Foundations of Mathematics (Doctoral Thesis, 2004)</span></a></li><li class="lib-paper" data-search="only 0 and infinity exist: a categorical and topos-theoretic minimal ontology of number foundations of mathematics"><a href="/papers/pdf/library/foundations-mathematics/zero_and_infinity_only_exist.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Only 0 and Infinity Exist: A Categorical and Topos-Theoretic Minimal Ontology of Number</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Mathematics">
+      <div class="lib-collection" id="lib-geometric-langlands" data-field="Mathematics">
         <div class="lib-col-head">
           <h3>Geometric Langlands &amp; Universal Categories</h3>
           <span class="lib-col-meta">2 papers · Mathematics</span>
@@ -1805,7 +1421,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="integrating the langlands functor into universal categorical algebraic topology (ucat) geometric langlands &amp; universal categories"><a href="/papers/pdf/library/geometric-langlands/lg-ucat.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Integrating the Langlands Functor into Universal Categorical Algebraic Topology (UCAT)</span></a></li><li class="lib-paper" data-search="integration of automorphic and spectral data into universal categorical algebraic topology (ucat) geometric langlands &amp; universal categories"><a href="/papers/pdf/library/geometric-langlands/ucat-abstract.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Integration of Automorphic and Spectral Data into Universal Categorical Algebraic Topology (UCAT)</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Mathematics">
+      <div class="lib-collection" id="lib-encoding-primes" data-field="Mathematics">
         <div class="lib-col-head">
           <h3>Proof as Code: Number Theory</h3>
           <span class="lib-col-meta">1 paper · Mathematics</span>
@@ -1814,7 +1430,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="encoding primes in quantum superposition: a type-theoretic and quantum approach to twin primes and the riemann hypothesis proof as code: number theory"><a href="/papers/pdf/library/encoding-primes/encoding_primes.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Encoding Primes in Quantum Superposition: A Type-Theoretic and Quantum Approach to Twin Primes and the Riemann Hypothesis</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Physics &amp; Quantum">
+      <div class="lib-collection" id="lib-functorial-fission" data-field="Physics &amp; Quantum">
         <div class="lib-col-head">
           <h3>Functorial Fission</h3>
           <span class="lib-col-meta">1 paper · Physics &amp; Quantum</span>
@@ -1823,7 +1439,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="a functorial formulation of nuclear fission: mass--energy equivalence, binding energy, and chain-reaction dynamics in a categorical framework functorial fission"><a href="/papers/pdf/library/functorial-fission/main.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>A Functorial Formulation of Nuclear Fission: Mass--Energy Equivalence, Binding Energy, and Chain-Reaction Dynamics in a Categorical Framework</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Physics &amp; Quantum">
+      <div class="lib-collection" id="lib-type-safe-physics" data-field="Physics &amp; Quantum">
         <div class="lib-col-head">
           <h3>Type-Safe Physics</h3>
           <span class="lib-col-meta">1 paper · Physics &amp; Quantum</span>
@@ -1832,7 +1448,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="the rise of type-safe physics: a global revolution in theoretical foundations from dimensional analysis to dependent types: how category theory, type theory, and formal methods are transforming physics type-safe physics"><a href="/papers/pdf/library/type-safe-physics/type_safe_physics.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Rise of Type-Safe Physics: A Global Revolution in Theoretical Foundations From Dimensional Analysis to Dependent Types: How Category Theory, Type Theory, and Formal Methods Are Transforming Physics</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Interdisciplinary">
+      <div class="lib-collection" id="lib-type-safe-biophysics" data-field="Interdisciplinary">
         <div class="lib-col-head">
           <h3>Type-Safe Biophysics &amp; Context Engineering</h3>
           <span class="lib-col-meta">2 papers · Interdisciplinary</span>
@@ -1841,7 +1457,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="type-safe context engineering: lessons from protein folding for building reliable ai systems type-safe biophysics &amp; context engineering"><a href="/papers/pdf/library/type-safe-biophysics/TypeSafe_Context_Engineering.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Type-Safe Context Engineering: Lessons from Protein Folding for Building Reliable AI Systems</span></a></li><li class="lib-paper" data-search="the protein folding problem as type inference: why alphafold works and what it teaches us about machine learning type-safe biophysics &amp; context engineering"><a href="/papers/pdf/library/type-safe-biophysics/TypeSafe_Protein_Folding_Paper.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Protein Folding Problem as Type Inference: Why AlphaFold Works and What It Teaches Us About Machine Learning</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="AI &amp; Computation">
+      <div class="lib-collection" id="lib-fibered-sheaf-memory" data-field="AI &amp; Computation">
         <div class="lib-col-head">
           <h3>Fibered Sheaf Memory for AI</h3>
           <span class="lib-col-meta">2 papers · AI &amp; Computation</span>
@@ -1850,7 +1466,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="an integrated memory and knowledge-graph architecture leveraging mem0, fibered-sheaf merging, and ai preprint forge fibered sheaf memory for ai"><a href="/papers/pdf/library/fibered-sheaf-memory/fibered_sheaf_memory_ai.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>An Integrated Memory and Knowledge-Graph Architecture Leveraging mem0, Fibered-Sheaf Merging, and AI Preprint Forge</span></a></li><li class="lib-paper" data-search="patent application: systems and methods for integrating ephemeral memory, fibered-sheaf merge, and research ingestion pipelines fibered sheaf memory for ai"><a href="/papers/pdf/library/fibered-sheaf-memory/patent_fibered_sheaf_memory.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Patent Application: Systems and Methods for Integrating Ephemeral Memory, Fibered-Sheaf Merge, and Research Ingestion Pipelines</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="AI &amp; Computation">
+      <div class="lib-collection" id="lib-homotopical-semantics" data-field="AI &amp; Computation">
         <div class="lib-col-head">
           <h3>Homotopical Semantics &amp; AI Hallucination</h3>
           <span class="lib-col-meta">2 papers · AI &amp; Computation</span>
@@ -1859,7 +1475,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="the hallucination--homotopy correspondence a complete classification of language model failure modes via algebraic topology and homotopy type theory homotopical semantics &amp; ai hallucination"><a href="/papers/pdf/library/homotopical-semantics/hallucination-homotopy-correspondence.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Hallucination--Homotopy Correspondence A Complete Classification of Language Model Failure Modes via Algebraic Topology and Homotopy Type Theory</span></a></li><li class="lib-paper" data-search="homotopical semantics for language models: algebraic topological and homotopy type-theoretic approaches to the hallucination problem homotopical semantics &amp; ai hallucination"><a href="/papers/pdf/library/homotopical-semantics/homotopical-semantics.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Homotopical Semantics for Language Models: Algebraic Topological and Homotopy Type-Theoretic Approaches to the Hallucination Problem</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="AI &amp; Computation">
+      <div class="lib-collection" id="lib-quantum-database-theory" data-field="AI &amp; Computation">
         <div class="lib-col-head">
           <h3>Quantum Database Theory</h3>
           <span class="lib-col-meta">5 papers · AI &amp; Computation</span>
@@ -1868,7 +1484,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="quantum database theory: topos theory and entanglement for global consistency quantum database theory"><a href="/papers/pdf/library/quantum-database-theory/quantum_database_theory_topos_theory_entanglement_for_global_consistency.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Quantum Database Theory: Topos Theory and Entanglement for Global Consistency</span></a></li><li class="lib-paper" data-search="a unified framework for distributed quantum databases integrating topos-theoretic approaches, entanglement, and qec pipelines quantum database theory"><a href="/papers/pdf/library/quantum-database-theory/dist_qdb_qec_framework.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>A Unified Framework for Distributed Quantum Databases Integrating Topos-Theoretic Approaches, Entanglement, and QEC Pipelines</span></a></li><li class="lib-paper" data-search="quantum databases: the potential of entanglement with global mathematical structures a proof-axiom approach for distributed data systems quantum database theory"><a href="/papers/pdf/library/quantum-database-theory/quantum_databases_expanded.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Quantum Databases: The Potential of Entanglement with Global Mathematical Structures A Proof-Axiom Approach for Distributed Data Systems</span></a></li><li class="lib-paper" data-search="quantum database theory: topos theory and entanglement for global consistency a functorial pipeline for an entangled quantum database quantum database theory"><a href="/papers/pdf/library/quantum-database-theory/quantum_db_topos_entanglement_pipeline.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Quantum Database Theory: Topos Theory and Entanglement for Global Consistency A Functorial Pipeline for an Entangled Quantum Database</span></a></li><li class="lib-paper" data-search="augmented science: ai-enhanced collaborative frameworks in mathematics, physics, computer science, and genetics quantum database theory"><a href="/papers/pdf/library/quantum-database-theory/augmented_science.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Augmented Science: AI-Enhanced Collaborative Frameworks in Mathematics, Physics, Computer Science, and Genetics</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="AI &amp; Computation">
+      <div class="lib-collection" id="lib-topos-database-theory" data-field="AI &amp; Computation">
         <div class="lib-col-head">
           <h3>Topos-Theoretic Database Theory</h3>
           <span class="lib-col-meta">4 papers · AI &amp; Computation</span>
@@ -1877,7 +1493,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="topos theory in database design: a unified framework for backend storage models and functional query programming topos-theoretic database theory"><a href="/papers/pdf/library/topos-database-theory/topos-db-framework.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Topos Theory in Database Design: A Unified Framework for Backend Storage Models and Functional Query Programming</span></a></li><li class="lib-paper" data-search="next evolution in data management: a topos-theoretic approach to virtualized data benefits and technical foundations topos-theoretic database theory"><a href="/papers/pdf/library/topos-database-theory/topos_data_virtualization.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Next Evolution in Data Management: A Topos-Theoretic Approach to Virtualized Data Benefits and Technical Foundations</span></a></li><li class="lib-paper" data-search="a topos-theoretic framework for multi-model schema migrations topos-theoretic database theory"><a href="/papers/pdf/library/topos-database-theory/topos_database_bridge.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>A Topos-Theoretic Framework for Multi-Model Schema Migrations</span></a></li><li class="lib-paper" data-search="on-demand schema migrations for multi-model data integration: a topos-theoretic and generative ai perspective topos-theoretic database theory"><a href="/papers/pdf/library/topos-database-theory/topos_schema_migrations.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>On-Demand Schema Migrations for Multi-Model Data Integration: A Topos-Theoretic and Generative AI Perspective</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="AI &amp; Computation">
+      <div class="lib-collection" id="lib-ai-code-generation" data-field="AI &amp; Computation">
         <div class="lib-col-head">
           <h3>AI Code Generation</h3>
           <span class="lib-col-meta">1 paper · AI &amp; Computation</span>
@@ -1886,7 +1502,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="mitigating ai code generation limitations: risk-aware engineering, golden paths, and enterprise ai governance frameworks ai code generation"><a href="/papers/pdf/library/ai-code-generation/ai_code_generation_paper.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Mitigating AI Code Generation Limitations: Risk-Aware Engineering, Golden Paths, and Enterprise AI Governance Frameworks</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="AI &amp; Computation">
+      <div class="lib-collection" id="lib-time-compression" data-field="AI &amp; Computation">
         <div class="lib-col-head">
           <h3>The Time Compression Paradox</h3>
           <span class="lib-col-meta">1 paper · AI &amp; Computation</span>
@@ -1895,7 +1511,7 @@
         <ul class="lib-papers"><li class="lib-paper" data-search="the paradox of time compression in the age of ai: a formal analysis of why artificial intelligence increases rather than eliminates work the time compression paradox"><a href="/papers/pdf/library/time-compression/time-compression-paradox.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>The Paradox of Time Compression in the Age of AI: A Formal Analysis of Why Artificial Intelligence Increases Rather Than Eliminates Work</span></a></li>
         </ul>
       </div>
-      <div class="lib-collection" data-field="Interdisciplinary">
+      <div class="lib-collection" id="lib-cannabinoid-adhd" data-field="Interdisciplinary">
         <div class="lib-col-head">
           <h3>Pathway-Selective Cannabinoids for ADHD</h3>
           <span class="lib-col-meta">1 paper · Interdisciplinary</span>
@@ -1909,8 +1525,6 @@
   </div>
 </section>
 
-
-<!-- Research Network -->
 <section class="network-section" id="network" style="background: var(--bg-alt);">
   <div class="container">
     <div class="section-label">Beyond This Site</div>
@@ -2059,61 +1673,64 @@
   </div>
 </section>
 
+<!-- Repositories -->
 <section class="repos-section" id="repos">
   <div class="container">
     <div class="section-label">Open Source</div>
     <h2 class="section-title">Repositories</h2>
-    <p class="section-subtitle">All papers include companion Haskell codebases implementing the categorical constructions.</p>
-    <div class="repos-list">
-      <a class="repo-item" href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener">
-        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-        <div><div class="repo-name">MagnetonIO/yoneda-ai</div><div class="repo-desc">Series 1 -- 6 papers + Haskell code</div></div>
-      </a>
-      <a class="repo-item" href="https://github.com/MagnetonIO/yoneda-ai-web" target="_blank" rel="noopener">
-        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-        <div><div class="repo-name">MagnetonIO/yoneda-ai-web</div><div class="repo-desc">This website</div></div>
-      </a>
-      <a class="repo-item" href="https://github.com/MagnetonIO/crisis-of-foundations" target="_blank" rel="noopener">
-        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-        <div><div class="repo-name">MagnetonIO/crisis-of-foundations</div><div class="repo-desc">Paper 1: The Crisis of Quantum Foundations</div></div>
-      </a>
-      <a class="repo-item" href="https://github.com/MagnetonIO/yoneda-physical-content" target="_blank" rel="noopener">
-        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-        <div><div class="repo-name">MagnetonIO/yoneda-physical-content</div><div class="repo-desc">Paper 2: The Yoneda Lemma as Physical Law</div></div>
-      </a>
-      <a class="repo-item" href="https://github.com/MagnetonIO/yoneda-constraint-quantum-structure" target="_blank" rel="noopener">
-        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-        <div><div class="repo-name">MagnetonIO/yoneda-constraint-quantum-structure</div><div class="repo-desc">Paper 3: Deriving QM from the Yoneda Lemma</div></div>
-      </a>
-      <a class="repo-item" href="https://github.com/MagnetonIO/entanglement-complementarity-measurement" target="_blank" rel="noopener">
-        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-        <div><div class="repo-name">MagnetonIO/entanglement-complementarity-measurement</div><div class="repo-desc">Paper 4: Entanglement &amp; Measurement</div></div>
-      </a>
-      <a class="repo-item" href="https://github.com/MagnetonIO/categorical-architecture-qp" target="_blank" rel="noopener">
-        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-        <div><div class="repo-name">MagnetonIO/categorical-architecture-qp</div><div class="repo-desc">Paper 5: Categorical Architecture</div></div>
-      </a>
-      <a class="repo-item" href="https://github.com/MagnetonIO/quantum-gravity-emergent-spacetime" target="_blank" rel="noopener">
-        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-        <div><div class="repo-name">MagnetonIO/quantum-gravity-emergent-spacetime</div><div class="repo-desc">Paper 6: Quantum Gravity &amp; Spacetime</div></div>
-      </a>
-      <a class="repo-item" href="https://github.com/MagnetonIO/connections-existing-frameworks" target="_blank" rel="noopener">
-        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-        <div><div class="repo-name">MagnetonIO/connections-existing-frameworks</div><div class="repo-desc">Paper 7: Connections to Existing Frameworks</div></div>
-      </a>
-      <a class="repo-item" href="https://github.com/MagnetonIO/philosophical-implications-qp" target="_blank" rel="noopener">
-        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-        <div><div class="repo-name">MagnetonIO/philosophical-implications-qp</div><div class="repo-desc">Paper 8: Philosophical Implications</div></div>
-      </a>
-      <a class="repo-item" href="https://github.com/MagnetonIO/technical-constructions-qp" target="_blank" rel="noopener">
-        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-        <div><div class="repo-name">MagnetonIO/technical-constructions-qp</div><div class="repo-desc">Paper 9: Technical Constructions</div></div>
-      </a>
-      <a class="repo-item" href="https://github.com/MagnetonIO/open-problems-qp" target="_blank" rel="noopener">
-        <div class="repo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-        <div><div class="repo-name">MagnetonIO/open-problems-qp</div><div class="repo-desc">Paper 10: Open Problems</div></div>
-      </a>
+    <p class="section-subtitle">50 public research repositories on <a href="https://github.com/MagnetonIO" target="_blank" rel="noopener">github.com/MagnetonIO</a> &mdash; LaTeX sources, Haskell verifications, and research tooling.</p>
+    
+    <div class="prog-band">
+      <div class="prog-band-head"><h3>Physics &amp; Quantum</h3><span class="lib-col-meta">29 repositories</span></div>
+      <div class="repo-grid"><a class="repo-card" href="https://github.com/MagnetonIO/black_hole_info_paradox_resolution" target="_blank" rel="noopener"><div class="repo-card-head"><h4>black_hole_info_paradox_resolution</h4><span class="repo-lang">Haskell</span></div><p>A formal resolution to the Black Hole Information Paradox through information-theoretic foundations</p></a><a class="repo-card" href="https://github.com/MagnetonIO/categorical-architecture-qp" target="_blank" rel="noopener"><div class="repo-card-head"><h4>categorical-architecture-qp</h4><span class="repo-lang">TeX</span></div><p>The Categorical Architecture of Quantum Perspectivism: Topoi, Logic, and Dynamics [math-ph] — 27pp peer-reviewed paper with Haskell forma…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/connections-existing-frameworks" target="_blank" rel="noopener"><div class="repo-card-head"><h4>connections-existing-frameworks</h4><span class="repo-lang">TeX</span></div><p>Quantum Perspectivism and Its Relations: RQM, QBism, Many-Worlds, and Topos Theory [quant-ph] — 32pp peer-reviewed paper with Haskell for…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/crisis-of-foundations" target="_blank" rel="noopener"><div class="repo-card-head"><h4>crisis-of-foundations</h4><span class="repo-lang">TeX</span></div><p>The Crisis of Quantum Foundations: Why Physics Needs the Yoneda Constraint [quant-ph] — 27pp peer-reviewed paper with Haskell formalization</p></a><a class="repo-card" href="https://github.com/MagnetonIO/derived-functors-qec" target="_blank" rel="noopener"><div class="repo-card-head"><h4>derived-functors-qec</h4><span class="repo-lang">TeX</span></div><p>Derived Functors and Quantum Error Correction: A Homotopy-Theoretic Approach</p></a><a class="repo-card" href="https://github.com/MagnetonIO/emergent-spacetime-dynamics" target="_blank" rel="noopener"><div class="repo-card-head"><h4>emergent-spacetime-dynamics</h4><span class="repo-lang">HTML</span></div><p>A modular four-part research series formalizing emergent phases of matter from information through category theory. Site: https://emergen…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/emergent_spacetime" target="_blank" rel="noopener"><div class="repo-card-head"><h4>emergent_spacetime</h4><span class="repo-lang">TeX</span></div><p>Investigating emergent spacetime through simulations and theoretical models to understand its origins.</p></a><a class="repo-card" href="https://github.com/MagnetonIO/entanglement-complementarity-measurement" target="_blank" rel="noopener"><div class="repo-card-head"><h4>entanglement-complementarity-measurement</h4><span class="repo-lang">TeX</span></div><p>Entanglement, Complementarity, and Measurement as Categorical Phenomena [quant-ph] — 27pp peer-reviewed paper with Haskell formalization</p></a><a class="repo-card" href="https://github.com/MagnetonIO/first-law-entanglement" target="_blank" rel="noopener"><div class="repo-card-head"><h4>first-law-entanglement</h4><span class="repo-lang">Haskell</span></div><p>Rigorous Haskell proof of the First Law of Entanglement (δS_A = δ⟨K_A⟩) - the quantum information principle showing how spacetime emerges…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/functorial-fission" target="_blank" rel="noopener"><div class="repo-card-head"><h4>functorial-fission</h4><span class="repo-lang">Haskell</span></div><p>A Functorial Formulation of Nuclear Fission: Category theory meets nuclear physics with type-safe Haskell implementation</p></a><a class="repo-card" href="https://github.com/MagnetonIO/functorial-physics" target="_blank" rel="noopener"><div class="repo-card-head"><h4>functorial-physics</h4><span class="repo-lang">TeX</span></div><p>Explore theoretical physics through functorial frameworks, unifying mathematical structures and physical phenomena.</p></a><a class="repo-card" href="https://github.com/MagnetonIO/FunctorialHamiltonians" target="_blank" rel="noopener"><div class="repo-card-head"><h4>FunctorialHamiltonians</h4><span class="repo-lang">Python</span></div><p>A repository exploring Hamiltonian mechanics using category theory and functors. It demonstrates the construction and transformation of H…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/mathematical_physics" target="_blank" rel="noopener"><div class="repo-card-head"><h4>mathematical_physics</h4><span class="repo-lang">TeX</span></div><p>An interdisciplinary collection of resources on the nexus of advanced mathematics and theoretical physics, with an emphasis on fundamenta…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/modular-physics" target="_blank" rel="noopener"><div class="repo-card-head"><h4>modular-physics</h4><span class="repo-lang">TeX</span></div><p>A compositional framework for fundamental physics laws based on information-theoretic principles</p></a><a class="repo-card" href="https://github.com/MagnetonIO/on_the_same_origin_of_quantum_physics_and_general_relativity_expanded_with_code" target="_blank" rel="noopener"><div class="repo-card-head"><h4>on_the_same_origin_of_quantum_physics_and_general_relativity_expanded_with_code</h4><span class="repo-lang">TeX</span></div><p>Code For Unified Physics</p></a><a class="repo-card" href="https://github.com/MagnetonIO/open-problems-qp" target="_blank" rel="noopener"><div class="repo-card-head"><h4>open-problems-qp</h4><span class="repo-lang">TeX</span></div><p>Open Problems in Quantum Perspectivism: From Category Structure to Experimental Signatures [quant-ph] — 32pp peer-reviewed paper with Has…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/philosophical-implications-qp" target="_blank" rel="noopener"><div class="repo-card-head"><h4>philosophical-implications-qp</h4><span class="repo-lang">TeX</span></div><p>Philosophical Implications of Quantum Perspectivism: Structural Realism and the Primacy of Relation [physics.hist-ph] — 26pp peer-reviewe…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/principia-physica-pilot" target="_blank" rel="noopener"><div class="repo-card-head"><h4>principia-physica-pilot</h4><span class="repo-lang">TeX</span></div><p>Bounded three-paper Principia Physica pilot with a synthesis paper and representative Lean and Haskell artifacts.</p></a><a class="repo-card" href="https://github.com/MagnetonIO/proof_as_code_qec" target="_blank" rel="noopener"><div class="repo-card-head"><h4>proof_as_code_qec</h4><span class="repo-lang">TeX</span></div><p>Compositional quantum error correction pipeline in Haskell, integrating topological, penalty-based, and type-theoretic QEC with code-base…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/quantum-gravity-emergent-spacetime" target="_blank" rel="noopener"><div class="repo-card-head"><h4>quantum-gravity-emergent-spacetime</h4><span class="repo-lang">TeX</span></div><p>Quantum Gravity and Emergent Spacetime from Perspectival Structure [hep-th] — 29pp peer-reviewed paper with Haskell formalization</p></a><a class="repo-card" href="https://github.com/MagnetonIO/quantum-perspectivism-haskell" target="_blank" rel="noopener"><div class="repo-card-head"><h4>quantum-perspectivism-haskell</h4><span class="repo-lang">Haskell</span></div><p>Complete Haskell implementation of Quantum Perspectivism — categorical framework for foundational physics via the Yoneda Constraint. 42 m…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/quantum-topological-qec" target="_blank" rel="noopener"><div class="repo-card-head"><h4>quantum-topological-qec</h4><span class="repo-lang">TeX</span></div><p>Quantum topological QEC: Explore algorithms for error correction in quantum systems using topological properties. #QEC #topological- codes</p></a><a class="repo-card" href="https://github.com/MagnetonIO/quantum_unification" target="_blank" rel="noopener"><div class="repo-card-head"><h4>quantum_unification</h4><span class="repo-lang">TeX</span></div><p>Investigations into unifying quantum mechanics with broader physical theories, exploring foundational concepts and beyond.</p></a><a class="repo-card" href="https://github.com/MagnetonIO/QuantumFlow" target="_blank" rel="noopener"><div class="repo-card-head"><h4>QuantumFlow</h4><span class="repo-lang">TeX</span></div><p>QuantumFlow – A Python library for simulating derived Hamiltonians in quantum fields, lattice QCD, quantum circuits, and biophysics. Supp…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/technical-constructions-qp" target="_blank" rel="noopener"><div class="repo-card-head"><h4>technical-constructions-qp</h4><span class="repo-lang">TeX</span></div><p>Technical Constructions in Quantum Perspectivism: Complex Amplitudes, Gleason, and Decoherence [math-ph] — 26pp peer-reviewed paper with …</p></a><a class="repo-card" href="https://github.com/MagnetonIO/type-safe-physics" target="_blank" rel="noopener"><div class="repo-card-head"><h4>type-safe-physics</h4><span class="repo-lang">TeX</span></div><p>Type-Safe Physics: A framework for expressing physics with mathematical rigor using type theory, category theory, and formal verification…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/yoneda-ai" target="_blank" rel="noopener"><div class="repo-card-head"><h4>yoneda-ai</h4><span class="repo-lang">TeX</span></div><p>Category-theoretic foundations for open problems in quantum mechanics, gravity, and observer theory — 6 papers applying the Yoneda Constr…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/yoneda-constraint-quantum-structure" target="_blank" rel="noopener"><div class="repo-card-head"><h4>yoneda-constraint-quantum-structure</h4><span class="repo-lang">TeX</span></div><p>Deriving Quantum Mechanics from the Yoneda Constraint [quant-ph] — 36pp peer-reviewed paper with Haskell formalization</p></a><a class="repo-card" href="https://github.com/MagnetonIO/yoneda-physical-content" target="_blank" rel="noopener"><div class="repo-card-head"><h4>yoneda-physical-content</h4><span class="repo-lang">TeX</span></div><p>The Yoneda Lemma as Physical Law: Identity, Relation, and the Structure of Reality [math.CT] — 29pp peer-reviewed paper with Haskell form…</p></a></div>
     </div>
+    <div class="prog-band">
+      <div class="prog-band-head"><h3>Mathematics</h3><span class="lib-col-meta">4 repositories</span></div>
+      <div class="repo-grid"><a class="repo-card" href="https://github.com/MagnetonIO/geometric_langlands_conjecture_expanded" target="_blank" rel="noopener"><div class="repo-card-head"><h4>geometric_langlands_conjecture_expanded</h4><span class="repo-lang">TeX</span></div><p>Comprehensive resources and explorations of the Geometric Langlands Conjecture, bridging number theory, geometry, and representation theory.</p></a><a class="repo-card" href="https://github.com/MagnetonIO/proof_as_code" target="_blank" rel="noopener"><div class="repo-card-head"><h4>proof_as_code</h4></div><p>A repository showcasing the power of using code to generate and verify mathematical proofs and assertions. Technologies: Python, Jupyter …</p></a><a class="repo-card" href="https://github.com/MagnetonIO/proof_as_code_math_physics" target="_blank" rel="noopener"><div class="repo-card-head"><h4>proof_as_code_math_physics</h4></div><p>Explore math and physics concepts through code with examples in calculus, mechanics, and electromagnetism. Haskell and Coq used.</p></a><a class="repo-card" href="https://github.com/MagnetonIO/unified_foundations_of_mathematics" target="_blank" rel="noopener"><div class="repo-card-head"><h4>unified_foundations_of_mathematics</h4><span class="repo-lang">TeX</span></div><p>A deep dive into the universal underpinnings of mathematics, seeking to unify set theory, category theory, logic, and more under a cohesi…</p></a></div>
+    </div>
+    <div class="prog-band">
+      <div class="prog-band-head"><h3>AI &amp; Computation</h3><span class="lib-col-meta">15 repositories</span></div>
+      <div class="repo-grid"><a class="repo-card" href="https://github.com/MagnetonIO/ai-memory-merge-protocol" target="_blank" rel="noopener"><div class="repo-card-head"><h4>ai-memory-merge-protocol</h4><span class="repo-lang">TeX</span></div><p>An Integrated Memory and Knowledge-Graph Architecture Leveraging mem0, Fibered-Sheaf Merging, and AI Preprint Forge</p></a><a class="repo-card" href="https://github.com/MagnetonIO/ai-preprint-forge" target="_blank" rel="noopener"><div class="repo-card-head"><h4>ai-preprint-forge</h4><span class="repo-lang">Python</span></div><p>AI-powered framework for automated research paper generation and publication. Combines LaTeX creation, PDF conversion, Git management, an…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/ai_theory" target="_blank" rel="noopener"><div class="repo-card-head"><h4>ai_theory</h4><span class="repo-lang">TeX</span></div><p>Advancing the theoretical foundations of Artificial Intelligence through interdisciplinary research. This repository bridges AI, mathemat…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/CatDB-Research" target="_blank" rel="noopener"><div class="repo-card-head"><h4>CatDB-Research</h4><span class="repo-lang">TeX</span></div><p>CatDB is a Rust-based semantic multimodel data platform for typed schemas, composable mappings, versioned migrations, federated queries, …</p></a><a class="repo-card" href="https://github.com/MagnetonIO/chain-of-intent" target="_blank" rel="noopener"><div class="repo-card-head"><h4>chain-of-intent</h4><span class="repo-lang">Python</span></div><p>Chain of Intent (CoI): Novel AI alignment framework treating intent as mathematically transformable objects. Implements semantic preserva…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/contextfs-node" target="_blank" rel="noopener"><div class="repo-card-head"><h4>contextfs-node</h4><span class="repo-lang">TypeScript</span></div><p>Git for your AI conversations - Local-first AI memory layer with MCP server support</p></a><a class="repo-card" href="https://github.com/MagnetonIO/database_theory" target="_blank" rel="noopener"><div class="repo-card-head"><h4>database_theory</h4><span class="repo-lang">TeX</span></div><p>Advancing database theory through interdisciplinary research. Explore mathematical frameworks like Topos Theory, functional programming, …</p></a><a class="repo-card" href="https://github.com/MagnetonIO/local_rag_pipeline" target="_blank" rel="noopener"><div class="repo-card-head"><h4>local_rag_pipeline</h4><span class="repo-lang">Python</span></div><p>A data processing pipeline for analyzing content from local data, including scraping, metadata extraction, and text analysis.</p></a><a class="repo-card" href="https://github.com/MagnetonIO/market-theory" target="_blank" rel="noopener"><div class="repo-card-head"><h4>market-theory</h4><span class="repo-lang">TeX</span></div><p>Predictive Market Theory: Markets as Distributed Bayesian Inference Engines — Bayesian belief functions, thermodynamic structure, HFT bel…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/preprint-forge-frontend" target="_blank" rel="noopener"><div class="repo-card-head"><h4>preprint-forge-frontend</h4><span class="repo-lang">TypeScript</span></div><p>Frontend to AI-powered framework for automated research paper generation and publication.</p></a><a class="repo-card" href="https://github.com/MagnetonIO/quantum_database_theory" target="_blank" rel="noopener"><div class="repo-card-head"><h4>quantum_database_theory</h4><span class="repo-lang">TeX</span></div><p>Cutting-edge exploration of quantum-enhanced database operations using principles of quantum computing. Join us! #quantum #database #tech…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/time-compression-paradox" target="_blank" rel="noopener"><div class="repo-card-head"><h4>time-compression-paradox</h4><span class="repo-lang">TeX</span></div><p>The Time Compression Paradox: A formal analysis of why AI increases rather than eliminates work. Four-paper research series (~91 pages) b…</p></a><a class="repo-card" href="https://github.com/MagnetonIO/typesafe-context" target="_blank" rel="noopener"><div class="repo-card-head"><h4>typesafe-context</h4><span class="repo-lang">Python</span></div><p>Type-safe context engineering for AI-native workflows. Pydantic + Instructor + ContextFS integration.</p></a><a class="repo-card" href="https://github.com/MagnetonIO/voltforge" target="_blank" rel="noopener"><div class="repo-card-head"><h4>voltforge</h4><span class="repo-lang">TeX</span></div><p>VoltForge: Software-defined power interoperability for cordless tool ecosystems. 5 research papers + Rust #![no_std] firmware for typed, …</p></a><a class="repo-card" href="https://github.com/MagnetonIO/yonedaai-industry-research" target="_blank" rel="noopener"><div class="repo-card-head"><h4>yonedaai-industry-research</h4><span class="repo-lang">TeX</span></div><p>YonedaAI Methodology: Mitigating AI Code Generation Limitations through Risk-Aware Engineering, Golden Paths, and Enterprise AI Governanc…</p></a></div>
+    </div>
+    <div class="prog-band">
+      <div class="prog-band-head"><h3>Interdisciplinary</h3><span class="lib-col-meta">2 repositories</span></div>
+      <div class="repo-grid"><a class="repo-card" href="https://github.com/MagnetonIO/type-safe-biophysics" target="_blank" rel="noopener"><div class="repo-card-head"><h4>type-safe-biophysics</h4><span class="repo-lang">TeX</span></div><p>Type-Safe Biophysics: The Protein Folding Problem as Type Inference - Why AlphaFold Works and What It Teaches Us About Machine Learning. …</p></a><a class="repo-card" href="https://github.com/MagnetonIO/yac-cannabinoid-adhd" target="_blank" rel="noopener"><div class="repo-card-head"><h4>yac-cannabinoid-adhd</h4><span class="repo-lang">TeX</span></div><p>Rational Design of Pathway-Selective Cannabinoid Compounds for ADHD: Biased Signaling, Prodrug Activation, and Multi-Target Pharmacology</p></a></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- About -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <h2 class="section-title">About YonedaAI</h2>
+    <div class="about-content">
+      <p><strong>YonedaAI Research Collective</strong> is a frontier research organization applying category theory and advanced AI to the foundational problems of physics.</p>
+      <p><strong>Mission:</strong> To derive the mathematical structures of physics from first principles using the Yoneda Lemma as a foundational constraint, and to publish rigorous, peer-reviewed research with complete executable codebases.</p>
+      <p><strong>Research Program:</strong> 16+ peer-reviewed papers spanning quantum mechanics, quantum gravity, black hole physics, and the philosophy of physics. Every paper includes a complete Haskell implementation that verifies the mathematical constructions and provides executable demonstrations of the theoretical results.</p>
+    </div>
+  
+    <h3 class="flagship-h3">Methodology: Agent Orchestration for Frontier Science</h3>
+    <p class="methodology-intro">YonedaAI developed a multi-agent parallel execution architecture that transforms research questions into peer-reviewed papers with verified code. This is what makes YonedaAI unique: cutting-edge AI agent orchestration applied to real science, producing rigorous mathematical research at unprecedented speed and scale.</p>
+    <div class="results-grid">
+        <div class="result-card">
+          <div class="result-number">16</div>
+          <div class="result-label">Peer-reviewed papers</div>
+        </div>
+        <div class="result-card">
+          <div class="result-number">291+</div>
+          <div class="result-label">Pages of research</div>
+        </div>
+        <div class="result-card">
+          <div class="result-number">16</div>
+          <div class="result-label">Haskell codebases</div>
+        </div>
+        <div class="result-card">
+          <div class="result-number">42</div>
+          <div class="result-label">Framework modules</div>
+        </div>
+      </div>
   </div>
 </section>
 
